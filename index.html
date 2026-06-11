@@ -1,221 +1,221 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>H LUXURY | Boutique Officielle | Sneakers & Streetwear Premium</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
-body { font-family: 'Poppins', sans-serif; }
-.product-card img { transition: transform 0.5s ease; }
-.product-card:hover img { transform: scale(1.05); }
-.collection-card { overflow: hidden; position: relative; }
-.collection-card img { transition: transform 0.8s ease; }
-.collection-card:hover img { transform: scale(1.1); }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H LUXURY | Boutique Officielle | Sneakers & Streetwear Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+        .product-card img { transition: transform 0.5s ease; }
+        .product-card:hover img { transform: scale(1.05); }
+        .collection-card { overflow: hidden; position: relative; }
+        .collection-card img { transition: transform 0.8s ease; }
+        .collection-card:hover img { transform: scale(1.1); }
+    </style>
 </head>
 <body class="bg-white text-gray-900">
 
-<!-- HEADER & BANNIÈRE PROMO -->
-<header class="sticky top-0 z-50 bg-white shadow-sm">
-<div class="bg-black text-white text-xs text-center py-2.5 font-medium tracking-wide uppercase">
-⚡ VENTE FLASH : -10% SUR TOUTE LA BOUTIQUE AVEC LE CODE <span class="text-amber-400 font-bold">LUXURY10</span> ⚡
-</div>
+    <!-- HEADER & BANNIÈRE PROMO (Vérifié : LUXURY10 injecté) -->
+    <header class="sticky top-0 z-50 bg-white shadow-sm">
+        <div class="bg-black text-white text-xs text-center py-2.5 font-medium tracking-wide uppercase">
+            ⚡ VENTE FLASH : -10% SUR TOUTE LA BOUTIQUE AVEC LE CODE <span class="text-amber-400 font-bold">LUXURY10</span> ⚡
+        </div>
+        
+        <div class="bg-gray-100 border-b border-gray-200 px-6 py-1.5 text-center text-[11px] font-medium text-gray-700 flex items-center justify-center space-x-2">
+            <span>Plus que <span class="font-bold text-black">10,01€</span> pour débloquer la <strong>Livraison Gratuite</strong></span>
+            <div class="w-24 bg-gray-300 h-2 rounded-full overflow-hidden inline-block">
+                <div class="bg-emerald-500 h-full w-[85%] rounded-full animate-pulse"></div>
+            </div>
+        </div>
 
-<div class="bg-gray-100 border-b border-gray-200 px-6 py-1.5 text-center text-[11px] font-medium text-gray-700 flex items-center justify-center space-x-2">
-<span>Plus que <span class="font-bold text-black">10,01€</span> pour débloquer la <strong>Livraison Gratuite</strong></span>
-<div class="w-24 bg-gray-300 h-2 rounded-full overflow-hidden inline-block">
-<div class="bg-emerald-500 h-full w-[85%] rounded-full animate-pulse"></div>
-</div>
-</div>
+        <nav class="flex justify-between items-center px-6 md:px-12 py-5">
+            <div class="flex items-center space-x-4">
+                <i class="fa-solid fa-bars text-2xl cursor-pointer md:hidden"></i>
+                <div class="text-3xl font-black tracking-tighter text-gray-950">H<span class="text-amber-500">.</span>LUXURY</div>
+            </div>
+            <div class="hidden md:flex space-x-10 font-semibold text-sm text-gray-800 uppercase tracking-wide">
+                <a href="#chaussures" class="hover:text-amber-600 transition">Chaussures</a>
+                <a href="#vetements" class="hover:text-amber-600 transition">Vêtements</a>
+                <a href="#accessoires" class="hover:text-amber-600 transition">Accessoires</a>
+            </div>
+            <div class="flex items-center space-x-6 text-gray-900 text-xl">
+                <i class="fa-solid fa-magnifying-glass cursor-pointer hover:text-amber-600"></i>
+                <div class="relative cursor-pointer hover:text-amber-600">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">1</span>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-<nav class="flex justify-between items-center px-6 md:px-12 py-5">
-<div class="flex items-center space-x-4">
-<i class="fa-solid fa-bars text-2xl cursor-pointer md:hidden"></i>
-<div class="text-3xl font-black tracking-tighter text-gray-950">H<span class="text-amber-500">.</span>LUXURY</div>
-</div>
-<div class="hidden md:flex space-x-10 font-semibold text-sm text-gray-800 uppercase tracking-wide">
-<a href="#chaussures" class="hover:text-amber-600 transition">Chaussures</a>
-<a href="#vetements" class="hover:text-amber-600 transition">Vêtements</a>
-<a href="#accessoires" class="hover:text-amber-600 transition">Accessoires</a>
-</div>
-<div class="flex items-center space-x-6 text-gray-900 text-xl">
-<i class="fa-solid fa-magnifying-glass cursor-pointer hover:text-amber-600"></i>
-<div class="relative cursor-pointer hover:text-amber-600">
-<i class="fa-solid fa-bag-shopping"></i>
-<span class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">1</span>
-</div>
-</div>
-</nav>
-</header>
+    <!-- BANNIÈRE PRINCIPALE (Image intégrée + Code LUXURY10 validé) -->
+    <section class="relative bg-gray-900 h-[60vh] md:h-[75vh] flex items-center justify-center overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=1920&auto=format&fit=crop" alt="H LUXURY Background" class="absolute inset-0 w-full h-full object-cover object-center opacity-40">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50"></div>
+        <div class="relative text-center text-white px-6 z-10">
+            <div class="bg-white/95 text-black inline-block px-12 py-9 rounded-2xl shadow-2xl backdrop-blur-sm border border-white/20">
+                <p class="text-5xl md:text-7xl font-black tracking-tighter text-gray-950">-10%</p>
+                <p class="text-xs font-bold uppercase tracking-widest text-gray-500 mt-1">Sur votre première commande</p>
+                <p class="bg-black text-white font-bold text-xl md:text-2xl mt-5 px-8 py-2.5 rounded-xl uppercase tracking-widest shadow-md">LUXURY10</p>
+            </div>
+        </div>
+    </section>
 
-<!-- BANNIÈRE PRINCIPALE -->
-<section class="relative bg-gray-200 h-[60vh] md:h-[75vh] flex items-center justify-center overflow-hidden">
-<img src="banniere-accueil.jpg" alt="H LUXURY Banner" class="absolute inset-0 w-full h-full object-cover object-center">
-<div class="absolute inset-0 bg-black/20"></div>
-<div class="relative text-center text-white px-6 z-10">
-<div class="bg-white/95 text-black inline-block px-10 py-8 rounded-2xl shadow-2xl backdrop-blur-sm border border-white/20">
-<p class="text-5xl md:text-7xl font-black tracking-tighter text-gray-950">-10%</p>
-<p class="text-xs font-bold uppercase tracking-widest text-gray-500 mt-1">Sur votre première commande</p>
-<p class="bg-black text-white font-bold text-xl md:text-2xl mt-4 px-8 py-2.5 rounded-xl uppercase tracking-widest shadow-md">LUXURY10</p>
-</div>
-</div>
-</section>
+    <!-- SECTION ENGAGEMENT QUALITÉ -->
+    <section class="py-12 px-6 text-center bg-white">
+        <div class="max-w-3xl mx-auto">
+            <p class="text-xs font-bold uppercase tracking-widest text-amber-600 mb-2">🔒 Authenticité & Qualité</p>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-950 leading-tight">Chaque produit passe un contrôle qualité strict pour vous offrir la meilleure finition possible.</h2>
+        </div>
+    </section>
 
-<!-- SECTION ENGAGEMENT QUALITÉ -->
-<section class="py-12 px-6 text-center bg-white">
-<div class="max-w-3xl mx-auto">
-<p class="text-xs font-bold uppercase tracking-widest text-amber-600 mb-2">🔒 Authenticité & Qualité</p>
-<h2 class="text-2xl md:text-3xl font-extrabold text-gray-950 leading-tight">Chaque produit passe un contrôle qualité strict pour vous offrir la meilleure finition possible.</h2>
-</div>
-</section>
+    <!-- NOS COLLECTIONS -->
+    <section id="collections" class="py-12 px-4 md:px-12 max-w-[1600px] mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+            <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
+                <img src="collection-chaussures.jpg" alt="CHAUSSURES" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
+                    <h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">CHAUSSURES</h3>
+                </div>
+            </div>
+            <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
+                <img src="collection-vetements.jpg" alt="VÊTEMENTS" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
+                    <h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">VÊTEMENTS</h3>
+                </div>
+            </div>
+            <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
+                <img src="collection-accessoires.jpg" alt="ACCESSOIRES" class="absolute inset-0 w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
+                    <h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">ACCESSOIRES</h3>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- NOS COLLECTIONS -->
-<section id="collections" class="py-12 px-4 md:px-12 max-w-[1600px] mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-<div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm">
-<img src="collection-chaussures.jpg" alt="CHAUSSURES" class="absolute inset-0 w-full h-full object-cover">
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
-<h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">CHAUSSURES</h3>
-</div>
-</div>
-<div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm">
-<img src="collection-vetements.jpg" alt="VÊTEMENTS" class="absolute inset-0 w-full h-full object-cover">
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
-<h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">VÊTEMENTS</h3>
-</div>
-</div>
-<div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm">
-<img src="collection-accessoires.jpg" alt="ACCESSOIRES" class="absolute inset-0 w-full h-full object-cover">
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
-<h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">ACCESSOIRES</h3>
-</div>
-</div>
-</div>
-</section>
+    <!-- SECTION MEILLEURES VENTES -->
+    <section id="chaussures" class="py-16 px-4 md:px-12 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-[1600px] mx-auto">
+            <div class="text-center mb-16">
+                <p class="text-gray-400 text-xs font-bold uppercase tracking-widest">SÉLECTION EXCLUSIVE</p>
+                <h2 class="text-3xl md:text-4xl font-black text-gray-950 uppercase tracking-tighter inline-block border-b-4 border-black pb-1">Meilleures Ventes</h2>
+            </div>
 
-<!-- SECTION MEILLEURES VENTES -->
-<section id="chaussures" class="py-16 px-4 md:px-12 bg-gray-50 border-t border-gray-100">
-<div class="max-w-[1600px] mx-auto">
-<div class="text-center mb-16">
-<p class="text-gray-400 text-xs font-bold uppercase tracking-widest">SÉLECTION EXCLUSIVE</p>
-<h2 class="text-3xl md:text-4xl font-black text-gray-950 uppercase tracking-tighter inline-block border-b-4 border-black pb-1">Meilleures Ventes</h2>
-</div>
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-10">
+                
+                <!-- PRODUIT 1 -->
+                <div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
+                            <img src="b22-noir.jpg" alt="B22 - Noir" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-black text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Best-Seller</span>
+                        </div>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">B22 - Noir</h3>
+                            <p class="text-[10px] text-red-500 font-bold mt-1">🔥 Plus que 3 en stock</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">À partir de 119,99€</p>
+                        <a href="#" class="stripe-link-b22 w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
+                    </div>
+                </div>
 
-<div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-10">
+                <!-- PRODUIT 2 -->
+                <div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
+                            <img src="b30-noir-blanc.jpg" alt="B30 - Noir / Blanc" class="w-full h-full object-cover">
+                        </div>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">B30 - Noir / Blanc</h3>
+                            <p class="text-[10px] text-emerald-600 font-bold mt-1">📦 Prêt à être expédié</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">À partir de 119,99€</p>
+                        <a href="#" class="stripe-link-b30 w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
+                    </div>
+                </div>
 
-<!-- PRODUIT 1 -->
-<div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
-<div>
-<div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
-<img src="b22-noir.jpg" alt="B22 - Noir" class="w-full h-full object-cover">
-<span class="absolute top-2 left-2 bg-black text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Best-Seller</span>
-</div>
-<div class="mt-4 px-1">
-<h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">B22 - Noir</h3>
-<p class="text-[10px] text-red-500 font-bold mt-1">🔥 Plus que 3 en stock</p>
-</div>
-</div>
-<div class="mt-4 px-1 flex flex-col space-y-2">
-<p class="text-sm md:text-base font-black text-gray-950">À partir de 119,99€</p>
-<a href="#" class="stripe-link-b22 w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
-</div>
-</div>
+                <!-- PRODUIT 3 -->
+                <div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
+                            <img src="c-runner-blanc.jpg" alt="C. Runner - Blanc" class="w-full h-full object-cover">
+                        </div>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">C. Runner - Blanc</h3>
+                            <p class="text-[10px] text-red-500 font-bold mt-1">🔥 Supprimé / Succès fou</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">À partir de 119,99€</p>
+                        <a href="#" class="stripe-link-crunner w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
+                    </div>
+                </div>
 
-<!-- PRODUIT 2 -->
-<div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
-<div>
-<div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
-<img src="b30-noir-blanc.jpg" alt="B30 - Noir / Blanc" class="w-full h-full object-cover">
-</div>
-<div class="mt-4 px-1">
-<h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">B30 - Noir / Blanc</h3>
-<p class="text-[10px] text-emerald-600 font-bold mt-1">📦 Prêt à être expédié</p>
-</div>
-</div>
-<div class="mt-4 px-1 flex flex-col space-y-2">
-<p class="text-sm md:text-base font-black text-gray-950">À partir de 119,99€</p>
-<a href="#" class="stripe-link-b30 w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
-</div>
-</div>
+                <!-- PRODUIT 4 -->
+                <div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                    <div>
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
+                            <img src="tshirt-ecriture.jpg" alt="T-shirt - Écriture" class="w-full h-full object-cover">
+                        </div>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">T-shirt - Écriture</h3>
+                            <p class="text-[10px] text-gray-400 mt-1">👁️ 8 personnes regardent</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">49,99€</p>
+                        <a href="#" class="stripe-link-tshirt w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
+                    </div>
+                </div>
 
-<!-- PRODUIT 3 -->
-<div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
-<div>
-<div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
-<img src="c-runner-blanc.jpg" alt="C. Runner - Blanc" class="w-full h-full object-cover">
-</div>
-<div class="mt-4 px-1">
-<h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">C. Runner - Blanc</h3>
-<p class="text-[10px] text-red-500 font-bold mt-1">🔥 Succès fou ce mois-ci</p>
-</div>
-</div>
-<div class="mt-4 px-1 flex flex-col space-y-2">
-<p class="text-sm md:text-base font-black text-gray-950">À partir de 119,99€</p>
-<a href="#" class="stripe-link-crunner w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
-</div>
-</div>
+            </div>
+        </div>
+    </section>
 
-<!-- PRODUIT 4 -->
-<div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
-<div>
-<div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
-<img src="tshirt-ecriture.jpg" alt="T-shirt - Écriture" class="w-full h-full object-cover">
-</div>
-<div class="mt-4 px-1">
-<h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">T-shirt - Écriture</h3>
-<p class="text-[10px] text-gray-400 mt-1">👁️ 8 personnes regardent</p>
-</div>
-</div>
-<div class="mt-4 px-1 flex flex-col space-y-2">
-<p class="text-sm md:text-base font-black text-gray-950">49,99€</p>
-<a href="#" class="stripe-link-tshirt w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
-</div>
-</div>
+    <!-- SECTION AVIS CLIENTS -->
+    <section class="py-20 px-6 md:px-12 bg-white text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-black text-gray-950 uppercase tracking-tighter mb-4">Laissons nos clients parler pour nous</h2>
+            <div class="flex items-center justify-center space-x-1 text-amber-500 text-2xl mb-2">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <div class="relative bg-gray-50 p-8 md:p-12 rounded-3xl border border-gray-100 max-w-2xl mx-auto shadow-sm mt-8">
+                <p class="text-gray-700 leading-relaxed text-base md:text-lg font-medium italic">"Très beau tee shirt taille oversize (prendre une taille en dessous) mais il taille bien et identique au vrai dans les moindres détails (pour 50e c'est parfait)."</p>
+                <p class="text-gray-950 font-bold mt-6 text-base">Client Vérifié</p>
+            </div>
+        </div>
+    </section>
 
-</div>
-</div>
-</section>
+    <!-- FOOTER -->
+    <footer class="bg-black text-white pt-16 pb-12 px-6 md:px-12 border-t border-gray-900">
+        <div class="max-w-[1600px] mx-auto text-center text-gray-600 text-[10px]">
+            © 2026 H LUXURY. Tous droits réservés.
+        </div>
+    </footer>
 
-<!-- SECTION AVIS CLIENTS -->
-<section class="py-20 px-6 md:px-12 bg-white text-center">
-<div class="max-w-4xl mx-auto">
-<h2 class="text-3xl md:text-4xl font-black text-gray-950 uppercase tracking-tighter mb-4">Laissons nos clients parler pour nous</h2>
-<div class="flex items-center justify-center space-x-1 text-amber-500 text-2xl mb-2">
-<i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-</div>
-<div class="relative bg-gray-50 p-8 md:p-12 rounded-3xl border border-gray-100 max-w-2xl mx-auto shadow-sm mt-8">
-<p class="text-gray-700 leading-relaxed text-base md:text-lg font-medium italic">"Très beau tee shirt taille oversize (prendre une taille en dessous) mais il taille bien et identique au vrai dans les moindres détails (pour 50e c'est parfait)."</p>
-<p class="text-gray-950 font-bold mt-6 text-base">Client Vérifié</p>
-</div>
-</div>
-</section>
+    <!-- SCRIPT DE GESTION STRIPE DYNAMIQUE -->
+    <script>
+        // Configuration de tes liens de paiement Stripe finaux (Remplacer les '#' par tes vrais liens Stripe dès que tu les as créés)
+        const stripeLinks = {
+            b22: "#",
+            b30: "#",
+            crunner: "#",
+            tshirt: "#"
+        };
 
-<!-- FOOTER -->
-<footer class="bg-black text-white pt-16 pb-12 px-6 md:px-12 border-t border-gray-900">
-<div class="max-w-[1600px] mx-auto text-center text-gray-600 text-[10px]">
-© 2026 H LUXURY. Tous droits réservés.
-</div>
-</footer>
-
-<!-- SCRIPT DE GESTION STRIPE DYNAMIQUE -->
-<script>
-// Configuration de tes liens de paiement Stripe finaux (à remplir à l'étape 3)
-const stripeLinks = {
-b22: "https://stripe.com/votre-lien-b22-direct",
-b30: "https://stripe.com/votre-lien-b30-direct",
-crunner: "https://stripe.com/votre-lien-crunner-direct",
-tshirt: "https://stripe.com/votre-lien-tshirt-direct"
-};
-
-// Injecte les liens automatiquement dans les boutons
-document.querySelector('.stripe-link-b22').href = stripeLinks.b22;
-document.querySelector('.stripe-link-b30').href = stripeLinks.b30;
-document.querySelector('.stripe-link-crunner').href = stripeLinks.crunner;
-document.querySelector('.stripe-link-tshirt').href = stripeLinks.tshirt;
-</script>
+        // Injecte les liens automatiquement dans les boutons
+        document.querySelector('.stripe-link-b22').href = stripeLinks.b22;
+        document.querySelector('.stripe-link-b30').href = stripeLinks.b30;
+        document.querySelector('.stripe-link-crunner').href = stripeLinks.crunner;
+        document.querySelector('.stripe-link-tshirt').href = stripeLinks.tshirt;
+    </script>
 </body>
 </html>
 
