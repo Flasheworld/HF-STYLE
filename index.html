@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
-        body { font-family: 'Poppins', sans-serif; }
+        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
         .product-card img { transition: transform 0.5s ease; }
         .product-card:hover img { transform: scale(1.05); }
-        .collection-card { overflow: hidden; position: relative; }
+        .collection-card { overflow: hidden; position: relative; cursor: pointer; }
         .collection-card img { transition: transform 0.8s ease; }
         .collection-card:hover img { transform: scale(1.1); }
     </style>
@@ -34,13 +34,13 @@
         <nav class="flex justify-between items-center px-6 md:px-12 py-4">
             <div class="flex items-center space-x-4">
                 <i class="fa-solid fa-bars text-2xl cursor-pointer md:hidden"></i>
-                <span class="text-2xl font-black tracking-[0.2em] text-gray-950 uppercase cursor-pointer">H Luxury</span>
+                <span onclick="filterCategory('tous')" class="text-2xl font-black tracking-[0.2em] text-gray-950 uppercase cursor-pointer">H Luxury</span>
             </div>
             
             <div class="hidden md:flex space-x-10 font-semibold text-sm text-gray-800 uppercase tracking-wide">
-                <a href="#chaussures" class="hover:text-amber-600 transition">Chaussures</a>
-                <a href="#vetements" class="hover:text-amber-600 transition">Vêtements</a>
-                <a href="#accessoires" class="hover:text-amber-600 transition">Accessoires</a>
+                <button onclick="filterCategory('chaussures')" class="hover:text-amber-600 transition uppercase">Chaussures</button>
+                <button onclick="filterCategory('vetements')" class="hover:text-amber-600 transition uppercase">Vêtements</button>
+                <button onclick="filterCategory('accessoires')" class="hover:text-amber-600 transition uppercase">Accessoires</button>
             </div>
             
             <div class="flex items-center space-x-6 text-gray-900 text-xl">
@@ -66,42 +66,47 @@
         </div>
     </section>
 
-    <!-- NOS COLLECTIONS -->
+    <!-- NOS COLLECTIONS (INTERACTIVES) -->
     <section id="collections" class="py-12 px-4 md:px-12 max-w-[1600px] mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
+            
+            <div onclick="filterCategory('chaussures')" class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
                 <img src="collection-chaussures.jpg" alt="CHAUSSURES" class="absolute inset-0 w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
                     <h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">CHAUSSURES</h3>
                 </div>
             </div>
-            <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
+
+            <div onclick="filterCategory('vetements')" class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
                 <img src="collection-vetements.jpg" alt="VÊTEMENTS" class="absolute inset-0 w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
                     <h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">VÊTEMENTS</h3>
                 </div>
             </div>
-            <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
+
+            <div onclick="filterCategory('accessoires')" class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
                 <img src="collection-accessoires.jpg" alt="ACCESSOIRES" class="absolute inset-0 w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
                     <h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">ACCESSOIRES</h3>
                 </div>
             </div>
+
         </div>
     </section>
 
-    <!-- SECTION MEILLEURES VENTES -->
-    <section id="chaussures" class="py-16 px-4 md:px-12 bg-gray-50 border-t border-gray-100">
+    <!-- SECTION DYNAMIQUE DES PRODUITS -->
+    <section id="catalogue-section" class="py-16 px-4 md:px-12 bg-gray-50 border-t border-gray-100">
         <div class="max-w-[1600px] mx-auto">
+            
             <div class="text-center mb-16">
                 <p class="text-gray-400 text-xs font-bold uppercase tracking-widest">SÉLECTION EXCLUSIVE</p>
-                <h2 class="text-3xl md:text-4xl font-black text-gray-950 uppercase tracking-tighter inline-block border-b-4 border-black pb-1">Meilleures Ventes</h2>
+                <h2 id="catalogue-title" class="text-3xl md:text-4xl font-black text-gray-950 uppercase tracking-tighter inline-block border-b-4 border-black pb-1">Tous Nos Produits</h2>
             </div>
 
-            <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-10">
+            <div id="products-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-10">
                 
-                <!-- PRODUIT 1 -->
-                <div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <!-- PRODUIT 1 (Chaussures) -->
+                <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="chaussures">
                     <div>
                         <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
                             <img src="b22-noir.jpg" alt="B22 - Noir" class="w-full h-full object-cover">
@@ -118,8 +123,8 @@
                     </div>
                 </div>
 
-                <!-- PRODUIT 2 -->
-                <div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <!-- PRODUIT 2 (Chaussures) -->
+                <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="chaussures">
                     <div>
                         <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
                             <img src="b30-noir-blanc.jpg" alt="B30 - Noir / Blanc" class="w-full h-full object-cover">
@@ -135,8 +140,8 @@
                     </div>
                 </div>
 
-                <!-- PRODUIT 3 -->
-                <div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <!-- PRODUIT 3 (Chaussures) -->
+                <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="chaussures">
                     <div>
                         <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
                             <img src="c-runner-blanc.jpg" alt="C. Runner - Silver" class="w-full h-full object-cover">
@@ -152,8 +157,8 @@
                     </div>
                 </div>
 
-                <!-- PRODUIT 4 -->
-                <div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <!-- PRODUIT 4 (Vêtements) -->
+                <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="vetements">
                     <div>
                         <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
                             <img src="tshirt-ecriture.jpg" alt="T-shirt" class="w-full h-full object-cover">
@@ -203,33 +208,26 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
-            <!-- COLONNE GAUCHE : L'IMAGE DU PRODUIT -->
+            <!-- COLONNE GAUCHE : L'IMAGE -->
             <div class="bg-[#f5f5f5] flex items-center justify-center p-6 md:p-12 min-h-[350px] md:min-h-[500px]">
                 <img id="modalProductImg" src="" alt="" class="w-full h-full object-contain mix-blend-multiply">
             </div>
 
-            <!-- COLONNE DROITE : LES OPTIONS DE CONFIGURATION -->
+            <!-- COLONNE DROITE : CONFIGURATION -->
             <div class="p-6 md:p-12 flex flex-col justify-center">
-                <!-- Titre Produit -->
                 <h2 id="modalProductName" class="text-3xl font-bold text-gray-900 tracking-tight">Nom du produit</h2>
-                
-                <!-- Prix -->
                 <p id="modalProductPrice" class="text-lg text-gray-950 font-medium mt-3">0,00€</p>
-                
-                <!-- Petites mentions Shopify -->
                 <p class="text-[11px] text-gray-500 mt-1">Taxes incluses. <span class="underline cursor-pointer">Frais d'expédition</span> calculés lors du passage à la caisse.</p>
                 
                 <hr class="my-6 border-gray-200">
 
-                <!-- Options de Tailles (POINTURE) -->
+                <!-- POINTURE / TAILLE -->
                 <div class="mb-5">
                     <label id="sizeLabelTitle" class="block text-[11px] font-bold text-gray-900 uppercase tracking-widest mb-3">POINTURE</label>
-                    <div id="sizeContainer" class="flex flex-wrap gap-2">
-                        <!-- Généré par JS -->
-                    </div>
+                    <div id="sizeContainer" class="flex flex-wrap gap-2"></div>
                 </div>
 
-                <!-- Option QUALITÉ (Exactement comme sur la capture) -->
+                <!-- QUALITÉ -->
                 <div class="mb-6">
                     <label class="block text-[11px] font-bold text-gray-900 uppercase tracking-widest mb-3">QUALITÉ</label>
                     <div class="flex gap-2">
@@ -238,18 +236,19 @@
                     </div>
                 </div>
 
-                <!-- Indicateur En Stock -->
+                <!-- STOCK -->
                 <div class="flex items-center space-x-2.5 mb-6 text-sm text-gray-900 font-medium">
                     <span class="w-2.5 h-2.5 rounded-full bg-[#4ade80] block"></span>
                     <span>En stock</span>
                 </div>
 
-                <!-- BOUTONS DE PANIER ET D'ACHAT DIRECT -->
+                <!-- ACTION PANIER + LIEN STRIPE -->
                 <div class="flex flex-col space-y-2.5">
-                    <button class="w-full border border-black bg-white text-black text-center text-sm font-bold py-3.5 hover:bg-gray-50 transition tracking-wide uppercase">
+                    <button onclick="alert('Produit ajouté au panier local ! Click sur Acheter maintenant pour payer.')" class="w-full border border-black bg-white text-black text-center text-sm font-bold py-3.5 hover:bg-gray-50 transition tracking-wide uppercase">
                         Ajouter au panier
                     </button>
-                    <a id="modalBuyBtn" href="#" class="w-full bg-black text-white text-center text-sm font-bold py-3.5 hover:bg-gray-900 transition tracking-wide uppercase block">
+                    <!-- Lien dynamique qui redirigera vers ton Stripe -->
+                    <a id="modalBuyBtn" href="#" target="_blank" class="w-full bg-black text-white text-center text-sm font-bold py-3.5 hover:bg-gray-900 transition tracking-wide uppercase block">
                         Acheter maintenant
                     </a>
                 </div>
@@ -257,8 +256,10 @@
         </div>
     </div>
 
-    <!-- SCRIPT PROGRAMMATION INTERACTIVE -->
+    <!-- CODE SCRIPT AVEC LIENS DE DIRECTION ET FILTRE -->
     <script>
+        // BASE DE DONNÉES DES PRODUITS
+        // REMPLACE LES "#" PAR TES VRAIS LIENS DE PAIEMENT STRIPE QUAND TU LES AS !
         const productsData = {
             b22: {
                 name: "B22 - Noir Premium",
@@ -266,7 +267,7 @@
                 img: "b22-noir.jpg",
                 isClothing: false,
                 sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44],
-                stripeUrl: "#"
+                stripeUrl: "https://buy.stripe.com/mock_b22_payment" 
             },
             b30: {
                 name: "B30 - Noir / Blanc",
@@ -274,7 +275,7 @@
                 img: "b30-noir-blanc.jpg",
                 isClothing: false,
                 sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44],
-                stripeUrl: "#"
+                stripeUrl: "https://buy.stripe.com/mock_b30_payment"
             },
             crunner: {
                 name: "C. Runner - Silver & White",
@@ -282,7 +283,7 @@
                 img: "c-runner-blanc.jpg",
                 isClothing: false,
                 sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44],
-                stripeUrl: "#"
+                stripeUrl: "https://buy.stripe.com/mock_crunner_payment"
             },
             tshirt: {
                 name: "T-shirt Luxury Graphic",
@@ -290,12 +291,41 @@
                 img: "tshirt-ecriture.jpg",
                 isClothing: true,
                 sizes: ["S", "M", "L", "XL"],
-                stripeUrl: "#"
+                stripeUrl: "https://buy.stripe.com/mock_tshirt_payment"
             }
         };
 
         let selectedSize = null;
 
+        // 1. SYSTÈME DE FILTRE PAR CATEGORIE (QUAND ON CLIQUE SUR UNE COLLECTION OU LE MENU)
+        function filterCategory(category) {
+            const items = document.querySelectorAll('.product-item');
+            const titleElement = document.getElementById('catalogue-title');
+
+            // Mettre à jour le titre de la section
+            if (category === 'tous') titleElement.innerText = "Tous Nos Produits";
+            else if (category === 'chaussures') titleElement.innerText = "Nos Chaussures Premium";
+            else if (category === 'vetements') titleElement.innerText = "Nos Vêtements Premium";
+            else if (category === 'accessoires') titleElement.innerText = "Nos Accessoires";
+
+            // Masquer / Afficher les articles correspondants
+            let count = 0;
+            items.forEach(item => {
+                if (category === 'tous' || item.getAttribute('data-category') === category) {
+                    item.classList.remove('hidden');
+                    count++;
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+
+            // Si la catégorie "accessoires" est vide pour le moment, afficher un petit message ou laisser blanc
+            
+            // Scroll fluide vers la liste des articles
+            document.getElementById('catalogue-section').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // 2. OUVERTURE DE LA FENÊTRE PRODUIT
         function openModal(productId) {
             const product = productsData[productId];
             if (!product) return;
@@ -304,9 +334,10 @@
             document.getElementById('modalProductPrice').innerText = product.price;
             document.getElementById('modalProductImg').src = product.img;
             document.getElementById('modalProductImg').alt = product.name;
+            
+            // Attacher le bon lien Stripe de direction au bouton d'achat
             document.getElementById('modalBuyBtn').href = product.stripeUrl;
 
-            // Adapter le titre entre POINTURE et TAILLE
             document.getElementById('sizeLabelTitle').innerText = product.isClothing ? "TAILLE" : "POINTURE";
 
             const sizeContainer = document.getElementById('sizeContainer');
@@ -318,10 +349,9 @@
                 button.type = "button";
                 button.innerText = size;
                 
-                // Style des cases carrées fines de Shopify
                 if (index === 0) {
                     button.className = "border-2 border-black text-black font-medium text-xs w-11 h-11 flex items-center justify-center transition-all";
-                    selectedSize = size; // Sélectionne la première taille par défaut
+                    selectedSize = size;
                 } else {
                     button.className = "border border-gray-200 text-gray-900 font-medium text-xs w-11 h-11 flex items-center justify-center hover:border-black transition-all";
                 }
