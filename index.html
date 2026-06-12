@@ -34,16 +34,8 @@
         <nav class="flex justify-between items-center px-6 md:px-12 py-4">
             <div class="flex items-center space-x-4">
                 <i class="fa-solid fa-bars text-2xl cursor-pointer md:hidden"></i>
-                
-                <!-- LOGO SVG PRO -->
-                <div class="flex items-center space-x-3 cursor-pointer">
-                    <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="50" cy="50" r="45" stroke="#D97706" stroke-width="4"/>
-                        <path d="M40 30V65H65" stroke="#D97706" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M40 30L55 45" stroke="#111827" stroke-width="4" stroke-linecap="round"/>
-                    </svg>
-                    <span class="text-2xl font-black tracking-[0.2em] text-gray-950 uppercase">Luxury</span>
-                </div>
+                <!-- RETOUR AU TITRE TEXTUEL SIMPLE -->
+                <span class="text-2xl font-black tracking-[0.2em] text-gray-950 uppercase cursor-pointer">Luxury</span>
             </div>
             
             <div class="hidden md:flex space-x-10 font-semibold text-sm text-gray-800 uppercase tracking-wide">
@@ -63,9 +55,9 @@
     </header>
 
     <!-- BANNIÈRE PRINCIPALE D'ACCUEIL -->
-    <section class="relative bg-gray-900 h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
-        <img src="4.png" alt="Luxury Banner" class="absolute inset-0 w-full h-full object-cover object-center opacity-80">
-        <div class="absolute inset-0 bg-black/20"></div>
+    <section class="relative bg-gray-200 h-[65vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
+        <img src="banniere-accueil.jpg" alt="Luxury Banner" class="absolute inset-0 w-full h-full object-cover object-center">
+        <div class="absolute inset-0 bg-black/15"></div>
         <div class="relative text-center text-white px-6 z-10">
             <div class="bg-white/95 text-black inline-block px-12 py-9 rounded-2xl shadow-2xl backdrop-blur-sm border border-white/20">
                 <p class="text-5xl md:text-7xl font-black tracking-tighter text-gray-950">-10%</p>
@@ -75,26 +67,34 @@
         </div>
     </section>
 
+    <!-- SECTION ENGAGEMENT QUALITÉ -->
+    <section class="py-12 px-6 text-center bg-white">
+        <div class="max-w-3xl mx-auto">
+            <p class="text-xs font-bold uppercase tracking-widest text-amber-600 mb-2">🔒 Authenticité & Qualité</p>
+            <h2 class="text-2xl md:text-3xl font-extrabold text-gray-950 leading-tight">Chaque produit passe un contrôle qualité strict pour vous offrir la meilleure finition possible.</h2>
+        </div>
+    </section>
+
     <!-- NOS COLLECTIONS -->
     <section id="collections" class="py-12 px-4 md:px-12 max-w-[1600px] mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
             <!-- Chaussures -->
-            <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-900">
-                <img src="4.png" alt="CHAUSSURES" class="absolute inset-0 w-full h-full object-cover opacity-80">
+            <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
+                <img src="banniere-accueil.jpg" alt="CHAUSSURES" class="absolute inset-0 w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
                     <h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">CHAUSSURES</h3>
                 </div>
             </div>
             <!-- Vêtements -->
-            <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-900">
-                <img src="5.png" alt="VÊTEMENTS" class="absolute inset-0 w-full h-full object-cover opacity-80">
+            <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
+                <img src="collection-vetements.jpg" alt="VÊTEMENTS" class="absolute inset-0 w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
                     <h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">VÊTEMENTS</h3>
                 </div>
             </div>
             <!-- Accessoires -->
-            <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-900">
-                <img src="6.png" alt="ACCESSOIRES" class="absolute inset-0 w-full h-full object-cover opacity-80">
+            <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
+                <img src="collection-accessoires.jpg" alt="ACCESSOIRES" class="absolute inset-0 w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
                     <h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">ACCESSOIRES</h3>
                 </div>
@@ -110,72 +110,91 @@
                 <h2 class="text-3xl md:text-4xl font-black text-gray-950 uppercase tracking-tighter inline-block border-b-4 border-black pb-1">Meilleures Ventes</h2>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-12">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-10">
                 
                 <!-- PRODUIT 1 -->
-                <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
                     <div>
-                        <div class="bg-gray-50 rounded-xl h-64 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
-                            <img src="1.png" alt="B22 - Noir" class="w-full h-full object-cover">
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
+                            <img src="b22-noir.jpg" alt="B22 - Noir" class="w-full h-full object-cover">
+                            <span class="absolute top-2 left-2 bg-black text-white text-[9px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Best-Seller</span>
                         </div>
-                        <div class="mt-4">
-                            <h3 class="text-base font-bold text-gray-900 truncate">B22 - Noir Premium</h3>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">B22 - Noir Premium</h3>
+                            <p class="text-[10px] text-red-500 font-bold mt-1">🔥 Plus que 3 en stock</p>
                         </div>
                     </div>
-                    <div class="mt-5 flex flex-col space-y-2">
-                        <p class="text-lg font-black text-gray-950">119,99€</p>
-                        <a href="#" class="stripe-link-b22 w-full bg-black text-white text-center text-xs font-bold py-3 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">À partir de 119,99€</p>
+                        <a href="#" class="stripe-link-b22 w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
                     </div>
                 </div>
 
                 <!-- PRODUIT 2 -->
-                <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
                     <div>
-                        <div class="bg-gray-50 rounded-xl h-64 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
-                            <img src="2.png" alt="B30 - Noir / Blanc" class="w-full h-full object-cover">
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
+                            <img src="b30-noir-blanc.jpg" alt="B30 - Noir / Blanc" class="w-full h-full object-cover">
                         </div>
-                        <div class="mt-4">
-                            <h3 class="text-base font-bold text-gray-900 truncate">B30 - Noir / Blanc</h3>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">B30 - Noir / Blanc</h3>
+                            <p class="text-[10px] text-emerald-600 font-bold mt-1">📦 Prêt à être expédié</p>
                         </div>
                     </div>
-                    <div class="mt-5 flex flex-col space-y-2">
-                        <p class="text-lg font-black text-gray-950">119,99€</p>
-                        <a href="#" class="stripe-link-b30 w-full bg-black text-white text-center text-xs font-bold py-3 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">À partir de 119,99€</p>
+                        <a href="#" class="stripe-link-b30 w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
                     </div>
                 </div>
 
                 <!-- PRODUIT 3 -->
-                <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
                     <div>
-                        <div class="bg-gray-50 rounded-xl h-64 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
-                            <img src="3.png" alt="C. Runner - Silver" class="w-full h-full object-cover">
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
+                            <img src="c-runner-blanc.jpg" alt="C. Runner - Silver" class="w-full h-full object-cover">
                         </div>
-                        <div class="mt-4">
-                            <h3 class="text-base font-bold text-gray-900 truncate">C. Runner - Silver & White</h3>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">C. Runner - Silver & White</h3>
+                            <p class="text-[10px] text-amber-600 font-bold mt-1">✨ Édition Limitée</p>
                         </div>
                     </div>
-                    <div class="mt-5 flex flex-col space-y-2">
-                        <p class="text-lg font-black text-gray-950">119,99€</p>
-                        <a href="#" class="stripe-link-crunner w-full bg-black text-white text-center text-xs font-bold py-3 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">À partir de 119,99€</p>
+                        <a href="#" class="stripe-link-crunner w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
                     </div>
                 </div>
 
                 <!-- PRODUIT 4 -->
-                <div class="product-card bg-white p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <div class="product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
                     <div>
-                        <div class="bg-gray-50 rounded-xl h-64 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
-                            <img src="7.png" alt="T-shirt" class="w-full h-full object-cover">
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
+                            <img src="tshirt-ecriture.jpg" alt="T-shirt" class="w-full h-full object-cover">
                         </div>
-                        <div class="mt-4">
-                            <h3 class="text-base font-bold text-gray-900 truncate">T-shirt Luxury Graphic</h3>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">T-shirt Luxury Graphic</h3>
+                            <p class="text-[10px] text-gray-400 mt-1">👁️ 14 personnes regardent</p>
                         </div>
                     </div>
-                    <div class="mt-5 flex flex-col space-y-2">
-                        <p class="text-lg font-black text-gray-950">49,99€</p>
-                        <a href="#" class="stripe-link-tshirt w-full bg-black text-white text-center text-xs font-bold py-3 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">49,99€</p>
+                        <a href="#" class="stripe-link-tshirt w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION AVIS CLIENTS -->
+    <section class="py-20 px-6 md:px-12 bg-white text-center">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl md:text-4xl font-black text-gray-950 uppercase tracking-tighter mb-4">Laissons nos clients parler pour nous</h2>
+            <div class="flex items-center justify-center space-x-1 text-amber-500 text-2xl mb-2">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+            </div>
+            <div class="relative bg-gray-50 p-8 md:p-12 rounded-3xl border border-gray-100 max-w-2xl mx-auto shadow-sm mt-8">
+                <p class="text-gray-700 leading-relaxed text-base md:text-lg font-medium italic">"Très beau produit, finitions parfaites au millimètre et identique au vrai. Pour le prix c'est juste incroyable, service client au top."</p>
+                <p class="text-gray-950 font-bold mt-6 text-base">Client Vérifié</p>
             </div>
         </div>
     </section>
@@ -187,7 +206,7 @@
         </div>
     </footer>
 
-    <!-- SCRIPT GESTION STRIPE DYNAMIQUE -->
+    <!-- SCRIPT DE GESTION STRIPE DYNAMIQUE -->
     <script>
         const stripeLinks = {
             b22: "#",
@@ -203,4 +222,3 @@
     </script>
 </body>
 </html>
-
