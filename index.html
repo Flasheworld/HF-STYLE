@@ -19,7 +19,7 @@
 <body class="bg-white text-gray-900">
 
     <!-- HEADER & BANNIÈRE PROMO -->
-    <header class="sticky top-0 z-50 bg-white shadow-sm">
+    <header class="sticky top-0 z-40 bg-white shadow-sm">
         <div class="bg-black text-white text-xs text-center py-2.5 font-medium tracking-wide uppercase">
             ⚡ VENTE FLASH : -10% SUR TOUTE LA BOUTIQUE AVEC LE CODE <span class="text-amber-400 font-bold">LUXURY10</span> ⚡
         </div>
@@ -34,7 +34,6 @@
         <nav class="flex justify-between items-center px-6 md:px-12 py-4">
             <div class="flex items-center space-x-4">
                 <i class="fa-solid fa-bars text-2xl cursor-pointer md:hidden"></i>
-                <!-- CORRECTION DU BLAZ DE LA BOUTIQUE -->
                 <span class="text-2xl font-black tracking-[0.2em] text-gray-950 uppercase cursor-pointer">H Luxury</span>
             </div>
             
@@ -70,21 +69,18 @@
     <!-- NOS COLLECTIONS -->
     <section id="collections" class="py-12 px-4 md:px-12 max-w-[1600px] mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <!-- Chaussures -->
             <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
                 <img src="collection-chaussures.jpg" alt="CHAUSSURES" class="absolute inset-0 w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
                     <h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">CHAUSSURES</h3>
                 </div>
             </div>
-            <!-- Vêtements -->
             <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
                 <img src="collection-vetements.jpg" alt="VÊTEMENTS" class="absolute inset-0 w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
                     <h3 class="text-white text-2xl font-black uppercase tracking-tight underline decoration-white decoration-2 underline-offset-4">VÊTEMENTS</h3>
                 </div>
             </div>
-            <!-- Accessoires -->
             <div class="collection-card rounded-2xl h-[35vh] md:h-[50vh] shadow-sm bg-gray-100">
                 <img src="collection-accessoires.jpg" alt="ACCESSOIRES" class="absolute inset-0 w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8">
@@ -117,8 +113,8 @@
                         </div>
                     </div>
                     <div class="mt-4 px-1 flex flex-col space-y-2">
-                        <p class="text-sm md:text-base font-black text-gray-950">À partir de 119,99€</p>
-                        <a href="#" class="stripe-link-b22 w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
+                        <p class="text-sm md:text-base font-black text-gray-950">119,99€</p>
+                        <button onclick="openModal('b22')" class="w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</button>
                     </div>
                 </div>
 
@@ -134,8 +130,8 @@
                         </div>
                     </div>
                     <div class="mt-4 px-1 flex flex-col space-y-2">
-                        <p class="text-sm md:text-base font-black text-gray-950">À partir de 119,99€</p>
-                        <a href="#" class="stripe-link-b30 w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
+                        <p class="text-sm md:text-base font-black text-gray-950">119,99€</p>
+                        <button onclick="openModal('b30')" class="w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</button>
                     </div>
                 </div>
 
@@ -151,8 +147,8 @@
                         </div>
                     </div>
                     <div class="mt-4 px-1 flex flex-col space-y-2">
-                        <p class="text-sm md:text-base font-black text-gray-950">À partir de 119,99€</p>
-                        <a href="#" class="stripe-link-crunner w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
+                        <p class="text-sm md:text-base font-black text-gray-950">119,99€</p>
+                        <button onclick="openModal('crunner')" class="w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</button>
                     </div>
                 </div>
 
@@ -169,7 +165,7 @@
                     </div>
                     <div class="mt-4 px-1 flex flex-col space-y-2">
                         <p class="text-sm md:text-base font-black text-gray-950">49,99€</p>
-                        <a href="#" class="stripe-link-tshirt w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</a>
+                        <button onclick="openModal('tshirt')" class="w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</button>
                     </div>
                 </div>
 
@@ -198,19 +194,172 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DE GESTION STRIPE DYNAMIQUE -->
+    <!-- MODALE FORMAT SHOPIFY SUR DEUX COLONNES -->
+    <div id="productModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-0 md:p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white w-full max-w-5xl h-full md:h-auto md:max-h-[90vh] overflow-y-auto grid grid-cols-1 md:grid-cols-2 relative shadow-2xl transform scale-95 transition-transform duration-300">
+            
+            <!-- Bouton Fermer -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition z-10 text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <!-- COLONNE GAUCHE : L'IMAGE DU PRODUIT -->
+            <div class="bg-[#f5f5f5] flex items-center justify-center p-6 md:p-12 min-h-[350px] md:min-h-[500px]">
+                <img id="modalProductImg" src="" alt="" class="w-full h-full object-contain mix-blend-multiply">
+            </div>
+
+            <!-- COLONNE DROITE : LES OPTIONS DE CONFIGURATION -->
+            <div class="p-6 md:p-12 flex flex-col justify-center">
+                <!-- Titre Produit -->
+                <h2 id="modalProductName" class="text-3xl font-bold text-gray-900 tracking-tight">Nom du produit</h2>
+                
+                <!-- Prix -->
+                <p id="modalProductPrice" class="text-lg text-gray-950 font-medium mt-3">0,00€</p>
+                
+                <!-- Petites mentions Shopify -->
+                <p class="text-[11px] text-gray-500 mt-1">Taxes incluses. <span class="underline cursor-pointer">Frais d'expédition</span> calculés lors du passage à la caisse.</p>
+                
+                <hr class="my-6 border-gray-200">
+
+                <!-- Options de Tailles (POINTURE) -->
+                <div class="mb-5">
+                    <label id="sizeLabelTitle" class="block text-[11px] font-bold text-gray-900 uppercase tracking-widest mb-3">POINTURE</label>
+                    <div id="sizeContainer" class="flex flex-wrap gap-2">
+                        <!-- Généré par JS -->
+                    </div>
+                </div>
+
+                <!-- Option QUALITÉ (Exactement comme sur la capture) -->
+                <div class="mb-6">
+                    <label class="block text-[11px] font-bold text-gray-900 uppercase tracking-widest mb-3">QUALITÉ</label>
+                    <div class="flex gap-2">
+                        <button id="qualite1" class="border-2 border-black bg-white text-black text-xs font-medium px-4 py-2.5 transition">Haute Qualité</button>
+                        <button id="qualite2" class="border border-gray-200 bg-white text-gray-400 text-xs font-medium px-4 py-2.5 cursor-not-allowed" disabled>Réplique Identique</button>
+                    </div>
+                </div>
+
+                <!-- Indicateur En Stock -->
+                <div class="flex items-center space-x-2.5 mb-6 text-sm text-gray-900 font-medium">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#4ade80] block"></span>
+                    <span>En stock</span>
+                </div>
+
+                <!-- BOUTONS DE PANIER ET D'ACHAT DIRECT -->
+                <div class="flex flex-col space-y-2.5">
+                    <button class="w-full border border-black bg-white text-black text-center text-sm font-bold py-3.5 hover:bg-gray-50 transition tracking-wide uppercase">
+                        Ajouter au panier
+                    </button>
+                    <a id="modalBuyBtn" href="#" class="w-full bg-black text-white text-center text-sm font-bold py-3.5 hover:bg-gray-900 transition tracking-wide uppercase block">
+                        Acheter maintenant
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT PROGRAMMATION INTERACTIVE -->
     <script>
-        const stripeLinks = {
-            b22: "#",
-            b30: "#",
-            crunner: "#",
-            tshirt: "#"
+        const productsData = {
+            b22: {
+                name: "B22 - Noir Premium",
+                price: "119,99€",
+                img: "b22-noir.jpg",
+                isClothing: false,
+                sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44],
+                stripeUrl: "#"
+            },
+            b30: {
+                name: "B30 - Noir / Blanc",
+                price: "119,99€",
+                img: "b30-noir-blanc.jpg",
+                isClothing: false,
+                sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44],
+                stripeUrl: "#"
+            },
+            crunner: {
+                name: "C. Runner - Silver & White",
+                price: "119,99€",
+                img: "c-runner-blanc.jpg",
+                isClothing: false,
+                sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44],
+                stripeUrl: "#"
+            },
+            tshirt: {
+                name: "T-shirt Luxury Graphic",
+                price: "49,99€",
+                img: "tshirt-ecriture.jpg",
+                isClothing: true,
+                sizes: ["S", "M", "L", "XL"],
+                stripeUrl: "#"
+            }
         };
 
-        document.querySelector('.stripe-link-b22').href = stripeLinks.b22;
-        document.querySelector('.stripe-link-b30').href = stripeLinks.b30;
-        document.querySelector('.stripe-link-crunner').href = stripeLinks.crunner;
-        document.querySelector('.stripe-link-tshirt').href = stripeLinks.tshirt;
+        let selectedSize = null;
+
+        function openModal(productId) {
+            const product = productsData[productId];
+            if (!product) return;
+
+            document.getElementById('modalProductName').innerText = product.name;
+            document.getElementById('modalProductPrice').innerText = product.price;
+            document.getElementById('modalProductImg').src = product.img;
+            document.getElementById('modalProductImg').alt = product.name;
+            document.getElementById('modalBuyBtn').href = product.stripeUrl;
+
+            // Adapter le titre entre POINTURE et TAILLE
+            document.getElementById('sizeLabelTitle').innerText = product.isClothing ? "TAILLE" : "POINTURE";
+
+            const sizeContainer = document.getElementById('sizeContainer');
+            sizeContainer.innerHTML = "";
+            selectedSize = null;
+
+            product.sizes.forEach((size, index) => {
+                const button = document.createElement('button');
+                button.type = "button";
+                button.innerText = size;
+                
+                // Style des cases carrées fines de Shopify
+                if (index === 0) {
+                    button.className = "border-2 border-black text-black font-medium text-xs w-11 h-11 flex items-center justify-center transition-all";
+                    selectedSize = size; // Sélectionne la première taille par défaut
+                } else {
+                    button.className = "border border-gray-200 text-gray-900 font-medium text-xs w-11 h-11 flex items-center justify-center hover:border-black transition-all";
+                }
+                
+                button.onclick = function() {
+                    Array.from(sizeContainer.children).forEach(btn => {
+                        btn.className = "border border-gray-200 text-gray-900 font-medium text-xs w-11 h-11 flex items-center justify-center hover:border-black transition-all";
+                    });
+                    button.className = "border-2 border-black text-black font-medium text-xs w-11 h-11 flex items-center justify-center transition-all";
+                    selectedSize = size;
+                };
+
+                sizeContainer.appendChild(button);
+            });
+
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modal.firstElementChild.classList.remove('scale-95');
+            }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            modal.classList.add('opacity-0');
+            modal.firstElementChild.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
     </script>
 </body>
 </html>
