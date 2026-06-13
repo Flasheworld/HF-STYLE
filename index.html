@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H LUXURY | Boutique Officielle</title>
+    
+    <!-- CETTE LIGNE AJOUTE LE LOGO SUR L'ONGLET -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -450,7 +454,6 @@
                 document.getElementById('shipping-bar').style.width = `100%`;
             }
 
-            // GESTION ET TEXTE DU BOUTON S'IL Y A PLUSIEURS ARTICLES DIFFÉRENTS
             const btn = document.getElementById('checkout-main-btn');
             const notice = document.getElementById('cart-multi-notice');
             if(cart.length > 1) {
@@ -496,18 +499,15 @@
             });
         }
 
-        // LE CLIENT PAIE LE PREMIER ARTICLE, PUIS CET ARTICLE EST ENLEVÉ POUR PERMETTRE LE PAIEMENT DU SUIVANT
         function processCheckout() {
             if(cart.length === 0) {
                 alert("Votre panier est vide.");
                 return;
             }
             
-            // On récupère le premier article de la liste
             const itemToPay = cart[0];
             window.open(itemToPay.stripeUrl, '_blank');
 
-            // On retire l'article payé du panier pour que lorsqu'il revienne, il puisse payer le lot suivant
             cart.shift(); 
             updateCartGlobalStats();
             renderCartItems();
