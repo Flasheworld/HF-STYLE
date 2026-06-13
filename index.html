@@ -18,6 +18,7 @@
 </head>
 <body class="bg-white text-gray-900 relative min-h-screen">
 
+    <!-- HEADER & PROMO -->
     <header class="sticky top-0 z-40 bg-white shadow-sm">
         <div class="bg-black text-white text-xs text-center py-2.5 font-medium tracking-wide uppercase">
             ⚡ VENTE FLASH : -10% SUR TOUTE LA BOUTIQUE AVEC LE CODE <span class="text-amber-400 font-bold">LUXURY10</span> ⚡
@@ -58,6 +59,7 @@
         </nav>
     </header>
 
+    <!-- BANNIÈRE PRINCIPALE -->
     <div id="home-hero">
         <section class="relative bg-gray-200 h-[50vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
             <img src="banniere-accueil.jpg" alt="H Luxury Banner" class="absolute inset-0 w-full h-full object-cover object-center">
@@ -72,6 +74,7 @@
         </section>
     </div>
 
+    <!-- BLOCS COLLECTIONS IMAGE -->
     <div id="home-collections">
         <section class="py-12 px-4 md:px-12 max-w-[1600px] mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
@@ -97,6 +100,7 @@
         </section>
     </div>
 
+    <!-- CATALOGUE PRODUIT -->
     <section id="catalogue-section" class="py-16 px-4 md:px-12 bg-gray-50 border-t border-gray-100">
         <div class="max-w-[1600px] mx-auto">
             <div class="text-center mb-12">
@@ -107,10 +111,12 @@
                 </div>
             </div>
 
+            <!-- GRILLE DU CATALOGUE -->
             <div id="products-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-10"></div>
         </div>
     </section>
 
+    <!-- SECTION DES AVIS CLIENTS -->
     <section id="home-reviews" class="py-16 px-6 md:px-12 bg-white text-center border-t border-gray-100">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-2xl md:text-3xl font-black text-gray-950 uppercase tracking-tight mb-2">Laissons nos clients parler pour nous</h2>
@@ -136,6 +142,7 @@
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="bg-[#0b0b0b] text-white pt-16 pb-12 px-6 md:px-16 border-t border-gray-900">
         <div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-left mb-16">
             <div>
@@ -170,6 +177,7 @@
         </div>
     </footer>
 
+    <!-- SIDEBAR PANIER -->
     <div id="cartSidebar" class="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col hidden">
         <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-gray-50">
             <h3 class="font-black text-lg uppercase tracking-tight text-gray-900"><i class="fa-solid fa-bag-shopping mr-2"></i>Mon Panier</h3>
@@ -188,6 +196,7 @@
     </div>
     <div id="cartOverlay" class="fixed inset-0 bg-black/40 z-40 hidden opacity-0 transition-opacity duration-300" onclick="toggleCartSidebar()"></div>
 
+    <!-- MODALE PRODUIT -->
     <div id="productModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
         <div class="bg-white w-full max-w-4xl rounded-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 relative shadow-2xl transform scale-95 transition-transform duration-300">
             <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition z-10 text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -220,6 +229,7 @@
         </div>
     </div>
 
+    <!-- MODALE GOOGLE -->
     <div id="loginModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
         <div class="bg-white w-full max-w-sm rounded-2xl p-6 relative text-center shadow-2xl transform scale-95 transition-transform duration-300">
             <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition"><i class="fa-solid fa-xmark"></i></button>
@@ -231,4 +241,295 @@
                     <path fill="#EA4335" d="M12 5.04c1.65 0 3.13.57 4.3 1.69l3.21-3.21C17.55 1.7 15 1 12 1 7.37 1 3.4 3.67 1.48 7.57l3.77 2.92C6.14 7.04 8.84 5.04 12 5.04z"/>
                     <path fill="#4285F4" d="M23.45 12.27c0-.82-.07-1.61-.21-2.38H12v4.51h6.42c-.28 1.47-1.11 2.72-2.36 3.56l3.67 2.85c2.14-1.98 3.38-4.89 3.38-8.54z"/>
                     <path fill="#FBBC05" d="M5.25 14.65c-.25-.73-.39-1.51-.39-2.33s.14-1.6.39-2.33L1.48 7.57C.54 9.47 0 11.62 0 12s.54 2.53 1.48 4.43l3.77-2.92z"/>
-                    <path fill="#34A562" d="M12 23c3.24 0 5.97-1.08 7.96-2.9
+                    <path fill="#34A562" d="M12 23c3.24 0 5.97-1.08 7.96-2.92l-3.67-2.85c-1.02.68-2.33 1.09-3.92 1.09-3.16 0-5.86-2-6.75-4.91L1.48 16.33C3.4 20.33 7.37 23 12 23z"/>
+                </svg>
+                <span>Se connecter avec Google</span>
+            </button>
+            <div class="text-[10px] text-gray-400 font-medium">Connexion sécurisée via Google Accounts.</div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIQUE ET BASE DE DONNÉES RESTAURÉE -->
+    <script>
+        const productsData = {
+            b30NoirBlanc: { name: "B30 - Noir / Blanc", price: 129.99, img: "b30-noir-blanc.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_28EdR98OI67z3eVd4J7g400" },
+            b22: { name: "B22 - Noir Premium", price: 119.99, img: "b22-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_6oU14n5Cw9jL6r74yd7g401" },
+            cRunner: { name: "C. Runner - Silver & White", price: 124.99, img: "c-runner-silver-white.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_dRm7sLaWQanPbLr4yd7g402" },
+            tshirt: { name: "T-shirt Luxury Graphic", price: 49.99, img: "tshirt-ecriture.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
+            trackLed: { name: "Track - Led Noir", price: 159.99, img: "track-led-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_14A8wP0icgMd6r78Ot7g404" },
+            americasCup: { name: "America’s Cup - Noir", price: 119.99, img: "americas-cup-noir.jpg", category: "chaussures", sizes: [38, 39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_cNi00j2qkeE516N8Ot7g405" },
+            skateNoir: { name: "Skate - Noir", price: 119.99, img: "skate-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_4gMcN57KEfI9cPvd4J7g406" },
+            curb: { name: "Curb - Blanc / Rouge", price: 129.99, img: "curb-blanc-rouge.jpg", category: "chaussures", sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_9B6cN5ghadA1eXD7Kp7g407" },
+            hotStep: { name: "Hot Step 2 - Noir", price: 119.99, img: "hot-step-2.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_dRmcN51mgeE502Jd4J7g408" },
+            tnNoir: { name: "Tn - Noir", price: 99.99, img: "tn-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_aFa8wPc0UbrT9Dj8Ot7g409" },
+            claquettesCarreaux: { name: "Claquettes - Carreaux", price: 69.99, img: "claquettes-carreaux.jpg", category: "chaussures", sizes: [36, 38, 40, 42, 44], stripeUrl: "https://buy.stripe.com/test_9B6aEX4ys67z8zf9Sx7g40a" },
+            casquettePlaque: { name: "Casquette - Plaque", price: 44.99, img: "casquette-plaque.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_3cI28r1mganPdTz7Kp7g40b" },
+            braceletLvNoir: { name: "Bracelet - Monogramme Noir", price: 29.99, img: "bracelet-lv-noir.jpg", category: "accessoires", sizes: ["19cm", "21cm"], stripeUrl: "https://buy.stripe.com/test_6oU8wP1mgeE57vb8Ot7g40c" },
+            braceletTresse: { name: "Bracelet - Cuir Tressé", price: 29.99, img: "bracelet-cuir-tresse.jpg", category: "accessoires", sizes: ["Ajustable"], stripeUrl: "https://buy.stripe.com/test_3cI28r1mgfI902J6Gl7g40d" },
+            casquetteMono: { name: "Casquette - Monogramme", price: 44.99, img: "casquette-monogramme-brillant.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_cNi4gzd4Y9jL5n3fcR7g40e" },
+            casquetteDubai: { name: "Casquette - Dubaï", price: 49.99, img: "casquette-dubai.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_6oUbJ10iccvX9Dj5Ch7g40f" },
+            casquetteRose: { name: "Casquette - Rose", price: 44.99, img: "casquette-rose.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_5kQcN51mgbrTcPve8N7g40g" },
+            bonnetDamier: { name: "Bonnet - Damier", price: 42.99, img: "bonnet-damier.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_6oU8wPfd67bD02J4yd7g40h" },
+            bonnetNoir: { name: "Bonnet Noir", price: 42.99, img: "bonnet-noir.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_fZu14naWQ2VnbLrc0F7g40i" },
+            casquetteClassique: { name: "Casquette - Classique", price: 44.99, img: "casquette-classique.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_9B66oH0ic3Zr7vbc0F7g40j" }
+        };
+
+        const reviewsData = [
+            { author: "Anonyme", comment: "Très bonne qualité, finitions parfaites au millimètre. Pour le prix c'est juste incroyable.", rating: 5, img: "track-led-noir.jpg" },
+            { author: "Mahinur Sir", comment: "Parfait. Livré rapidement, le modèle correspond exactement aux photos de présentation.", rating: 5, img: "casquette-plaque.jpg" },
+            { author: "Amaya Madrid", comment: "Short de très bonne qualité. Content de mon achat malgré un petit délai de livraison.", rating: 4, img: "bracelet-lv-noir.jpg" }
+        ];
+
+        let cart = [];
+        let currentReviewIndex = 0;
+        let activeModalProductId = null;
+        let selectedSize = null;
+
+        window.onload = function() {
+            renderProductsGrid(Object.keys(productsData));
+            updateReview();
+            renderGlobalStars();
+        };
+
+        function renderProductsGrid(keys) {
+            const grid = document.getElementById('products-grid');
+            grid.innerHTML = "";
+            if(keys.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400 text-xs font-medium">Aucun produit ne correspond à votre recherche.</div>`;
+                return;
+            }
+            keys.forEach(key => {
+                const prod = productsData[key];
+                grid.innerHTML += `
+                    <div class="product-item product-card bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="${prod.category}">
+                        <div>
+                            <div class="bg-[#f6f6f6] rounded-xl h-48 md:h-64 w-full overflow-hidden flex items-center justify-center relative border border-gray-50">
+                                <img src="${prod.img}" alt="${prod.name}" class="w-full h-full object-contain mix-blend-multiply">
+                            </div>
+                            <div class="mt-4 px-1">
+                                <h3 class="text-xs font-medium text-gray-800 truncate uppercase tracking-tight">${prod.name}</h3>
+                                <p class="text-[11px] text-gray-400 font-bold mt-1">${prod.price.toFixed(2)}€</p>
+                            </div>
+                        </div>
+                        <div class="mt-3">
+                            <button onclick="openModal('${key}')" class="w-full bg-black text-white text-center text-[11px] font-bold py-2.5 rounded-xl hover:bg-neutral-800 transition uppercase tracking-wider">Acheter</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function toggleSearchBox() {
+            const input = document.getElementById('searchInput');
+            input.classList.toggle('hidden');
+            if(!input.classList.contains('hidden')) input.focus();
+        }
+
+        function searchProducts() {
+            const term = document.getElementById('searchInput').value.toLowerCase().trim();
+            const matchingKeys = Object.keys(productsData).filter(key => {
+                return productsData[key].name.toLowerCase().includes(term) || productsData[key].category.toLowerCase().includes(term);
+            });
+            renderProductsGrid(matchingKeys);
+        }
+
+        function filterCategory(category) {
+            document.getElementById('home-hero').classList.add('hidden');
+            document.getElementById('home-collections').classList.add('hidden');
+            document.getElementById('back-home-box').classList.remove('hidden');
+            
+            const titleElement = document.getElementById('catalogue-title');
+            if (category === 'chaussures') titleElement.innerText = "Nos Chaussures Premium";
+            else if (category === 'vetements') titleElement.innerText = "Nos Vêtements Premium";
+            else if (category === 'accessoires') titleElement.innerText = "Nos Bijoux & Accessoires Premium";
+
+            const filtered = Object.keys(productsData).filter(key => productsData[key].category === category);
+            renderProductsGrid(filtered);
+            window.scrollTo({ top: document.getElementById('catalogue-section').offsetTop - 100, behavior: 'smooth' });
+        }
+
+        function showHomePage() {
+            document.getElementById('home-hero').classList.remove('hidden');
+            document.getElementById('home-collections').classList.remove('hidden');
+            document.getElementById('back-home-box').classList.add('hidden');
+            document.getElementById('catalogue-title').innerText = "Tous Nos Produits";
+            renderProductsGrid(Object.keys(productsData));
+        }
+
+        function toggleCartSidebar() {
+            const sidebar = document.getElementById('cartSidebar');
+            const overlay = document.getElementById('cartOverlay');
+            sidebar.classList.toggle('hidden');
+            overlay.classList.toggle('hidden');
+            setTimeout(() => {
+                sidebar.classList.toggle('translate-x-full');
+                overlay.classList.toggle('opacity-0');
+            }, 10);
+            renderCartItems();
+        }
+
+        function openModal(productId) {
+            activeModalProductId = productId;
+            const product = productsData[productId];
+            document.getElementById('modalProductName').innerText = product.name;
+            document.getElementById('modalProductPrice').innerText = product.price.toFixed(2) + "€";
+            document.getElementById('modalProductImg').src = product.img;
+            document.getElementById('modalBuyBtn').href = product.stripeUrl;
+            document.getElementById('sizeLabelTitle').innerText = product.category === 'chaussures' ? "POINTURE" : "TAILLE";
+
+            const sizeContainer = document.getElementById('sizeContainer');
+            sizeContainer.innerHTML = "";
+            selectedSize = product.sizes[0];
+
+            product.sizes.forEach((size, i) => {
+                const btn = document.createElement('button');
+                btn.innerText = size;
+                btn.className = i === 0 ? "border-2 border-black text-black font-bold text-xs px-3.5 py-1.5" : "border border-gray-200 text-gray-500 font-medium text-xs px-3.5 py-1.5 hover:border-black transition";
+                btn.onclick = function() {
+                    Array.from(sizeContainer.children).forEach(b => b.className = "border border-gray-200 text-gray-500 font-medium text-xs px-3.5 py-1.5 hover:border-black transition");
+                    btn.className = "border-2 border-black text-black font-bold text-xs px-3.5 py-1.5";
+                    selectedSize = size;
+                };
+                sizeContainer.appendChild(btn);
+            });
+
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); modal.firstElementChild.classList.remove('scale-95'); }, 10);
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('productModal');
+            modal.classList.add('opacity-0');
+            modal.firstElementChild.classList.add('scale-95');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        function addSelectedToCart() {
+            const product = productsData[activeModalProductId];
+            const existingItem = cart.find(item => item.id === activeModalProductId && item.size === selectedSize);
+
+            if(existingItem) {
+                existingItem.qty++;
+            } else {
+                cart.push({ id: activeModalProductId, name: product.name, price: product.price, img: product.img, size: selectedSize, qty: 1 });
+            }
+            closeModal();
+            updateCartGlobalStats();
+            toggleCartSidebar();
+        }
+
+        // DESIGN ORIGINEL ET BOUTONS DU PANIER RESTAURÉS
+        function changeQty(index, amount) {
+            cart[index].qty += amount;
+            if(cart[index].qty <= 0) cart.splice(index, 1);
+            updateCartGlobalStats();
+            renderCartItems();
+        }
+
+        function updateCartGlobalStats() {
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            
+            document.getElementById('cart-count-badge').innerText = totalQty;
+            document.getElementById('cart-total-price').innerText = totalPrice.toFixed(2) + "€";
+
+            const limit = 150;
+            const needed = limit - totalPrice;
+            if(needed > 0) {
+                document.getElementById('shipping-promo-text').innerHTML = `Plus que <span class="font-bold text-black">${needed.toFixed(2)}€</span> pour débloquer la <strong>Livraison Gratuite</strong>`;
+                document.getElementById('shipping-bar').style.width = `${Math.min(100, (totalPrice/limit)*100)}%`;
+            } else {
+                document.getElementById('shipping-promo-text').innerHTML = `<span class="text-emerald-600 font-bold">Félicitations ! Vous bénéficiez de la Livraison Gratuite 🚚</span>`;
+                document.getElementById('shipping-bar').style.width = `100%`;
+            }
+        }
+
+        function renderCartItems() {
+            const container = document.getElementById('cart-items-list');
+            if(cart.length === 0) {
+                container.innerHTML = `<p class="text-gray-400 text-center text-xs font-medium py-12">Votre panier est actuellement vide.</p>`;
+                return;
+            }
+            container.innerHTML = "";
+            cart.forEach((item, index) => {
+                container.innerHTML += `
+                    <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 bg-[#f6f6f6] border rounded-lg flex items-center justify-center p-1">
+                                <img src="${item.img}" alt="${item.name}" class="w-full h-full object-contain mix-blend-multiply">
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-gray-900 max-w-[180px] truncate uppercase">${item.name}</h4>
+                                <p class="text-[10px] text-gray-400 font-medium">Taille: ${item.size}</p>
+                                <p class="text-xs font-bold text-neutral-900 mt-0.5">${(item.price * item.qty).toFixed(2)}€</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2 border rounded-lg p-1 bg-gray-50">
+                            <button onclick="changeQty(${index}, -1)" class="w-5 h-5 text-xs text-gray-500 font-bold">-</button>
+                            <span class="text-xs font-bold px-1">${item.qty}</span>
+                            <button onclick="changeQty(${index}, 1)" class="w-5 h-5 text-xs text-gray-500 font-bold">+</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function processCheckout() {
+            if(cart.length === 0) {
+                alert("Votre panier est vide.");
+                return;
+            }
+            window.open(cart[0].stripeUrl, '_blank');
+        }
+
+        function renderGlobalStars() {
+            const container = document.getElementById('review-stars');
+            for(let i=0; i<5; i++) container.innerHTML += `<i class="fa-solid fa-star"></i>`;
+        }
+
+        function updateReview() {
+            const rev = reviewsData[currentReviewIndex];
+            document.getElementById('review-comment').innerText = `"${rev.comment}"`;
+            document.getElementById('review-author').innerText = rev.author;
+            document.getElementById('review-prod-thumb').src = rev.img;
+            
+            const starBox = document.getElementById('current-review-stars');
+            starBox.innerHTML = "";
+            for(let i=0; i<5; i++) {
+                starBox.innerHTML += i < rev.rating ? `<i class="fa-solid fa-star"></i>` : `<i class="fa-regular fa-star text-gray-300"></i>`;
+            }
+        }
+
+        function nextReview() {
+            currentReviewIndex = (currentReviewIndex + 1) % reviewsData.length;
+            updateReview();
+        }
+
+        function prevReview() {
+            currentReviewIndex = (currentReviewIndex - 1 + reviewsData.length) % reviewsData.length;
+            updateReview();
+        }
+
+        function openLoginModal() {
+            const modal = document.getElementById('loginModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); modal.firstElementChild.classList.remove('scale-95'); }, 10);
+        }
+
+        function closeLoginModal() {
+            const modal = document.getElementById('loginModal');
+            modal.classList.add('opacity-0');
+            modal.firstElementChild.classList.add('scale-95');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        function simulateGoogleLogin() {
+            closeLoginModal();
+            const userIcon = document.getElementById('user-icon');
+            userIcon.className = "fa-solid fa-circle-user text-emerald-600 text-lg cursor-pointer";
+            alert("Connexion réussie avec votre compte Google !");
+        }
+    </script>
+</body>
+</html>
