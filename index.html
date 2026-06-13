@@ -11,6 +11,7 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght=400;500;600;700;900&display=swap');
         body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        .product-card { transition: all 0.3s ease; }
         .product-card img { transition: transform 0.5s ease; }
         .product-card:hover img { transform: scale(1.05); }
         .collection-card { overflow: hidden; position: relative; cursor: pointer; }
@@ -35,11 +36,10 @@
 
         <nav class="flex justify-between items-center px-6 md:px-12 py-4 relative">
             <div class="flex items-center space-x-4">
-                <i class="fa-solid fa-bars text-2xl cursor-pointer md:hidden" onclick="toggleMobileMenu()"></i>
                 <span onclick="showHomePage()" class="text-2xl font-black tracking-[0.2em] text-gray-950 uppercase cursor-pointer">H Luxury</span>
             </div>
             
-            <div class="hidden md:flex space-x-10 font-semibold text-sm text-gray-800 uppercase tracking-wide">
+            <div class="flex space-x-6 md:space-x-10 font-semibold text-xs md:text-sm text-gray-800 uppercase tracking-wide">
                 <button onclick="filterCategory('chaussures')" class="hover:text-amber-600 transition uppercase">Chaussures</button>
                 <button onclick="filterCategory('vetements')" class="hover:text-amber-600 transition uppercase">Vêtements</button>
                 <button onclick="filterCategory('accessoires')" class="hover:text-amber-600 transition uppercase">Accessoires</button>
@@ -47,12 +47,12 @@
             
             <div class="flex items-center space-x-5 text-gray-900 text-xl">
                 <div class="relative flex items-center">
-                    <input type="text" id="searchInput" oninput="searchProducts()" placeholder="Rechercher un modèle..." class="hidden bg-gray-100 text-xs rounded-full pl-4 pr-8 py-1.5 focus:outline-none w-44 md:w-56 border border-gray-200 transition-all">
-                    <i class="fa-solid fa-magnifying-glass cursor-pointer hover:text-amber-600" onclick="toggleSearchBox()"></i>
+                    <input type="text" id="searchInput" oninput="searchProducts()" placeholder="Rechercher..." class="hidden bg-gray-100 text-xs rounded-full pl-4 pr-8 py-1.5 focus:outline-none w-36 md:w-56 border border-gray-200 transition-all">
+                    <i class="fa-solid fa-magnifying-glass cursor-pointer hover:text-amber-600 text-lg" onclick="toggleSearchBox()"></i>
                 </div>
                 <i class="fa-solid fa-user cursor-pointer hover:text-amber-600 text-lg" onclick="openLoginModal()" id="user-icon"></i>
                 <div class="relative cursor-pointer hover:text-amber-600" onclick="toggleCartSidebar()">
-                    <i class="fa-solid fa-bag-shopping"></i>
+                    <i class="fa-solid fa-bag-shopping text-lg"></i>
                     <span id="cart-count-badge" class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
                 </div>
             </div>
@@ -61,7 +61,7 @@
 
     <!-- BANNIÈRE PRINCIPALE -->
     <div id="home-hero">
-        <section class="relative bg-gray-200 h-[50vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
+        <section class="relative bg-gray-200 h-[40vh] md:h-[60vh] flex items-center justify-center overflow-hidden">
             <img src="banniere-accueil.jpg" alt="H Luxury Banner" class="absolute inset-0 w-full h-full object-cover object-center">
             <div class="absolute inset-0 bg-black/15"></div>
             <div class="relative text-center text-white px-6 z-10">
@@ -78,19 +78,19 @@
     <div id="home-collections">
         <section class="py-12 px-4 md:px-12 max-w-[1600px] mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                <div onclick="filterCategory('chaussures')" class="collection-card rounded-2xl h-[30vh] md:h-[45vh] bg-neutral-800 flex items-end p-8 text-white font-bold">
+                <div onclick="filterCategory('chaussures')" class="collection-card rounded-2xl h-[25vh] md:h-[40vh] bg-neutral-800 flex items-end p-8 text-white font-bold">
                     <img src="collection-chaussures.jpg" alt="CHAUSSURES" class="absolute inset-0 w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8 w-full h-full">
                         <span class="text-xl tracking-wider underline underline-offset-4">CHAUSSURES</span>
                     </div>
                 </div>
-                <div onclick="filterCategory('vetements')" class="collection-card rounded-2xl h-[30vh] md:h-[45vh] bg-neutral-700 flex items-end p-8 text-white font-bold">
+                <div onclick="filterCategory('vetements')" class="collection-card rounded-2xl h-[25vh] md:h-[40vh] bg-neutral-700 flex items-end p-8 text-white font-bold">
                     <img src="collection-vêtements.jpg" alt="VÊTEMENTS" class="absolute inset-0 w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8 w-full h-full">
                         <span class="text-xl tracking-wider underline underline-offset-4">VÊTEMENTS</span>
                     </div>
                 </div>
-                <div onclick="filterCategory('accessoires')" class="collection-card rounded-2xl h-[30vh] md:h-[45vh] bg-neutral-600 flex items-end p-8 text-white font-bold">
+                <div onclick="filterCategory('accessoires')" class="collection-card rounded-2xl h-[25vh] md:h-[40vh] bg-neutral-600 flex items-end p-8 text-white font-bold">
                     <img src="collection-a.jpg" alt="ACCESSOIRES" class="absolute inset-0 w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8 w-full h-full">
                         <span class="text-xl tracking-wider underline underline-offset-4">ACCESSOIRES</span>
@@ -158,7 +158,6 @@
                     <li><button onclick="filterCategory('chaussures')" class="hover:text-amber-500 transition">Chaussures</button></li>
                     <li><button onclick="filterCategory('vetements')" class="hover:text-amber-500 transition">Vêtements</button></li>
                     <li><button onclick="filterCategory('accessoires')" class="hover:text-amber-500 transition">Accessoires</button></li>
-                    <li><button onclick="alert('Formulaire de contact bientôt disponible !')" class="hover:text-amber-500 transition">Nous Contacter</button></li>
                 </ul>
             </div>
             <div>
@@ -189,7 +188,7 @@
                 <span id="cart-total-price">0,00€</span>
             </div>
             <p id="cart-multi-notice" class="text-[11px] text-amber-600 font-semibold hidden bg-amber-50 p-2.5 rounded-lg border border-amber-100">
-                ⚠️ Liens Stripe individuels détectés : Vous allez être redirigé vers le paiement du 1er article. Revenez ensuite valider les suivants !
+                ⚠️ Redirection vers le paiement du 1er article. Revenez valider les suivants ensuite !
             </p>
             <button id="checkout-main-btn" onclick="processCheckout()" class="w-full bg-black text-white text-center font-bold text-xs py-4 uppercase tracking-widest hover:bg-neutral-900 transition block">
                 Passer la commande / Payer
@@ -231,7 +230,7 @@
         </div>
     </div>
 
-    <!-- MODALE GOOGLE -->
+    <!-- MODALE LOGIN -->
     <div id="loginModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
         <div class="bg-white w-full max-w-sm rounded-2xl p-6 relative text-center shadow-2xl transform scale-95 transition-transform duration-300">
             <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition"><i class="fa-solid fa-xmark"></i></button>
@@ -253,9 +252,7 @@
     <!-- JAVASCRIPT -->
     <script>
         const productsData = {
-            // ==========================================
-            //   CHAUSSURES (CORRIGÉES AVEC TES IMAGES EXACTES)
-            // ==========================================
+            // CHAUSSURES
             pradaAmericasCup: { name: "Prada America's Cup - Black Leather", price: 169.99, img: "americas-cup-noir.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_5kQ6oH1mg3Zr2aR6or" },
             b22Black: { name: "B22 Sneaker - Full Black", price: 179.99, img: "b22-noir.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_5kQ6oH1mg3Zr2aR6or" },
             b30NoirBlanc: { name: "B30 Sneaker - Noir / Blanc", price: 189.99, img: "b30-noir-blanc.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_b30_example" },
@@ -264,20 +261,13 @@
             skateNoir: { name: "Skate Sneaker - Noir", price: 139.99, img: "skate-noir.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_skate" },
             tnNoir: { name: "TN Requin Air - Full Black", price: 149.99, img: "tn-noir.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_00g14n3uo2Vn02J7sv" },
             cRunner: { name: "C-Runner Technical", price: 179.99, img: "c-runner.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_crunner" },
+            claquettesCarreaux: { name: "Claquettes Motif Carreaux", price: 69.99, img: "claquettes-carreaux.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_5kQcN51mgbrT" },
 
-            // ==========================================
-            //   VÊTEMENTS (CORRIGÉS AVEC TES IMAGES EXACTES)
-            // ==========================================
+            // VÊTEMENTS
             pisteLedNoir: { name: "Survêtement Ensemble Piste LED - Noir", price: 89.99, img: "piste-led-noir.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_8wM3cv0ic1Rjg128wB" },
             tshirtEcriture: { name: "T-shirt Premium - Écriture", price: 44.99, img: "tshirt-écriture.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX" },
-            tshirtRoseOrange: { name: "T-shirt - Rose / Orange", price: 49.99, img: "tshirt-rose-orange.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
-            shortCapsule: { name: "Short - Capsule", price: 59.99, img: "short-capsule.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_28EdR98OI67z3eVd4J7g400" },
-            shortCargo: { name: "Short - Cargo", price: 59.99, img: "short-cargo.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_6oU14n5Cw9jL6r74yd7g401" },
-            shortLogo: { name: "Short - Logo", price: 34.99, img: "short-logo.jpg", category: "vetements", sizes: ["S", "M", "L"], stripeUrl: "https://buy.stripe.com/test_dRm7sLaWQanPbLr4yd7g402" },
 
-            // ==========================================
-            //   ACCESSOIRES (CORRIGÉS AVEC TES IMAGES EXACTES)
-            // ==========================================
+            // ACCESSOIRES
             braceletChaine: { name: "Bracelet Chaîne Métal", price: 44.99, img: "bracelet-chaine.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_bracelet_example" },
             braceletCuirTresse: { name: "Bracelet Cuir Tressé Black", price: 39.99, img: "bracelet-cuir-tresse.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_tresse" },
             braceletLvNoir: { name: "Bracelet LV - Noir Ébène", price: 49.99, img: "bracelet-lv-noir.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_lv_noir" },
@@ -287,10 +277,9 @@
             bonnetNoir: { name: "Bonnet Classique Noir", price: 24.99, img: "bonnet-noir.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_bonnet_noir" },
             casquetteClassique: { name: "Casquette Classique Black", price: 29.99, img: "casquette-classique.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_casq_cl" },
             casquetteDubai: { name: "Casquette Édition Dubai", price: 34.99, img: "casquette-dubai.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_dubai" },
-            casquetteMonoBrillant: { name: "Casquette Monogramme Brillant", price: 39.99, img: "casquette-monogramme-brillant.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_brillant" },
+            textMonoBrillant: { name: "Casquette Monogramme Brillant", price: 39.99, img: "casquette-monogramme-brillant.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_brillant" },
             casquettePlaque: { name: "Casquette Signature Plaque Metal", price: 34.99, img: "casquette-plaque.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_plaque" },
-            casquetteRose: { name: "Casquette Soft Rose", price: 29.99, img: "casquette-rose.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_rose" },
-            claquettesCarreaux: { name: "Claquettes Motif Carreaux", price: 69.99, img: "claquettes-carreaux.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_5kQcN51mgbrT" }
+            casquetteRose: { name: "Casquette Soft Rose", price: 29.99, img: "casquette-rose.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_rose" }
         };
 
         const reviewsData = [
@@ -305,22 +294,22 @@
         let selectedSize = null;
 
         window.onload = function() {
-            renderProductsGrid(Object.keys(productsData));
-            updateReview();
+            showHomePage();
             renderGlobalStars();
+            updateReview();
         };
 
         function renderProductsGrid(keys) {
             const grid = document.getElementById('products-grid');
             grid.innerHTML = "";
             if(keys.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400 text-xs font-medium">Aucun produit ne correspond à votre recherche.</div>`;
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400 text-xs font-medium">Aucun produit trouvé.</div>`;
                 return;
             }
             keys.forEach(key => {
                 const prod = productsData[key];
                 grid.innerHTML += `
-                    <div class="product-item product-card bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="${prod.category}">
+                    <div class="product-card bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
                         <div>
                             <div class="bg-[#f6f6f6] rounded-xl h-48 md:h-64 w-full overflow-hidden flex items-center justify-center relative border border-gray-50">
                                 <img src="${prod.img}" alt="${prod.name}" class="w-full h-full object-contain mix-blend-multiply">
@@ -347,7 +336,7 @@
         function searchProducts() {
             const term = document.getElementById('searchInput').value.toLowerCase().trim();
             const matchingKeys = Object.keys(productsData).filter(key => {
-                return productsData[key].name.toLowerCase().includes(term) || productsData[key].category.toLowerCase().includes(term);
+                return productsData[key].name.toLowerCase().includes(term);
             });
             renderProductsGrid(matchingKeys);
         }
@@ -378,12 +367,22 @@
         function toggleCartSidebar() {
             const sidebar = document.getElementById('cartSidebar');
             const overlay = document.getElementById('cartOverlay');
-            sidebar.classList.toggle('hidden');
-            overlay.classList.toggle('hidden');
-            setTimeout(() => {
-                sidebar.classList.toggle('translate-x-full');
-                overlay.classList.toggle('opacity-0');
-            }, 10);
+            
+            if(sidebar.classList.contains('hidden')) {
+                sidebar.classList.remove('hidden');
+                overlay.classList.remove('hidden');
+                setTimeout(() => {
+                    sidebar.classList.remove('translate-x-full');
+                    overlay.classList.remove('opacity-0');
+                }, 10);
+            } else {
+                sidebar.classList.add('translate-x-full');
+                overlay.classList.add('opacity-0');
+                setTimeout(() => {
+                    sidebar.classList.add('hidden');
+                    overlay.classList.add('hidden');
+                }, 300);
+            }
             renderCartItems();
         }
 
@@ -459,10 +458,10 @@
             const limit = 150;
             const needed = limit - totalPrice;
             if(needed > 0) {
-                document.getElementById('shipping-promo-text').innerHTML = `Plus que <span class="font-bold text-black">${needed.toFixed(2)}€</span> pour débloquer la <strong>Livraison Gratuite</strong>`;
+                document.getElementById('shipping-promo-text').innerHTML = `Plus que <span class="font-bold text-black">${needed.toFixed(2)}€</span> pour la <strong>Livraison Gratuite</strong>`;
                 document.getElementById('shipping-bar').style.width = `${Math.min(100, (totalPrice/limit)*100)}%`;
             } else {
-                document.getElementById('shipping-promo-text').innerHTML = `<span class="text-emerald-600 font-bold">Félicitations ! Vous bénéficiez de la Livraison Gratuite 🚚</span>`;
+                document.getElementById('shipping-promo-text').innerHTML = `<span class="text-emerald-600 font-bold">Livraison Gratuite débloquée ! 🚚</span>`;
                 document.getElementById('shipping-bar').style.width = `100%`;
             }
 
@@ -483,7 +482,7 @@
         function renderCartItems() {
             const container = document.getElementById('cart-items-list');
             if(cart.length === 0) {
-                container.innerHTML = `<p class="text-gray-400 text-center text-xs font-medium py-12">Votre panier est actuellement vide.</p>`;
+                container.innerHTML = `<p class="text-gray-400 text-center text-xs font-medium py-12">Votre panier est vide.</p>`;
                 return;
             }
             container.innerHTML = "";
@@ -496,7 +495,6 @@
                             </div>
                             <div>
                                 <h4 class="text-xs font-bold text-gray-900 max-w-[180px] truncate uppercase">${item.name}</h4>
-                                ${index === 0 && cart.length > 1 ? '<span class="text-[9px] bg-amber-500 text-white font-bold px-1.5 py-0.5 rounded-full uppercase">Suivant à payer</span>' : ''}
                                 <p class="text-[10px] text-gray-400 font-medium">Taille: ${item.size}</p>
                                 <p class="text-xs font-bold text-neutral-900 mt-0.5">${(item.price * item.qty).toFixed(2)}€</p>
                             </div>
@@ -512,10 +510,7 @@
         }
 
         function processCheckout() {
-            if(cart.length === 0) {
-                alert("Votre panier est vide.");
-                return;
-            }
+            if(cart.length === 0) return;
             const itemToPay = cart[0];
             window.open(itemToPay.stripeUrl, '_blank');
             cart.shift(); 
@@ -525,6 +520,7 @@
 
         function renderGlobalStars() {
             const container = document.getElementById('review-stars');
+            container.innerHTML = "";
             for(let i=0; i<5; i++) container.innerHTML += `<i class="fa-solid fa-star"></i>`;
         }
 
@@ -566,9 +562,8 @@
 
         function simulateGoogleLogin() {
             closeLoginModal();
-            const userIcon = document.getElementById('user-icon');
-            userIcon.className = "fa-solid fa-circle-user text-emerald-600 text-lg cursor-pointer";
-            alert("Connexion réussie avec votre compte Google !");
+            document.getElementById('user-icon').className = "fa-solid fa-circle-user text-emerald-600 text-lg cursor-pointer";
+            alert("Connexion réussie avec Google !");
         }
     </script>
 </body>
