@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H LUXURY | Boutique Officielle</title>
     
-    <!-- CETTE LIGNE AJOUTE LE LOGO SUR L'ONGLET -->
+    <!-- LOGO SUR L'ONGLET -->
     <link rel="icon" type="image/png" href="favicon.png">
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -194,12 +194,10 @@
                 <span id="cart-total-price">0,00€</span>
             </div>
             
-            <!-- EXPLICATION MULTI-PRODUITS INTEGRÉE -->
             <p id="cart-multi-notice" class="text-[11px] text-amber-600 font-semibold hidden bg-amber-50 p-2.5 rounded-lg border border-amber-100">
                 ⚠️ Liens Stripe individuels détectés : Vous allez être redirigé vers le paiement du 1er article. Revenez ensuite valider les suivants !
             </p>
 
-            <!-- BOUTON DE VISUEL DYNAMIQUE -->
             <button id="checkout-main-btn" onclick="processCheckout()" class="w-full bg-black text-white text-center font-bold text-xs py-4 uppercase tracking-widest hover:bg-neutral-900 transition block">
                 Passer la commande / Payer
             </button>
@@ -263,10 +261,10 @@
     <!-- JAVASCRIPT -->
     <script>
         const productsData = {
+            // --- CHAUSSURES ---
             b30NoirBlanc: { name: "B30 - Noir / Blanc", price: 129.99, img: "b30-noir-blanc.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_28EdR98OI67z3eVd4J7g400" },
             b22: { name: "B22 - Noir Premium", price: 119.99, img: "b22-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_6oU14n5Cw9jL6r74yd7g401" },
             cRunner: { name: "C. Runner - Silver & White", price: 124.99, img: "c-runner.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_dRm7sLaWQanPbLr4yd7g402" },
-            tshirt: { name: "T-shirt Luxury Graphic", price: 49.99, img: "tshirt-ecriture.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
             trackLed: { name: "Track - Led Noir", price: 159.99, img: "track-led-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_14A8wP0icgMd6r78Ot7g404" },
             americasCup: { name: "America’s Cup - Noir", price: 119.99, img: "americas-cup-noir.jpg", category: "chaussures", sizes: [38, 39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_cNi00j2qkeE516N8Ot7g405" },
             skateNoir: { name: "Skate - Noir", price: 119.99, img: "skate-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_4gMcN57KEfI9cPvd4J7g406" },
@@ -274,10 +272,24 @@
             hotStep: { name: "Hot Step 2 - Noir", price: 119.99, img: "hot-step-2.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_dRmcN51mgeE502Jd4J7g408" },
             tnNoir: { name: "Tn - Noir", price: 99.99, img: "tn-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_aFa8wPc0UbrT9Dj8Ot7g409" },
             claquettesCarreaux: { name: "Claquettes - Carreaux", price: 69.99, img: "claquettes-carreaux.jpg", category: "chaussures", sizes: [36, 38, 40, 42, 44], stripeUrl: "https://buy.stripe.com/test_9B6aEX4ys67z8zf9Sx7g40a" },
+
+            // --- VÊTEMENTS (ENRICHI - ÉTAPE 1) ---
+            tshirt: { name: "T-shirt Luxury Graphic", price: 49.99, img: "tshirt-ecriture.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
+            doudouneTrapstar: { name: "Doudoune Hyperdrive - Noir Brillant", price: 149.99, img: "doudoune-trapstar.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_4gM28rd4Y7bD7vb001" },
+            vesteArcteryx: { name: "Veste Technique Alpha Shell", price: 139.99, img: "veste-arcteryx.jpg", category: "vetements", sizes: ["M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_9B6aEXghadA12aRe02" },
+            ensembleCorteizJaune: { name: "Tracksuit Corteiz - Noir / Jaune", price: 119.99, img: "ensemble-corteiz-jaune.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_28E4gz2qk2Vn7vbe03" },
+            ensembleCorteizGris: { name: "Tracksuit Corteiz Alcatraz - Gris", price: 119.99, img: "ensemble-corteiz-gris.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_14A7sLghadA15n3e04" },
+            ensembleNocta: { name: "Ensemble Nocta Tech - Noir Tech", price: 129.99, img: "ensemble-nocta.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_aFa7sL0ic2Vn8zfe05" },
+            hoodieEssentials: { name: "Hoodie Essentials - Cream Mat", price: 79.99, img: "hoodie-essentials.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_6oU8wP5Cw7bD9Dje06" },
+            tshirtAmiri: { name: "T-shirt Amiri Core Logo - Blanc", price: 54.99, img: "tshirt-amiri.jpg", category: "vetements", sizes: ["S", "M", "L"], stripeUrl: "https://buy.stripe.com/test_14AcN5ghadA116Ne07" },
+            pullJacquemus: { name: "Pull Maille Tressée - Beige", price: 89.99, img: "pull-jacquemus.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_5kQ6oHbd61RjbLr008" },
+
+            // --- ACCESSOIRES ---
             casquettePlaque: { name: "Casquette - Plaque", price: 44.99, img: "casquette-plaque.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_3cI28r1mganPdTz7Kp7g40b" },
             braceletLvNoir: { name: "Bracelet - Monogramme Noir", price: 29.99, img: "bracelet-lv-noir.jpg", category: "accessoires", sizes: ["19cm", "21cm"], stripeUrl: "https://buy.stripe.com/test_6oU8wP1mgeE57vb8Ot7g40c" },
-            braceletTresse: { name: "Bracelet - Cuir Tressé", price: 29.99, img: "bracelet-cuir-tresse.jpg", category: "accessoires", sizes: ["Ajustable"], stripeUrl: "https://buy.stripe.com/test_3cI28r1mgfI902J6Gl7g40d" },
-            casquetteMono: { name: "Casquette - Monogramme", price: 44.99, img: "casquette-monogramme-brillant.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_cNi4gzd4Y9jL5n3fcR7g40e" },
+            braceletMonoGold: { name: "Bracelet - Monogramme Gold", price: 29.99, img: "bracelet-monogramme-gold.jpg", category: "accessoires", sizes: ["17cm", "19cm"], stripeUrl: "https://buy.stripe.com/test_8wM28rd4YbrT7vb6op" },
+            braceletMonoV: { name: "Bracelet - Monogramme V", price: 29.99, img: "bracelet-monogramme-v.jpg", category: "accessoires", sizes: ["17cm", "19cm"], stripeUrl: "https://buy.stripe.com/test_7sIbJ10ic0Nf2aR8wA" },
+            casquetteMono: { name: "Casquette - Monogramme", price: 44.99, img: "casquette-monogramme.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_cNi4gzd4Y9jL5n3fcR7g40e" },
             casquetteDubai: { name: "Casquette - Dubaï", price: 49.99, img: "casquette-dubai.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_6oUbJ10iccvX9Dj5Ch7g40f" },
             casquetteRose: { name: "Casquette - Rose", price: 44.99, img: "casquette-rose.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_5kQcN51mgbrTcPve8N7g40g" },
             bonnetDamier: { name: "Bonnet - Damier", price: 42.99, img: "bonnet-damier.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_6oU8wPfd67bD02J4yd7g40h" },
@@ -288,7 +300,7 @@
         const reviewsData = [
             { author: "Anonyme", comment: "Très bonne qualité, finitions parfaites au millimètre. Pour le prix c'est juste incroyable.", rating: 5, img: "track-led-noir.jpg" },
             { author: "Mahinur Sir", comment: "Parfait. Livré rapidement, le modèle correspond exactement aux photos de présentation.", rating: 5, img: "casquette-plaque.jpg" },
-            { author: "Amaya Madrid", comment: "Short de très bonne quality. Content de mon achat malgré un petit délai de livraison.", rating: 4, img: "bracelet-lv-noir.jpg" }
+            { author: "Amaya Madrid", comment: "Bracelet de très bonne qualité. Content de mon achat malgré un petit délai de livraison.", rating: 5, img: "bracelet-lv-noir.jpg" }
         ];
 
         let cart = [];
