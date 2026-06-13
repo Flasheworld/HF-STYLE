@@ -42,6 +42,7 @@
             <div class="hidden md:flex space-x-10 font-semibold text-sm text-gray-800 uppercase tracking-wide">
                 <button onclick="filterCategory('chaussures')" class="hover:text-amber-600 transition uppercase">Chaussures</button>
                 <button onclick="filterCategory('vetements')" class="hover:text-amber-600 transition uppercase">Vêtements</button>
+                <button onclick="filterCategory('accessoires')" class="hover:text-amber-600 transition uppercase">Accessoires</button>
             </div>
             
             <div class="flex items-center space-x-5 text-gray-900 text-xl">
@@ -76,17 +77,23 @@
     <!-- BLOCS COLLECTIONS IMAGE -->
     <div id="home-collections">
         <section class="py-12 px-4 md:px-12 max-w-[1600px] mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                <div onclick="filterCategory('chaussures')" class="collection-card rounded-2xl h-[35vh] md:h-[50vh] bg-neutral-800 flex items-end p-8 text-white font-bold">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+                <div onclick="filterCategory('chaussures')" class="collection-card rounded-2xl h-[30vh] md:h-[45vh] bg-neutral-800 flex items-end p-8 text-white font-bold">
                     <img src="collection-chaussures.jpg" alt="CHAUSSURES" class="absolute inset-0 w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8 w-full h-full">
                         <span class="text-xl tracking-wider underline underline-offset-4">CHAUSSURES</span>
                     </div>
                 </div>
-                <div onclick="filterCategory('vetements')" class="collection-card rounded-2xl h-[35vh] md:h-[50vh] bg-neutral-700 flex items-end p-8 text-white font-bold">
+                <div onclick="filterCategory('vetements')" class="collection-card rounded-2xl h-[30vh] md:h-[45vh] bg-neutral-700 flex items-end p-8 text-white font-bold">
                     <img src="collection-vetements.jpg" alt="VÊTEMENTS" class="absolute inset-0 w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8 w-full h-full">
                         <span class="text-xl tracking-wider underline underline-offset-4">VÊTEMENTS</span>
+                    </div>
+                </div>
+                <div onclick="filterCategory('accessoires')" class="collection-card rounded-2xl h-[30vh] md:h-[45vh] bg-neutral-600 flex items-end p-8 text-white font-bold">
+                    <img src="collection-accessoires.jpg" alt="ACCESSOIRES" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8 w-full h-full">
+                        <span class="text-xl tracking-wider underline underline-offset-4">ACCESSOIRES</span>
                     </div>
                 </div>
             </div>
@@ -150,6 +157,7 @@
                     <li><button onclick="showHomePage()" class="hover:text-amber-500 transition">Accueil</button></li>
                     <li><button onclick="filterCategory('chaussures')" class="hover:text-amber-500 transition">Chaussures</button></li>
                     <li><button onclick="filterCategory('vetements')" class="hover:text-amber-500 transition">Vêtements</button></li>
+                    <li><button onclick="filterCategory('accessoires')" class="hover:text-amber-500 transition">Accessoires</button></li>
                     <li><button onclick="alert('Formulaire de contact bientôt disponible !')" class="hover:text-amber-500 transition">Nous Contacter</button></li>
                 </ul>
             </div>
@@ -246,20 +254,30 @@
     <script>
         const productsData = {
             // ==========================================
-            //   ANCIENS PRODUITS CONSERVÉS (Vêtements & Chaussures)
+            //   ANCIENS VÊTEMENTS REPLACÉS
             // ==========================================
             survetementNoir: { name: "Survêtement Technique - Noir", price: 79.99, img: "survetement-noir.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_8wM3cv0ic1Rjg128wB" },
             survetementBleu: { name: "Survêtement Technique - Bleu", price: 79.99, img: "survetement-bleu.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_eVaeVd4ys67z5n38wD" },
             survetementGris: { name: "Survêtement Technique - Gris", price: 79.99, img: "survetement-gris.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_4gM28rghadA1eXD4gh" },
             doudouneSansManche: { name: "Doudoune Sans Manche - Noire", price: 64.99, img: "doudoune-sans-manche.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_8wM6oH2qkeE5g123ce" },
             vesteReflechissante: { name: "Veste Réfléchissante", price: 69.99, img: "veste-reflechissante.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_6oU7sLghadA1eXD4gj" },
+            
+            // ==========================================
+            //   ANCIENNES CHAUSSURES REPLACÉES
+            // ==========================================
             tnBlack: { name: "TN Requin Air - Full Black", price: 149.99, img: "tn-black.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_00g14n3uo2Vn02J7sv" },
             b22Black: { name: "B22 Sneaker - Black Silver", price: 179.99, img: "b22-black.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_5kQ6oH1mg3Zr2aR6or" },
 
             // ==========================================
-            //   NOUVEAUX PRODUITS ISSUS DES CAPTURES D'ÉCRAN
+            //   ANCIENS ACCESSOIRES (RÉINTÉGRÉS)
             // ==========================================
-            // --- NOUVEAUX VÊTEMENTS ---
+            casquetteClassic: { name: "Casquette Classic", price: 29.99, img: "casquette-classic.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_example1" },
+            sacocheLuxe: { name: "Sacoche Monogramme", price: 89.99, img: "sacoche-luxe.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_example2" },
+            bonnetTech: { name: "Bonnet Maille Technique", price: 24.99, img: "bonnet-tech.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_example3" },
+
+            // ==========================================
+            //   LES 26 NOUVEAUX PRODUITS
+            // ==========================================
             tshirtRoseOrange: { name: "T-shirt - Rose / Orange", price: 49.99, img: "tshirt-rose-orange.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
             shortCapsule: { name: "Short - Capsule", price: 59.99, img: "short-capsule.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_28EdR98OI67z3eVd4J7g400" },
             shortCargo: { name: "Short - Cargo", price: 59.99, img: "short-cargo.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_6oU14n5Cw9jL6r74yd7g401" },
@@ -279,8 +297,6 @@
             tshirtManchesColorees: { name: "T-shirt - Manches Colorées", price: 49.99, img: "tshirt-manches-colorees.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_14A7sLghadA15n3e04" },
             shortRoseBlanc: { name: "Short - Rose / Blanc", price: 34.99, img: "short-rose-blanc.jpg", category: "vetements", sizes: ["S", "M", "L"], stripeUrl: "https://buy.stripe.com/test_aFa7sL0ic2Vn8zfe05" },
             tshirtClassicWhite: { name: "T-shirt - Classic Blanc", price: 49.99, img: "tshirt-classic-white.jpg", category: "vetements", sizes: ["S", "M", "L"], stripeUrl: "https://buy.stripe.com/test_14A8wP0icgMd6r78Ot7g404" },
-
-            // --- NOUVELLES CHAUSSURES ---
             sandalesMonogramme: { name: "Sandales - Monogramme", price: 129.99, img: "sandales-monogramme.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_3cI28r1mganPdTz7Kp7g40b" },
             sandalesBleuMarron: { name: "Sandales - Bleu / Marron", price: 74.99, img: "sandales-bleu-marron.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_6oU8wP1mgeE57vb8Ot7g40c" },
             mindGris: { name: "Mind - Gris", price: 99.99, img: "mind-gris.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_8wM28rd4YbrT7vb6op" },
@@ -357,6 +373,7 @@
             const titleElement = document.getElementById('catalogue-title');
             if (category === 'chaussures') titleElement.innerText = "Nos Chaussures Premium";
             else if (category === 'vetements') titleElement.innerText = "Nos Vêtements Premium";
+            else if (category === 'accessoires') titleElement.innerText = "Nos Accessoires Premium";
 
             const filtered = Object.keys(productsData).filter(key => productsData[key].category === category);
             renderProductsGrid(filtered);
@@ -390,7 +407,11 @@
             document.getElementById('modalProductPrice').innerText = product.price.toFixed(2) + "€";
             document.getElementById('modalProductImg').src = product.img;
             document.getElementById('modalBuyBtn').href = product.stripeUrl;
-            document.getElementById('sizeLabelTitle').innerText = product.category === 'chaussures' ? "POINTURE" : "TAILLE";
+            
+            let label = "TAILLE";
+            if(product.category === 'chaussures') label = "POINTURE";
+            if(product.category === 'accessoires') label = "OPTION";
+            document.getElementById('sizeLabelTitle').innerText = label;
 
             const sizeContainer = document.getElementById('sizeContainer');
             sizeContainer.innerHTML = "";
