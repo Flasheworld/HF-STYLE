@@ -189,8 +189,9 @@
                 <span>SOUS-TOTAL:</span>
                 <span id="cart-total-price">0,00€</span>
             </div>
+            <!-- CE BOUTON COMMANDE ET REDIRIGE VERS LE LIEN STRIPE DU PRODUIT DU PANIER -->
             <button onclick="processCheckout()" class="w-full bg-black text-white text-center font-bold text-xs py-4 uppercase tracking-widest hover:bg-neutral-900 transition block">
-                Passer la commande
+                Passer la commande / Payer
             </button>
         </div>
     </div>
@@ -239,7 +240,7 @@
             <button onclick="simulateGoogleLogin()" class="w-full border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 font-medium text-xs py-3 px-4 rounded-xl flex items-center justify-center space-x-3 transition shadow-sm mb-4">
                 <svg class="w-4 h-4" viewBox="0 0 24 24">
                     <path fill="#EA4335" d="M12 5.04c1.65 0 3.13.57 4.3 1.69l3.21-3.21C17.55 1.7 15 1 12 1 7.37 1 3.4 3.67 1.48 7.57l3.77 2.92C6.14 7.04 8.84 5.04 12 5.04z"/>
-                    <path fill="#4285F4" d="M23.45 12.27c0-.82-.07-1.61-.21-2.38H12v4.51h6.42c-.28 1.47-1.11 2.72-2.36 3.56l3.67 2.85c2.14-1.98 3.38-4.89 3.38-8.54z"/>
+                    <path fill="#4285F4" d="M23.45 12.27c0-.82-.07-1.61-.21-2.38H12v4.51h6.42c-.28 1.47-1.11 2.72-2.36 3.56l3.67 2.85c2.14-1.98 3.38-4.89(3.38-8.54z"/>
                     <path fill="#FBBC05" d="M5.25 14.65c-.25-.73-.39-1.51-.39-2.33s.14-1.6.39-2.33L1.48 7.57C.54 9.47 0 11.62 0 12s.54 2.53 1.48 4.43l3.77-2.92z"/>
                     <path fill="#34A562" d="M12 23c3.24 0 5.97-1.08 7.96-2.92l-3.67-2.85c-1.02.68-2.33 1.09-3.92 1.09-3.16 0-5.86-2-6.75-4.91L1.48 16.33C3.4 20.33 7.37 23 12 23z"/>
                 </svg>
@@ -249,12 +250,13 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT LOGIQUE ET BASE DE DONNÉES RESTAURÉE -->
+    <!-- JAVASCRIPT ET INSCRIPTION DE TES LIENS STRIPE -->
     <script>
         const productsData = {
             b30NoirBlanc: { name: "B30 - Noir / Blanc", price: 129.99, img: "b30-noir-blanc.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_28EdR98OI67z3eVd4J7g400" },
             b22: { name: "B22 - Noir Premium", price: 119.99, img: "b22-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_6oU14n5Cw9jL6r74yd7g401" },
-            cRunner: { name: "C. Runner - Silver & White", price: 124.99, img: "c-runner-silver-white.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_dRm7sLaWQanPbLr4yd7g402" },
+            // CHANGEMENT ICI : J'ai mis "c-runner.jpg". Vérifie bien que ton fichier image porte EXACTEMENT ce nom sur GitHub.
+            cRunner: { name: "C. Runner - Silver & White", price: 124.99, img: "c-runner.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_dRm7sLaWQanPbLr4yd7g402" },
             tshirt: { name: "T-shirt Luxury Graphic", price: 49.99, img: "tshirt-ecriture.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
             trackLed: { name: "Track - Led Noir", price: 159.99, img: "track-led-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_14A8wP0icgMd6r78Ot7g404" },
             americasCup: { name: "America’s Cup - Noir", price: 119.99, img: "americas-cup-noir.jpg", category: "chaussures", sizes: [38, 39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_cNi00j2qkeE516N8Ot7g405" },
@@ -277,7 +279,7 @@
         const reviewsData = [
             { author: "Anonyme", comment: "Très bonne qualité, finitions parfaites au millimètre. Pour le prix c'est juste incroyable.", rating: 5, img: "track-led-noir.jpg" },
             { author: "Mahinur Sir", comment: "Parfait. Livré rapidement, le modèle correspond exactement aux photos de présentation.", rating: 5, img: "casquette-plaque.jpg" },
-            { author: "Amaya Madrid", comment: "Short de très bonne qualité. Content de mon achat malgré un petit délai de livraison.", rating: 4, img: "bracelet-lv-noir.jpg" }
+            { author: "Amaya Madrid", comment: "Short de très bonne quality. Content de mon achat malgré un petit délai de livraison.", rating: 4, img: "bracelet-lv-noir.jpg" }
         ];
 
         let cart = [];
@@ -348,6 +350,7 @@
             window.scrollTo({ top: document.getElementById('catalogue-section').offsetTop - 100, behavior: 'smooth' });
         }
 
+        // RETOUR ACCUEIL
         function showHomePage() {
             document.getElementById('home-hero').classList.remove('hidden');
             document.getElementById('home-collections').classList.remove('hidden');
@@ -412,14 +415,13 @@
             if(existingItem) {
                 existingItem.qty++;
             } else {
-                cart.push({ id: activeModalProductId, name: product.name, price: product.price, img: product.img, size: selectedSize, qty: 1 });
+                cart.push({ id: activeModalProductId, name: product.name, price: product.price, img: product.img, size: selectedSize, qty: 1, stripeUrl: product.stripeUrl });
             }
             closeModal();
             updateCartGlobalStats();
             toggleCartSidebar();
         }
 
-        // DESIGN ORIGINEL ET BOUTONS DU PANIER RESTAURÉS
         function changeQty(index, amount) {
             cart[index].qty += amount;
             if(cart[index].qty <= 0) cart.splice(index, 1);
@@ -475,6 +477,7 @@
             });
         }
 
+        // REDIRECTION AUTOMATIQUE VERS LE PREMIER PRODUIT DU PANIER AUSTRIPE POUR PAYER
         function processCheckout() {
             if(cart.length === 0) {
                 alert("Votre panier est vide.");
