@@ -60,10 +60,8 @@
 
     <div id="home-hero">
         <section class="relative bg-gray-200 h-[50vh] md:h-[70vh] flex items-center justify-center overflow-hidden">
-            <div class="absolute inset-0 bg-neutral-900 flex items-center justify-center text-gray-500 font-bold text-sm tracking-widest uppercase">
-                [ Bannière Visuelle Accueil ]
-            </div>
-            <div class="absolute inset-0 bg-black/10"></div>
+            <img src="banniere-accueil.jpg" alt="H Luxury Banner" class="absolute inset-0 w-full h-full object-cover object-center">
+            <div class="absolute inset-0 bg-black/15"></div>
             <div class="relative text-center text-white px-6 z-10">
                 <div class="bg-white/95 text-black inline-block px-12 py-8 rounded-2xl shadow-2xl backdrop-blur-sm border border-white/20">
                     <p class="text-5xl md:text-6xl font-black tracking-tighter text-gray-950">-10%</p>
@@ -78,13 +76,22 @@
         <section class="py-12 px-4 md:px-12 max-w-[1600px] mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                 <div onclick="filterCategory('chaussures')" class="collection-card rounded-2xl h-[30vh] md:h-[45vh] bg-neutral-800 flex items-end p-8 text-white font-bold">
-                    <span class="text-xl tracking-wider underline underline-offset-4">CHAUSSURES</span>
+                    <img src="collection-chaussures.jpg" alt="CHAUSSURES" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8 w-full h-full">
+                        <span class="text-xl tracking-wider underline underline-offset-4">CHAUSSURES</span>
+                    </div>
                 </div>
                 <div onclick="filterCategory('vetements')" class="collection-card rounded-2xl h-[30vh] md:h-[45vh] bg-neutral-700 flex items-end p-8 text-white font-bold">
-                    <span class="text-xl tracking-wider underline underline-offset-4">VÊTEMENTS</span>
+                    <img src="collection-vetements.jpg" alt="VÊTEMENTS" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8 w-full h-full">
+                        <span class="text-xl tracking-wider underline underline-offset-4">VÊTEMENTS</span>
+                    </div>
                 </div>
                 <div onclick="filterCategory('accessoires')" class="collection-card rounded-2xl h-[30vh] md:h-[45vh] bg-neutral-600 flex items-end p-8 text-white font-bold">
-                    <span class="text-xl tracking-wider underline underline-offset-4">ACCESSOIRES</span>
+                    <img src="collection-accessoires.jpg" alt="ACCESSOIRES" class="absolute inset-0 w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8 w-full h-full">
+                        <span class="text-xl tracking-wider underline underline-offset-4">ACCESSOIRES</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -100,8 +107,7 @@
                 </div>
             </div>
 
-            <div id="products-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-10">
-                </div>
+            <div id="products-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-10"></div>
         </div>
     </section>
 
@@ -119,9 +125,7 @@
                 
                 <div class="mt-6 flex flex-col items-center">
                     <p id="review-author" class="text-gray-950 font-bold text-xs uppercase tracking-wider"></p>
-                    <div id="review-prod-thumb" class="w-12 h-12 bg-white border border-gray-200 rounded-lg p-1 mt-3 flex items-center justify-center font-bold text-[8px] text-gray-400">
-                        [IMG]
-                    </div>
+                    <img id="review-prod-thumb" src="" alt="Avis produit" class="w-12 h-12 bg-white border border-gray-200 rounded-lg p-1 mt-3 object-contain mix-blend-multiply">
                 </div>
 
                 <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2 pointer-events-none">
@@ -171,9 +175,7 @@
             <h3 class="font-black text-lg uppercase tracking-tight text-gray-900"><i class="fa-solid fa-bag-shopping mr-2"></i>Mon Panier</h3>
             <button onclick="toggleCartSidebar()" class="text-gray-400 hover:text-black text-xl"><i class="fa-solid fa-xmark"></i></button>
         </div>
-        <div id="cart-items-list" class="flex-1 overflow-y-auto p-5 space-y-4">
-            <p class="text-gray-400 text-center text-xs font-medium py-12">Votre panier est actuellement vide.</p>
-        </div>
+        <div id="cart-items-list" class="flex-1 overflow-y-auto p-5 space-y-4"></div>
         <div class="p-5 border-t border-gray-100 bg-gray-50 space-y-4">
             <div class="flex justify-between items-center text-sm font-bold text-gray-900">
                 <span>SOUS-TOTAL:</span>
@@ -190,7 +192,7 @@
         <div class="bg-white w-full max-w-4xl rounded-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 relative shadow-2xl transform scale-95 transition-transform duration-300">
             <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition z-10 text-xl"><i class="fa-solid fa-xmark"></i></button>
             <div class="bg-[#fcfcfc] flex items-center justify-center p-8 min-h-[300px]">
-                <div class="text-gray-300 font-bold tracking-widest text-xs uppercase" id="modalProductImgPlaceholder">[ Image Produit ]</div>
+                <img id="modalProductImg" src="" alt="Produit sélectionné" class="w-full h-full object-contain mix-blend-multiply max-h-[350px]">
             </div>
             <div class="p-8 flex flex-col justify-center">
                 <h2 id="modalProductName" class="text-2xl font-black text-gray-900 tracking-tight">Nom du produit</h2>
@@ -233,37 +235,39 @@
                 </svg>
                 <span>Se connecter avec Google</span>
             </button>
-            <div class="text-[10px] text-gray-400 font-medium">Connexion 100% sécurisée via Google Accounts.</div>
+            <div class="text-[10px] text-gray-400 font-medium">Connexion sécurisée via Google Accounts.</div>
         </div>
     </div>
 
-
     <script>
+        // BASE DE DONNÉES AVEC TES IMAGES COMPLÈTES ET VRAIS LIENS STRIPE DE TEST
         const productsData = {
-            trackLed: { name: "Track - Led Noir", price: 159.99, img: "track-led-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "#" },
-            americasCup: { name: "America’s Cup - Noir", price: 119.99, img: "americas-cup-noir.jpg", category: "chaussures", sizes: [38, 39, 40, 41, 42, 43, 44], stripeUrl: "#" },
-            skateNoir: { name: "Skate - Noir", price: 119.99, img: "skate-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "#" },
-            curb: { name: "Curb - Blanc / Rouge", price: 129.99, img: "curb-blanc-rouge.jpg", category: "chaussures", sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44], stripeUrl: "#" },
-            hotStep: { name: "Hot Step 2 - Noir", price: 119.99, img: "hot-step-2.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "#" },
-            tnNoir: { name: "Tn - Noir", price: 99.99, img: "tn-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "#" },
-            claquettesCarreaux: { name: "Claquettes - Carreaux", price: 69.99, img: "claquettes-carreaux.jpg", category: "chaussures", sizes: [36, 38, 40, 42, 44], stripeUrl: "#" },
-            casquettePlaque: { name: "Casquette - Plaque", price: 44.99, img: "casquette-plaque.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "#" },
-            braceletLvNoir: { name: "Bracelet - Monogramme Noir", price: 29.99, img: "bracelet-lv-noir.jpg", category: "accessoires", sizes: ["19cm", "21cm"], stripeUrl: "#" },
-            braceletTresse: { name: "Bracelet - Cuir Tressé", price: 29.99, img: "bracelet-cuir-tresse.jpg", category: "accessoires", sizes: ["Ajustable"], stripeUrl: "#" },
-            casquetteMono: { name: "Casquette - Monogramme", price: 44.99, img: "casquette-monogramme-brillant.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "#" },
-            casquetteDubai: { name: "Casquette - Dubaï", price: 49.99, img: "casquette-dubai.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "#" },
-            casquetteRose: { name: "Casquette - Rose", price: 44.99, img: "casquette-rose.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "#" },
-            bonnetDamier: { name: "Bonnet - Damier", price: 42.99, img: "bonnet-damier.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "#" },
-            bonnetNoir: { name: "Bonnet Noir", price: 42.99, img: "bonnet-noir.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "#" },
-            casquetteClassique: { name: "Casquette - Classique", price: 44.99, img: "casquette-classique.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "#" },
-            b22: { name: "B22 - Noir Premium", price: 119.99, img: "b22-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "#" },
-            tshirt: { name: "T-shirt Luxury Graphic", price: 49.99, img: "tshirt-ecriture.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "#" }
+            trackLed: { name: "Track - Led Noir", price: 159.99, img: "track-led-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_28EdR98OI67z3eVd4J7g400" },
+            americasCup: { name: "America’s Cup - Noir", price: 119.99, img: "americas-cup-noir.jpg", category: "chaussures", sizes: [38, 39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_6oU14n5Cw9jL6r74yd7g401" },
+            skateNoir: { name: "Skate - Noir", price: 119.99, img: "skate-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_dRm7sLaWQanPbLr4yd7g402" },
+            curb: { name: "Curb - Blanc / Rouge", price: 129.99, img: "curb-blanc-rouge.jpg", category: "chaussures", sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_28EdR98OI67z3eVd4J7g400" },
+            hotStep: { name: "Hot Step 2 - Noir", price: 119.99, img: "hot-step-2.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_6oU14n5Cw9jL6r74yd7g401" },
+            tnNoir: { name: "Tn - Noir", price: 99.99, img: "tn-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_dRm7sLaWQanPbLr4yd7g402" },
+            claquettesCarreaux: { name: "Claquettes - Carreaux", price: 69.99, img: "claquettes-carreaux.jpg", category: "chaussures", sizes: [36, 38, 40, 42, 44], stripeUrl: "https://buy.stripe.com/test_28EdR98OI67z3eVd4J7g400" },
+            
+            casquettePlaque: { name: "Casquette - Plaque", price: 44.99, img: "casquette-plaque.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
+            braceletLvNoir: { name: "Bracelet - Monogramme Noir", price: 29.99, img: "bracelet-lv-noir.jpg", category: "accessoires", sizes: ["19cm", "21cm"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
+            braceletTresse: { name: "Bracelet - Cuir Tressé", price: 29.99, img: "bracelet-cuir-tresse.jpg", category: "accessoires", sizes: ["Ajustable"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
+            casquetteMono: { name: "Casquette - Monogramme", price: 44.99, img: "casquette-monogramme-brillant.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
+            casquetteDubai: { name: "Casquette - Dubaï", price: 49.99, img: "casquette-dubai.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
+            casquetteRose: { name: "Casquette - Rose", price: 44.99, img: "casquette-rose.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
+            bonnetDamier: { name: "Bonnet - Damier", price: 42.99, img: "bonnet-damier.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
+            bonnetNoir: { name: "Bonnet Noir", price: 42.99, img: "bonnet-noir.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
+            casquetteClassique: { name: "Casquette - Classique", price: 44.99, img: "casquette-classique.jpg", category: "accessoires", sizes: ["Unique"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
+            
+            b22: { name: "B22 - Noir Premium", price: 119.99, img: "b22-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_6oU14n5Cw9jL6r74yd7g401" },
+            tshirt: { name: "T-shirt Luxury Graphic", price: 49.99, img: "tshirt-ecriture.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" }
         };
 
         const reviewsData = [
-            { author: "Anonyme", comment: "Très bonne qualité, finitions parfaites au millimètre. Pour le prix c'est juste incroyable.", rating: 5 },
-            { author: "Mahinur Sir", comment: "Parfait. Livré rapidement, le modèle correspond exactement aux photos de présentation.", rating: 5 },
-            { author: "Amaya Madrid", comment: "Short de très bonne qualité. Content de mon achat malgré un petit délai de livraison de 4 jours.", rating: 4 }
+            { author: "Anonyme", comment: "Très bonne qualité, finitions parfaites au millimètre. Pour le prix c'est juste incroyable.", rating: 5, img: "track-led-noir.jpg" },
+            { author: "Mahinur Sir", comment: "Parfait. Livré rapidement, le modèle correspond exactement aux photos de présentation.", rating: 5, img: "casquette-plaque.jpg" },
+            { author: "Amaya Madrid", comment: "Short de très bonne qualité. Content de mon achat malgré un petit délai de livraison.", rating: 4, img: "bracelet-lv-noir.jpg" }
         ];
 
         let cart = [];
@@ -271,14 +275,13 @@
         let activeModalProductId = null;
         let selectedSize = null;
 
-        // INITIALISATION DU SITE
         window.onload = function() {
             renderProductsGrid(Object.keys(productsData));
             updateReview();
             renderGlobalStars();
         };
 
-        // RENDU DE LA GRILLE DES PRODUITS
+        // INTEGRATION PARFAITE DES IMAGES DANS LA GRILLE
         function renderProductsGrid(keys) {
             const grid = document.getElementById('products-grid');
             grid.innerHTML = "";
@@ -291,11 +294,11 @@
                 grid.innerHTML += `
                     <div class="product-item product-card bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="${prod.category}">
                         <div>
-                            <div class="bg-[#fcfcfc] rounded-xl h-48 md:h-64 w-full overflow-hidden flex items-center justify-center relative border border-gray-50">
-                                <span class="text-gray-300 font-bold text-[10px] uppercase tracking-wider">[ ${prod.name} ]</span>
+                            <div class="bg-[#f6f6f6] rounded-xl h-48 md:h-64 w-full overflow-hidden flex items-center justify-center relative border border-gray-50">
+                                <img src="${prod.img}" alt="${prod.name}" class="w-full h-full object-contain mix-blend-multiply">
                             </div>
                             <div class="mt-4 px-1">
-                                <h3 class="text-xs font-semibold text-gray-800 truncate uppercase tracking-tight">${prod.name}</h3>
+                                <h3 class="text-xs font-medium text-gray-800 truncate uppercase tracking-tight">${prod.name}</h3>
                                 <p class="text-[11px] text-gray-400 font-bold mt-1">${prod.price.toFixed(2)}€</p>
                             </div>
                         </div>
@@ -307,7 +310,6 @@
             });
         }
 
-        // BARRE DE RECHERCHE FONCTIONNELLE
         function toggleSearchBox() {
             const input = document.getElementById('searchInput');
             input.classList.toggle('hidden');
@@ -322,7 +324,6 @@
             renderProductsGrid(matchingKeys);
         }
 
-        // FILTRES PAR CATÉGORIES
         function filterCategory(category) {
             document.getElementById('home-hero').classList.add('hidden');
             document.getElementById('home-collections').classList.add('hidden');
@@ -346,7 +347,6 @@
             renderProductsGrid(Object.keys(productsData));
         }
 
-        // GESTION DU PANIER (AJOUT / SUPPRESSION / CALCULS)
         function toggleCartSidebar() {
             const sidebar = document.getElementById('cartSidebar');
             const overlay = document.getElementById('cartOverlay');
@@ -359,11 +359,13 @@
             renderCartItems();
         }
 
+        // INTEGRATION DE L'IMAGE DANS LA MODALE
         function openModal(productId) {
             activeModalProductId = productId;
             const product = productsData[productId];
             document.getElementById('modalProductName').innerText = product.name;
             document.getElementById('modalProductPrice').innerText = product.price.toFixed(2) + "€";
+            document.getElementById('modalProductImg').src = product.img;
             document.getElementById('modalBuyBtn').href = product.stripeUrl;
             document.getElementById('sizeLabelTitle').innerText = product.category === 'chaussures' ? "POINTURE" : "TAILLE";
 
@@ -402,7 +404,7 @@
             if(existingItem) {
                 existingItem.qty++;
             } else {
-                cart.push({ id: activeModalProductId, name: product.name, price: product.price, size: selectedSize, qty: 1 });
+                cart.push({ id: activeModalProductId, name: product.name, price: product.price, img: product.img, size: selectedSize, qty: 1 });
             }
             closeModal();
             updateCartGlobalStats();
@@ -423,7 +425,6 @@
             document.getElementById('cart-count-badge').innerText = totalQty;
             document.getElementById('cart-total-price').innerText = totalPrice.toFixed(2) + "€";
 
-            // Promotion livraison gratuite seuil à 150€ par exemple
             const limit = 150;
             const needed = limit - totalPrice;
             if(needed > 0) {
@@ -435,6 +436,7 @@
             }
         }
 
+        // COUPLAGE PARFAIT DE L'IMAGE DANS LA LIGNE PANIER
         function renderCartItems() {
             const container = document.getElementById('cart-items-list');
             if(cart.length === 0) {
@@ -446,7 +448,9 @@
                 container.innerHTML += `
                     <div class="flex items-center justify-between border-b border-gray-100 pb-3">
                         <div class="flex items-center space-x-3">
-                            <div class="w-12 h-12 bg-gray-50 border rounded-lg flex items-center justify-center text-[8px] text-gray-300 font-bold">[IMG]</div>
+                            <div class="w-12 h-12 bg-[#f6f6f6] border rounded-lg flex items-center justify-center p-1">
+                                <img src="${item.img}" alt="${item.name}" class="w-full h-full object-contain mix-blend-multiply">
+                            </div>
                             <div>
                                 <h4 class="text-xs font-bold text-gray-900 max-w-[180px] truncate uppercase">${item.name}</h4>
                                 <p class="text-[10px] text-gray-400 font-medium">Taille: ${item.size}</p>
@@ -468,19 +472,21 @@
                 alert("Votre panier est vide.");
                 return;
             }
-            alert("Redirection vers la passerelle sécurisée de paiement Stripe...");
+            // Redirige vers le premier produit par défaut pour l'exemple
+            window.open(cart[0].stripeUrl, '_blank');
         }
 
-        // CARROUSEL DES AVIS CLIENTS
         function renderGlobalStars() {
             const container = document.getElementById('review-stars');
             for(let i=0; i<5; i++) container.innerHTML += `<i class="fa-solid fa-star"></i>`;
         }
 
+        // CHARGEMENT DE L'IMAGE DANS L'AVIS CLIENT
         function updateReview() {
             const rev = reviewsData[currentReviewIndex];
             document.getElementById('review-comment').innerText = `"${rev.comment}"`;
             document.getElementById('review-author').innerText = rev.author;
+            document.getElementById('review-prod-thumb').src = rev.img;
             
             const starBox = document.getElementById('current-review-stars');
             starBox.innerHTML = "";
@@ -499,7 +505,6 @@
             updateReview();
         }
 
-        // MODALE COMPTE GOOGLE
         function openLoginModal() {
             const modal = document.getElementById('loginModal');
             modal.classList.remove('hidden');
@@ -515,11 +520,10 @@
 
         function simulateGoogleLogin() {
             closeLoginModal();
-            // Changement d'icône pour prouver visuellement que la connexion est faite
             const userIcon = document.getElementById('user-icon');
             userIcon.className = "fa-solid fa-circle-user text-emerald-600 text-lg cursor-pointer";
-            alert("Connexion réussie avec votre compte Google ! Bienvenue dans votre espace H Luxury.");
+            alert("Connexion réussie avec votre compte Google !");
         }
     </script>
 </body>
-</html>vv
+</html>
