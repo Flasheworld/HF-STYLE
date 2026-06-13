@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H LUXURY | Boutique Officielle | Sneakers & Streetwear Premium</title>
+    <title>H LUXURY | Boutique Officielle | Premium Streetwear</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -114,9 +114,10 @@
                 </div>
             </div>
 
+            <!-- GRILLE DE PRODUITS ÉLARGIE -->
             <div id="products-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-10">
                 
-                <!-- PRODUIT 1 (Chaussures - B22) -->
+                <!-- CHAUSSURES -->
                 <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="chaussures">
                     <div>
                         <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
@@ -134,7 +135,6 @@
                     </div>
                 </div>
 
-                <!-- PRODUIT 2 (Chaussures - B30) -->
                 <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="chaussures">
                     <div>
                         <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center relative">
@@ -142,7 +142,7 @@
                         </div>
                         <div class="mt-4 px-1">
                             <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">B30 - Noir / Blanc</h3>
-                            <p class="text-[10px] text-emerald-600 font-bold mt-1">📦 Prêt à être expédié</p>
+                            <p class="text-[10px] text-emerald-600 font-bold mt-1">📦 Prêt à expédier</p>
                         </div>
                     </div>
                     <div class="mt-4 px-1 flex flex-col space-y-2">
@@ -151,11 +151,10 @@
                     </div>
                 </div>
 
-                <!-- PRODUIT 3 (Chaussures - C. Runner) -->
                 <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="chaussures">
                     <div>
                         <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
-                            <img src="c-runner-blanc.jpg" alt="C. Runner - Silver" class="w-full h-full object-cover">
+                            <img src="c-runner-blanc.jpg" alt="C. Runner" class="w-full h-full object-cover">
                         </div>
                         <div class="mt-4 px-1">
                             <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">C. Runner - Silver & White</h3>
@@ -168,7 +167,23 @@
                     </div>
                 </div>
 
-                <!-- PRODUIT 4 (Vêtements - T-shirt) -->
+                <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="chaussures">
+                    <div>
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
+                            <img src="b30-gris.jpg" alt="B30 Gris" class="w-full h-full object-cover">
+                        </div>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">B30 - Anthracite Reflective</h3>
+                            <p class="text-[10px] text-emerald-600 font-bold mt-1">🔥 Très demandé</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">119,99€</p>
+                        <button onclick="openModal('b30Gris')" class="w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</button>
+                    </div>
+                </div>
+
+                <!-- VÊTEMENTS -->
                 <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="vetements">
                     <div>
                         <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
@@ -182,6 +197,119 @@
                     <div class="mt-4 px-1 flex flex-col space-y-2">
                         <p class="text-sm md:text-base font-black text-gray-950">49,99€</p>
                         <button onclick="openModal('tshirt')" class="w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</button>
+                    </div>
+                </div>
+
+                <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="vetements">
+                    <div>
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
+                            <img src="hoodie-noir.jpg" alt="Hoodie Noir" class="w-full h-full object-cover">
+                        </div>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">Hoodie Heavyweight Oversized</h3>
+                            <p class="text-[10px] text-red-500 font-bold mt-1">⚠️ Stock faible</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">79,99€</p>
+                        <button onclick="openModal('hoodie')" class="w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</button>
+                    </div>
+                </div>
+
+                <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="vetements">
+                    <div>
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
+                            <img src="pantalon-cargo.jpg" alt="Cargo" class="w-full h-full object-cover">
+                        </div>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">Cargo Tracksuit Luxury</h3>
+                            <p class="text-[10px] text-emerald-600 font-bold mt-1">✨ Coupe parfaite</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">69,99€</p>
+                        <button onclick="openModal('cargo')" class="w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</button>
+                    </div>
+                </div>
+
+                <!-- ACCESSORIES -->
+                <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="accessoires">
+                    <div>
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
+                            <img src="casquette-luxe.jpg" alt="Casquette" class="w-full h-full object-cover">
+                        </div>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">Casquette Monogram Canvas</h3>
+                            <p class="text-[10px] text-amber-600 font-bold mt-1">⚡ Accessoire indispensable</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">34,99€</p>
+                        <button onclick="openModal('casquette')" class="w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</button>
+                    </div>
+                </div>
+
+                <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="accessoires">
+                    <div>
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
+                            <img src="sacoche-cuir.jpg" alt="Sacoche" class="w-full h-full object-cover">
+                        </div>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">Sacoche Messenger Cuir Noir</h3>
+                            <p class="text-[10px] text-red-500 font-bold mt-1">🔥 Dernières pièces</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">89,99€</p>
+                        <button onclick="openModal('sacoche')" class="w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</button>
+                    </div>
+                </div>
+
+                <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="accessoires">
+                    <div>
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
+                            <img src="ceinture-luxe.jpg" alt="Ceinture" class="w-full h-full object-cover">
+                        </div>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">Ceinture Buckle Premium</h3>
+                            <p class="text-[10px] text-gray-400 mt-1">📦 Prêt à expédier</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">44,99€</p>
+                        <button onclick="openModal('ceinture')" class="w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</button>
+                    </div>
+                </div>
+
+                <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="vetements">
+                    <div>
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
+                            <img src="veste-puffer.jpg" alt="Veste Puffer" class="w-full h-full object-cover">
+                        </div>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">Doudoune Puffer Matte Black</h3>
+                            <p class="text-[10px] text-amber-600 font-bold mt-1">❄️ Collection Hiver</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">129,99€</p>
+                        <button onclick="openModal('puffer')" class="w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</button>
+                    </div>
+                </div>
+
+                <div class="product-item product-card group bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between" data-category="accessoires">
+                    <div>
+                        <div class="bg-gray-50 rounded-xl h-52 md:h-72 w-full overflow-hidden flex items-center justify-center">
+                            <img src="lunettes-soleil.jpg" alt="Lunettes" class="w-full h-full object-cover">
+                        </div>
+                        <div class="mt-4 px-1">
+                            <h3 class="text-sm md:text-base font-bold text-gray-900 group-hover:text-amber-600 transition truncate">Lunettes Dark Acetate</h3>
+                            <p class="text-[10px] text-emerald-600 font-bold mt-1">🕶️ Protection UV maximale</p>
+                        </div>
+                    </div>
+                    <div class="mt-4 px-1 flex flex-col space-y-2">
+                        <p class="text-sm md:text-base font-black text-gray-950">39,99€</p>
+                        <button onclick="openModal('lunettes')" class="w-full bg-black text-white text-center text-xs font-bold py-2.5 rounded-xl hover:bg-amber-600 transition uppercase tracking-wider block">Acheter</button>
                     </div>
                 </div>
 
@@ -212,7 +340,7 @@
         </div>
     </footer>
 
-    <!-- MODALE STYLE Capture d’écran 2026-06-12 231952.png (DEUX COLONNES) -->
+    <!-- MODALE STYLE D'ACHAT DOUBLE COLONNE -->
     <div id="productModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-0 md:p-4 hidden opacity-0 transition-opacity duration-300">
         <div class="bg-white w-full max-w-5xl h-full md:h-auto md:max-h-[90vh] overflow-y-auto grid grid-cols-1 md:grid-cols-2 relative shadow-2xl transform scale-95 transition-transform duration-300">
             
@@ -225,7 +353,7 @@
                 <img id="modalProductImg" src="" alt="" class="w-full h-full object-contain mix-blend-multiply">
             </div>
 
-            <!-- COLONNE DROITE : DESIGN EXACT SHOPIFY -->
+            <!-- COLONNE DROITE : DETAILS -->
             <div class="p-6 md:p-12 flex flex-col justify-center">
                 <h2 id="modalProductName" class="text-3xl font-bold text-gray-900 tracking-tight">Nom du produit</h2>
                 <p id="modalProductPrice" class="text-lg text-gray-950 font-medium mt-3">0,00€</p>
@@ -254,12 +382,11 @@
                     <span>En stock</span>
                 </div>
 
-                <!-- BOUTONS D'ACHAT AVEC TES VRAIS LIENS STRIPE -->
+                <!-- ACTION -->
                 <div class="flex flex-col space-y-2.5">
                     <button onclick="alert('Produit configuré ! Cliquez sur Acheter maintenant pour valider.')" class="w-full border border-black bg-white text-black text-center text-sm font-bold py-3.5 hover:bg-gray-50 transition tracking-wide uppercase">
                         Ajouter au panier
                     </button>
-                    <!-- Ce bouton va maintenant ouvrir ton lien Stripe de test directement -->
                     <a id="modalBuyBtn" href="#" target="_blank" class="w-full bg-black text-white text-center text-sm font-bold py-3.5 hover:bg-gray-900 transition tracking-wide uppercase block">
                         Acheter maintenant
                     </a>
@@ -268,9 +395,8 @@
         </div>
     </div>
 
-    <!-- INTEGRATION DU SCRIPT DE BASE DE DONNÉES -->
+    <!-- SCRIPT AVEC CONFIGURATION DE LA BASE DE DONNÉES ENTIÈRE -->
     <script>
-        // ICI TES VRAIS LIENS STRIPE SONT PARFAITEMENT INTEGRÉS
         const productsData = {
             b22: {
                 name: "B22 - Noir Premium",
@@ -296,6 +422,14 @@
                 sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44],
                 stripeUrl: "https://buy.stripe.com/test_dRm7sLaWQanPbLr4yd7g402"
             },
+            b30Gris: {
+                name: "B30 - Anthracite Reflective",
+                price: "119,99€",
+                img: "b30-gris.jpg",
+                isClothing: false,
+                sizes: [36, 37, 38, 39, 40, 41, 42, 43, 44],
+                stripeUrl: "https://buy.stripe.com/test_28EdR98OI67z3eVd4J7g400" // Lié temporairement à la B30
+            },
             tshirt: {
                 name: "T-shirt Luxury Graphic",
                 price: "49,99€",
@@ -303,19 +437,71 @@
                 isClothing: true,
                 sizes: ["S", "M", "L", "XL"],
                 stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403"
+            },
+            hoodie: {
+                name: "Hoodie Heavyweight Oversized",
+                price: "79,99€",
+                img: "hoodie-noir.jpg",
+                isClothing: true,
+                sizes: ["S", "M", "L", "XL"],
+                stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403"
+            },
+            cargo: {
+                name: "Cargo Tracksuit Luxury",
+                price: "69,99€",
+                img: "pantalon-cargo.jpg",
+                isClothing: true,
+                sizes: ["S", "M", "L", "XL"],
+                stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403"
+            },
+            puffer: {
+                name: "Doudoune Puffer Matte Black",
+                price: "129,99€",
+                img: "veste-puffer.jpg",
+                isClothing: true,
+                sizes: ["S", "M", "L", "XL"],
+                stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403"
+            },
+            casquette: {
+                name: "Casquette Monogram Canvas",
+                price: "34,99€",
+                img: "casquette-luxe.jpg",
+                isClothing: true,
+                sizes: ["Unique"],
+                stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403"
+            },
+            sacoche: {
+                name: "Sacoche Messenger Cuir Noir",
+                price: "89,99€",
+                img: "sacoche-cuir.jpg",
+                isClothing: true,
+                sizes: ["Unique"],
+                stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403"
+            },
+            ceinture: {
+                name: "Ceinture Buckle Premium",
+                price: "44,99€",
+                img: "ceinture-luxe.jpg",
+                isClothing: true,
+                sizes: ["85", "90", "95", "100"],
+                stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403"
+            },
+            lunettes: {
+                name: "Lunettes Dark Acetate",
+                price: "39,99€",
+                img: "lunettes-soleil.jpg",
+                isClothing: true,
+                sizes: ["Unique"],
+                stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403"
             }
         };
 
         let selectedSize = null;
 
-        // SYSTÈME MULTI-PAGES VIRTUEL SANS CHANGER DE RENDU
         function filterCategory(category) {
-            // Masque la page d'accueil d'un coup net
             document.getElementById('home-hero').classList.add('hidden');
             document.getElementById('home-collections').classList.add('hidden');
             document.getElementById('home-reviews').classList.add('hidden');
-            
-            // Fait apparaître le bouton retour
             document.getElementById('back-home-box').classList.remove('hidden');
 
             const items = document.querySelectorAll('.product-item');
@@ -323,7 +509,7 @@
 
             if (category === 'chaussures') titleElement.innerText = "Nos Chaussures Premium";
             else if (category === 'vetements') titleElement.innerText = "Nos Vêtements Premium";
-            else if (category === 'accessoires') titleElement.innerText = "Nos Accessoires";
+            else if (category === 'accessoires') titleElement.innerText = "Nos Accessoires Premium";
 
             items.forEach(item => {
                 if (item.getAttribute('data-category') === category) {
@@ -332,11 +518,9 @@
                     item.classList.add('hidden');
                 }
             });
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // RETOUR PAGE D'ACCUEIL AU RENDU INITIAL
         function showHomePage() {
             document.getElementById('home-hero').classList.remove('hidden');
             document.getElementById('home-collections').classList.remove('hidden');
@@ -347,11 +531,9 @@
 
             const items = document.querySelectorAll('.product-item');
             items.forEach(item => item.classList.remove('hidden'));
-
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // GESTIONNAIRE DE FENÊTRE MODALE D'ACHAT
         function openModal(productId) {
             const product = productsData[productId];
             if (!product) return;
@@ -362,7 +544,7 @@
             document.getElementById('modalProductImg').alt = product.name;
             document.getElementById('modalBuyBtn').href = product.stripeUrl;
 
-            document.getElementById('sizeLabelTitle').innerText = product.isClothing ? "TAILLE" : "POINTURE";
+            document.getElementById('sizeLabelTitle').innerText = (product.name.includes("Casquette") || product.name.includes("Sacoche") || product.name.includes("Lunettes")) ? "TAILLE UNIQUE" : (product.isClothing ? "TAILLE" : "POINTURE");
 
             const sizeContainer = document.getElementById('sizeContainer');
             sizeContainer.innerHTML = "";
@@ -372,17 +554,17 @@
                 button.innerText = size;
                 
                 if (index === 0) {
-                    button.className = "border-2 border-black text-black font-medium text-xs w-11 h-11 flex items-center justify-center";
+                    button.className = "border-2 border-black text-black font-medium text-xs px-3 h-11 flex items-center justify-center";
                     selectedSize = size;
                 } else {
-                    button.className = "border border-gray-200 text-gray-900 font-medium text-xs w-11 h-11 flex items-center justify-center hover:border-black";
+                    button.className = "border border-gray-200 text-gray-900 font-medium text-xs px-3 h-11 flex items-center justify-center hover:border-black";
                 }
                 
                 button.onclick = function() {
                     Array.from(sizeContainer.children).forEach(btn => {
-                        btn.className = "border border-gray-200 text-gray-900 font-medium text-xs w-11 h-11 flex items-center justify-center hover:border-black";
+                        btn.className = "border border-gray-200 text-gray-900 font-medium text-xs px-3 h-11 flex items-center justify-center hover:border-black";
                     });
-                    button.className = "border-2 border-black text-black font-medium text-xs w-11 h-11 flex items-center justify-center";
+                    button.className = "border-2 border-black text-black font-medium text-xs px-3 h-11 flex items-center justify-center";
                     selectedSize = size;
                 };
                 sizeContainer.appendChild(button);
