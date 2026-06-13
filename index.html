@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H LUXURY | Boutique Officielle</title>
     
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link class="revert" rel="icon" type="image/png" href="favicon.png">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link class="revert" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght=400;500;600;700;900&display=swap');
         body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
         .product-card { transition: all 0.3s ease; }
         .product-card img { transition: transform 0.5s ease; }
@@ -149,6 +149,8 @@
                 <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Menu Pied de Page</h4>
                 <ul class="space-y-3.5 text-sm font-medium text-gray-300">
                     <li><button onclick="toggleSearchBox()" class="hover:text-amber-500 transition">Recherche</button></li>
+                    <li><button onclick="openLegalModal('mentions')" class="hover:text-amber-500 transition">Mentions Légales</button></li>
+                    <li><button onclick="openLegalModal('cgv')" class="hover:text-amber-500 transition">Conditions Générales de Vente (CGV)</button></li>
                 </ul>
             </div>
             <div>
@@ -249,6 +251,15 @@
         </div>
     </div>
 
+    <!-- MODALE JURIDIQUE (MENTIONS LÉGALES & CGV) -->
+    <div id="legalModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white w-full max-w-2xl rounded-2xl p-8 relative shadow-2xl transform scale-95 transition-transform duration-300 flex flex-col max-h-[85vh]">
+            <button onclick="closeLegalModal()" class="absolute top-5 right-5 text-gray-400 hover:text-black transition text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <h3 id="legalModalTitle" class="text-xl font-black text-gray-900 uppercase tracking-tight mb-4 border-b-2 border-black pb-2">Titre Juridique</h3>
+            <div id="legalModalContent" class="overflow-y-auto text-xs text-gray-600 font-medium space-y-4 pr-2 text-left leading-relaxed"></div>
+        </div>
+    </div>
+
     <!-- JAVASCRIPT -->
     <script>
         const productsData = {
@@ -263,7 +274,7 @@
             cRunner: { name: "C-Runner Technical", price: 179.99, img: "c-runner.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_crunner" },
             claquettesCarreaux: { name: "Claquettes Motif Carreaux", price: 69.99, img: "claquettes-carreaux.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_5kQcN51mgbrT" },
 
-            // VÊTEMENTS MISA À JOUR
+            // VÊTEMENTS
             tshirtEcriture: { name: "T-shirt Premium - Écriture", price: 44.99, img: "tshirt-écriture.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX" },
             tshirtCrane: { name: "T-shirt Oversize Motif Crâne", price: 44.99, img: "tshirt-crane.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_crane" },
             cargoGris: { name: "Pantalon Cargo Technique - Gris", price: 59.99, img: "cargo-gris.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_cargo" },
@@ -567,6 +578,59 @@
             closeLoginModal();
             document.getElementById('user-icon').className = "fa-solid fa-circle-user text-emerald-600 text-lg cursor-pointer";
             alert("Connexion réussie avec Google !");
+        }
+
+        // --- GESTION DYNAMIQUE DES TEXTES JURIDIQUES ---
+        function openLegalModal(type) {
+            const title = document.getElementById('legalModalTitle');
+            const content = document.getElementById('legalModalContent');
+            
+            if (type === 'mentions') {
+                title.innerText = "Mentions Légales";
+                content.innerHTML = `
+                    <p class="font-bold text-gray-900 text-sm">1. Édition du site</p>
+                    <p>En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site internet <strong>H LUXURY</strong> l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :</p>
+                    <p><strong>Propriétaire du site :</strong> H LUXURY - Contact : support@hluxury.com - Adresse : Montpellier 34000, France.</p>
+                    <p><strong>Statut de l'entreprise :</strong> Micro-entreprise / Entrepreneur individuel (EI).</p>
+                    
+                    <p class="font-bold text-gray-900 text-sm mt-4">2. Hébergement</p>
+                    <p>Le Site est hébergé par la société <strong>Vercel Inc.</strong>, situé au 340 S Lemon Ave #4133 Walnut, CA 91789, États-Unis. Site internet : https://vercel.com.</p>
+                    
+                    <p class="font-bold text-gray-900 text-sm mt-4">3. Propriété intellectuelle et contrefaçons</p>
+                    <p>H LUXURY est propriétaire des droits de propriété intellectuelle ou détient les droits d'usage sur tous les éléments accessibles sur le site internet, notamment les textes, images, graphismes, logos, vidéos, architecture, icônes et sons.</p>
+                    <p>Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de H LUXURY.</p>
+                    
+                    <p class="font-bold text-gray-900 text-sm mt-4">4. Limitations de responsabilité</p>
+                    <p>H LUXURY ne pourra être tenu pour responsable des dommages directs et indirects causés au matériel de l'utilisateur, lors de l'accès au site internet.</p>
+                `;
+            } else if (type === 'cgv') {
+                title.innerText = "Conditions Générales de Vente (CGV)";
+                content.innerHTML = `
+                    <p class="font-bold text-gray-900 text-sm">1. Objet</p>
+                    <p>Les présentes conditions générales de vente visent à définir les relations contractuelles entre <strong>H LUXURY</strong> et l'acheteur, ainsi que les conditions applicables à tout achat effectué par le biais du site marchand.</p>
+                    <p>L’acquisition d’un produit à travers le présent site implique une acceptation sans réserve par l’acheteur des présentes conditions de vente.</p>
+                    
+                    <p class="font-bold text-gray-900 text-sm mt-4">2. Produits</p>
+                    <p>Les produits proposés sont ceux qui figurent sur le site H LUXURY dans la limite des stocks disponibles. Chaque produit est accompagné d’un descriptif. Les photographies sont les plus fidèles possibles mais n’engagent pas le Vendeur.</p>
+                    
+                    <p class="font-bold text-gray-900 text-sm mt-4">3. Tarifs et Paiement</p>
+                    <p>Les prix figurant sur le site sont indiqués en Euros (€) toutes taxes comprises (TTC). H LUXURY se réserve le droit de modifier ses prix à tout moment. Les paiements s'effectuent de manière sécurisée via la plateforme de paiement sécurisée <strong>Stripe</strong>.</p>
+                    
+                    <p class="font-bold text-gray-900 text-sm mt-4">4. Livraison et Rétractation</p>
+                    <p>Les livraisons sont faites à l’adresse indiquée sur le bon de commande (Montpellier 34000). Les acheteurs bénéficient d’un délai de rétractation de 14 jours à compter de la livraison de leur commande pour faire retour du produit au vendeur pour échange ou remboursement sans pénalité.</p>
+                `;
+            }
+            
+            const modal = document.getElementById('legalModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); modal.firstElementChild.classList.remove('scale-95'); }, 10);
+        }
+
+        function closeLegalModal() {
+            const modal = document.getElementById('legalModal');
+            modal.classList.add('opacity-0');
+            modal.firstElementChild.classList.add('scale-95');
+            setTimeout(() => modal.classList.add('hidden'), 300);
         }
     </script>
 </body>
