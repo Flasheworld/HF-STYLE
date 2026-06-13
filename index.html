@@ -189,8 +189,14 @@
                 <span>SOUS-TOTAL:</span>
                 <span id="cart-total-price">0,00€</span>
             </div>
-            <!-- CE BOUTON COMMANDE ET REDIRIGE VERS LE LIEN STRIPE DU PRODUIT DU PANIER -->
-            <button onclick="processCheckout()" class="w-full bg-black text-white text-center font-bold text-xs py-4 uppercase tracking-widest hover:bg-neutral-900 transition block">
+            
+            <!-- EXPLICATION MULTI-PRODUITS INTEGRÉE -->
+            <p id="cart-multi-notice" class="text-[11px] text-amber-600 font-semibold hidden bg-amber-50 p-2.5 rounded-lg border border-amber-100">
+                ⚠️ Liens Stripe individuels détectés : Vous allez être redirigé vers le paiement du 1er article. Revenez ensuite valider les suivants !
+            </p>
+
+            <!-- BOUTON DE VISUEL DYNAMIQUE -->
+            <button id="checkout-main-btn" onclick="processCheckout()" class="w-full bg-black text-white text-center font-bold text-xs py-4 uppercase tracking-widest hover:bg-neutral-900 transition block">
                 Passer la commande / Payer
             </button>
         </div>
@@ -250,12 +256,11 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT ET INSCRIPTION DE TES LIENS STRIPE -->
+    <!-- JAVASCRIPT -->
     <script>
         const productsData = {
             b30NoirBlanc: { name: "B30 - Noir / Blanc", price: 129.99, img: "b30-noir-blanc.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_28EdR98OI67z3eVd4J7g400" },
             b22: { name: "B22 - Noir Premium", price: 119.99, img: "b22-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_6oU14n5Cw9jL6r74yd7g401" },
-            // CHANGEMENT ICI : J'ai mis "c-runner.jpg". Vérifie bien que ton fichier image porte EXACTEMENT ce nom sur GitHub.
             cRunner: { name: "C. Runner - Silver & White", price: 124.99, img: "c-runner.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_dRm7sLaWQanPbLr4yd7g402" },
             tshirt: { name: "T-shirt Luxury Graphic", price: 49.99, img: "tshirt-ecriture.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX7g403" },
             trackLed: { name: "Track - Led Noir", price: 159.99, img: "track-led-noir.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_14A8wP0icgMd6r78Ot7g404" },
@@ -350,7 +355,6 @@
             window.scrollTo({ top: document.getElementById('catalogue-section').offsetTop - 100, behavior: 'smooth' });
         }
 
-        // RETOUR ACCUEIL
         function showHomePage() {
             document.getElementById('home-hero').classList.remove('hidden');
             document.getElementById('home-collections').classList.remove('hidden');
@@ -445,6 +449,20 @@
                 document.getElementById('shipping-promo-text').innerHTML = `<span class="text-emerald-600 font-bold">Félicitations ! Vous bénéficiez de la Livraison Gratuite 🚚</span>`;
                 document.getElementById('shipping-bar').style.width = `100%`;
             }
+
+            // GESTION ET TEXTE DU BOUTON S'IL Y A PLUSIEURS ARTICLES DIFFÉRENTS
+            const btn = document.getElementById('checkout-main-btn');
+            const notice = document.getElementById('cart-multi-notice');
+            if(cart.length > 1) {
+                notice.classList.remove('hidden');
+                btn.innerText = `Payer l'article 1 : ${cart[0].name}`;
+            } else if(cart.length === 1) {
+                notice.classList.add('hidden');
+                btn.innerText = "Passer la commande / Payer";
+            } else {
+                notice.classList.add('hidden');
+                btn.innerText = "Panier Vide";
+            }
         }
 
         function renderCartItems() {
@@ -456,13 +474,14 @@
             container.innerHTML = "";
             cart.forEach((item, index) => {
                 container.innerHTML += `
-                    <div class="flex items-center justify-between border-b border-gray-100 pb-3">
+                    <div class="flex items-center justify-between border-b border-gray-100 pb-3 ${index === 0 && cart.length > 1 ? 'bg-amber-50/50 p-1.5 rounded-xl border border-amber-200' : ''}">
                         <div class="flex items-center space-x-3">
                             <div class="w-12 h-12 bg-[#f6f6f6] border rounded-lg flex items-center justify-center p-1">
                                 <img src="${item.img}" alt="${item.name}" class="w-full h-full object-contain mix-blend-multiply">
                             </div>
                             <div>
                                 <h4 class="text-xs font-bold text-gray-900 max-w-[180px] truncate uppercase">${item.name}</h4>
+                                ${index === 0 && cart.length > 1 ? '<span class="text-[9px] bg-amber-500 text-white font-bold px-1.5 py-0.5 rounded-full uppercase">Suivant à payer</span>' : ''}
                                 <p class="text-[10px] text-gray-400 font-medium">Taille: ${item.size}</p>
                                 <p class="text-xs font-bold text-neutral-900 mt-0.5">${(item.price * item.qty).toFixed(2)}€</p>
                             </div>
@@ -477,13 +496,21 @@
             });
         }
 
-        // REDIRECTION AUTOMATIQUE VERS LE PREMIER PRODUIT DU PANIER AUSTRIPE POUR PAYER
+        // LE CLIENT PAIE LE PREMIER ARTICLE, PUIS CET ARTICLE EST ENLEVÉ POUR PERMETTRE LE PAIEMENT DU SUIVANT
         function processCheckout() {
             if(cart.length === 0) {
                 alert("Votre panier est vide.");
                 return;
             }
-            window.open(cart[0].stripeUrl, '_blank');
+            
+            // On récupère le premier article de la liste
+            const itemToPay = cart[0];
+            window.open(itemToPay.stripeUrl, '_blank');
+
+            // On retire l'article payé du panier pour que lorsqu'il revienne, il puisse payer le lot suivant
+            cart.shift(); 
+            updateCartGlobalStats();
+            renderCartItems();
         }
 
         function renderGlobalStars() {
