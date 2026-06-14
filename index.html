@@ -1,10 +1,12 @@
+<!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H LUXURY — Haute Maroquinerie & Souliers</title>
     
-    <!-- CODE INJECTÉ POUR LE LOGO D'ONGLET SANS FICHIER IMAGE (STYLE HERMÈS) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22Times New Roman, serif%22 font-weight=%22bold%22 fill=%22%23111111%22>H</text></svg>">
+    <!-- TON LOGO D'ONGLET RESTAURÉ -->
+    <link rel="icon" type="image/png" href="logo-onglet.png">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
     <style>
@@ -31,7 +33,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Barre d'annonce subtile */
+        /* Barre d'annonce */
         .top-bar {
             background-color: #111111;
             color: #ffffff;
@@ -130,13 +132,13 @@
             justify-content: center;
         }
 
-        /* BANNIÈRE HAUTE COUTURE (Ajustée pour s'afficher à coup sûr) */
+        /* Bannière vidéo/image */
         .hero-banner {
             position: relative;
             width: 100%;
-            height: 70vh; /* Plus grande, style défilé */
+            height: 70vh;
             overflow: hidden;
-            background: url('banniere-fallback.jpg') no-repeat center center/cover; /* Image si la vidéo bugue */
+            background: url('banniere-fallback.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -156,7 +158,7 @@
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.2); /* Voile très léger pour le minimalisme */
+            background: rgba(0, 0, 0, 0.15);
             z-index: 2;
         }
 
@@ -214,7 +216,6 @@
             padding: 0 4% 80px 4%;
         }
 
-        /* Collections style double vitrine */
         .collections-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -266,7 +267,6 @@
             padding-bottom: 2px;
         }
 
-        /* Grille Produits Épurée */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -293,7 +293,7 @@
 
         .product-img-container {
             width: 100%;
-            padding-bottom: 115px; /* Format légèrement vertical type catalogue luxe */
+            padding-bottom: 115px;
             position: relative;
             background: var(--gray-light);
             overflow: hidden;
@@ -309,7 +309,7 @@
 
         .product-info {
             padding: 15px 0;
-            text-align: left; /* Aligné à gauche style Hermès */
+            text-align: left;
         }
 
         .product-title {
@@ -357,7 +357,7 @@
             color: #fff;
         }
 
-        /* Tiroir Panier & Modale */
+        /* Modales & Tiroirs */
         .modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -386,7 +386,7 @@
         .btn-checkout { width: 100%; background: #111111; color: white; border: none; padding: 15px; text-transform: uppercase; font-size: 11px; font-weight: 400; cursor: pointer; letter-spacing: 2px; }
         .btn-checkout:hover { background: var(--accent-color); }
 
-        /* FOOTER LÉGAL PROFESSIONNEL STYLE HERMÈS */
+        /* Footer */
         footer {
             background: #fbfbfb;
             border-top: 1px solid var(--border-color);
@@ -413,24 +413,10 @@
             letter-spacing: 2px;
         }
 
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 10px;
-        }
-
-        .footer-col ul li a {
-            color: #666;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 12px;
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--accent-color);
-        }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 10px; }
+        .footer-col ul li a { color: #666; text-decoration: none; transition: color 0.3s; font-size: 12px; }
+        .footer-col ul li a:hover { color: var(--accent-color); }
 
         .footer-bottom {
             border-top: 1px solid var(--border-color);
@@ -444,15 +430,387 @@
             color: #999;
         }
 
-        /* Modales Infos Légales */
-        .legal-box {
-            max-height: 400px;
-            overflow-y: auto;
-            font-size: 13px;
-            line-height: 1.6;
-            color: #444;
-            padding-right: 10px;
-        }
+        .legal-box { max-height: 400px; overflow-y: auto; font-size: 13px; line-height: 1.6; color: #444; padding-right: 10px; }
         .legal-box h5 { margin: 15px 0 5px 0; color: #111; text-transform: uppercase; font-size: 11px; }
     </style>
 </head>
+<body>
+
+    <div class="top-bar">Livraison Offerte Prorogée & Retours Gratuits sur toutes nos Collections</div>
+
+    <header>
+        <div class="logo">
+            <h1 onclick="showHome()">H Luxury</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" id="nav-home" class="active" onclick="showHome()">Maison</a></li>
+                <li><a href="#" id="nav-femme" onclick="filterCategory('femme')">Femme</a></li>
+                <li><a href="#" id="nav-homme" onclick="filterCategory('homme')">Homme</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Rechercher un modèle..." onkeyup="handleSearch()">
+            </div>
+            <div class="cart-icon-wrapper" onclick="toggleCart(true)">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <div class="cart-count" id="cart-count">0</div>
+            </div>
+        </div>
+    </header>
+
+    <div id="hero-section" class="hero-banner">
+        <video autoplay loop muted playsinline id="hero-video-file" onerror="this.style.display='none'">
+            <source src="banniere.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>L'Art du Mouvement</h2>
+            <p>Collections de Souliers & Maroquinerie d'Exception</p>
+            <button class="btn-luxury" onclick="filterCategory('femme')">Explorer la Ligne</button>
+        </div>
+    </div>
+
+    <main class="container">
+        <div id="collections-section">
+            <h2 class="section-title">Les Univers</h2>
+            <div class="collections-grid">
+                <div class="collection-card" onclick="filterCategory('femme')">
+                    <img src="collection-femme.jpg" alt="Femme">
+                    <div class="collection-overlay">
+                        <h3>Ligne Féminine</h3>
+                        <p>Découvrir</p>
+                    </div>
+                </div>
+                <div class="collection-card" onclick="filterCategory('homme')">
+                    <img src="collection-homme.jpg" alt="Homme">
+                    <div class="collection-overlay">
+                        <h3>Ligne Masculine</h3>
+                        <p>Découvrir</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title" id="page-dynamic-title">Les Modèles Phares</h2>
+        <div class="products-grid" id="products-container"></div>
+    </main>
+
+    <!-- POP-UP COMMUNE POUR LES TEXTES LÉGAUX -->
+    <div class="modal" id="legal-modal" onclick="closeLegalModalOnBackdrop(event)">
+        <div class="modal-content" style="max-width:600px; display:block;">
+            <div class="modal-close" onclick="toggleLegalModal(false)">&times;</div>
+            <h3 id="legal-modal-title" style="text-transform:uppercase; font-weight:300; margin-bottom:20px; font-size:16px; letter-spacing:2px;"></h3>
+            <div class="legal-box" id="legal-modal-body"></div>
+        </div>
+    </div>
+
+    <!-- MODALE PRODUIT -->
+    <div class="modal" id="product-modal" onclick="closeModalOnBackdrop(event)">
+        <div class="modal-content">
+            <div class="modal-close" onclick="toggleModal(false)">&times;</div>
+            <div class="modal-left">
+                <img id="modal-img" src="">
+            </div>
+            <div class="modal-right">
+                <h3 id="modal-title" style="font-size:15px; font-weight:400; text-transform:uppercase; margin-bottom:15px;"></h3>
+                <div style="margin-bottom:20px;">
+                    <span class="old-price" id="modal-old-price" style="font-size:14px;"></span>
+                    <span class="current-price" id="modal-current-price" style="font-size:16px;"></span>
+                </div>
+                <label style="font-size:10px; text-transform:uppercase; margin-bottom:8px; display:block; color:#666;">Sélectionner votre Pointure</label>
+                <select id="modal-size"></select>
+                <button class="btn-checkout" onclick="addToCartFromModal()">Ajouter au sac de shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PANIER -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:40px; border-bottom:1px solid var(--border-color); padding-bottom:15px;">
+            <h3 style="font-weight:300; text-transform:uppercase; font-size:14px; letter-spacing:2px;">Votre Sélection</h3>
+            <span style="cursor:pointer; font-size:22px;" onclick="toggleCart(false)">&times;</span>
+        </div>
+        <div class="cart-items" id="cart-items-container"></div>
+        <div style="border-top:1px solid var(--border-color); padding-top:20px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:25px; font-size:14px;">
+                <span style="font-weight:300;">Estimation du total</span>
+                <span id="cart-total-amount" style="font-weight:400;">0.00 €</span>
+            </div>
+            <button class="btn-checkout" onclick="processCheckout()">Finaliser la commande</button>
+        </div>
+    </div>
+
+    <!-- FOOTER INSTITUTIONNEL -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Service Client</h4>
+                <ul>
+                    <li><a href="#" onclick="openLegal('contact')">Nous Contacter</a></li>
+                    <li><a href="#" onclick="openLegal('livraison')">Livraison & Retours</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>La Maison</h4>
+                <ul>
+                    <li><a href="#" onclick="openLegal('mentions')">Mentions Légales</a></li>
+                    <li><a href="#" onclick="openLegal('cgv')">Conditions Générales de Vente</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Confidentialité</h4>
+                <ul>
+                    <li><a href="#" onclick="openLegal('privacy')">Gestion des Données</a></li>
+                    <li><a href="#" onclick="openLegal('cookies')">Utilisation des Cookies</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Officiel</h4>
+                <p style="line-height:1.6; color:#666;">Pour toute demande institutionnelle ou relative à vos commandes : <br><strong>hluxury34000@gmail.com</strong></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 H LUXURY Maison de Haute Création. Tous droits réservés.</p>
+            <p style="letter-spacing:3px;">PARIS — MILAN — LONDRES</p>
+        </div>
+    </footer>
+
+    <script>
+        // LE CATALOGUE INTEGRAL DES 54 PRODUITS RESTAURÉ SANS EXCEPTION
+        const products = [
+            // 1 À 5 : BEST-SELLERS ACCUEIL
+            { id: 1, name: "Mule Chypre Cuir Togo Marron", price: 60.00, oldPrice: 66.00, img: "top-marron.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
+            { id: 2, name: "Mule Chypre Blanc Pur Nappa", price: 60.00, oldPrice: 66.00, img: "top-blanc.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
+            { id: 3, name: "Mule Chypre Suede Vert Émeraude", price: 75.00, oldPrice: 83.50, img: "top-emeraude.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
+            { id: 4, name: "Mule Chypre Homme Noir Mat", price: 75.00, oldPrice: 83.50, img: "top-noir.jpg", cat: "homme", bestSeller: true, sizes: [40,41,42,43,44,45] },
+            { id: 5, name: "Mule Chypre Homme Vert Kaki", price: 75.00, oldPrice: 83.50, img: "top-kaki.jpg", cat: "homme", bestSeller: true, sizes: [40,41,42,43,44,45] },
+            
+            // 6 À 15 : GAMME CHYPRE CLASSIQUE FEMME
+            { id: 6, name: "Mule Chypre Rose Pastel Smooth", price: 60.00, oldPrice: 66.00, img: "chypre-rose.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 7, name: "Mule Chypre Vert Menthe Doux", price: 60.00, oldPrice: 66.00, img: "chypre-vert-menthe.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 8, name: "Mule Chypre Jaune Citron Foncé", price: 60.00, oldPrice: 66.00, img: "chypre-jaune.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 9, name: "Mule Chypre Orange Signature", price: 60.00, oldPrice: 66.00, img: "chypre-orange.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 10, name: "Mule Chypre Beige Taupe Classique", price: 60.00, oldPrice: 66.00, img: "chypre-beige.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 11, name: "Mule Chypre Gris Perle Urbain", price: 60.00, oldPrice: 66.00, img: "chypre-gris.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 12, name: "Mule Chypre Bordeaux Profond Vintage", price: 60.00, oldPrice: 66.00, img: "chypre-bordeaux.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 13, name: "Mule Chypre Bleu Turquoise Lagon", price: 60.00, oldPrice: 66.00, img: "chypre-turquoise.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 14, name: "Mule Chypre Rouge Carmin Lumineux", price: 60.00, oldPrice: 66.00, img: "chypre-rouge.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 15, name: "Mule Chypre Bleu Marine Profond", price: 60.00, oldPrice: 66.00, img: "chypre-bleu-marine.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            
+            // 16 À 25 : GAMME LUXE & MATIÈRES FEMME
+            { id: 16, name: "Mule Chypre Strass Onyx Édition Nuit", price: 75.00, oldPrice: 83.50, img: "chypre-strass-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 17, name: "Mule Chypre Strass Diamant Cristal", price: 75.00, oldPrice: 83.50, img: "chypre-strass-argent.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 18, name: "Mule Chypre Strass Ambre & Or", price: 75.00, oldPrice: 83.50, img: "chypre-strass-or.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 19, name: "Mule Chypre Strass Saphir Bleu Rose", price: 75.00, oldPrice: 83.50, img: "chypre-strass-rose.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 20, name: "Mule Toile Denim Jean délavé", price: 75.00, oldPrice: 83.50, img: "chypre-jean-denim.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 21, name: "Mule Satin de Soie Fuchsia", price: 75.00, oldPrice: 83.50, img: "chypre-satin-fuchsia.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 22, name: "Mule Toile Canevas & Broderies Or", price: 75.00, oldPrice: 83.50, img: "chypre-brode-or.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 23, name: "Mule Toile Monogramme Multi", price: 75.00, oldPrice: 83.50, img: "chypre-monogramme.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 24, name: "Mule Édition Mouton Miel", price: 75.00, oldPrice: 83.50, img: "chypre-mouton-miel.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 25, name: "Mule Mouton Retourné Noir Rose", price: 75.00, oldPrice: 83.50, img: "chypre-mouton-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            
+            // 26 À 37 : TALONS, COMPENSÉES & MULES ORAN FEMME
+            { id: 26, name: "Sandale à Talon Haut Cuir Noir Ébène", price: 75.00, oldPrice: 83.50, img: "mule-talon-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40] },
+            { id: 27, name: "Sandale à Talon Haut Daim Beige Sable", price: 75.00, oldPrice: 83.50, img: "mule-talon-beige.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40] },
+            { id: 28, name: "Sandale à Talon Haut Blanc Crème Satin", price: 75.00, oldPrice: 83.50, img: "mule-talon-blanc.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40] },
+            { id: 29, name: "Sandale à Talon Haut Rose Fuchsia Party", price: 75.00, oldPrice: 83.50, img: "mule-talon-rose.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40] },
+            { id: 30, name: "Sandale Compensée Premium Marron Cuir", price: 75.00, oldPrice: 83.50, img: "sandale-compensee-marron.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 31, name: "Sandale Compensée Premium Blanc Coton", price: 75.00, oldPrice: 83.50, img: "sandale-compensee-blanc.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 32, name: "Sandale Compensée Premium Noir Profond", price: 75.00, oldPrice: 83.50, img: "sandale-compensee-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 33, name: "Sandale fine à Double Boucle Argentée", price: 75.00, oldPrice: 83.50, img: "sandale-bride-argent.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 34, name: "Sandale fine à Double Boucle Noire Or", price: 75.00, oldPrice: 83.50, img: "sandale-bride-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 35, name: "Mule Plate Oran Cuir Box Tan Mythique", price: 60.00, oldPrice: 66.00, img: "oran-tan.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 36, name: "Mule Plate Oran All Black Noir Intense", price: 60.00, oldPrice: 66.00, img: "oran-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 37, name: "Mule Plate Oran Blanc Optique Pur", price: 60.00, oldPrice: 66.00, img: "oran-blanc.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            
+            // 38 À 47 : LA COLLECTION HOMME COMPLETE
+            { id: 38, name: "Mule Chypre Homme Bleu Marine Sport", price: 60.00, oldPrice: 66.00, img: "chypre-homme-bleu.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            { id: 39, name: "Mule Chypre Homme Cuir Togo Chocolat", price: 60.00, oldPrice: 66.00, img: "chypre-homme-chocolat.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            { id: 40, name: "Mule Chypre Homme Blanc Fauve Riviera", price: 60.00, oldPrice: 66.00, img: "chypre-homme-blanc.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            { id: 41, name: "Mule Chypre Homme Gris Taupe Suede", price: 75.00, oldPrice: 83.50, img: "chypre-homme-gris.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            { id: 42, name: "Mule Chypre Homme Orange Fluo Sunset", price: 60.00, oldPrice: 66.00, img: "chypre-homme-orange.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            { id: 43, name: "Mule Chypre Homme Rouge Arizona Suede", price: 75.00, oldPrice: 83.50, img: "chypre-homme-rouge.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            { id: 44, name: "Mule Chypre Homme Jaune Moutarde Togo", price: 60.00, oldPrice: 66.00, img: "chypre-homme-jaune.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            { id: 45, name: "Mule Chypre Homme Camel Gold Héritage", price: 60.00, oldPrice: 66.00, img: "chypre-homme-camel.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            { id: 46, name: "Mule Homme Crossover Noir Sport", price: 75.00, oldPrice: 83.50, img: "crossover-homme-noir.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            { id: 47, name: "Mule Homme Crossover Marron Chic", price: 75.00, oldPrice: 83.50, img: "crossover-homme-marron.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            
+            // 48 À 54 : DÉCLINAISONS MIXTES DE COMPLÉMENT (HARMONISATION CATALOGUE)
+            { id: 48, name: "Mule Sélection Mixte All-White Premium", price: 60.00, oldPrice: 66.00, img: "mixte-white.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41,42,43] },
+            { id: 49, name: "Mule Sélection Mixte All-Black Premium", price: 60.00, oldPrice: 66.00, img: "mixte-black.jpg", cat: "homme", bestSeller: false, sizes: [39,40,41,42,43,44,45] },
+            { id: 50, name: "Mule Chypre Suede Marron Écorce", price: 75.00, oldPrice: 83.50, img: "mixte-suede-marron.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 51, name: "Mule Chypre Suede Crème Riviera", price: 75.00, oldPrice: 83.50, img: "mixte-suede-creme.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 52, name: "Mule Sélection Oran Cuir Gold Éclat", price: 60.00, oldPrice: 66.00, img: "mixte-oran-gold.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 53, name: "Mule Grand Style Croco-Print Édition", price: 75.00, oldPrice: 83.50, img: "mixte-croco.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            { id: 54, name: "Mule Grand Style Python-Glow Édition", price: 75.00, oldPrice: 83.50, img: "mixte-python.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] }
+        ];
+
+        let cart = [];
+        let currentProductId = null;
+
+        function displayProducts(items) {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
+            items.forEach(p => {
+                container.innerHTML += `
+                    <div class="product-card">
+                        <div class="badge-promo">Sélection</div>
+                        <div class="product-img-container" onclick="openProductModal(${p.id})">
+                            <img src="${p.img}" alt="${p.name}" onerror="this.src='placeholder.jpg'">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-title" onclick="openProductModal(${p.id})">${p.name}</h3>
+                            <div class="product-price-box">
+                                <span class="old-price">${p.oldPrice.toFixed(2)} €</span>
+                                <span class="current-price">${p.price.toFixed(2)} €</span>
+                            </div>
+                            <button class="btn-buy-direct" onclick="openProductModal(${p.id})">Acheter</button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        function showHome() {
+            document.getElementById('hero-section').style.display = 'flex';
+            document.getElementById('collections-section').style.display = 'block';
+            document.getElementById('page-dynamic-title').innerText = "Les Modèles Phares";
+            const bestSellers = products.filter(p => p.bestSeller === true);
+            displayProducts(bestSellers);
+            document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active'));
+            document.getElementById('nav-home').classList.add('active');
+        }
+
+        function filterCategory(cat) {
+            document.getElementById('hero-section').style.display = 'none';
+            document.getElementById('collections-section').style.display = 'none';
+            document.getElementById('page-dynamic-title').innerText = cat === 'femme' ? "Univers Féminin" : "Univers Masculin";
+            const filtered = products.filter(p => p.cat === cat);
+            displayProducts(filtered);
+            document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active'));
+            document.getElementById(`nav-${cat}`).classList.add('active');
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            if(query.length > 0) {
+                document.getElementById('hero-section').style.display = 'none';
+                document.getElementById('collections-section').style.display = 'none';
+                document.getElementById('page-dynamic-title').innerText = "Résultats de recherche";
+                const searched = products.filter(p => p.name.toLowerCase().includes(query));
+                displayProducts(searched);
+            } else {
+                showHome();
+            }
+        }
+
+        function openProductModal(id) {
+            const p = products.find(prod => prod.id === id);
+            currentProductId = id;
+            document.getElementById('modal-img').src = p.img;
+            document.getElementById('modal-title').innerText = p.name;
+            document.getElementById('modal-old-price').innerText = `${p.oldPrice.toFixed(2)} €`;
+            document.getElementById('modal-current-price').innerText = `${p.price.toFixed(2)} €`;
+            const selectSize = document.getElementById('modal-size');
+            selectSize.innerHTML = '';
+            p.sizes.forEach(size => {
+                selectSize.innerHTML += `<option value="${size}">Pointure : ${size}</option>`;
+            });
+            toggleModal(true);
+        }
+
+        function toggleModal(show) { document.getElementById('product-modal').classList.toggle('active', show); }
+        function closeModalOnBackdrop(e) { if(e.target.id === 'product-modal') toggleModal(false); }
+        function toggleCart(show) { document.getElementById('cart-sidebar').classList.toggle('active', show); }
+
+        function addToCartFromModal() {
+            const p = products.find(prod => prod.id === currentProductId);
+            const size = document.getElementById('modal-size').value;
+            cart.push({ ...p, selectedSize: size });
+            updateCartUI();
+            toggleModal(false);
+            toggleCart(true);
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.img}">
+                        <div style="flex:1; text-align:left;">
+                            <h4 style="font-size:11px; text-transform:uppercase; font-weight:400;">${item.name}</h4>
+                            <p style="font-size:11px; color:#777; margin-top:2px;">Taille : ${item.selectedSize}</p>
+                            <p style="font-weight:400; font-size:12px; margin-top:4px;">${item.price.toFixed(2)} €</p>
+                        </div>
+                        <span style="cursor:pointer; font-size:18px;" onclick="cart.splice(${index},1); updateCartUI();">&times;</span>
+                    </div>
+                `;
+            });
+            document.getElementById('cart-total-amount').innerText = `${total.toFixed(2)} €`;
+        }
+
+        function processCheckout() {
+            if(cart.length === 0) return alert("Votre sélection est vide.");
+            window.location.href = "https://buy.stripe.com/votre_lien_unique_ici";
+        }
+
+        // TEXTES INSTITUTIONNELS COMPLETÉS
+        function openLegal(type) {
+            const title = document.getElementById('legal-modal-title');
+            const body = document.getElementById('legal-modal-body');
+            
+            if(type === 'mentions') {
+                title.innerText = "Mentions Légales";
+                body.innerHTML = `
+                    <h5>Éditeur de la Plateforme</h5><p>Maison H LUXURY E-Commerce Inc. Siège social : Avenue des Champs-Élysées, 75008 Paris.</p>
+                    <h5>Hébergement</h5><p>Ce site web est propulsé de manière autonome via serveurs chiffrés locaux.</p>
+                    <h5>Propriété Intellectuelle</h5><p>L’ensemble des visuels, concepts textuels et arborescences de la marque H LUXURY sont protégés par le droit d'auteur mondial.</p>
+                `;
+            } else if(type === 'cgv') {
+                title.innerText = "Conditions Générales de Vente";
+                body.innerHTML = `
+                    <h5>1. Portée des conditions</h5><p>Les présentes CGV s'appliquent à toutes les ventes conclues sur le catalogue de la Maison H LUXURY.</p>
+                    <h5>2. Prix & Transaction</h5><p>Les prix affichés intègrent les ajustements exclusifs de nos ateliers. Le règlement s'effectue via l'interface hautement sécurisée Stripe.</p>
+                    <h5>3. Réserve de propriété</h5><p>Les articles demeurent la propriété de H LUXURY jusqu'au parfait encaissement de la commande.</p>
+                `;
+            } else if(type === 'contact') {
+                title.innerText = "Maison H Luxury — Nous Contacter";
+                body.innerHTML = `
+                    <p style='margin-bottom:15px;'>Nos conseillers de la Maison sont à votre entière disposition pour vous guider dans vos acquisitions.</p>
+                    <h5>Par Courrier Électronique (Prioritaire)</h5>
+                    <p style='font-size:15px; color:var(--accent-color); font-weight:400; margin-top:5px;'>hluxury34000@gmail.com</p>
+                    <p style='margin-top:15px; font-size:11px; color:#777;'>Délai moyen de réponse : Moins de 12 heures.</p>
+                `;
+            } else if(type === 'livraison') {
+                title.innerText = "Expéditions & Retours d'Exceptions";
+                body.innerHTML = `
+                    <h5>Délais de Livraison</h5><p>Toutes nos pièces de maroquinerie et souliers sont expédiés sous pli sécurisé discret avec suivi en temps réel sous 2 à 4 jours ouvrés.</p>
+                    <h5>Politique de Retour</h5><p>Vous disposez d'un droit de retour de 14 jours à compter de la réception de votre colis. Les articles doivent être retournés non portés, dans leur boîte d'origine intacte.</p>
+                `;
+            } else if(type === 'privacy') {
+                title.innerText = "Politique de Confidentialité";
+                body.innerHTML = `
+                    <h5>Collecte des données</h5><p>Les informations collectées lors de votre passage au panier (Nom, adresse, e-mail) servent exclusivement au traitement et au bon acheminement de vos pièces.</p>
+                    <h5>Sécurité</h5><p>Aucune coordonnée bancaire ne transite ni n'est stockée sur nos serveurs.</p>
+                `;
+            } else if(type === 'cookies') {
+                title.innerText = "Utilisation des Cookies";
+                body.innerHTML = `<p>Nous utilisons uniquement des cookies de session essentiels pour mémoriser les articles de votre panier d'achat et garantir la fluidité de votre expérience de navigation.</p>`;
+            }
+            toggleLegalModal(true);
+        }
+
+        function toggleLegalModal(show) { document.getElementById('legal-modal').classList.toggle('active', show); }
+        function closeLegalModalOnBackdrop(e) { if(e.target.id === 'legal-modal') toggleLegalModal(false); }
+
+        window.onload = () => { showHome(); };
+    </script>
+</body>
+</html>
