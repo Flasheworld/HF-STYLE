@@ -490,29 +490,148 @@
         .modal-content { 
             background: #fff; 
             width: 92%; 
-            max-width: 780px; 
+            max-width: 840px; 
             display: grid; 
-            grid-template-columns: 1fr 1fr; 
+            grid-template-columns: 1.1fr 0.9fr; 
             position: relative; 
             padding: 30px; 
             border-radius: 8px; 
             color: #000; 
+            gap: 20px;
         }
-        @media(max-width: 640px) {
-            .modal-content { grid-template-columns: 1fr; }
-            .modal-left { display: none; }
+        @media(max-width: 768px) {
+            .modal-content { grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; }
         }
         
         .modal-close { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #aaa; z-index: 10; transition: color 0.2s; }
         .modal-close:hover { color: #000; }
-        .modal-left img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
-        .modal-right { padding: 15px 5px 5px 25px; display: flex; flex-direction: column; justify-content: center; }
+        .modal-left { display: flex; align-items: center; justify-content: center; background: #fbfbfb; border-radius: 6px; padding: 10px; }
+        .modal-left img { width: 100%; height: auto; max-height: 400px; object-fit: contain; border-radius: 6px; }
+        .modal-right { padding: 10px; display: flex; flex-direction: column; justify-content: flex-start; }
         
-        select, .input-field { width: 100%; padding: 14px; border: 1px solid #ddd; background: #fff; margin-bottom: 15px; font-size: 13px; border-radius: 4px; outline: none; }
+        select, .input-field { width: 100%; padding: 12px; border: 1px solid #ddd; background: #fff; margin-bottom: 15px; font-size: 14px; border-radius: 4px; outline: none; }
         select:focus, .input-field:focus { border-color: #000; }
         
-        .btn-add-cart, .btn-action { width: 100%; background: #000; color: #fff; border: none; padding: 16px; text-transform: uppercase; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 4px; letter-spacing: 1px; transition: background 0.2s; }
-        .btn-add-cart:hover, .btn-action:hover { background: #222; }
+        /* Rendu Inspiré de la Capture d'écran */
+        .promo-badge {
+            background-color: #e62c44;
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 3px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 5px;
+        }
+        
+        .live-cart-badge {
+            background-color: #f3a3b9;
+            color: #ffffff;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 10px 15px;
+            border-radius: 20px;
+            margin-bottom: 18px;
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .quantity-selector {
+            display: inline-flex;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            background: #fff;
+            width: 120px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .quantity-selector button {
+            background: none;
+            border: none;
+            width: 35px;
+            height: 38px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+        
+        .quantity-selector span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .btn-add-cart { 
+            width: 100%; 
+            background: #000; 
+            color: #fff; 
+            border: none; 
+            padding: 15px; 
+            text-transform: uppercase; 
+            font-size: 13px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            border-radius: 4px; 
+            letter-spacing: 1px; 
+            transition: background 0.2s;
+            margin-bottom: 10px;
+        }
+        .btn-add-cart:hover { background: #222; }
+        
+        .btn-shop-pay {
+            width: 100%;
+            background: #5a31f4;
+            color: #fff;
+            border: none;
+            padding: 15px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 12px;
+            transition: opacity 0.2s;
+        }
+        .btn-shop-pay:hover { opacity: 0.9; }
+        
+        .payment-icons-box {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        
+        .payment-logo-badge {
+            font-size: 9px;
+            font-weight: bold;
+            padding: 4px 7px;
+            border-radius: 3px;
+            background: #f4f4f4;
+            color: #444;
+            border: 1px solid #e2e2e2;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .trust-footer-mention {
+            font-size: 11px;
+            color: #666;
+            text-align: center;
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
 
         /* Panier Latéral Coulissant */
         .cart-sidebar {
@@ -714,7 +833,7 @@
         </div>
     </div>
 
-    <!-- Modale Fiche Produit Express Mis à Jour (Taille + Couleur) -->
+    <!-- Modale Fiche Express Alignée sur Capture d’écran 2026-06-15 000212.jpg -->
     <div class="modal" id="product-modal" onclick="closeModalOnBackdrop(event)">
         <div class="modal-content">
             <div class="modal-close" onclick="toggleModal(false)">&times;</div>
@@ -722,19 +841,47 @@
                 <img id="modal-img" src="">
             </div>
             <div class="modal-right">
-                <h3 id="modal-title" style="font-size:18px; font-weight:600; margin-bottom:14px; letter-spacing:0.5px;"></h3>
-                <div style="margin-bottom:20px;">
-                    <span class="current-price" id="modal-current-price" style="font-size:22px; font-weight:700;"></span>
-                    <span class="old-price" id="modal-old-price" style="font-size:16px;"></span>
+                <h3 id="modal-title" style="font-size:22px; font-weight:500; margin-bottom:12px; color:#111;"></h3>
+                
+                <div style="margin-bottom:15px; display:flex; align-items:center; flex-wrap:wrap;">
+                    <span class="current-price" id="modal-current-price" style="font-size:18px; font-weight:600; color:var(--price-red);"></span>
+                    <span class="old-price" id="modal-old-price" style="font-size:15px; margin-right:5px;"></span>
+                    <div id="modal-promo-badge" class="promo-badge"></div>
                 </div>
                 
-                <label style="font-size:11px; text-transform:uppercase; color:#555; margin-bottom:6px; display:block; font-weight:600; letter-spacing:0.5px;">Sélectionner votre taille :</label>
-                <select id="modal-size"></select>
-
-                <label style="font-size:11px; text-transform:uppercase; color:#555; margin-bottom:6px; display:block; font-weight:600; letter-spacing:0.5px;">Teinte disponible :</label>
-                <select id="modal-color"></select>
+                <!-- Jauge Urgence Ventes -->
+                <div class="live-cart-badge">
+                    🔥 15 ajouts au panier récents
+                </div>
                 
-                <button class="btn-add-cart" onclick="addToCartFromModal()">Ajouter au panier d'achat</button>
+                <label style="font-size:12px; text-transform:capitalize; color:#222; margin-bottom:6px; display:block; font-weight:500;">Taille</label>
+                <select id="modal-size" style="margin-bottom:15px;"></select>
+
+                <label style="font-size:12px; text-transform:capitalize; color:#222; margin-bottom:6px; display:block; font-weight:500;">Quantité</label>
+                <div class="quantity-selector">
+                    <button type="button" onclick="changeQuantity(-1)">-</button>
+                    <span id="product-qty">1</span>
+                    <button type="button" onclick="changeQuantity(1)">+</button>
+                </div>
+                
+                <button class="btn-add-cart" onclick="addToCartFromModal()">AJOUTER AU PANIER</button>
+                <button class="btn-shop-pay" onclick="processCheckout()">Acheter avec <span>shop</span></button>
+                
+                <div style="text-align:center; font-size:11px; text-decoration:underline; color:#666; cursor:pointer; margin-bottom:10px;">Plus de moyens de paiement</div>
+                
+                <!-- Logos de Paiement (Mis à jour sans Amex ni Klarna) -->
+                <div class="payment-icons-box">
+                    <div class="payment-logo-badge">Apple Pay</div>
+                    <div class="payment-logo-badge">CB</div>
+                    <div class="payment-logo-badge">Mastercard</div>
+                    <div class="payment-logo-badge">Shop Pay</div>
+                    <div class="payment-logo-badge">Visa</div>
+                </div>
+                
+                <!-- Ligne de Réassurance 100% Sécurisé -->
+                <div class="trust-footer-mention">
+                    <span style="font-size:12px;">🔒</span> Paiement 100% sécurisé • Qualité d'exception
+                </div>
             </div>
         </div>
     </div>
@@ -829,7 +976,7 @@
             { id: 33, name: "Sandales Oasis - Blanc Éclat", price: 79.90, oldPrice: 120.00, img: "oasis-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41], colors: ["Blanc Éclat"] },
             { id: 34, name: "Sandales Oran - Vert Menthe", price: 64.90, oldPrice: 120.00, img: "oran-vert-pauvre.jpg", cat: "femme", sizes: [36,37,38,39,40,41], colors: ["Vert Menthe"] },
             { id: 35, name: "Sandales Oran - Argent Chromé", price: 64.90, oldPrice: 120.00, img: "oran-argent.jpg", cat: "femme", sizes: [36,37,38,39,40,41], colors: ["Argent Chromé"] },
-            { id: 36, name: "Sandales Empire - Blanc Signature", price: 79.90, oldPrice: 150.00, img: "empire-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41], colors: ["Blanc Signature"] },
+            { id: 36, name: "Sandales Empire - Blanc Signature", price: 79.90, oldPrice: 150.00, img: "empire-blanc.jpg", cat: "femme", sizes: [35,36,37,38,39,40,41], colors: ["Blanc Signature"] },
             { id: 37, name: "Sandales Empire - Noir Signature", price: 79.90, oldPrice: 150.00, img: "empire-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41], colors: ["Noir Signature"] },
             { id: 38, name: "Sandales Empire - Noir Porcelaine", price: 79.90, oldPrice: 150.00, img: "empire-noir-porcelaine.jpg", cat: "femme", sizes: [36,37,38,39,40,41], colors: ["Noir Porcelaine"] },
             { id: 39, name: "Sandales Oasis - Bleu Intense", price: 79.90, oldPrice: 120.00, img: "oasis-bleu.jpg", cat: "femme", sizes: [36,37,38,39,40,41], colors: ["Bleu Intense"] },
@@ -865,6 +1012,7 @@
         let cart = [];
         let currentProductId = null;
         let currentCategory = 'home'; 
+        let currentQuantity = 1;
 
         function acceptCookies() { document.getElementById('cookie-popup').style.display = 'none'; }
         function refuseCookies() { window.location.href = "https://www.google.com"; }
@@ -964,24 +1112,39 @@
         function openProductModal(id) {
             const p = products.find(prod => prod.id === id);
             currentProductId = id;
+            currentQuantity = 1;
+            document.getElementById('product-qty').innerText = currentQuantity;
+            
             document.getElementById('modal-img').src = p.img;
             document.getElementById('modal-title').innerText = p.name;
             document.getElementById('modal-current-price').innerText = `${p.price.toFixed(2)} €`;
-            document.getElementById('modal-old-price').innerText = p.oldPrice > 0 ? `${p.oldPrice.toFixed(2)} €` : '';
+            
+            const badgeElement = document.getElementById('modal-promo-badge');
+            if (p.oldPrice > 0) {
+                document.getElementById('modal-old-price').style.display = 'inline';
+                document.getElementById('modal-old-price').innerText = `${p.oldPrice.toFixed(2)} €`;
+                
+                const percentSaved = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);
+                badgeElement.style.display = 'inline-flex';
+                badgeElement.innerHTML = `🏷️ Économisez ${percentSaved}%`;
+            } else {
+                document.getElementById('modal-old-price').style.display = 'none';
+                badgeElement.style.display = 'none';
+            }
             
             const selectSize = document.getElementById('modal-size');
             selectSize.innerHTML = '';
             p.sizes.forEach(size => {
-                selectSize.innerHTML += `<option value="${size}">Pointure : ${size}</option>`;
-            });
-
-            const selectColor = document.getElementById('modal-color');
-            selectColor.innerHTML = '';
-            p.colors.forEach(col => {
-                selectColor.innerHTML += `<option value="${col}">${col}</option>`;
+                selectSize.innerHTML += `<option value="${size}">${size}</option>`;
             });
 
             toggleModal(true);
+        }
+
+        function changeQuantity(amount) {
+            currentQuantity += amount;
+            if(currentQuantity < 1) currentQuantity = 1;
+            document.getElementById('product-qty').innerText = currentQuantity;
         }
 
         function toggleModal(show) { document.getElementById('product-modal').classList.toggle('active', show); }
@@ -991,8 +1154,10 @@
         function addToCartFromModal() {
             const p = products.find(prod => prod.id === currentProductId);
             const size = document.getElementById('modal-size').value;
-            const color = document.getElementById('modal-color').value;
-            cart.push({ ...p, selectedSize: size, selectedColor: color });
+            
+            for(let i = 0; i < currentQuantity; i++) {
+                cart.push({ ...p, selectedSize: size, selectedColor: p.colors[0] });
+            }
             
             updateCartUI();
             toggleModal(false);
@@ -1014,7 +1179,7 @@
                         <img src="${item.itemImg || item.img}">
                         <div style="flex:1;">
                             <h4 style="font-size:12px; font-weight:600;">${item.name}</h4>
-                            <p style="font-size:11px; color:#888; margin: 2px 0;">Taille: ${item.selectedSize} | Teinte: ${item.selectedColor}</p>
+                            <p style="font-size:11px; color:#888; margin: 2px 0;">Taille: ${item.selectedSize}</p>
                             <p style="font-weight:600; color:var(--price-red); font-size:13px;">${item.price.toFixed(2)} €</p>
                         </div>
                         <span style="cursor:pointer; font-size:24px; color:#bbb;" onclick="cart.splice(${index},1); updateCartUI();">&times;</span>
@@ -1025,7 +1190,7 @@
         }
 
         function processCheckout() {
-            if(cart.length === 0) { alert("Votre panier d'achat est vide."); return; }
+            if(cart.length === 0 && currentProductId === null) { alert("Votre panier d'achat est vide."); return; }
             window.location.href = "https://buy.stripe.com/votre_lien_unique_ici";
         }
 
@@ -1048,7 +1213,7 @@
             `,
             mentions: `
                 <h5>1. Édition du Site</h5>
-                <p>Le présent site accessible à l'adresse hluxury.com est édité par la Maison H LUXURY E-Commerce Inc., immatriculée au Registre du Commerce et des Sociétés (RCS) de Montpellier.</p>
+                <p>Le présent site accessible à l'adresse hluxury.com est édité par la Maison H LUXURY E-Commerce Inc., immatriculée au Registre du Commerce et des Schuys (RCS) de Montpellier.</p>
                 <p><b>Direction de la publication :</b> Direction H LUXURY Studio.</p>
                 <h5>2. Hébergement</h5>
                 <p>Le site est hébergé de manière sécurisée sur des infrastructures conformes aux normes européennes d'intégrité numérique.</p>
@@ -1073,7 +1238,7 @@
             `,
             cookies: `
                 <h5>Gestion des Cookies</h5>
-                <p>Notre plateforme utilise exclusivement des traceurs techniques d'infrastructure dits "strictement nécessaires". Ils permettent d'enregistrer l'état de votre panier, de mémoriser vos choix de tailles et d'assurer le maintien sécurisé de votre session de navigation.</p>
+                <p>Notre plateforme utilise exclusivement des traceurs techniques d'infrastructure d'intérêt public dits "strictement nécessaires". Ils permettent d'enregistrer l'état de votre panier, de mémoriser vos choix de tailles et d'assurer le maintien sécurisé de votre session de navigation.</p>
                 <p>Aucun cookie publicitaire tiers n'est implanté à votre insu. Vous pouvez configurer ou bloquer ces cookies à tout moment via les réglages de votre navigateur web.</p>
             `
         };
