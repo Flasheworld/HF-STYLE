@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H LUXURY — Haute Maroquinerie & Souliers</title>
     
-    <!-- Favicon : Style Épuré Identitaire -->
+    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-family=%22serif%22 font-size=%2280%22 fill=%22%23000000%22 font-weight=%22bold%22>H</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -211,7 +211,7 @@
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.3); /* Un peu plus sombre pour la lisibilité du texte */
+            background: rgba(0, 0, 0, 0.3);
             z-index: 2;
         }
 
@@ -465,10 +465,11 @@
         .modal-left img { width: 100%; height: 100%; object-fit: cover; border-radius: 6px; }
         .modal-right { padding: 15px 5px 5px 25px; display: flex; flex-direction: column; justify-content: center; }
         
-        select { width: 100%; padding: 14px; border: 1px solid #ddd; background: #fff; margin-bottom: 22px; font-size: 13px; border-radius: 4px; outline: none; }
-        select:focus { border-color: #000; }
-        .btn-add-cart { width: 100%; background: #000; color: #fff; border: none; padding: 16px; text-transform: uppercase; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 4px; letter-spacing: 1px; transition: background 0.2s; }
-        .btn-add-cart:hover { background: #222; }
+        select, .input-field { width: 100%; padding: 14px; border: 1px solid #ddd; background: #fff; margin-bottom: 22px; font-size: 13px; border-radius: 4px; outline: none; }
+        select:focus, .input-field:focus { border-color: #000; }
+        
+        .btn-add-cart, .btn-action { width: 100%; background: #000; color: #fff; border: none; padding: 16px; text-transform: uppercase; font-size: 13px; font-weight: 600; cursor: pointer; border-radius: 4px; letter-spacing: 1px; transition: background 0.2s; }
+        .btn-add-cart:hover, .btn-action:hover { background: #222; }
 
         /* Panier Latéral Coulissant */
         .cart-sidebar {
@@ -481,6 +482,22 @@
         .cart-items { flex: 1; overflow-y: auto; margin-bottom: 25px; padding-right: 5px; }
         .cart-item { display: flex; gap: 18px; margin-bottom: 22px; padding-bottom: 18px; border-bottom: 1px solid #eee; align-items: center; }
         .cart-item img { width: 70px; height: 70px; object-fit: cover; border-radius: 4px; background: #f9f9f9; }
+
+        /* Modale Cookies Bloquante */
+        .cookie-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 9999;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .cookie-box {
+            background: #fff; padding: 40px; max-width: 500px; width: 90%;
+            border-radius: 8px; text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+        .cookie-box h3 { font-family: 'Cinzel', serif; font-size: 22px; margin-bottom: 15px; letter-spacing: 1px; }
+        .cookie-box p { font-size: 13px; color: #555; line-height: 1.6; margin-bottom: 25px; }
+        .cookie-buttons { display: flex; gap: 15px; }
+        .btn-cookie-accept { flex: 1; background: #000; color: #fff; border: none; padding: 14px; font-weight: 600; text-transform: uppercase; font-size: 12px; cursor: pointer; border-radius: 4px; }
+        .btn-cookie-refuse { flex: 1; background: #fff; color: #000; border: 1px solid #000; padding: 14px; font-weight: 600; text-transform: uppercase; font-size: 12px; cursor: pointer; border-radius: 4px; }
 
         /* Pied de page */
         footer {
@@ -521,7 +538,19 @@
 </head>
 <body>
 
-    <!-- Top Banner Seuil Livraison -->
+    <!-- Barrière de validation des Cookies -->
+    <div class="cookie-overlay" id="cookie-popup">
+        <div class="cookie-box">
+            <h3>Respect de la vie privée</h3>
+            <p>Notre site de Haute Maroquinerie requiert l'acceptation des cookies de session pour gérer votre panier d'achat et sécuriser votre connexion.</p>
+            <div class="cookie-buttons">
+                <button class="btn-cookie-accept" onclick="acceptCookies()">ACCEPTER (Entrer)</button>
+                <button class="btn-cookie-refuse" onclick="refuseCookies()">REFUSER (Sortir)</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Top Banner -->
     <div class="top-bar">La livraison d'exception est offerte à partir de 100€ d'achat</div>
 
     <header>
@@ -544,7 +573,7 @@
             <div class="search-box">
                 <input type="text" id="search-input" placeholder="Rechercher un modèle..." onkeyup="handleSearch()">
             </div>
-            <button class="icon-btn">
+            <button class="icon-btn" onclick="toggleAuthModal(true)">
                 <svg width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </button>
             <button class="icon-btn" onclick="toggleCart(true)">
@@ -554,7 +583,7 @@
         </div>
     </header>
 
-    <!-- Bandeau Défilant Code Promo -->
+    <!-- Bandeau Défilant Animé -->
     <div class="marquee-container">
         <div class="marquee-content">
             <span>🔥 OFFRE EXCEPTIONNELLE DE SAISON</span>
@@ -565,7 +594,7 @@
         </div>
     </div>
 
-    <!-- Bannière Image Principale (Hero) -->
+    <!-- Hero Bannière -->
     <div id="hero-section" class="hero-banner">
         <img id="hero-main-img" src="" alt="Bannière Principale H Luxury" class="hero-bg-img">
         <div class="hero-overlay"></div>
@@ -576,10 +605,9 @@
         </div>
     </div>
 
-    <!-- Double Bloc Catalogue Placé Juste en Bas de la Bannière Hero -->
+    <!-- Double Bloc Catalogue -->
     <section class="catalogues-section" id="catalogues-section">
         <div class="catalogues-grid">
-            <!-- Catalogue Femme -->
             <div class="catalogue-banner-card" onclick="filterCategory('femme')">
                 <img id="catalogue-img-femme" src="" alt="Catalogue Femme" class="catalogue-banner-img">
                 <div class="catalogue-banner-overlay"></div>
@@ -588,7 +616,6 @@
                     <span>Découvrir la collection</span>
                 </div>
             </div>
-            <!-- Catalogue Homme -->
             <div class="catalogue-banner-card" onclick="filterCategory('homme')">
                 <img id="catalogue-img-homme" src="" alt="Catalogue Homme" class="catalogue-banner-img">
                 <div class="catalogue-banner-overlay"></div>
@@ -600,13 +627,30 @@
         </div>
     </section>
 
-    <!-- Conteneur de Grille Dynamique -->
+    <!-- Conteneur Catalogue -->
     <main class="container">
         <h2 class="section-title" id="page-dynamic-title">Les Créations Phares</h2>
         <div class="products-grid" id="products-container"></div>
     </main>
 
-    <!-- Modale Documents Légaux & Support -->
+    <!-- Modale Connexion / Espace Client -->
+    <div class="modal" id="auth-modal" onclick="closeAuthModalOnBackdrop(event)">
+        <div class="modal-content" style="max-width: 400px; display: block;">
+            <div class="modal-close" onclick="toggleAuthModal(false)">&times;</div>
+            <h3 style="font-family:'Cinzel', serif; font-size:18px; margin-bottom:20px; text-align:center;">Se connecter</h3>
+            <form onsubmit="handleLogin(event)">
+                <label style="font-size:11px; font-weight:600; text-transform:uppercase; display:block; margin-bottom:6px;">Adresse Email</label>
+                <input type="email" class="input-field" required placeholder="exemple@gmail.com">
+                
+                <label style="font-size:11px; font-weight:600; text-transform:uppercase; display:block; margin-bottom:6px;">Mot de passe</label>
+                <input type="password" class="input-field" required placeholder="••••••••">
+                
+                <button type="submit" class="btn-action">Se connecter</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modale Documents Légaux -->
     <div class="modal" id="legal-modal" onclick="closeLegalModalOnBackdrop(event)">
         <div class="modal-content" style="max-width:680px; display:block;">
             <div class="modal-close" onclick="toggleLegalModal(false)">&times;</div>
@@ -651,7 +695,7 @@
         </div>
     </div>
 
-    <!-- Pied de Page Complet -->
+    <!-- Pied de Page -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -685,18 +729,17 @@
         </div>
     </footer>
 
-    <!-- Script JavaScript Applicatif -->
+    <!-- Script JavaScript -->
     <script>
-        // CONFIGURATION DES BANNIÈRES (Modifie tes liens ici simplement !)
+        // CONFIGURATION DES BANNIÈRES
         const BANNER_CONFIG = {
-            imageHero: "banniere.jpg",         // C'est ici ! Tu peux mettre "banniere.png" si besoin
+            imageHero: "banniere.jpg",
             imageCatalogueFemme: "LIEN_IMAGE_FEMME", 
             imageCatalogueHomme: "LIEN_IMAGE_HOMME"  
         };
 
-        // BASE DE DONNÉES COMPLÈTE - TOUS LES 65 ARTICLES
+        // BASE DE DONNÉES COMPLÈTE (64 ARTICLES - "Brick Luxe" Supprimé)
         const products = [
-            // SÉRIE DE PHOTOS 1
             { id: 1, name: "Sandales Oran - Tow", price: 64.90, oldPrice: 120.00, img: "oran-tow.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 2, name: "Sandales Oran - Vert Jade", price: 64.90, oldPrice: 120.00, img: "oran-vert-jade.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 3, name: "Sandales Oran - Vert Oyat", price: 64.90, oldPrice: 120.00, img: "oran-vert-oyat.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
@@ -705,8 +748,6 @@
             { id: 6, name: "Sandales Oran - Noir Ébène", price: 64.90, oldPrice: 120.00, img: "oran-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 7, name: "Sneakers Bouncing - All Black", price: 129.90, oldPrice: 0, img: "bouncing-all-black.jpg", cat: "homme", sizes: [40,41,42,43,44,45] },
             { id: 8, name: "Sneakers Bouncing - Blanc Signé", price: 129.90, oldPrice: 0, img: "bouncing-blanc.jpg", cat: "homme", sizes: [40,41,42,43,44,45] },
-            
-            // SÉRIE DE PHOTOS 2
             { id: 9, name: "Sandales Oran - Noir V2", price: 64.90, oldPrice: 120.00, img: "oran-noir-v2.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 10, name: "Sandales Oran - Teinte Or", price: 64.90, oldPrice: 120.00, img: "oran-or.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 11, name: "Sandales Oran - Orange Mouton", price: 99.90, oldPrice: 0, img: "oran-orange-mouton.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
@@ -715,8 +756,6 @@
             { id: 14, name: "Sandales Oran - Porcelaine Rose Clous", price: 64.90, oldPrice: 150.00, img: "oran-porcelaine-rose-clous.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 15, name: "Sandales Oran - Porcelaine Rose Mat", price: 64.90, oldPrice: 120.00, img: "oran-porcelaine-rose.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 16, name: "Sandales Oran - Purple Majorette", price: 64.90, oldPrice: 120.00, img: "oran-purple-majorette.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            
-            // SÉRIE DE PHOTOS 3
             { id: 17, name: "Sandales Oran - Gris Antarctique", price: 64.90, oldPrice: 120.00, img: "oran-gris-antarctique.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 18, name: "Sandales Oran - Ivy Green", price: 64.90, oldPrice: 120.00, img: "oran-ivy-green.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 19, name: "Sandales Oran - Jaune Bouton d'or", price: 64.90, oldPrice: 120.00, img: "oran-jaune-bouton-dor.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
@@ -725,8 +764,6 @@
             { id: 22, name: "Sandales Oran - Jaune Topaze", price: 64.90, oldPrice: 140.00, img: "oran-jaune-topaze.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 23, name: "Sandales Oran - Laiton Jaune", price: 64.90, oldPrice: 120.00, img: "oran-laiton-jaune.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 24, name: "Sandales Oran - Naturel", price: 64.90, oldPrice: 120.00, img: "oran-naturel.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            
-            // SÉRIE DE PHOTOS 4
             { id: 25, name: "Sandales Oran - Beige Moumoute", price: 99.90, oldPrice: 0, img: "oran-beige-moumoute.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 26, name: "Sandales Oran - Bleu Brut", price: 64.90, oldPrice: 145.00, img: "oran-bleu-brut.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 27, name: "Sandales Oran - Bleu Clair", price: 64.90, oldPrice: 145.00, img: "oran-bleu-clair.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
@@ -735,70 +772,78 @@
             { id: 30, name: "Sandales Oran - Bleu Thalassa", price: 64.90, oldPrice: 120.00, img: "oran-bleu-thalassa.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 31, name: "Sandales Oran - Blue Cameo", price: 64.90, oldPrice: 120.00, img: "oran-blue-cameo.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 32, name: "Sandales Oran - Epsom Bleu", price: 64.90, oldPrice: 120.00, img: "oran-epsom-bleu.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            
-            // SÉRIE DE PHOTOS 5
             { id: 33, name: "Sandales Oasis - Blanc Éclat", price: 79.90, oldPrice: 120.00, img: "oasis-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 34, name: "Sandales Oran - Brick Luxe", price: 64.90, oldPrice: 120.00, img: "oran-brick.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 35, name: "Sandales Oran - Vert Menthe", price: 64.90, oldPrice: 120.00, img: "oran-vert-pauvre.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 36, name: "Sandales Oran - Argent Chromé", price: 64.90, oldPrice: 120.00, img: "oran-argent.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            
-            // SÉRIE DE PHOTOS 6
-            { id: 37, name: "Sandales Empire - Blanc Signature", price: 79.90, oldPrice: 150.00, img: "empire-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 38, name: "Sandales Empire - Noir Signature", price: 79.90, oldPrice: 150.00, img: "empire-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 39, name: "Sandales Empire - Noir Porcelaine", price: 79.90, oldPrice: 150.00, img: "empire-noir-porcelaine.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 40, name: "Sandales Oasis - Bleu Intense", price: 79.90, oldPrice: 120.00, img: "oasis-bleu.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 41, name: "Sandales Oasis - Gold Classique", price: 79.90, oldPrice: 120.00, img: "oasis-gold.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 42, name: "Sandales Oasis - Noir Satin", price: 79.90, oldPrice: 120.00, img: "oasis-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 43, name: "Sandales Oasis - Red Passion", price: 79.90, oldPrice: 120.00, img: "oasis-red.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 44, name: "Sandales Oasis - Rose Magenta", price: 79.90, oldPrice: 120.00, img: "oasis-rose-magenta.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            
-            // SÉRIE DE PHOTOS 7
-            { id: 45, name: "Sandales Chypre - Orange H", price: 70.00, oldPrice: 140.00, img: "chypre-orange.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 46, name: "Sandales Chypre - Pru Noir", price: 70.00, oldPrice: 140.00, img: "chypre-pru-noir.jpg", cat: "homme", sizes: [40,41,42,43,44,45] },
-            { id: 47, name: "Sandales Chypre - Rose Chapas", price: 74.90, oldPrice: 120.00, img: "chypre-rose-chapas.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 48, name: "Sandales Chypre - Vert Forêt", price: 70.00, oldPrice: 140.00, img: "chypre-vert.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 49, name: "Sandales Chypre - Blanc Craie", price: 70.00, oldPrice: 140.00, img: "chypre-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 50, name: "Sandales Chypre - Marron Muscavado", price: 99.90, oldPrice: 140.00, img: "chypre-marron-muscavado.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 51, name: "Sandales Chypre - Natural Leather", price: 70.00, oldPrice: 140.00, img: "chypre-natural.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 52, name: "Sandales Chypre - Noir Mat", price: 70.00, oldPrice: 140.00, img: "chypre-noir.jpg", cat: "homme", sizes: [40,41,42,43,44,45] },
-            
-            // SÉRIE DE PHOTOS 8
-            { id: 53, name: "Sandales Chypre - Bleu Ciel", price: 70.00, oldPrice: 140.00, img: "chypre-bleu-ciel.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 54, name: "Sandales Chypre - Gris Anthracite", price: 70.00, oldPrice: 140.00, img: "chypre-gris.jpg", cat: "homme", sizes: [40,41,42,43,44,45] },
-            
-            // SÉRIE DE PHOTOS 9
-            { id: 55, name: "Mules Claquettes - Vert de Mer", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-de-mer.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 56, name: "Mules Claquettes - Vert Viride", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-viride.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 57, name: "Sneakers Bouncing - Écru", price: 129.90, oldPrice: 0, img: "bouncing-ecru.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            
-            // SÉRIE DE PHOTOS 10
-            { id: 58, name: "Mules Claquettes - Beige Natura", price: 64.90, oldPrice: 120.00, img: "claquettes-beige-natura.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 59, name: "Mules Claquettes - Beige Perlino", price: 64.90, oldPrice: 120.00, img: "claquettes-beige-perlino.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 60, name: "Mules Claquettes - Orange Capucine", price: 64.90, oldPrice: 145.00, img: "claquettes-orange-capucine.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 61, name: "Mules Claquettes - Rose Cancan", price: 64.90, oldPrice: 145.00, img: "claquettes-rose-cancan.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 62, name: "Mules Claquettes - Rose de Venise", price: 64.90, oldPrice: 120.00, img: "claquettes-rose-de-venise.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 63, name: "Mules Claquettes - Rose Porcelaine", price: 64.90, oldPrice: 120.00, img: "claquettes-rose-porcelaine.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 64, name: "Mules Claquettes - Vert Bouteille", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-bouteille.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
-            { id: 65, name: "Mules Claquettes - Vert d'Eau", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-deau.jpg", cat: "femme", sizes: [36,37,38,39,40,41] }
+            { id: 34, name: "Sandales Oran - Vert Menthe", price: 64.90, oldPrice: 120.00, img: "oran-vert-pauvre.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 35, name: "Sandales Oran - Argent Chromé", price: 64.90, oldPrice: 120.00, img: "oran-argent.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 36, name: "Sandales Empire - Blanc Signature", price: 79.90, oldPrice: 150.00, img: "empire-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 37, name: "Sandales Empire - Noir Signature", price: 79.90, oldPrice: 150.00, img: "empire-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 38, name: "Sandales Empire - Noir Porcelaine", price: 79.90, oldPrice: 150.00, img: "empire-noir-porcelaine.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 39, name: "Sandales Oasis - Bleu Intense", price: 79.90, oldPrice: 120.00, img: "oasis-bleu.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 40, name: "Sandales Oasis - Gold Classique", price: 79.90, oldPrice: 120.00, img: "oasis-gold.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 41, name: "Sandales Oasis - Noir Satin", price: 79.90, oldPrice: 120.00, img: "oasis-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 42, name: "Sandales Oasis - Red Passion", price: 79.90, oldPrice: 120.00, img: "oasis-red.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 43, name: "Sandales Oasis - Rose Magenta", price: 79.90, oldPrice: 120.00, img: "oasis-rose-magenta.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 44, name: "Sandales Chypre - Orange H", price: 70.00, oldPrice: 140.00, img: "chypre-orange.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 45, name: "Sandales Chypre - Pru Noir", price: 70.00, oldPrice: 140.00, img: "chypre-pru-noir.jpg", cat: "homme", sizes: [40,41,42,43,44,45] },
+            { id: 46, name: "Sandales Chypre - Rose Chapas", price: 74.90, oldPrice: 120.00, img: "chypre-rose-chapas.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 47, name: "Sandales Chypre - Vert Forêt", price: 70.00, oldPrice: 140.00, img: "chypre-vert.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 48, name: "Sandales Chypre - Blanc Craie", price: 70.00, oldPrice: 140.00, img: "chypre-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 49, name: "Sandales Chypre - Marron Muscavado", price: 99.90, oldPrice: 140.00, img: "chypre-marron-muscavado.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 50, name: "Sandales Chypre - Natural Leather", price: 70.00, oldPrice: 140.00, img: "chypre-natural.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 51, name: "Sandales Chypre - Noir Mat", price: 70.00, oldPrice: 140.00, img: "chypre-noir.jpg", cat: "homme", sizes: [40,41,42,43,44,45] },
+            { id: 52, name: "Sandales Chypre - Bleu Ciel", price: 70.00, oldPrice: 140.00, img: "chypre-bleu-ciel.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 53, name: "Sandales Chypre - Gris Anthracite", price: 70.00, oldPrice: 140.00, img: "chypre-gris.jpg", cat: "homme", sizes: [40,41,42,43,44,45] },
+            { id: 54, name: "Mules Claquettes - Vert de Mer", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-de-mer.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 55, name: "Mules Claquettes - Vert Viride", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-viride.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 56, name: "Sneakers Bouncing - Écru", price: 129.90, oldPrice: 0, img: "bouncing-ecru.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 57, name: "Mules Claquettes - Beige Natura", price: 64.90, oldPrice: 120.00, img: "claquettes-beige-natura.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 58, name: "Mules Claquettes - Beige Perlino", price: 64.90, oldPrice: 120.00, img: "claquettes-beige-perlino.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 59, name: "Mules Claquettes - Orange Capucine", price: 64.90, oldPrice: 145.00, img: "claquettes-orange-capucine.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 60, name: "Mules Claquettes - Rose Cancan", price: 64.90, oldPrice: 145.00, img: "claquettes-rose-cancan.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 61, name: "Mules Claquettes - Rose de Venise", price: 64.90, oldPrice: 120.00, img: "claquettes-rose-de-venise.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 62, name: "Mules Claquettes - Rose Porcelaine", price: 64.90, oldPrice: 120.00, img: "claquettes-rose-porcelaine.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 63, name: "Mules Claquettes - Vert Bouteille", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-bouteille.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
+            { id: 64, name: "Mules Claquettes - Vert d'Eau", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-deau.jpg", cat: "femme", sizes: [36,37,38,39,40,41] }
         ];
 
         let cart = [];
         let currentProductId = null;
 
-        // Fonction d'injection des bannières configurées
+        // --- GESTION STRICTE DES COOKIES ---
+        function acceptCookies() {
+            document.getElementById('cookie-popup').style.display = 'none';
+        }
+        function refuseCookies() {
+            window.location.href = "https://www.google.com";
+        }
+
+        // --- ESPACE CONNEXION ---
+        function toggleAuthModal(show) {
+            document.getElementById('auth-modal').classList.toggle('active', show);
+        }
+        function closeAuthModalOnBackdrop(e) {
+            if(e.target.id === 'auth-modal') toggleAuthModal(false);
+        }
+        function handleLogin(e) {
+            e.preventDefault();
+            alert("Connexion réussie ! Bienvenue dans votre espace H Luxury.");
+            toggleAuthModal(false);
+        }
+
+        // Initialisation des bannières
         function initBanners() {
             document.getElementById('hero-main-img').src = BANNER_CONFIG.imageHero;
             document.getElementById('catalogue-img-femme').src = BANNER_CONFIG.imageCatalogueFemme;
             document.getElementById('catalogue-img-homme').src = BANNER_CONFIG.imageCatalogueHomme;
         }
 
-        // Rendu Dynamique des Articles du Catalogue
+        // Rendu des Articles
         function displayProducts(items) {
             const container = document.getElementById('products-container');
             container.innerHTML = '';
             
             if(items.length === 0) {
-                container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 50px; color:#888; font-size:14px;">Aucun produit ne correspond à votre sélection actuelle.</div>`;
+                container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 50px; color:#888;">Aucun produit trouvé.</div>`;
                 return;
             }
 
@@ -810,24 +855,20 @@
                 container.innerHTML += `
                     <div class="product-card">
                         <div class="product-img-container" onclick="openProductModal(${p.id})">
-                            <img src="${p.img}" alt="${p.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23f8f8f8%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22sans-serif%22 font-size=%2211%22 fill=%22%23ccc%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>En attente de photo</text></svg>'">
+                            <img src="${p.img}" alt="${p.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23f8f8f8%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22sans-serif%22 font-size=%2211%22 fill=%22%23ccc%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Photo</text></svg>'">
                         </div>
                         <div class="product-info">
                             <div class="stars-container">
                                 <span class="star-icon">★</span><span class="star-icon">★</span><span class="star-icon">★</span><span class="star-icon">★</span><span class="star-icon">★</span>
-                                <span class="rating-text">(5/5)</span>
                             </div>
                             <h3 class="product-title" onclick="openProductModal(${p.id})">${p.name}</h3>
-                            <div class="product-price-box">
-                                ${priceHTML}
-                            </div>
+                            <div class="product-price-box">${priceHTML}</div>
                         </div>
                     </div>
                 `;
             });
         }
 
-        // Routage Vue : Accueil Général
         function showHome() {
             document.getElementById('hero-section').style.display = 'flex';
             document.getElementById('catalogues-section').style.display = 'block';
@@ -835,40 +876,28 @@
             displayProducts(products);
             document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active-btn'));
             document.getElementById('nav-home').classList.add('active-btn');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Routage Vue : Filtre Genre (Homme / Femme)
         function filterCategory(cat) {
             document.getElementById('hero-section').style.display = 'none';
             document.getElementById('catalogues-section').style.display = 'none';
             document.getElementById('page-dynamic-title').innerText = cat === 'femme' ? "Univers Féminin" : "Univers Masculin";
-            
-            const filtered = products.filter(p => p.cat === cat);
-            displayProducts(filtered);
-            
+            displayProducts(products.filter(p => p.cat === cat));
             document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active-btn'));
-            const activeNav = document.getElementById(`nav-${cat}`);
-            if(activeNav) activeNav.classList.add('active-btn');
-            
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.getElementById(`nav-${cat}`).classList.add('active-btn');
         }
 
-        // Moteur de Recherche Instantané
         function handleSearch() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
             if(query.length > 0) {
                 document.getElementById('hero-section').style.display = 'none';
                 document.getElementById('catalogues-section').style.display = 'none';
-                document.getElementById('page-dynamic-title').innerText = "Résultats de votre recherche";
-                const searched = products.filter(p => p.name.toLowerCase().includes(query));
-                displayProducts(searched);
+                displayProducts(products.filter(p => p.name.toLowerCase().includes(query)));
             } else {
                 showHome();
             }
         }
 
-        // Ouverture de la Fiche Modale Produit
         function openProductModal(id) {
             const p = products.find(prod => prod.id === id);
             currentProductId = id;
@@ -880,7 +909,7 @@
             const selectSize = document.getElementById('modal-size');
             selectSize.innerHTML = '';
             p.sizes.forEach(size => {
-                selectSize.innerHTML += `<option value="${size}">Pointure Européenne : ${size}</option>`;
+                selectSize.innerHTML += `<option value="${size}">Pointure : ${size}</option>`;
             });
             toggleModal(true);
         }
@@ -889,7 +918,6 @@
         function closeModalOnBackdrop(e) { if(e.target.id === 'product-modal') toggleModal(false); }
         function toggleCart(show) { document.getElementById('cart-sidebar').classList.toggle('active', show); }
 
-        // Ajout d'un Article dans le Panier
         function addToCartFromModal() {
             const p = products.find(prod => prod.id === currentProductId);
             const size = document.getElementById('modal-size').value;
@@ -899,79 +927,45 @@
             toggleCart(true);
         }
 
-        // Rafraîchissement Visuel du Panier
         function updateCartUI() {
             document.getElementById('cart-count').innerText = cart.length;
             const container = document.getElementById('cart-items-container');
             container.innerHTML = '';
             let total = 0;
-            
             cart.forEach((item, index) => {
                 total += item.price;
                 container.innerHTML += `
                     <div class="cart-item">
-                        <img src="${item.img}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2250%22 height=%2250%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23f9f9f9%22/></svg>'">
+                        <img src="${item.img}">
                         <div style="flex:1;">
-                            <h4 style="font-size:13px; font-weight:500; color:#111;">${item.name}</h4>
-                            <p style="font-size:11px; color:#888; margin-top:2px;">Taille : ${item.selectedSize}</p>
-                            <p style="font-weight:600; font-size:13px; margin-top:4px; color:var(--price-red);">${item.price.toFixed(2)} €</p>
+                            <h4>${item.name}</h4>
+                            <p style="font-size:11px; color:#888;">Taille : ${item.selectedSize}</p>
+                            <p style="font-weight:600; color:var(--price-red);">${item.price.toFixed(2)} €</p>
                         </div>
-                        <span style="cursor:pointer; font-size:24px; color:#bbb; padding:0 5px;" onclick="cart.splice(${index},1); updateCartUI();">&times;</span>
+                        <span style="cursor:pointer; font-size:24px; color:#bbb;" onclick="cart.splice(${index},1); updateCartUI();">&times;</span>
                     </div>
                 `;
             });
             document.getElementById('cart-total-amount').innerText = `${total.toFixed(2)} €`;
         }
 
-        // Redirection Finale Stripe
         function processCheckout() {
-            if(cart.length === 0) {
-                alert("Votre panier d'achat est vide.");
-                return;
-            }
+            if(cart.length === 0) { alert("Panier vide."); return; }
             window.location.href = "https://buy.stripe.com/votre_lien_unique_ici";
         }
 
-        // Textes Légaux Obligatoires
         function openLegal(type) {
             const title = document.getElementById('legal-modal-title');
             const body = document.getElementById('legal-modal-body');
-            
             if(type === 'mentions') {
                 title.innerText = "Mentions Légales";
-                body.innerHTML = `
-                    <h5>Éditeur de la Plateforme</h5>
-                    <p>La plateforme e-commerce H LUXURY éditée par la Maison H LUXURY E-Commerce Inc. Siège social : Place de la Comédie, 34000 Montpellier, France.</p>
-                    <h5>Propriété Intellectuelle</h5>
-                    <p>L’ensemble des visuels, agencements photographiques et marques présents sur ce site sont la propriété exclusive de H LUXURY.</p>
-                `;
-            } else if(type === 'cgv') {
-                title.innerText = "Conditions Générales de Vente";
-                body.innerHTML = `
-                    <h5>1. Portée et Objet</h5>
-                    <p>Les présentes CGV régissent toutes les transactions passées sur la boutique en ligne H LUXURY.</p>
-                    <h5>2. Prix</h5>
-                    <p>Les prix sont indiqués en Euros (€) TTC.</p>
-                `;
+                body.innerHTML = "<h5>Éditeur</h5><p>H LUXURY E-Commerce Inc. Montpellier, France.</p>";
             } else if(type === 'contact') {
-                title.innerText = "Maison H Luxury — Service Clientèle";
-                body.innerHTML = `
-                    <h5>Support Électronique</h5>
-                    <p>Pour toute question sur une commande :</p>
-                    <p style='font-size:16px; color:#000; font-weight:700; margin-top:8px;'>hluxury34000@gmail.com</p>
-                `;
-            } else if(type === 'livraison') {
-                title.innerText = "Expéditions & Retours";
-                body.innerHTML = `
-                    <h5>Délais</h5>
-                    <p>Le délai de livraison moyen en Europe est estimé entre 2 et 4 jours ouvrés. Offerte dès 100€ d'achat.</p>
-                `;
-            } else if(type === 'privacy') {
-                title.innerText = "Protection des Données";
-                body.innerHTML = `<p>Les données récoltées sont uniquement utilisées pour assurer la bonne expédition de votre commande.</p>`;
-            } else if(type === 'cookies') {
-                title.innerText = "Utilisation des Cookies";
-                body.innerHTML = `<p>Ce site utilise exclusivement des traceurs de session fonctionnels pour le panier.</p>`;
+                title.innerText = "Contact";
+                body.innerHTML = "<h5>Support</h5><p>hluxury34000@gmail.com</p>";
+            } else {
+                title.innerText = "Information";
+                body.innerHTML = "<p>Informations relatives à la Maison H Luxury.</p>";
             }
             toggleLegalModal(true);
         }
@@ -979,9 +973,8 @@
         function toggleLegalModal(show) { document.getElementById('legal-modal').classList.toggle('active', show); }
         function closeLegalModalOnBackdrop(e) { if(e.target.id === 'legal-modal') toggleLegalModal(false); }
 
-        // Amorçage automatique au chargement
         window.onload = () => { 
-            initBanners(); // Charge tes variables de bannières
+            initBanners(); 
             showHome(); 
         };
     </script>
