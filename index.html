@@ -9,7 +9,8 @@
         :root {
             --bg-color: #fcfcfc;
             --text-color: #111111;
-            --accent-color: #e65a1b; /* Clin d'œil discret à la couleur iconique des boîtes */
+            --accent-color: #e65a1b;
+            --promo-color: #e63946;
             --gray-light: #f5f5f7;
             --border-color: #e5e5e5;
         }
@@ -28,24 +29,24 @@
             overflow-x: hidden;
         }
 
-        /* BANDEAU SUPÉRIEUR */
+        /* BANDEAU PROMO */
         .top-bar {
-            background-color: var(--text-color);
+            background-color: var(--promo-color);
             color: white;
             text-align: center;
-            padding: 8px 0;
-            font-size: 11px;
+            padding: 10px 0;
+            font-size: 12px;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 2px;
         }
 
-        /* HEADER LUXE */
+        /* HEADER */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 30px 5%;
+            padding: 25px 5%;
             background: rgba(252, 252, 252, 0.95);
             border-bottom: 1px solid var(--border-color);
             position: sticky;
@@ -107,16 +108,17 @@
             font-weight: 600;
         }
 
-        /* HERO BANNER ÉPURÉ */
+        /* HERO BANNER */
         .hero {
             text-align: center;
-            padding: 80px 20px 60px 20px;
+            padding: 60px 20px;
             background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .hero h2 {
             font-weight: 300;
-            font-size: 36px;
+            font-size: 32px;
             text-transform: uppercase;
             letter-spacing: 4px;
             margin-bottom: 15px;
@@ -125,7 +127,7 @@
         .hero p {
             font-size: 14px;
             color: #666;
-            max-width: 60px0px;
+            max-width: 700px;
             margin: 0 auto;
             font-weight: 300;
             line-height: 1.6;
@@ -140,27 +142,42 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 35px;
         }
 
         .product-card {
             background: white;
-            border: 1px solid transparent;
+            border: 1px solid var(--border-color);
             transition: all 0.4s ease;
             position: relative;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .badge-promo {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--promo-color);
+            color: white;
+            padding: 5px 10px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            z-index: 10;
         }
 
         .product-img-container {
             width: 100%;
-            padding-bottom: 100%; /* Ratio 1:1 Carré parfait */
+            padding-bottom: 100%;
             position: relative;
             background: var(--gray-light);
             overflow: hidden;
+            cursor: pointer;
         }
 
         .product-img-container img {
@@ -170,15 +187,15 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: transform 0.6s ease;
         }
 
         .product-card:hover .product-img-container img {
-            transform: scale(1.04);
+            transform: scale(1.05);
         }
 
         .product-info {
-            padding: 20px 5px;
+            padding: 20px;
             text-align: center;
         }
 
@@ -191,18 +208,32 @@
         }
 
         .product-title {
-            font-size: 15px;
-            font-weight: 400;
+            font-size: 14px;
+            font-weight: 500;
             margin-bottom: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .product-price {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--text-color);
+        .product-price-box {
             margin-bottom: 15px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 13px;
+            margin-right: 8px;
+        }
+
+        .current-price {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--promo-color);
         }
 
         .btn-view {
@@ -211,9 +242,9 @@
             color: var(--text-color);
             border: 1px solid var(--text-color);
             padding: 12px 30px;
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             width: 100%;
@@ -231,7 +262,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.5);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -249,32 +280,19 @@
         .modal-content {
             background: white;
             width: 90%;
-            max-width: 850px;
+            max-width: 800px;
             display: grid;
             grid-template-columns: 1fr 1fr;
             position: relative;
-            animation: slideUp 0.4s ease;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(30px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
         }
 
         .modal-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 15px;
+            right: 15px;
             font-size: 24px;
             cursor: pointer;
             z-index: 10;
-            background: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
 
         .modal-left img {
@@ -291,26 +309,22 @@
         }
 
         .modal-title {
-            font-size: 22px;
-            font-weight: 400;
+            font-size: 20px;
+            font-weight: 500;
             text-transform: uppercase;
             margin-bottom: 10px;
         }
 
-        .modal-price {
-            font-size: 18px;
-            font-weight: 500;
-            margin-bottom: 25px;
-            color: var(--text-color);
+        .modal-price-box {
+            margin-bottom: 20px;
         }
 
         .selector-label {
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 600;
             margin-bottom: 8px;
             display: block;
-            color: #555;
         }
 
         select {
@@ -319,11 +333,11 @@
             border: 1px solid var(--border-color);
             background: white;
             font-size: 14px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             outline: none;
         }
 
-        /* PANIER COULISSANT */
+        /* PANIER */
         .cart-sidebar {
             position: fixed;
             top: 0;
@@ -333,7 +347,7 @@
             background: white;
             box-shadow: -5px 0 15px rgba(0,0,0,0.05);
             z-index: 1100;
-            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: right 0.4s ease;
             display: flex;
             flex-direction: column;
             padding: 40px 30px;
@@ -350,12 +364,6 @@
             margin-bottom: 30px;
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 15px;
-        }
-
-        .cart-header h3 {
-            font-weight: 400;
-            text-transform: uppercase;
-            font-size: 18px;
         }
 
         .cart-items {
@@ -375,32 +383,17 @@
             width: 70px;
             height: 70px;
             object-fit: cover;
-            background: var(--gray-light);
         }
 
         .cart-item-details h4 {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 500;
             text-transform: uppercase;
-        }
-
-        .cart-item-details p {
-            font-size: 12px;
-            color: #777;
-            margin-top: 4px;
         }
 
         .cart-footer {
             border-top: 1px solid var(--border-color);
             padding-top: 20px;
-        }
-
-        .cart-total {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 500;
-            font-size: 16px;
-            margin-bottom: 20px;
         }
 
         .btn-checkout {
@@ -411,76 +404,25 @@
             padding: 15px;
             text-transform: uppercase;
             font-size: 12px;
-            font-weight: 500;
-            letter-spacing: 1px;
+            font-weight: 600;
             cursor: pointer;
-            transition: opacity 0.3s;
         }
 
-        .btn-checkout:hover {
-            opacity: 0.9;
-        }
-
-        /* FOOTER E-COMMERCE */
+        /* FOOTER */
         footer {
             background: #ffffff;
             border-top: 1px solid var(--border-color);
-            padding: 60px 5% 30px 5%;
-            margin-top: 80px;
+            padding: 50px 5% 30px 5%;
+            margin-top: 60px;
             font-size: 12px;
             color: #666;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            max-width: 1400px;
-            margin: 0 auto 40px auto;
-        }
-
-        .footer-col h4 {
-            color: var(--text-color);
-            text-transform: uppercase;
-            font-weight: 500;
-            margin-bottom: 20px;
-            letter-spacing: 1px;
-        }
-
-        .footer-col p {
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        .footer-bottom {
             text-align: center;
-            border-top: 1px solid var(--border-color);
-            padding-top: 30px;
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .modal-content {
-                grid-template-columns: 1fr;
-                max-height: 90vh;
-                overflow-y: auto;
-            }
-            .modal-right {
-                padding: 25px;
-            }
-            .cart-sidebar {
-                width: 100%;
-                right: -100%;
-            }
         }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">Livraison offerte sur toutes les commandes d'été</div>
+    <div class="top-bar">Offre Exceptionnelle : -10% immédiats sur toute la collection aujourd'hui !</div>
 
     <header>
         <div class="logo">
@@ -488,9 +430,9 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#" id="nav-all" class="active" onclick="filterCategory('all')">Collection</a></li>
-                <li><a href="#" id="nav-femme" onclick="filterCategory('femme')">Femme</a></li>
-                <li><a href="#" id="nav-homme" onclick="filterCategory('homme')">Homme (Bientôt)</a></li>
+                <li><a href="#" id="nav-all" class="active" onclick="filterCategory('all')">Voir Tout</a></li>
+                <li><a href="#" id="nav-femme" onclick="filterCategory('femme')">Collection Femme</a></li>
+                <li><a href="#" id="nav-homme" onclick="filterCategory('homme')">Collection Homme</a></li>
             </ul>
         </nav>
         <div class="header-icons">
@@ -502,8 +444,8 @@
     </header>
 
     <section class="hero">
-        <h2>Maison H Luxury</h2>
-        <p>Découvrez notre sélection exclusive de sandales et mules d'été façonnées dans les cuirs les plus nobles. L'alliance parfaite entre élégance intemporelle et confort absolu.</p>
+        <h2>Collection Souliers d'Été</h2>
+        <p>Retrouvez les mules et sandales iconiques à double bride. Finitions impeccables et confort absolu pour elle et lui.</p>
     </section>
 
     <main class="container">
@@ -522,77 +464,61 @@
             <div class="modal-right">
                 <div class="product-brand">Maison H</div>
                 <h3 class="modal-title" id="modal-title"></h3>
-                <div class="modal-price" id="modal-price"></div>
+                <div class="modal-price-box" id="modal-price-box"></div>
                 
-                <label class="selector-label">Sélectionner la pointure</label>
-                <select id="modal-size">
-                    <option value="36">36</option>
-                    <option value="37">37</option>
-                    <option value="38">38</option>
-                    <option value="39">39</option>
-                    <option value="40">40</option>
-                    <option value="41">41</option>
-                </select>
+                <label class="selector-label">Pointure disponible</label>
+                <select id="modal-size"></select>
 
                 <button class="btn-checkout" onclick="addToCartFromModal()">Ajouter au panier</button>
             </div>
         </div>
     </div>
 
-    <!-- PANIER COULISSANT -->
+    <!-- PANIER -->
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="cart-header">
             <h3>Votre Panier</h3>
             <span style="cursor:pointer; font-size: 24px;" onclick="toggleCart(false)">&times;</span>
         </div>
-        <div class="cart-items" id="cart-items-container">
-            <!-- Contenu du panier -->
-        </div>
+        <div class="cart-items" id="cart-items-container"></div>
         <div class="cart-footer">
-            <div class="cart-total">
+            <div class="cart-total" style="display:flex; justify-content:space-between; margin-bottom:20px; font-weight:600;">
                 <span>Total</span>
                 <span id="cart-total-amount">0.00 €</span>
             </div>
-            <button class="btn-checkout" onclick="processCheckout()">Procéder au paiement Stripe</button>
+            <button class="btn-checkout" onclick="processCheckout()">Procéder au paiement</button>
         </div>
     </div>
 
     <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>H LUXURY</h4>
-                <p>Votre destination exclusive pour les pièces de maroquinerie et souliers d'exception de la saison.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Service Client</h4>
-                <p>Pour toute question relative à vos commandes, tailles ou livraisons, contactez notre support à : <strong>hluxurypro@gmail.com</strong></p>
-            </div>
-            <div class="footer-col">
-                <h4>Livraisons & Retours</h4>
-                <p>Expédition sécurisée avec suivi en 48/72h. Retours simplifiés sous 14 jours.</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 H LUXURY — Tous droits réservés.
-        </div>
+        <p>Pour toute question relative à votre commande : <strong>hluxurypro@gmail.com</strong></p>
+        <p style="margin-top: 15px; font-size: 11px; color: #999;">&copy; 2026 H LUXURY — Expédition sécurisée 48h.</p>
     </footer>
 
     <script>
-        // Catalogue 100% basé sur tes photos réelles
+        // Catalogue mis à jour avec prix stratégiques, noms officiels et répartition Femme/Homme
         const products = [
-            { id: 1, name: "Sandale Double Bride Cuir Marron", price: 110.00, img: "marron.jpg", cat: "femme", stripeUrl: "https://buy.stripe.com/test_1" },
-            { id: 2, name: "Sandale Double Bride Blanc Pur", price: 110.00, img: "blanc.jpg", cat: "femme", stripeUrl: "https://buy.stripe.com/test_2" },
-            { id: 3, name: "Sandale Double Bride Rose Pastel", price: 110.00, img: "rose.jpg", cat: "femme", stripeUrl: "https://buy.stripe.com/test_3" },
-            { id: 4, name: "Sandale Double Bride Vert Émeraude", price: 110.00, img: "vert.jpg", cat: "femme", stripeUrl: "https://buy.stripe.com/test_4" },
-            { id: 5, name: "Sandale Double Bride Vert Menthe Clair", price: 110.00, img: "vert clair.jpg", cat: "femme", stripeUrl: "https://buy.stripe.com/test_5" },
-            { id: 6, name: "Sélection Complète Premium — Édition d'été", price: 110.00, img: "tout.jpg", cat: "femme", stripeUrl: "https://buy.stripe.com/test_6" }
+            // COLLECTION FEMME
+            { id: 1, name: "Mule Chypre Cuir Marron Epsom", price: 60.00, oldPrice: 66.00, img: "chypre-marron.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_1" },
+            { id: 2, name: "Mule Chypre Blanc Pur nappa", price: 60.00, oldPrice: 66.00, img: "chypre-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_2" },
+            { id: 3, name: "Mule Chypre Rose Pastel Édition", price: 60.00, oldPrice: 66.00, img: "chypre-rose.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_3" },
+            { id: 4, name: "Mule Chypre Suede Vert Émeraude", price: 75.00, oldPrice: 83.50, img: "chypre-vert-emeraude.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_4" },
+            { id: 5, name: "Mule Chypre Vert Menthe Doux", price: 60.00, oldPrice: 66.00, img: "chypre-vert-menthe.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_5" },
+            { id: 6, name: "Coffret Sélection Complète Premium d'Été", price: 75.00, oldPrice: 83.50, img: "chypre-premium-selection.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_6" },
+            
+            // COPIES DANS LA COLLECTION FEMME (Produits Homme également prisés par les femmes)
+            { id: 7, name: "Mule Chypre Homme & Femme Noir Mat", price: 75.00, oldPrice: 83.50, img: "chypre-noir-homme.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_7" },
+            { id: 8, name: "Mule Chypre Homme & Femme Bleu Marine", price: 60.00, oldPrice: 66.00, img: "chypre-bleu-homme.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_8" },
+
+            // COLLECTION HOMME
+            { id: 9, name: "Mule Chypre Homme Noir Mat", price: 75.00, oldPrice: 83.50, img: "chypre-noir-homme.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_7" },
+            { id: 10, name: "Mule Chypre Homme Bleu Marine", price: 60.00, oldPrice: 66.00, img: "chypre-bleu-homme.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_8" },
+            { id: 11, name: "Mule Chypre Homme Kaki Toile & Cuir", price: 75.00, oldPrice: 83.50, img: "chypre-kaki-homme.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_9" }
         ];
 
         let cart = [];
         let currentProductId = null;
-        let currentCategory = 'all';
 
-        // Afficher les produits
         function displayProducts(items) {
             const container = document.getElementById('products-container');
             container.innerHTML = '';
@@ -600,44 +526,51 @@
             items.forEach(p => {
                 container.innerHTML += `
                     <div class="product-card">
+                        <div class="badge-promo">-10%</div>
                         <div class="product-img-container" onclick="openProductModal(${p.id})">
                             <img src="${p.img}" alt="${p.name}">
                         </div>
                         <div class="product-info">
                             <div class="product-brand">Maison H</div>
                             <h3 class="product-title">${p.name}</h3>
-                            <div class="product-price">${p.price.toFixed(2)} €</div>
-                            <button class="btn-view" onclick="openProductModal(${p.id})">Découvrir le modèle</button>
+                            <div class="product-price-box">
+                                <span class="old-price">${p.oldPrice.toFixed(2)} €</span>
+                                <span class="current-price">${p.price.toFixed(2)} €</span>
+                            </div>
+                            <button class="btn-view" onclick="openProductModal(${p.id})">Sélectionner</button>
                         </div>
                     </div>
                 `;
             });
         }
 
-        // Filtres par catégorie
         function filterCategory(cat) {
-            currentCategory = cat;
             document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active'));
-            
-            if(cat === 'homme') {
-                alert("La collection Homme arrive très bientôt avec votre sélection de modèles ! Restez connectés.");
-                document.getElementById('nav-all').classList.add('active');
-                displayProducts(products);
-                return;
-            }
-            
-            document.getElementById(`nav-${cat}`).classList.add('active');
+            if(cat === 'all') document.getElementById('nav-all').classList.add('active');
+            else if(cat === 'femme') document.getElementById('nav-femme').classList.add('active');
+            else if(cat === 'homme') document.getElementById('nav-homme').classList.add('active');
+
             const filtered = cat === 'all' ? products : products.filter(p => p.cat === cat);
             displayProducts(filtered);
         }
 
-        // Modale Gestion
         function openProductModal(id) {
             const p = products.find(prod => prod.id === id);
             currentProductId = id;
             document.getElementById('modal-img').src = p.img;
             document.getElementById('modal-title').innerText = p.name;
-            document.getElementById('modal-price').innerText = `${p.price.toFixed(2)} €`;
+            
+            document.getElementById('modal-price-box').innerHTML = `
+                <span class="old-price" style="font-size:15px;">${p.oldPrice.toFixed(2)} €</span>
+                <span class="current-price" style="font-size:20px;">${p.price.toFixed(2)} €</span>
+            `;
+
+            const selectSize = document.getElementById('modal-size');
+            selectSize.innerHTML = '';
+            p.sizes.forEach(size => {
+                selectSize.innerHTML += `<option value="${size}">Taille ${size}</option>`;
+            });
+
             toggleModal(true);
         }
 
@@ -651,7 +584,6 @@
             if(e.target.id === 'product-modal') toggleModal(false);
         }
 
-        // Gestion du Panier
         function toggleCart(show) {
             const s = document.getElementById('cart-sidebar');
             if(show) s.classList.add('active');
@@ -678,12 +610,12 @@
                 total += item.price;
                 container.innerHTML += `
                     <div class="cart-item">
-                        <img src="${item.img}" alt="${item.name}">
+                        <img src="${item.img}">
                         <div class="cart-item-details">
                             <h4>${item.name}</h4>
-                            <p>Pointure : ${item.selectedSize}</p>
-                            <p>${item.price.toFixed(2)} €</p>
-                            <span style="color:#cc0000; font-size:11px; cursor:pointer;" onclick="removeFromCart(${index})">Retirer</span>
+                            <p>Taille : ${item.selectedSize}</p>
+                            <p style="color:var(--promo-color); font-weight:600;">${item.price.toFixed(2)} €</p>
+                            <span style="color:#cc0000; font-size:11px; cursor:pointer;" onclick="removeFromCart(${index})">Supprimer</span>
                         </div>
                     </div>
                 `;
@@ -697,18 +629,14 @@
             updateCartUI();
         }
 
-        // Paiement
         function processCheckout() {
             if(cart.length === 0) {
-                alert("Votre panier est actuellement vide.");
+                alert("Votre panier est vide.");
                 return;
             }
-            // Redirection vers le lien Stripe du premier produit du panier
-            alert("Redirection sécurisée vers la plateforme de paiement Stripe...");
             window.location.href = cart[0].stripeUrl;
         }
 
-        // Initialisation
         window.onload = () => {
             displayProducts(products);
         };
