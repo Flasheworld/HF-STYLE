@@ -29,7 +29,6 @@
             overflow-x: hidden;
         }
 
-        /* BANDEAU PROMO */
         .top-bar {
             background-color: var(--promo-color);
             color: white;
@@ -41,7 +40,6 @@
             letter-spacing: 2px;
         }
 
-        /* HEADER */
         header {
             display: flex;
             justify-content: space-between;
@@ -108,7 +106,6 @@
             font-weight: 600;
         }
 
-        /* HERO BANNER */
         .hero {
             text-align: center;
             padding: 60px 20px;
@@ -133,7 +130,6 @@
             line-height: 1.6;
         }
 
-        /* BOUTIQUE GRID */
         .container {
             max-width: 1400px;
             margin: 0 auto;
@@ -208,7 +204,7 @@
         }
 
         .product-title {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             margin-bottom: 8px;
             text-transform: uppercase;
@@ -255,7 +251,6 @@
             color: white;
         }
 
-        /* MODALE PRODUIT */
         .modal {
             position: fixed;
             top: 0;
@@ -309,7 +304,7 @@
         }
 
         .modal-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 500;
             text-transform: uppercase;
             margin-bottom: 10px;
@@ -337,7 +332,6 @@
             outline: none;
         }
 
-        /* PANIER */
         .cart-sidebar {
             position: fixed;
             top: 0;
@@ -408,7 +402,6 @@
             cursor: pointer;
         }
 
-        /* FOOTER */
         footer {
             background: #ffffff;
             border-top: 1px solid var(--border-color);
@@ -444,17 +437,14 @@
     </header>
 
     <section class="hero">
-        <h2>Collection Souliers d'Été</h2>
-        <p>Retrouvez les mules et sandales iconiques à double bride. Finitions impeccables et confort absolu pour elle et lui.</p>
+        <h2>Collection Complète Souliers Privés</h2>
+        <p>Découvrez l'intégralité du catalogue constructeur. Plus de 50 déclinaisons de matières, coloris et finitions d'exception.</p>
     </section>
 
     <main class="container">
-        <div class="products-grid" id="products-container">
-            <!-- Injecté par JavaScript -->
-        </div>
+        <div class="products-grid" id="products-container"></div>
     </main>
 
-    <!-- MODALE PRODUIT -->
     <div class="modal" id="product-modal" onclick="closeModalOnBackdrop(event)">
         <div class="modal-content">
             <div class="modal-close" onclick="toggleModal(false)">&times;</div>
@@ -474,7 +464,6 @@
         </div>
     </div>
 
-    <!-- PANIER -->
     <div class="cart-sidebar" id="cart-sidebar">
         <div class="cart-header">
             <h3>Votre Panier</h3>
@@ -496,24 +485,70 @@
     </footer>
 
     <script>
-        // Catalogue mis à jour avec prix stratégiques, noms officiels et répartition Femme/Homme
         const products = [
-            // COLLECTION FEMME
-            { id: 1, name: "Mule Chypre Cuir Marron Epsom", price: 60.00, oldPrice: 66.00, img: "chypre-marron.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_1" },
-            { id: 2, name: "Mule Chypre Blanc Pur nappa", price: 60.00, oldPrice: 66.00, img: "chypre-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_2" },
-            { id: 3, name: "Mule Chypre Rose Pastel Édition", price: 60.00, oldPrice: 66.00, img: "chypre-rose.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_3" },
-            { id: 4, name: "Mule Chypre Suede Vert Émeraude", price: 75.00, oldPrice: 83.50, img: "chypre-vert-emeraude.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_4" },
-            { id: 5, name: "Mule Chypre Vert Menthe Doux", price: 60.00, oldPrice: 66.00, img: "chypre-vert-menthe.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_5" },
-            { id: 6, name: "Coffret Sélection Complète Premium d'Été", price: 75.00, oldPrice: 83.50, img: "chypre-premium-selection.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_6" },
-            
-            // COPIES DANS LA COLLECTION FEMME (Produits Homme également prisés par les femmes)
-            { id: 7, name: "Mule Chypre Homme & Femme Noir Mat", price: 75.00, oldPrice: 83.50, img: "chypre-noir-homme.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_7" },
-            { id: 8, name: "Mule Chypre Homme & Femme Bleu Marine", price: 60.00, oldPrice: 66.00, img: "chypre-bleu-homme.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_8" },
+            // ==================== COULEURS CLASSIQUES / BASIQUES (60 €) ====================
+            { id: 1, name: "Mule Chypre Cuir Togo Marron", price: 60.00, oldPrice: 66.00, img: "chypre-marron.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_1" },
+            { id: 2, name: "Mule Chypre Blanc Pur Nappa", price: 60.00, oldPrice: 66.00, img: "chypre-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_2" },
+            { id: 3, name: "Mule Chypre Rose Pastel Smooth", price: 60.00, oldPrice: 66.00, img: "chypre-rose.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_3" },
+            { id: 4, name: "Mule Chypre Vert Menthe Doux", price: 60.00, oldPrice: 66.00, img: "chypre-vert-menthe.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_4" },
+            { id: 5, name: "Mule Chypre Jaune Citron Foncé", price: 60.00, oldPrice: 66.00, img: "chypre-jaune.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_5" },
+            { id: 6, name: "Mule Chypre Orange Signature", price: 60.00, oldPrice: 66.00, img: "chypre-orange.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_6" },
+            { id: 7, name: "Mule Chypre Beige Taupe Classique", price: 60.00, oldPrice: 66.00, img: "chypre-beige.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_7" },
+            { id: 8, name: "Mule Chypre Gris Perle Urbain", price: 60.00, oldPrice: 66.00, img: "chypre-gris.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_8" },
+            { id: 9, name: "Mule Chypre Bordeaux Profond Vintage", price: 60.00, oldPrice: 66.00, img: "chypre-bordeaux.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_9" },
+            { id: 10, name: "Mule Chypre Bleu Turquoise Lagon", price: 60.00, oldPrice: 66.00, img: "chypre-turquoise.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_10" },
+            { id: 11, name: "Mule Chypre Rouge Carmin Lumineux", price: 60.00, oldPrice: 66.00, img: "chypre-rouge.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_11" },
+            { id: 12, name: "Mule Chypre Bleu Marine Profond", price: 60.00, oldPrice: 66.00, img: "chypre-bleu-marine.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_12" },
 
-            // COLLECTION HOMME
-            { id: 9, name: "Mule Chypre Homme Noir Mat", price: 75.00, oldPrice: 83.50, img: "chypre-noir-homme.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_7" },
-            { id: 10, name: "Mule Chypre Homme Bleu Marine", price: 60.00, oldPrice: 66.00, img: "chypre-bleu-homme.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_8" },
-            { id: 11, name: "Mule Chypre Homme Kaki Toile & Cuir", price: 75.00, oldPrice: 83.50, img: "chypre-kaki-homme.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_9" }
+            // ==================== PREMIUM / MATIÈRES RECHERCHÉES & STRASS (75 €) ====================
+            { id: 13, name: "Mule Chypre Suede Vert Émeraude", price: 75.00, oldPrice: 83.50, img: "chypre-vert-emeraude.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_13" },
+            { id: 14, name: "Mule Chypre Noir Mat Édition Cuir", price: 75.00, oldPrice: 83.50, img: "chypre-noir-mat.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_14" },
+            { id: 15, name: "Mule Chypre Strass Onyx Édition Nuit", price: 75.00, oldPrice: 83.50, img: "chypre-strass-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_15" },
+            { id: 16, name: "Mule Chypre Strass Diamant Cristal", price: 75.00, oldPrice: 83.50, img: "chypre-strass-argent.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_16" },
+            { id: 17, name: "Mule Chypre Strass Ambre & Or", price: 75.00, oldPrice: 83.50, img: "chypre-strass-or.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_17" },
+            { id: 18, name: "Mule Chypre Strass Saphir Bleu Rose", price: 75.00, oldPrice: 83.50, img: "chypre-strass-rose.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_18" },
+            { id: 19, name: "Mule Chypre Toile Denim Jean délavé", price: 75.00, oldPrice: 83.50, img: "chypre-jean-denim.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_19" },
+            { id: 20, name: "Mule Chypre Satin de Soie Fuchsia", price: 75.00, oldPrice: 83.50, img: "chypre-satin-fuchsia.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_20" },
+            { id: 21, name: "Mule Chypre Toile Canevas & Broderies Or", price: 75.00, oldPrice: 83.50, img: "chypre-brode-or.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_21" },
+            { id: 22, name: "Mule Chypre Toile Monogramme Multi", price: 75.00, oldPrice: 83.50, img: "chypre-monogramme.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_22" },
+            { id: 23, name: "Mule Chypre Édition Mouton Retourné Cosy", price: 75.00, oldPrice: 83.50, img: "chypre-mouton-miel.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_23" },
+            { id: 24, name: "Mule Chypre Mouton Retourné Noir Rose", price: 75.00, oldPrice: 83.50, img: "chypre-mouton-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_24" },
+            
+            // ==================== MULES À TALONS & COMPENSÉES (75 €) ====================
+            { id: 25, name: "Sandale à Talon Haut Cuir Noir Ébène", price: 75.00, oldPrice: 83.50, img: "mule-talon-noir.jpg", cat: "femme", sizes: [36,37,38,39,40], stripeUrl: "https://buy.stripe.com/test_25" },
+            { id: 26, name: "Sandale à Talon Haut Daim Beige Sable", price: 75.00, oldPrice: 83.50, img: "mule-talon-beige.jpg", cat: "femme", sizes: [36,37,38,39,40], stripeUrl: "https://buy.stripe.com/test_26" },
+            { id: 27, name: "Sandale à Talon Haut Blanc Crème Satin", price: 75.00, oldPrice: 83.50, img: "mule-talon-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40], stripeUrl: "https://buy.stripe.com/test_27" },
+            { id: 28, name: "Sandale à Talon Haut Rose Fuchsia Party", price: 75.00, oldPrice: 83.50, img: "mule-talon-rose.jpg", cat: "femme", sizes: [36,37,38,39,40], stripeUrl: "https://buy.stripe.com/test_28" },
+            { id: 29, name: "Sandale Compensée Premium Marron Cuir", price: 75.00, oldPrice: 83.50, img: "sandale-compensee-marron.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_29" },
+            { id: 30, name: "Sandale Compensée Premium Blanc Coton", price: 75.00, oldPrice: 83.50, img: "sandale-compensee-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_30" },
+            { id: 31, name: "Sandale Compensée Premium Noir Profond", price: 75.00, oldPrice: 83.50, img: "sandale-compensee-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_31" },
+            { id: 32, name: "Sandale fine à Double Boucle Argentée", price: 75.00, oldPrice: 83.50, img: "sandale-bride-argent.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_32" },
+            { id: 33, name: "Sandale fine à Double Boucle Noire Or", price: 75.00, oldPrice: 83.50, img: "sandale-bride-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_33" },
+            { id: 34, name: "Mule Plate Oran Cuir Box Tan Mythique", price: 60.00, oldPrice: 66.00, img: "oran-tan.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_34" },
+            { id: 35, name: "Mule Plate Oran All Black Noir Intense", price: 60.00, oldPrice: 66.00, img: "oran-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_35" },
+            { id: 36, name: "Mule Plate Oran Blanc Optique Pur", price: 60.00, oldPrice: 66.00, img: "oran-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_36" },
+
+            // ==================== COLLECTION HOMME (60 € & 75 €) ====================
+            { id: 37, name: "Mule Chypre Homme Noir Mat Epsom", price: 75.00, oldPrice: 83.50, img: "chypre-homme-noir.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_37" },
+            { id: 38, name: "Mule Chypre Homme Bleu Marine Sport", price: 60.00, oldPrice: 66.00, img: "chypre-homme-bleu.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_38" },
+            { id: 39, name: "Mule Chypre Homme Vert Kaki Militaire", price: 75.00, oldPrice: 83.50, img: "chypre-homme-kaki.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_39" },
+            { id: 40, name: "Mule Chypre Homme Cuir Togo Chocolat", price: 60.00, oldPrice: 66.00, img: "chypre-homme-chocolat.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_40" },
+            { id: 41, name: "Mule Chypre Homme Blanc Fauve Riviera", price: 60.00, oldPrice: 66.00, img: "chypre-homme-blanc.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_41" },
+            { id: 42, name: "Mule Chypre Homme Gris Taupe Suede", price: 75.00, oldPrice: 83.50, img: "chypre-homme-gris.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_42" },
+            { id: 43, name: "Mule Chypre Homme Orange Fluo Sunset", price: 60.00, oldPrice: 66.00, img: "chypre-homme-orange.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_43" },
+            { id: 44, name: "Mule Chypre Homme Rouge Arizona Suede", price: 75.00, oldPrice: 83.50, img: "chypre-homme-rouge.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_44" },
+            { id: 45, name: "Mule Chypre Homme Jaune Moutarde Togo", price: 60.00, oldPrice: 66.00, img: "chypre-homme-jaune.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_45" },
+            { id: 46, name: "Mule Chypre Homme Camel Gold Héritage", price: 60.00, oldPrice: 66.00, img: "chypre-homme-camel.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_46" },
+            { id: 47, name: "Mule Sandale Homme Crossover Noir Sport", price: 75.00, oldPrice: 83.50, img: "crossover-homme-noir.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_47" },
+            { id: 48, name: "Mule Sandale Homme Crossover Marron Chic", price: 75.00, oldPrice: 83.50, img: "crossover-homme-marron.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_48" },
+
+            // ==================== DOUBLONS STRATÉGIQUES POUR LES FILLES (75 €) ====================
+            { id: 49, name: "Mule Chypre Mixte Premium All Black", price: 75.00, oldPrice: 83.50, img: "chypre-homme-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_37" },
+            { id: 50, name: "Mule Chypre Mixte Deep Blue Marine", price: 60.00, oldPrice: 66.00, img: "chypre-homme-bleu.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_38" },
+            { id: 51, name: "Mule Chypre Mixte Vert Kaki baroudeur", price: 75.00, oldPrice: 83.50, img: "chypre-homme-kaki.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_39" },
+            { id: 52, name: "Mule Chypre Mixte Suede Gris Souris", price: 75.00, oldPrice: 83.50, img: "chypre-homme-gris.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_42" },
+            { id: 53, name: "Mule Chypre Mixte Orange Pop Édition", price: 60.00, oldPrice: 66.00, img: "chypre-homme-orange.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_43" },
+            { id: 54, name: "Mule Chypre Mixte Camel Gold Héritage", price: 60.00, oldPrice: 66.00, img: "chypre-homme-camel.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_46" }
         ];
 
         let cart = [];
