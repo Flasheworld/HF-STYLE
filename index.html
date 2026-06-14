@@ -77,6 +77,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             transition: all 0.2s ease;
+            cursor: pointer;
         }
 
         nav ul li a.active-btn {
@@ -191,7 +192,7 @@
         .hero-banner {
             position: relative;
             width: 100%;
-            height: 65vh;
+            height: 50vh;
             overflow: hidden;
             background: #f0f0f0;
             display: flex;
@@ -339,7 +340,7 @@
             max-width: 1340px;
             margin: 20px auto 0 auto;
             padding: 0 2%;
-            display: none; /* Visible uniquement hors accueil */
+            display: none; 
             justify-content: flex-end;
             gap: 10px;
         }
@@ -453,66 +454,66 @@
             font-weight: 400;
         }
 
-        /* Toast Notification Succès Panier */
-        .toast-notification {
-            position: fixed;
-            bottom: 30px;
-            left: 30px;
-            background: #000000;
-            color: #ffffff;
-            padding: 16px 30px;
+        /* VRAIE PAGE PRODUIT DÉDIÉE (Masquée par défaut) */
+        .product-page-view {
+            max-width: 1100px;
+            margin: 40px auto 90px auto;
+            padding: 0 4%;
+            display: none; /* Activée via JS */
+        }
+
+        .back-to-catalog {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-radius: 4px;
-            z-index: 2000;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s ease;
-            pointer-events: none;
+            color: #666;
+            cursor: pointer;
+            margin-bottom: 30px;
+            font-weight: 500;
+            transition: color 0.2s;
         }
-        .toast-notification.show {
-            opacity: 1;
-            transform: translateY(0);
+        .back-to-catalog:hover {
+            color: #000;
         }
 
-        /* Fenêtres Modales */
-        .modal {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            display: flex; align-items: center; justify-content: center;
-            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        .product-page-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
         }
-        .modal.active { opacity: 1; pointer-events: auto; }
-        
-        .modal-content { 
-            background: #fff; 
-            width: 92%; 
-            max-width: 840px; 
-            display: grid; 
-            grid-template-columns: 1.1fr 0.9fr; 
-            position: relative; 
-            padding: 30px; 
-            border-radius: 8px; 
-            color: #000; 
-            gap: 20px;
+
+        @media (max-width: 768px) {
+            .product-page-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
         }
-        @media(max-width: 768px) {
-            .modal-content { grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; }
+
+        .product-page-left {
+            background-color: #fbfbfb;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
         }
-        
-        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #aaa; z-index: 10; transition: color 0.2s; }
-        .modal-close:hover { color: #000; }
-        .modal-left { display: flex; align-items: center; justify-content: center; background: #fbfbfb; border-radius: 6px; padding: 10px; }
-        .modal-left img { width: 100%; height: auto; max-height: 400px; object-fit: contain; border-radius: 6px; }
-        .modal-right { padding: 10px; display: flex; flex-direction: column; justify-content: flex-start; }
-        
-        select, .input-field { width: 100%; padding: 12px; border: 1px solid #ddd; background: #fff; margin-bottom: 15px; font-size: 14px; border-radius: 4px; outline: none; }
-        select:focus, .input-field:focus { border-color: #000; }
-        
-        /* Rendu Inspiré de la Capture d'écran */
+
+        .product-page-left img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+
+        .product-page-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
         .promo-badge {
             background-color: #e62c44;
             color: white;
@@ -571,7 +572,7 @@
             background: #000; 
             color: #fff; 
             border: none; 
-            padding: 15px; 
+            padding: 16px; 
             text-transform: uppercase; 
             font-size: 13px; 
             font-weight: 700; 
@@ -579,28 +580,21 @@
             border-radius: 4px; 
             letter-spacing: 1px; 
             transition: background 0.2s;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         .btn-add-cart:hover { background: #222; }
-        
-        .btn-shop-pay {
-            width: 100%;
-            background: #5a31f4;
-            color: #fff;
-            border: none;
-            padding: 15px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            margin-bottom: 12px;
-            transition: opacity 0.2s;
+
+        select { 
+            width: 100%; 
+            padding: 12px; 
+            border: 1px solid #ddd; 
+            background: #fff; 
+            margin-bottom: 15px; 
+            font-size: 14px; 
+            border-radius: 4px; 
+            outline: none; 
         }
-        .btn-shop-pay:hover { opacity: 0.9; }
+        select:focus { border-color: #000; }
         
         .payment-icons-box {
             display: flex;
@@ -608,12 +602,14 @@
             justify-content: center;
             flex-wrap: wrap;
             margin: 15px 0;
+            border-top: 1px solid #eee;
+            padding-top: 15px;
         }
         
         .payment-logo-badge {
-            font-size: 9px;
-            font-weight: bold;
-            padding: 4px 7px;
+            font-size: 10px;
+            font-weight: 600;
+            padding: 5px 9px;
             border-radius: 3px;
             background: #f4f4f4;
             color: #444;
@@ -632,6 +628,56 @@
             justify-content: center;
             gap: 5px;
         }
+
+        /* Toast Notification Succès Panier */
+        .toast-notification {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #000000;
+            color: #ffffff;
+            padding: 16px 30px;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            z-index: 2000;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        .toast-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Fenêtres Modales */
+        .modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            display: flex; align-items: center; justify-content: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .modal.active { opacity: 1; pointer-events: auto; }
+        
+        .modal-content { 
+            background: #fff; 
+            width: 92%; 
+            max-width: 500px; 
+            position: relative; 
+            padding: 30px; 
+            border-radius: 8px; 
+            color: #000; 
+        }
+        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 28px; cursor: pointer; color: #aaa; z-index: 10; transition: color 0.2s; }
+        .modal-close:hover { color: #000; }
+        
+        .input-field { width: 100%; padding: 12px; border: 1px solid #ddd; background: #fff; margin-bottom: 15px; font-size: 14px; border-radius: 4px; outline: none; }
+        .input-field:focus { border-color: #000; }
+        .btn-action { width: 100%; background: #000; color: #fff; padding: 12px; border: none; font-weight: 600; text-transform: uppercase; font-size: 13px; cursor: pointer; border-radius: 4px; }
 
         /* Panier Latéral Coulissant */
         .cart-sidebar {
@@ -690,7 +736,7 @@
 
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 14px; }
-        .footer-col ul li a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-col ul li a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; cursor: pointer; }
         .footer-col ul li a:hover { color: #000; }
 
         .legal-box { max-height: 450px; overflow-y: auto; font-size: 13px; line-height: 1.7; color: #333; padding-right: 12px; }
@@ -722,9 +768,9 @@
         <div class="header-left">
             <nav>
                 <ul>
-                    <li><a href="#" class="active-btn" id="nav-home" onclick="showHome()">Accueil</a></li>
-                    <li><a href="#" id="nav-femme" onclick="filterCategory('femme')">Femme</a></li>
-                    <li><a href="#" id="nav-homme" onclick="filterCategory('homme')">Homme</a></li>
+                    <li><a class="active-btn" id="nav-home" onclick="showHome()">Accueil</a></li>
+                    <li><a id="nav-femme" onclick="filterCategory('femme')">Femme</a></li>
+                    <li><a id="nav-homme" onclick="filterCategory('homme')">Homme</a></li>
                 </ul>
             </nav>
         </div>
@@ -759,57 +805,116 @@
         </div>
     </div>
 
-    <!-- Hero Bannière Style Haute Couture -->
-    <div id="hero-section" class="hero-banner">
-        <img id="hero-main-img" src="" alt="Bannière Principale H Luxury" class="hero-bg-img">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h2>Collection Été</h2>
-            <p>Lignes pures et matières d'exception.</p>
-            <button class="btn-shop-now" onclick="filterCategory('femme')">Découvrir les Souliers</button>
+    <!-- ZONE DE NAVIGATION PRINCIPALE (AFFICHE LA GRILLE OU LA PAGE PRODUIT) -->
+    <div id="main-catalog-view">
+        <!-- Hero Bannière Style Haute Couture -->
+        <div id="hero-section" class="hero-banner">
+            <img id="hero-main-img" src="banniere.jpg" alt="Bannière Principale H Luxury" class="hero-bg-img" onerror="this.style.display='none'">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h2>Collection Été</h2>
+                <p>Lignes pures et matières d'exception.</p>
+                <button class="btn-shop-now" onclick="filterCategory('femme')">Découvrir les Souliers</button>
+            </div>
+        </div>
+
+        <!-- Double Bloc Catalogue -->
+        <section class="catalogues-section" id="catalogues-section">
+            <div class="catalogues-grid">
+                <div class="catalogue-banner-card" onclick="filterCategory('femme')">
+                    <img id="catalogue-img-femme" src="LIEN_IMAGE_FEMME" alt="Catalogue Femme" class="catalogue-banner-img" onerror="this.style.display='none'">
+                    <div class="catalogue-banner-overlay"></div>
+                    <div class="catalogue-banner-text">
+                        <h2>Catalogue Femme</h2>
+                        <span>Découvrir la collection</span>
+                    </div>
+                </div>
+                <div class="catalogue-banner-card" onclick="filterCategory('homme')">
+                    <img id="catalogue-img-homme" src="LIEN_IMAGE_HOMME" alt="Catalogue Homme" class="catalogue-banner-img" onerror="this.style.display='none'">
+                    <div class="catalogue-banner-overlay"></div>
+                    <div class="catalogue-banner-text">
+                        <h2>Catalogue Homme</h2>
+                        <span>Découvrir la collection</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Zone de filtrage par prix -->
+        <div class="filter-wrapper" id="filter-wrapper">
+            <select class="filter-select" id="price-filter" onchange="applyPriceFilter()">
+                <option value="all">Tous les prix</option>
+                <option value="low">Moins de 70.00 €</option>
+                <option value="high">70.00 € et plus</option>
+            </select>
+        </div>
+
+        <!-- Conteneur Catalogue -->
+        <main class="container">
+            <h2 class="section-title" id="page-dynamic-title">Les Pièces Iconiques</h2>
+            <div class="products-grid" id="products-container"></div>
+        </main>
+    </div>
+
+    <!-- VRAIE PAGE PRODUIT DÉDIÉE (Masquée à l'initialisation) -->
+    <div id="product-page-view" class="product-page-view">
+        <div class="back-to-catalog" onclick="goBackToCatalog()">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="transform: rotate(180deg);"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+            Retour au catalogue
+        </div>
+        
+        <div class="product-page-grid">
+            <div class="product-page-left">
+                <img id="page-prod-img" src="">
+            </div>
+            <div class="product-page-right">
+                <h3 id="page-prod-title" style="font-size:26px; font-weight:500; margin-bottom:12px; color:#111; letter-spacing: 0.5px;"></h3>
+                
+                <div style="margin-bottom:20px; display:flex; align-items:center; flex-wrap:wrap;">
+                    <span class="current-price" id="page-prod-current-price" style="font-size:22px; font-weight:600; color:var(--price-red);"></span>
+                    <span class="old-price" id="page-prod-old-price" style="font-size:17px; margin-right:8px;"></span>
+                    <div id="page-prod-promo-badge" class="promo-badge"></div>
+                </div>
+                
+                <!-- Jauge Urgence Ventes (comme sur capture) -->
+                <div class="live-cart-badge">
+                    🔥 15 ajouts au panier récents
+                </div>
+                
+                <label style="font-size:12px; text-transform:uppercase; color:#222; margin-bottom:6px; display:block; font-weight:600; letter-spacing: 0.5px;">Taille</label>
+                <select id="page-prod-size"></select>
+
+                <label style="font-size:12px; text-transform:uppercase; color:#222; margin-bottom:6px; display:block; font-weight:600; letter-spacing: 0.5px;">Quantité</label>
+                <div class="quantity-selector">
+                    <button type="button" onclick="changeQuantity(-1)">-</button>
+                    <span id="page-prod-qty">1</span>
+                    <button type="button" onclick="changeQuantity(1)">+</button>
+                </div>
+                
+                <!-- Unique Bouton d'action "Ajouter au Panier", plus de boutons intermédiaires -->
+                <button class="btn-add-cart" onclick="addToCartFromPage()">AJOUTER AU PANIER</button>
+                
+                <!-- Logos de Paiement Fidèles (Pas d'Amex, pas de Klarna, pas de logo Shop Pay) -->
+                <div class="payment-icons-box">
+                    <div class="payment-logo-badge">Apple Pay</div>
+                    <div class="payment-logo-badge">CB</div>
+                    <div class="payment-logo-badge">Mastercard</div>
+                    <div class="payment-logo-badge">Shop Pay</div>
+                    <div class="payment-logo-badge">Visa</div>
+                </div>
+                
+                <!-- Ligne de Réassurance -->
+                <div class="trust-footer-mention">
+                    <span style="font-size:12px;">🔒</span> Paiement 100% sécurisé • Qualité d'exception
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Double Bloc Catalogue -->
-    <section class="catalogues-section" id="catalogues-section">
-        <div class="catalogues-grid">
-            <div class="catalogue-banner-card" onclick="filterCategory('femme')">
-                <img id="catalogue-img-femme" src="" alt="Catalogue Femme" class="catalogue-banner-img">
-                <div class="catalogue-banner-overlay"></div>
-                <div class="catalogue-banner-text">
-                    <h2>Catalogue Femme</h2>
-                    <span>Découvrir la collection</span>
-                </div>
-            </div>
-            <div class="catalogue-banner-card" onclick="filterCategory('homme')">
-                <img id="catalogue-img-homme" src="" alt="Catalogue Homme" class="catalogue-banner-img">
-                <div class="catalogue-banner-overlay"></div>
-                <div class="catalogue-banner-text">
-                    <h2>Catalogue Homme</h2>
-                    <span>Découvrir la collection</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Zone de filtrage par prix -->
-    <div class="filter-wrapper" id="filter-wrapper">
-        <select class="filter-select" id="price-filter" onchange="applyPriceFilter()">
-            <option value="all">Tous les prix</option>
-            <option value="low">Moins de 70.00 €</option>
-            <option value="high">70.00 € et plus</option>
-        </select>
-    </div>
-
-    <!-- Conteneur Catalogue -->
-    <main class="container">
-        <h2 class="section-title" id="page-dynamic-title">Les Pièces Iconiques</h2>
-        <div class="products-grid" id="products-container"></div>
-    </main>
 
     <!-- Modale Connexion / Espace Client -->
     <div class="modal" id="auth-modal" onclick="closeAuthModalOnBackdrop(event)">
-        <div class="modal-content" style="max-width: 400px; display: block;">
+        <div class="modal-content">
             <div class="modal-close" onclick="toggleAuthModal(false)">&times;</div>
             <h3 style="font-family:'Cinzel', serif; font-size:18px; margin-bottom:20px; text-align:center;">Se connecter</h3>
             <form onsubmit="handleLogin(event)">
@@ -824,65 +929,12 @@
         </div>
     </div>
 
-    <!-- Modale Documents Légaux Révisée -->
+    <!-- Modale Documents Légaux -->
     <div class="modal" id="legal-modal" onclick="closeLegalModalOnBackdrop(event)">
-        <div class="modal-content" style="max-width:680px; display:block;">
+        <div class="modal-content" style="max-width:680px;">
             <div class="modal-close" onclick="toggleLegalModal(false)">&times;</div>
             <h3 id="legal-modal-title" style="text-transform:uppercase; font-weight:600; margin-bottom:20px; font-size:16px; color:#000; letter-spacing:1px; font-family:'Cinzel', serif;"></h3>
             <div class="legal-box" id="legal-modal-body"></div>
-        </div>
-    </div>
-
-    <!-- Modale Fiche Express Alignée sur Capture d’écran 2026-06-15 000212.jpg -->
-    <div class="modal" id="product-modal" onclick="closeModalOnBackdrop(event)">
-        <div class="modal-content">
-            <div class="modal-close" onclick="toggleModal(false)">&times;</div>
-            <div class="modal-left">
-                <img id="modal-img" src="">
-            </div>
-            <div class="modal-right">
-                <h3 id="modal-title" style="font-size:22px; font-weight:500; margin-bottom:12px; color:#111;"></h3>
-                
-                <div style="margin-bottom:15px; display:flex; align-items:center; flex-wrap:wrap;">
-                    <span class="current-price" id="modal-current-price" style="font-size:18px; font-weight:600; color:var(--price-red);"></span>
-                    <span class="old-price" id="modal-old-price" style="font-size:15px; margin-right:5px;"></span>
-                    <div id="modal-promo-badge" class="promo-badge"></div>
-                </div>
-                
-                <!-- Jauge Urgence Ventes -->
-                <div class="live-cart-badge">
-                    🔥 15 ajouts au panier récents
-                </div>
-                
-                <label style="font-size:12px; text-transform:capitalize; color:#222; margin-bottom:6px; display:block; font-weight:500;">Taille</label>
-                <select id="modal-size" style="margin-bottom:15px;"></select>
-
-                <label style="font-size:12px; text-transform:capitalize; color:#222; margin-bottom:6px; display:block; font-weight:500;">Quantité</label>
-                <div class="quantity-selector">
-                    <button type="button" onclick="changeQuantity(-1)">-</button>
-                    <span id="product-qty">1</span>
-                    <button type="button" onclick="changeQuantity(1)">+</button>
-                </div>
-                
-                <button class="btn-add-cart" onclick="addToCartFromModal()">AJOUTER AU PANIER</button>
-                <button class="btn-shop-pay" onclick="processCheckout()">Acheter avec <span>shop</span></button>
-                
-                <div style="text-align:center; font-size:11px; text-decoration:underline; color:#666; cursor:pointer; margin-bottom:10px;">Plus de moyens de paiement</div>
-                
-                <!-- Logos de Paiement (Mis à jour sans Amex ni Klarna) -->
-                <div class="payment-icons-box">
-                    <div class="payment-logo-badge">Apple Pay</div>
-                    <div class="payment-logo-badge">CB</div>
-                    <div class="payment-logo-badge">Mastercard</div>
-                    <div class="payment-logo-badge">Shop Pay</div>
-                    <div class="payment-logo-badge">Visa</div>
-                </div>
-                
-                <!-- Ligne de Réassurance 100% Sécurisé -->
-                <div class="trust-footer-mention">
-                    <span style="font-size:12px;">🔒</span> Paiement 100% sécurisé • Qualité d'exception
-                </div>
-            </div>
         </div>
     </div>
 
@@ -908,22 +960,22 @@
             <div class="footer-col">
                 <h4>Service Client</h4>
                 <ul>
-                    <li><a href="#" onclick="openLegal('contact')">Nous Contacter</a></li>
-                    <li><a href="#" onclick="openLegal('livraison')">Livraison & Retours d'Exception</a></li>
+                    <li><a onclick="openLegal('contact')">Nous Contacter</a></li>
+                    <li><a onclick="openLegal('livraison')">Livraison & Retours d'Exception</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>La Maison</h4>
                 <ul>
-                    <li><a href="#" onclick="openLegal('mentions')">Mentions Légales</a></li>
-                    <li><a href="#" onclick="openLegal('cgv')">Conditions Générales de Vente</a></li>
+                    <li><a onclick="openLegal('mentions')">Mentions Légales</a></li>
+                    <li><a onclick="openLegal('cgv')">Conditions Générales de Vente</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Confidentialité</h4>
                 <ul>
-                    <li><a href="#" onclick="openLegal('privacy')">Protection des Données</a></li>
-                    <li><a href="#" onclick="openLegal('cookies')">Cookies & Préférences</a></li>
+                    <li><a onclick="openLegal('privacy')">Protection des Données</a></li>
+                    <li><a onclick="openLegal('cookies')">Cookies & Préférences</a></li>
                 </ul>
             </div>
         </div>
@@ -934,12 +986,6 @@
 
     <!-- Script JavaScript Complet & Enrichi -->
     <script>
-        const BANNER_CONFIG = {
-            imageHero: "banniere.jpg",
-            imageCatalogueFemme: "LIEN_IMAGE_FEMME", 
-            imageCatalogueHomme: "LIEN_IMAGE_HOMME"  
-        };
-
         const products = [
             { id: 1, name: "Sandales Oran - Tow", price: 64.90, oldPrice: 120.00, img: "oran-tow.jpg", cat: "femme", sizes: [36,37,38,39,40,41], colors: ["Tow"] },
             { id: 2, name: "Sandales Oran - Vert Jade", price: 64.90, oldPrice: 120.00, img: "oran-vert-jade.jpg", cat: "femme", sizes: [36,37,38,39,40,41], colors: ["Vert Jade"] },
@@ -1019,13 +1065,7 @@
 
         function toggleAuthModal(show) { document.getElementById('auth-modal').classList.toggle('active', show); }
         function closeAuthModalOnBackdrop(e) { if(e.target.id === 'auth-modal') toggleAuthModal(false); }
-        function handleLogin(e) { e.preventDefault(); alert("Connexion réussie ! Bienvenue dans votre espace H Luxury."); toggleAuthModal(false); }
-
-        function initBanners() {
-            document.getElementById('hero-main-img').src = BANNER_CONFIG.imageHero;
-            document.getElementById('catalogue-img-femme').src = BANNER_CONFIG.imageCatalogueFemme;
-            document.getElementById('catalogue-img-homme').src = BANNER_CONFIG.imageCatalogueHomme;
-        }
+        function handleLogin(e) { e.preventDefault(); alert("Connexion réussie ! Bienvenue."); toggleAuthModal(false); }
 
         function displayProducts(items) {
             const container = document.getElementById('products-container');
@@ -1043,14 +1083,14 @@
 
                 container.innerHTML += `
                     <div class="product-card">
-                        <div class="product-img-container" onclick="openProductModal(${p.id})">
+                        <div class="product-img-container" onclick="openProductPage(${p.id})">
                             <img src="${p.img}" alt="${p.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23f8f8f8%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22sans-serif%22 font-size=%2211%22 fill=%22%23ccc%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Photo</text></svg>'">
                         </div>
                         <div class="product-info">
                             <div class="stars-container">
                                 <span class="star-icon">★</span><span class="star-icon">★</span><span class="star-icon">★</span><span class="star-icon">★</span><span class="star-icon">★</span>
                             </div>
-                            <h3 class="product-title" onclick="openProductModal(${p.id})">${p.name}</h3>
+                            <h3 class="product-title" onclick="openProductPage(${p.id})">${p.name}</h3>
                             <div class="product-price-box">${priceHTML}</div>
                         </div>
                     </div>
@@ -1058,8 +1098,76 @@
             });
         }
 
+        // Action au clic : cache la liste et affiche la structure produit complète (comme sur ta capture)
+        function openProductPage(id) {
+            const p = products.find(prod => prod.id === id);
+            currentProductId = id;
+            currentQuantity = 1;
+            
+            // Masquer la vue catalogue
+            document.getElementById('main-catalog-view').style.display = 'none';
+            
+            // Remplir et afficher la vue produit dédiée
+            document.getElementById('page-prod-img').src = p.img;
+            document.getElementById('page-prod-title').innerText = p.name;
+            document.getElementById('page-prod-current-price').innerText = `${p.price.toFixed(2)} €`;
+            document.getElementById('page-prod-qty').innerText = currentQuantity;
+            
+            const badgeElement = document.getElementById('page-prod-promo-badge');
+            if (p.oldPrice > 0) {
+                document.getElementById('page-prod-old-price').style.display = 'inline';
+                document.getElementById('page-prod-old-price').innerText = `${p.oldPrice.toFixed(2)} €`;
+                
+                const percentSaved = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);
+                badgeElement.style.display = 'inline-flex';
+                badgeElement.innerHTML = `🏷️ Économisez ${percentSaved}%`;
+            } else {
+                document.getElementById('page-prod-old-price').style.display = 'none';
+                badgeElement.style.display = 'none';
+            }
+            
+            const selectSize = document.getElementById('page-prod-size');
+            selectSize.innerHTML = '';
+            p.sizes.forEach(size => {
+                selectSize.innerHTML += `<option value="${size}">${size}</option>`;
+            });
+
+            document.getElementById('product-page-view').style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function goBackToCatalog() {
+            document.getElementById('product-page-view').style.display = 'none';
+            document.getElementById('main-catalog-view').style.display = 'block';
+        }
+
+        function changeQuantity(amount) {
+            currentQuantity += amount;
+            if(currentQuantity < 1) currentQuantity = 1;
+            document.getElementById('page-prod-qty').innerText = currentQuantity;
+        }
+
+        function addToCartFromPage() {
+            const p = products.find(prod => prod.id === currentProductId);
+            const size = document.getElementById('page-prod-size').value;
+            
+            for(let i = 0; i < currentQuantity; i++) {
+                cart.push({ ...p, selectedSize: size });
+            }
+            
+            updateCartUI();
+            goBackToCatalog();
+            
+            const toast = document.getElementById('toast-notif');
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2800);
+        }
+
         function showHome() {
             currentCategory = 'home';
+            document.getElementById('product-page-view').style.display = 'none';
+            document.getElementById('main-catalog-view').style.display = 'block';
+            
             document.getElementById('hero-section').style.display = 'flex';
             document.getElementById('catalogues-section').style.display = 'block';
             document.getElementById('filter-wrapper').style.display = 'none'; 
@@ -1074,6 +1182,9 @@
 
         function filterCategory(cat) {
             currentCategory = cat;
+            document.getElementById('product-page-view').style.display = 'none';
+            document.getElementById('main-catalog-view').style.display = 'block';
+            
             document.getElementById('hero-section').style.display = 'none';
             document.getElementById('catalogues-section').style.display = 'none';
             document.getElementById('filter-wrapper').style.display = 'flex'; 
@@ -1100,6 +1211,8 @@
         function handleSearch() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
             if(query.length > 0) {
+                document.getElementById('product-page-view').style.display = 'none';
+                document.getElementById('main-catalog-view').style.display = 'block';
                 document.getElementById('hero-section').style.display = 'none';
                 document.getElementById('catalogues-section').style.display = 'none';
                 document.getElementById('filter-wrapper').style.display = 'none';
@@ -1109,63 +1222,7 @@
             }
         }
 
-        function openProductModal(id) {
-            const p = products.find(prod => prod.id === id);
-            currentProductId = id;
-            currentQuantity = 1;
-            document.getElementById('product-qty').innerText = currentQuantity;
-            
-            document.getElementById('modal-img').src = p.img;
-            document.getElementById('modal-title').innerText = p.name;
-            document.getElementById('modal-current-price').innerText = `${p.price.toFixed(2)} €`;
-            
-            const badgeElement = document.getElementById('modal-promo-badge');
-            if (p.oldPrice > 0) {
-                document.getElementById('modal-old-price').style.display = 'inline';
-                document.getElementById('modal-old-price').innerText = `${p.oldPrice.toFixed(2)} €`;
-                
-                const percentSaved = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);
-                badgeElement.style.display = 'inline-flex';
-                badgeElement.innerHTML = `🏷️ Économisez ${percentSaved}%`;
-            } else {
-                document.getElementById('modal-old-price').style.display = 'none';
-                badgeElement.style.display = 'none';
-            }
-            
-            const selectSize = document.getElementById('modal-size');
-            selectSize.innerHTML = '';
-            p.sizes.forEach(size => {
-                selectSize.innerHTML += `<option value="${size}">${size}</option>`;
-            });
-
-            toggleModal(true);
-        }
-
-        function changeQuantity(amount) {
-            currentQuantity += amount;
-            if(currentQuantity < 1) currentQuantity = 1;
-            document.getElementById('product-qty').innerText = currentQuantity;
-        }
-
-        function toggleModal(show) { document.getElementById('product-modal').classList.toggle('active', show); }
-        function closeModalOnBackdrop(e) { if(e.target.id === 'product-modal') toggleModal(false); }
         function toggleCart(show) { document.getElementById('cart-sidebar').classList.toggle('active', show); }
-
-        function addToCartFromModal() {
-            const p = products.find(prod => prod.id === currentProductId);
-            const size = document.getElementById('modal-size').value;
-            
-            for(let i = 0; i < currentQuantity; i++) {
-                cart.push({ ...p, selectedSize: size, selectedColor: p.colors[0] });
-            }
-            
-            updateCartUI();
-            toggleModal(false);
-            
-            const toast = document.getElementById('toast-notif');
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 2800);
-        }
 
         function updateCartUI() {
             document.getElementById('cart-count').innerText = cart.length;
@@ -1176,7 +1233,7 @@
                 total += item.price;
                 container.innerHTML += `
                     <div class="cart-item">
-                        <img src="${item.itemImg || item.img}">
+                        <img src="${item.img}">
                         <div style="flex:1;">
                             <h4 style="font-size:12px; font-weight:600;">${item.name}</h4>
                             <p style="font-size:11px; color:#888; margin: 2px 0;">Taille: ${item.selectedSize}</p>
@@ -1190,84 +1247,29 @@
         }
 
         function processCheckout() {
-            if(cart.length === 0 && currentProductId === null) { alert("Votre panier d'achat est vide."); return; }
+            if(cart.length === 0) { alert("Votre panier d'achat est vide."); return; }
             window.location.href = "https://buy.stripe.com/votre_lien_unique_ici";
         }
 
         const LEGAL_TEXTS = {
-            contact: `
-                <h5>Service Relations Clients</h5>
-                <p>Notre atelier est à votre entière disposition pour répondre à toutes vos exigences relatives à nos créations, à un suivi de commande ou à une demande de sur-mesure.</p>
-                <p><b>Adresse Électronique dédiée :</b> hluxury34000@gmail.com</p>
-                <p><b>Disponibilité :</b> Du lundi au samedi, de 9h00 à 19h00 (Heure de Paris).</p>
-                <p>Notre équipe s'engage à vous apporter une réponse personnalisée sous un délai maximal de 24 heures.</p>
-            `,
-            livraison: `
-                <h5>Expédition d'Exception</h5>
-                <p>Chaque pièce de la Maison H LUXURY est soigneusement enveloppée dans son écrin protecteur et expédiée via un transporteur sécurisé avec suivi et remise contre signature obligatoire.</p>
-                <h5>Délais et Tarifs</h5>
-                <p>• <b>Livraison Standard Sécurisée :</b> Offerte dès 100,00 € d'achat (sinon participation forfaitaire de 4,90 €). Expédiée sous 3 à 5 jours ouvrés.</p>
-                <p>• <b>Livraison Express Assurée :</b> 12,00 €. Expédiée sous 24 à 48 heures ouvrées.</p>
-                <h5>Retours simplifiés</h5>
-                <p>Conformément aux exigences de la haute couture, vous disposez d'un droit de rétraction de 14 jours à compter de la réception de votre colis. L'article doit être retourné complet, non porté et dans son emballage d'origine non altéré.</p>
-            `,
-            mentions: `
-                <h5>1. Édition du Site</h5>
-                <p>Le présent site accessible à l'adresse hluxury.com est édité par la Maison H LUXURY E-Commerce Inc., immatriculée au Registre du Commerce et des Schuys (RCS) de Montpellier.</p>
-                <p><b>Direction de la publication :</b> Direction H LUXURY Studio.</p>
-                <h5>2. Hébergement</h5>
-                <p>Le site est hébergé de manière sécurisée sur des infrastructures conformes aux normes européennes d'intégrité numérique.</p>
-                <h5>3. Propriété Intellectuelle</h5>
-                <p>L'intégralité du contenu présent (textes, logos, photographies, structures logicielles) constitue une œuvre de l'esprit protégée par le Code de la propriété intellectuelle. Toute reproduction ou distribution sans accord préalable est strictement interdite.</p>
-            `,
-            cgv: `
-                <h5>Objet des Conditions</h5>
-                <p>Les présentes Conditions Générales de Vente régissent de plein droit toutes les transactions commerciales conclues entre l'acheteur et la Maison H LUXURY sur notre boutique en ligne.</p>
-                <h5>Commandes et Tarification</h5>
-                <p>Les prix affichés s'entendent en Euros (€) toutes taxes comprises (TTC). H LUXURY se réserve le droit de modifier ses tarifs à tout moment, mais les produits seront facturés sur la base du tarif en vigueur lors de la validation finale de la commande.</p>
-                <h5>Modalités de Règlement</h5>
-                <p>Le paiement est exigible immédiatement au moment de la commande. Les règlements s'effectuent via des passerelles bancaires hautement sécurisées et chiffrées (SSL/TLS).</p>
-            `,
-            privacy: `
-                <h5>Collecte des Données Personnelles</h5>
-                <p>La Maison H LUXURY s'engage à ce que la collecte et le traitement de vos données soient conformes au Règlement Général sur la Protection des Données (RGPD).</p>
-                <h5>Utilisation de vos données</h5>
-                <p>Vos informations (Email, Adresse de livraison, Historique) sont uniquement exploitées dans le but d'assurer la gestion de vos commandes, l'expédition de vos colis et l'envoi d'offres exclusives si vous le souhaitez.</p>
-                <h5>Vos Droits</h5>
-                <p>Vous disposez d'un droit permanent d'accès, de rectification, de portabilité et de suppression de l'ensemble de vos données nominatives sur simple demande à notre service client.</p>
-            `,
-            cookies: `
-                <h5>Gestion des Cookies</h5>
-                <p>Notre plateforme utilise exclusivement des traceurs techniques d'infrastructure d'intérêt public dits "strictement nécessaires". Ils permettent d'enregistrer l'état de votre panier, de mémoriser vos choix de tailles et d'assurer le maintien sécurisé de votre session de navigation.</p>
-                <p>Aucun cookie publicitaire tiers n'est implanté à votre insu. Vous pouvez configurer ou bloquer ces cookies à tout moment via les réglages de votre navigateur web.</p>
-            `
+            contact: `<h5>Service Relations Clients</h5><p>Email : hluxury34000@gmail.com</p>`,
+            livraison: `<h5>Expédition</h5><p>Livraison sécurisée offerte à partir de 100€ d'achat.</p>`,
+            mentions: `<h5>Édition du site</h5><p>H LUXURY E-Commerce Inc.</p>`,
+            cgv: `<h5>Conditions Générales</h5><p>Les prix s'entendent toutes taxes comprises (TTC).</p>`,
+            privacy: `<h5>Données</h5><p>Conforme RGPD.</p>`,
+            cookies: `<h5>Cookies</h5><p>Traceurs techniques uniquement.</p>`
         };
 
         function openLegal(type) {
-            const title = document.getElementById('legal-modal-title');
-            const body = document.getElementById('legal-modal-body');
-            
-            const titlesMapping = {
-                contact: "Nous Contacter",
-                livraison: "Livraison & Retours d'Exception",
-                mentions: "Mentions Légales",
-                cgv: "Conditions Générales de Vente",
-                privacy: "Protection des Données (RGPD)",
-                cookies: "Gestion des Cookies"
-            };
-
-            title.innerText = titlesMapping[type] || "Information";
-            body.innerHTML = LEGAL_TEXTS[type] || "<p>Document en cours de mise à jour.</p>";
+            document.getElementById('legal-modal-title').innerText = type.toUpperCase();
+            document.getElementById('legal-modal-body').innerHTML = LEGAL_TEXTS[type];
             toggleLegalModal(true);
         }
 
         function toggleLegalModal(show) { document.getElementById('legal-modal').classList.toggle('active', show); }
         function closeLegalModalOnBackdrop(e) { if(e.target.id === 'legal-modal') toggleLegalModal(false); }
 
-        window.onload = () => { 
-            initBanners(); 
-            showHome(); 
-        };
+        window.onload = () => { showHome(); };
     </script>
 </body>
 </html>
