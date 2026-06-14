@@ -583,25 +583,6 @@
         }
         .btn-add-cart:hover { background: #222; }
         
-        .btn-shop-pay {
-            width: 100%;
-            background: #5a31f4;
-            color: #fff;
-            border: none;
-            padding: 15px;
-            font-size: 14px;
-            font-weight: 700;
-            cursor: pointer;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            margin-bottom: 12px;
-            transition: opacity 0.2s;
-        }
-        .btn-shop-pay:hover { opacity: 0.9; }
-        
         .payment-icons-box {
             display: flex;
             gap: 6px;
@@ -833,7 +814,7 @@
         </div>
     </div>
 
-    <!-- Modale Fiche Express Alignée sur Capture d’écran 2026-06-15 000212.jpg -->
+    <!-- Modale Fiche Express -->
     <div class="modal" id="product-modal" onclick="closeModalOnBackdrop(event)">
         <div class="modal-content">
             <div class="modal-close" onclick="toggleModal(false)">&times;</div>
@@ -865,16 +846,14 @@
                 </div>
                 
                 <button class="btn-add-cart" onclick="addToCartFromModal()">AJOUTER AU PANIER</button>
-                <button class="btn-shop-pay" onclick="processCheckout()">Acheter avec <span>shop</span></button>
                 
                 <div style="text-align:center; font-size:11px; text-decoration:underline; color:#666; cursor:pointer; margin-bottom:10px;">Plus de moyens de paiement</div>
                 
-                <!-- Logos de Paiement (Mis à jour sans Amex ni Klarna) -->
+                <!-- Logos de Paiement (Mis à jour sans Amex, Klarna ni Shop Pay) -->
                 <div class="payment-icons-box">
                     <div class="payment-logo-badge">Apple Pay</div>
                     <div class="payment-logo-badge">CB</div>
                     <div class="payment-logo-badge">Mastercard</div>
-                    <div class="payment-logo-badge">Shop Pay</div>
                     <div class="payment-logo-badge">Visa</div>
                 </div>
                 
@@ -1218,7 +1197,7 @@
                 <h5>2. Hébergement</h5>
                 <p>Le site est hébergé de manière sécurisée sur des infrastructures conformes aux normes européennes d'intégrité numérique.</p>
                 <h5>3. Propriété Intellectuelle</h5>
-                <p>L'intégralité du contenu présent (textes, logos, photographies, structures logicielles) constitue une œuvre de l'esprit protégée par le Code de la propriété intellectuelle. Toute reproduction ou distribution sans accord préalable est strictement interdite.</p>
+                <p>L'intégralité du contenu présent (textes, logos, photographies, structures logicielles) constitutes une œuvre de l'esprit protégée par le Code de la propriété intellectuelle. Toute reproduction ou distribution sans accord préalable est strictement interdite.</p>
             `,
             cgv: `
                 <h5>Objet des Conditions</h5>
