@@ -187,7 +187,7 @@
             100% { transform: translate3d(-50%, 0, 0); }
         }
 
-        /* Hero Bannière Vidéo */
+        /* Hero Bannière Image Principale */
         .hero-banner {
             position: relative;
             width: 100%;
@@ -199,7 +199,7 @@
             justify-content: center;
         }
 
-        .hero-banner video {
+        .hero-banner img.hero-bg-img {
             position: absolute;
             top: 50%; left: 50%;
             width: 100%; height: 100%;
@@ -211,7 +211,7 @@
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.25);
+            background: rgba(0, 0, 0, 0.3); /* Un peu plus sombre pour la lisibilité du texte */
             z-index: 2;
         }
 
@@ -565,11 +565,9 @@
         </div>
     </div>
 
-    <!-- Bannière Vidéo Principale (Hero) -->
+    <!-- Bannière Image Principale (Hero) -->
     <div id="hero-section" class="hero-banner">
-        <video autoplay loop muted playsinline webkit-playsinline id="hero-video-file">
-            <source id="hero-video-source" src="" type="video/mp4">
-        </video>
+        <img id="hero-main-img" src="" alt="Bannière Principale H Luxury" class="hero-bg-img">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h2>L'Élégance Estivale</h2>
@@ -691,9 +689,9 @@
     <script>
         // CONFIGURATION DES BANNIÈRES (Modifie tes liens ici simplement !)
         const BANNER_CONFIG = {
-            videoHero: "banniere.mp4",         // Mets le nom de ta vidéo ou son lien URL
-            imageCatalogueFemme: "LIEN_IMAGE_FEMME", // Mets le lien de l'image catalogue Femme
-            imageCatalogueHomme: "LIEN_IMAGE_HOMME"  // Mets le lien de l'image catalogue Homme
+            imageHero: "banniere.jpg",         // C'est ici ! Tu peux mettre "banniere.png" si besoin
+            imageCatalogueFemme: "LIEN_IMAGE_FEMME", 
+            imageCatalogueHomme: "LIEN_IMAGE_HOMME"  
         };
 
         // BASE DE DONNÉES COMPLÈTE - TOUS LES 65 ARTICLES
@@ -789,8 +787,7 @@
 
         // Fonction d'injection des bannières configurées
         function initBanners() {
-            document.getElementById('hero-video-source').src = BANNER_CONFIG.videoHero;
-            document.getElementById('hero-video-file').load(); // Force le rechargement de la vidéo
+            document.getElementById('hero-main-img').src = BANNER_CONFIG.imageHero;
             document.getElementById('catalogue-img-femme').src = BANNER_CONFIG.imageCatalogueFemme;
             document.getElementById('catalogue-img-homme').src = BANNER_CONFIG.imageCatalogueHomme;
         }
@@ -944,7 +941,7 @@
                 title.innerText = "Mentions Légales";
                 body.innerHTML = `
                     <h5>Éditeur de la Plateforme</h5>
-                    <p>La plateforme e-commerce H LUXURY est éditée par la Maison H LUXURY E-Commerce Inc. Siège social : Place de la Comédie, 34000 Montpellier, France.</p>
+                    <p>La plateforme e-commerce H LUXURY éditée par la Maison H LUXURY E-Commerce Inc. Siège social : Place de la Comédie, 34000 Montpellier, France.</p>
                     <h5>Propriété Intellectuelle</h5>
                     <p>L’ensemble des visuels, agencements photographiques et marques présents sur ce site sont la propriété exclusive de H LUXURY.</p>
                 `;
