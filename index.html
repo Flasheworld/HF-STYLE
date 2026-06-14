@@ -1369,5 +1369,149 @@
   });
 })();
 </script>
+<!-- Style pour la présentation de la galerie -->
+<style>
+  .catalogue-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  .catalogue-title {
+    text-align: center;
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    color: #111;
+  }
+
+  .collections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+
+  .collection-card {
+    position: relative;
+    overflow: hidden;
+    background: #f9f9f9;
+    border-radius: 4px;
+    text-decoration: none;
+    color: #111;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .collection-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0,08);
+  }
+
+  .image-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; /* Ratio carré 1:1 parfait pour vos visuels */
+    overflow: hidden;
+  }
+
+  .image-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .collection-card:hover .image-wrapper img {
+    transform: scale(1.05);
+  }
+
+  .collection-info {
+    padding: 20px;
+    text-align: center;
+    background: #fff;
+  }
+
+  .collection-name {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 5px 0;
+  }
+
+  .collection-tag {
+    font-size: 13px;
+    color: #666;
+    text-transform: capitalize;
+  }
+</style>
+
+<!-- Structure de la Galerie des Collections -->
+<div class="catalogue-container">
+  <h2 class="catalogue-title">Nos Collections</h2>
+  
+  <div class="collections-grid">
+  
+    <!-- 1. COLLECTION SNEAKERS -->
+    <a href="/collections/sneakers" class="collection-card">
+      <div class="image-wrapper">
+        <img src="SNEAKERS BOUCING.png" alt="SNEAKERS BOUCING.png">
+      </div>
+      <div class="collection-info">
+        <h3 class="collection-name">Collection Sneakers</h3>
+        <span class="collection-tag">Baskets Sport-Chic</span>
+      </div>
+    </a>
+
+    <!-- 2. COLLECTION OASIS -->
+    <a href="/collections/oasis" class="collection-card">
+      <div class="image-wrapper">
+        <img src="COLLECTION OASIS.png" alt="COLLECTION OASIS.png">
+      </div>
+      <div class="collection-info">
+        <h3 class="collection-name">Collection Oasis</h3>
+        <span class="collection-tag">Sandales à talon</span>
+      </div>
+    </a>
+
+    <!-- 3. COLLECTION EMPIRE -->
+    <a href="/collections/empire" class="collection-card">
+      <div class="image-wrapper">
+        <img src="COLLECTION EMPIRE.png" alt="COLLECTION EMPIRE.png">
+      </div>
+      <div class="collection-info">
+        <h3 class="collection-name">Collection Empire</h3>
+        <span class="collection-tag">Mules à boucle</span>
+      </div>
+    </a>
+
+    <!-- 4. COLLECTION CHYPRE -->
+    <a href="/collections/chypre" class="collection-card">
+      <div class="image-wrapper">
+        <img src="COLLECTION CHYPRE.png" alt="COLLECTION CHYPRE.png">
+      </div>
+      <div class="collection-info">
+        <h3 class="collection-name">Collection Chypre</h3>
+        <span class="collection-tag">Sandales Sport</span>
+      </div>
+    </a>
+
+    <!-- 5. COLLECTION ORAN -->
+    <a href="/collections/oran" class="collection-card">
+      <div class="image-wrapper">
+        <img src="COLLECTION ORAN.png" alt="COLLECTION ORAN.png">
+      </div>
+      <div class="collection-info">
+        <h3 class="collection-name">Collection Oran</h3>
+        <span class="collection-tag">Les Iconiques Plates</span>
+      </div>
+    </a>
+
+  </div>
+</div>
 </body>
 </html>
