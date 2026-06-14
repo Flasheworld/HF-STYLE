@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H LUXURY — Haute Maroquinerie & Souliers</title>
     
-    <!-- TON LOGO D'ONGLET RESTAURÉ -->
-    <link rel="icon" type="image/png" href="logo-onglet.png">
+    <!-- LOGO H STYLISÉ DIRECTEMENT EN ONGLET (Plus de bug d'affichage) -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-family=%22serif%22 font-size=%2280%22 fill=%22%23d4af37%22 font-weight=%22bold%22>H</text></svg>">
     
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@200;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #ffffff;
-            --text-color: #111111;
-            --accent-color: #e65a1b; /* L'orange signature */
-            --gray-light: #f9f9f9;
-            --border-color: #eaeaea;
+            --bg-dark: #111111;         /* Fond principal luxe sombre */
+            --bg-card: #1a1a1a;         /* Fond des boîtes produits */
+            --text-light: #f5f5f7;      /* Texte clair */
+            --text-muted: #a1a1a6;     /* Texte secondaire */
+            --accent-gold: #c5a059;    /* Or chaud signature */
+            --border-color: #2c2c2e;    /* Bordures subtiles */
         }
 
         * {
@@ -27,21 +28,21 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Barre d'annonce */
+        /* Barre d'annonce Or */
         .top-bar {
-            background-color: #111111;
-            color: #ffffff;
+            background-color: var(--accent-gold);
+            color: #111;
             text-align: center;
-            padding: 8px 0;
-            font-size: 10px;
+            padding: 9px 0;
+            font-size: 11px;
             text-transform: uppercase;
-            font-weight: 300;
+            font-weight: 500;
             letter-spacing: 2px;
         }
 
@@ -49,20 +50,39 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 5%;
-            background: #ffffff;
+            padding: 30px 5%;
+            background: #0a0a0a;
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .logo h1 {
-            font-weight: 300;
-            font-size: 24px;
-            letter-spacing: 9px;
-            text-transform: uppercase;
+        /* GROS LOGO H RECONSTRUIT */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             cursor: pointer;
+        }
+
+        .logo-icon {
+            font-family: 'Cinzel', serif;
+            font-size: 38px;
+            font-weight: 600;
+            color: var(--accent-gold);
+            line-height: 1;
+            border: 2px solid var(--accent-gold);
+            padding: 0px 14px;
+        }
+
+        .logo-text {
+            font-family: 'Cinzel', serif;
+            font-weight: 400;
+            font-size: 20px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            color: var(--text-light);
         }
 
         nav ul {
@@ -73,37 +93,34 @@
 
         nav ul li a {
             text-decoration: none;
-            color: var(--text-color);
+            color: var(--text-muted);
             font-size: 11px;
             text-transform: uppercase;
             font-weight: 400;
             transition: color 0.3s;
-            padding-bottom: 4px;
+            padding-bottom: 6px;
         }
 
         nav ul li a:hover, nav ul li a.active {
-            color: var(--accent-color);
-            border-bottom: 1px solid var(--accent-color);
-        }
-
-        .search-container {
-            position: relative;
+            color: var(--accent-gold);
+            border-bottom: 2px solid var(--accent-gold);
         }
 
         .search-container input {
-            width: 180px;
-            padding: 6px 12px;
+            width: 190px;
+            padding: 8px 12px;
             border: none;
-            border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid var(--border-color);
             font-size: 11px;
             outline: none;
             transition: all 0.4s ease;
             background: transparent;
+            color: white;
         }
 
         .search-container input:focus {
-            width: 240px;
-            border-bottom-color: var(--text-color);
+            width: 260px;
+            border-bottom-color: var(--accent-gold);
         }
 
         .header-icons {
@@ -115,15 +132,18 @@
         .cart-icon-wrapper {
             position: relative;
             cursor: pointer;
+            color: var(--text-light);
         }
+        .cart-icon-wrapper:hover { color: var(--accent-gold); }
 
         .cart-count {
             position: absolute;
             top: -7px;
             right: -9px;
-            background: var(--text-color);
-            color: white;
+            background: var(--accent-gold);
+            color: #111;
             font-size: 9px;
+            font-weight: bold;
             width: 16px;
             height: 16px;
             border-radius: 50%;
@@ -132,33 +152,34 @@
             justify-content: center;
         }
 
-        /* Bannière vidéo/image */
+        /* BANNIÈRE DESIGN PRO ET IMMERSIVE */
         .hero-banner {
             position: relative;
             width: 100%;
-            height: 70vh;
+            height: 75vh;
             overflow: hidden;
-            background: url('banniere-fallback.jpg') no-repeat center center/cover;
+            /* Dégradé Premium au cas où la vidéo ne charge pas */
+            background: linear-gradient(135deg, #111 20%, #2a2215 100%);
             display: flex;
             align-items: center;
             justify-content: center;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .hero-banner video {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
+            top: 50%; left: 50%;
+            width: 100%; height: 100%;
             object-fit: cover;
             transform: translate(-50%, -50%);
             z-index: 1;
+            opacity: 0.5; /* Assombri pour faire ressortir le texte */
         }
 
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.15);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(17,17,17,1));
             z-index: 2;
         }
 
@@ -166,127 +187,145 @@
             position: relative;
             z-index: 3;
             text-align: center;
-            color: #ffffff;
+            padding: 0 20px;
         }
 
         .hero-content h2 {
-            font-size: 45px;
-            font-weight: 200;
+            font-family: 'Cinzel', serif;
+            font-size: 52px;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 8px;
-            margin-bottom: 15px;
+            letter-spacing: 12px;
+            margin-bottom: 20px;
+            color: var(--text-light);
+            text-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
 
         .hero-content p {
-            font-size: 14px;
-            font-weight: 300;
-            letter-spacing: 2px;
-            margin-bottom: 30px;
+            font-size: 13px;
+            font-weight: 200;
+            letter-spacing: 4px;
+            margin-bottom: 35px;
+            color: var(--text-muted);
+            text-transform: uppercase;
         }
 
         .btn-luxury {
-            background: #ffffff;
-            color: #111111;
-            padding: 14px 40px;
+            background: var(--accent-gold);
+            color: #111;
+            padding: 16px 45px;
             text-transform: uppercase;
             font-size: 11px;
-            font-weight: 400;
+            font-weight: 500;
             border: none;
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .btn-luxury:hover {
-            background: #111111;
-            color: #ffffff;
+            background: #ffffff;
+            transform: translateY(-2px);
         }
 
         .section-title {
+            font-family: 'Cinzel', serif;
             text-align: center;
-            margin: 70px 0 40px 0;
+            margin: 80px 0 50px 0;
             text-transform: uppercase;
-            font-weight: 300;
-            font-size: 22px;
-            letter-spacing: 5px;
+            font-weight: 400;
+            font-size: 24px;
+            letter-spacing: 6px;
+            color: var(--accent-gold);
         }
 
         .container {
             max-width: 1440px;
             margin: 0 auto;
-            padding: 0 4% 80px 4%;
+            padding: 0 4% 100px 4%;
         }
 
+        /* Grille des Univers */
         .collections-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 60px;
+            gap: 30px;
+            margin-bottom: 80px;
         }
 
         .collection-card {
             position: relative;
-            height: 500px;
+            height: 550px;
             overflow: hidden;
-            cursor: pointer;
+            border: 1px solid var(--border-color);
         }
 
         .collection-card img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            opacity: 0.7;
+            transition: transform 0.8s, opacity 0.8s;
         }
 
         .collection-card:hover img {
-            transform: scale(1.03);
+            transform: scale(1.02);
+            opacity: 0.9;
         }
 
         .collection-overlay {
             position: absolute;
-            bottom: 40px;
-            left: 40px;
-            color: white;
+            bottom: 50px;
+            left: 50px;
             z-index: 2;
         }
 
         .collection-overlay h3 {
-            font-size: 24px;
-            font-weight: 300;
+            font-family: 'Cinzel', serif;
+            font-size: 26px;
+            font-weight: 400;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 5px;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+            color: #fff;
         }
 
         .collection-overlay p {
             font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            opacity: 0.8;
-            border-bottom: 1px solid rgba(255,255,255,0.4);
+            letter-spacing: 2px;
+            color: var(--accent-gold);
+            border-bottom: 1px solid var(--accent-gold);
             display: inline-block;
-            padding-bottom: 2px;
+            padding-bottom: 4px;
         }
 
+        /* Grille Produits Modernisée */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 40px 25px;
+            gap: 40px 30px;
         }
 
         .product-card {
-            background: #ffffff;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
             position: relative;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .product-card:hover {
+            border-color: var(--accent-gold);
+            transform: translateY(-5px);
         }
 
         .badge-promo {
             position: absolute;
             top: 15px;
             left: 15px;
-            background: var(--accent-color);
-            color: white;
-            padding: 3px 8px;
-            font-size: 10px;
-            font-weight: 400;
+            background: var(--accent-gold);
+            color: #111;
+            padding: 4px 10px;
+            font-size: 9px;
+            font-weight: 600;
             z-index: 10;
             text-transform: uppercase;
         }
@@ -295,20 +334,19 @@
             width: 100%;
             padding-bottom: 115px;
             position: relative;
-            background: var(--gray-light);
+            background: #111;
             overflow: hidden;
-            cursor: pointer;
         }
 
         .product-img-container img {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover;
-            transition: opacity 0.4s;
+            opacity: 0.85;
         }
 
         .product-info {
-            padding: 15px 0;
+            padding: 25px 20px;
             text-align: left;
         }
 
@@ -316,122 +354,126 @@
             font-size: 12px;
             text-transform: uppercase;
             font-weight: 400;
-            margin-bottom: 6px;
-            color: #333;
+            margin-bottom: 10px;
+            color: var(--text-light);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
         }
 
         .product-price-box {
-            font-size: 13px;
-            margin-bottom: 12px;
+            font-size: 14px;
+            margin-bottom: 20px;
         }
 
         .old-price {
             text-decoration: line-through;
-            color: #999;
-            margin-right: 8px;
+            color: var(--text-muted);
+            margin-right: 10px;
             font-weight: 300;
         }
 
         .current-price {
-            font-weight: 400;
-            color: #111;
+            font-weight: 500;
+            color: var(--accent-gold);
         }
 
         .btn-buy-direct {
             background: transparent;
-            color: #111;
-            border: 1px solid #111;
+            color: var(--text-light);
+            border: 1px solid var(--border-color);
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             font-size: 11px;
             text-transform: uppercase;
+            font-weight: 500;
             cursor: pointer;
             transition: all 0.3s;
         }
 
         .btn-buy-direct:hover {
-            background: #111;
-            color: #fff;
+            background: var(--accent-gold);
+            color: #111;
+            border-color: var(--accent-gold);
         }
 
-        /* Modales & Tiroirs */
+        /* Modales */
         .modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.8);
             display: flex; align-items: center; justify-content: center;
             z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s;
         }
         .modal.active { opacity: 1; pointer-events: auto; }
-        .modal-content { background: white; width: 90%; max-width: 750px; display: grid; grid-template-columns: 1fr 1fr; position: relative; padding: 20px; }
-        .modal-close { position: absolute; top: 15px; right: 15px; font-size: 22px; cursor: pointer; z-index: 10; }
+        .modal-content { background: #1a1a1a; border: 1px solid var(--border-color); width: 90%; max-width: 750px; display: grid; grid-template-columns: 1fr 1fr; position: relative; padding: 25px; color: white; }
+        .modal-close { position: absolute; top: 15px; right: 15px; font-size: 26px; cursor: pointer; color: var(--text-muted); }
+        .modal-close:hover { color: white; }
         .modal-left img { width: 100%; height: 100%; object-fit: cover; }
-        .modal-right { padding: 25px; display: flex; flex-direction: column; justify-content: center; }
+        .modal-right { padding: 30px 15px; display: flex; flex-direction: column; justify-content: center; }
         
-        select { width: 100%; padding: 12px; border: 1px solid var(--border-color); background: white; margin-bottom: 20px; font-size: 12px; outline: none; }
+        select { width: 100%; padding: 14px; border: 1px solid var(--border-color); background: #111; color: white; margin-bottom: 25px; font-size: 12px; outline: none; }
 
+        /* Panier */
         .cart-sidebar {
             position: fixed; top: 0; right: -400px; width: 400px; height: 100%;
-            background: white; box-shadow: -10px 0 30px rgba(0,0,0,0.05); z-index: 1100;
+            background: #161617; box-shadow: -10px 0 40px rgba(0,0,0,0.5); z-index: 1100;
+            border-left: 1px solid var(--border-color);
             transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1); display: flex; flex-direction: column; padding: 40px 30px;
         }
         .cart-sidebar.active { right: 0; }
         .cart-items { flex: 1; overflow-y: auto; }
-        .cart-item { display: flex; gap: 15px; margin-bottom: 25px; }
+        .cart-item { display: flex; gap: 15px; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color); }
         .cart-item img { width: 70px; height: 70px; object-fit: cover; }
         
-        .btn-checkout { width: 100%; background: #111111; color: white; border: none; padding: 15px; text-transform: uppercase; font-size: 11px; font-weight: 400; cursor: pointer; letter-spacing: 2px; }
-        .btn-checkout:hover { background: var(--accent-color); }
+        .btn-checkout { width: 100%; background: var(--accent-gold); color: #111; border: none; padding: 16px; text-transform: uppercase; font-size: 11px; font-weight: 600; cursor: pointer; letter-spacing: 2px; }
+        .btn-checkout:hover { background: white; }
 
         /* Footer */
         footer {
-            background: #fbfbfb;
+            background: #0a0a0a;
             border-top: 1px solid var(--border-color);
-            padding: 60px 5% 30px 5%;
+            padding: 80px 5% 40px 5%;
             font-size: 12px;
-            color: #555;
         }
 
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
+            gap: 40px;
             max-width: 1440px;
-            margin: 0 auto 50px auto;
-            text-align: left;
+            margin: 0 auto 60px auto;
         }
 
         .footer-col h4 {
-            color: #111;
+            color: var(--accent-gold);
+            font-family: 'Cinzel', serif;
             font-weight: 400;
             text-transform: uppercase;
-            font-size: 11px;
-            margin-bottom: 20px;
+            font-size: 12px;
+            margin-bottom: 25px;
             letter-spacing: 2px;
         }
 
         .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: #666; text-decoration: none; transition: color 0.3s; font-size: 12px; }
-        .footer-col ul li a:hover { color: var(--accent-color); }
+        .footer-col ul li { margin-bottom: 12px; }
+        .footer-col ul li a { color: var(--text-muted); text-decoration: none; transition: color 0.3s; }
+        .footer-col ul li a:hover { color: var(--accent-gold); }
 
         .footer-bottom {
             border-top: 1px solid var(--border-color);
-            padding-top: 30px;
+            padding-top: 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             max-width: 1440px;
             margin: 0 auto;
             font-size: 11px;
-            color: #999;
+            color: var(--text-muted);
         }
 
-        .legal-box { max-height: 400px; overflow-y: auto; font-size: 13px; line-height: 1.6; color: #444; padding-right: 10px; }
-        .legal-box h5 { margin: 15px 0 5px 0; color: #111; text-transform: uppercase; font-size: 11px; }
+        .legal-box { max-height: 400px; overflow-y: auto; font-size: 13px; line-height: 1.7; color: #ccc; }
+        .legal-box h5 { margin: 20px 0 8px 0; color: var(--accent-gold); text-transform: uppercase; font-size: 11px; }
     </style>
 </head>
 <body>
@@ -439,8 +481,9 @@
     <div class="top-bar">Livraison Offerte Prorogée & Retours Gratuits sur toutes nos Collections</div>
 
     <header>
-        <div class="logo">
-            <h1 onclick="showHome()">H Luxury</h1>
+        <div class="logo-container" onclick="showHome()">
+            <div class="logo-icon">H</div>
+            <div class="logo-text">Luxury</div>
         </div>
         <nav>
             <ul>
@@ -454,7 +497,7 @@
                 <input type="text" id="search-input" placeholder="Rechercher un modèle..." onkeyup="handleSearch()">
             </div>
             <div class="cart-icon-wrapper" onclick="toggleCart(true)">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                 <div class="cart-count" id="cart-count">0</div>
             </div>
         </div>
@@ -477,14 +520,14 @@
             <h2 class="section-title">Les Univers</h2>
             <div class="collections-grid">
                 <div class="collection-card" onclick="filterCategory('femme')">
-                    <img src="collection-femme.jpg" alt="Femme">
+                    <img src="collection-femme.jpg" alt="Femme" onerror="this.style.background='#222'">
                     <div class="collection-overlay">
                         <h3>Ligne Féminine</h3>
                         <p>Découvrir</p>
                     </div>
                 </div>
                 <div class="collection-card" onclick="filterCategory('homme')">
-                    <img src="collection-homme.jpg" alt="Homme">
+                    <img src="collection-homme.jpg" alt="Homme" onerror="this.style.background='#222'">
                     <div class="collection-overlay">
                         <h3>Ligne Masculine</h3>
                         <p>Découvrir</p>
@@ -501,7 +544,7 @@
     <div class="modal" id="legal-modal" onclick="closeLegalModalOnBackdrop(event)">
         <div class="modal-content" style="max-width:600px; display:block;">
             <div class="modal-close" onclick="toggleLegalModal(false)">&times;</div>
-            <h3 id="legal-modal-title" style="text-transform:uppercase; font-weight:300; margin-bottom:20px; font-size:16px; letter-spacing:2px;"></h3>
+            <h3 id="legal-modal-title" style="text-transform:uppercase; font-weight:400; margin-bottom:20px; font-size:16px; color:var(--accent-gold);"></h3>
             <div class="legal-box" id="legal-modal-body"></div>
         </div>
     </div>
@@ -514,12 +557,12 @@
                 <img id="modal-img" src="">
             </div>
             <div class="modal-right">
-                <h3 id="modal-title" style="font-size:15px; font-weight:400; text-transform:uppercase; margin-bottom:15px;"></h3>
-                <div style="margin-bottom:20px;">
+                <h3 id="modal-title" style="font-size:16px; font-weight:400; text-transform:uppercase; margin-bottom:15px; color:white;"></h3>
+                <div style="margin-bottom:25px;">
                     <span class="old-price" id="modal-old-price" style="font-size:14px;"></span>
-                    <span class="current-price" id="modal-current-price" style="font-size:16px;"></span>
+                    <span class="current-price" id="modal-current-price" style="font-size:18px;"></span>
                 </div>
-                <label style="font-size:10px; text-transform:uppercase; margin-bottom:8px; display:block; color:#666;">Sélectionner votre Pointure</label>
+                <label style="font-size:10px; text-transform:uppercase; margin-bottom:8px; display:block; color:var(--text-muted);">Sélectionner votre Pointure</label>
                 <select id="modal-size"></select>
                 <button class="btn-checkout" onclick="addToCartFromModal()">Ajouter au sac de shopping</button>
             </div>
@@ -529,14 +572,14 @@
     <!-- PANIER -->
     <div class="cart-sidebar" id="cart-sidebar">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:40px; border-bottom:1px solid var(--border-color); padding-bottom:15px;">
-            <h3 style="font-weight:300; text-transform:uppercase; font-size:14px; letter-spacing:2px;">Votre Sélection</h3>
-            <span style="cursor:pointer; font-size:22px;" onclick="toggleCart(false)">&times;</span>
+            <h3 style="font-weight:400; text-transform:uppercase; font-size:14px; color:white;">Votre Sélection</h3>
+            <span style="cursor:pointer; font-size:24px; color:var(--text-muted);" onclick="toggleCart(false)">&times;</span>
         </div>
         <div class="cart-items" id="cart-items-container"></div>
         <div style="border-top:1px solid var(--border-color); padding-top:20px;">
             <div style="display:flex; justify-content:space-between; margin-bottom:25px; font-size:14px;">
-                <span style="font-weight:300;">Estimation du total</span>
-                <span id="cart-total-amount" style="font-weight:400;">0.00 €</span>
+                <span style="font-weight:300; color:var(--text-muted);">Estimation du total</span>
+                <span id="cart-total-amount" style="font-weight:500; color:var(--accent-gold);">0.00 €</span>
             </div>
             <button class="btn-checkout" onclick="processCheckout()">Finaliser la commande</button>
         </div>
@@ -568,26 +611,23 @@
             </div>
             <div class="footer-col">
                 <h4>Contact Officiel</h4>
-                <p style="line-height:1.6; color:#666;">Pour toute demande institutionnelle ou relative à vos commandes : <br><strong>hluxury34000@gmail.com</strong></p>
+                <p style="line-height:1.7; color:var(--text-muted);">Pour toute demande institutionnelle ou relative à vos commandes : <br><strong style="color:white;">hluxury34000@gmail.com</strong></p>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 H LUXURY Maison de Haute Création. Tous droits réservés.</p>
-            <p style="letter-spacing:3px;">PARIS — MILAN — LONDRES</p>
+            <p style="letter-spacing:3px; color:var(--accent-gold);">PARIS — MILAN — LONDRES</p>
         </div>
     </footer>
 
     <script>
-        // LE CATALOGUE INTEGRAL DES 54 PRODUITS RESTAURÉ SANS EXCEPTION
+        // LE CATALOGUE INTEGRAL DES 54 PRODUITS SANS EXCEPTION
         const products = [
-            // 1 À 5 : BEST-SELLERS ACCUEIL
             { id: 1, name: "Mule Chypre Cuir Togo Marron", price: 60.00, oldPrice: 66.00, img: "top-marron.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
             { id: 2, name: "Mule Chypre Blanc Pur Nappa", price: 60.00, oldPrice: 66.00, img: "top-blanc.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
             { id: 3, name: "Mule Chypre Suede Vert Émeraude", price: 75.00, oldPrice: 83.50, img: "top-emeraude.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
             { id: 4, name: "Mule Chypre Homme Noir Mat", price: 75.00, oldPrice: 83.50, img: "top-noir.jpg", cat: "homme", bestSeller: true, sizes: [40,41,42,43,44,45] },
             { id: 5, name: "Mule Chypre Homme Vert Kaki", price: 75.00, oldPrice: 83.50, img: "top-kaki.jpg", cat: "homme", bestSeller: true, sizes: [40,41,42,43,44,45] },
-            
-            // 6 À 15 : GAMME CHYPRE CLASSIQUE FEMME
             { id: 6, name: "Mule Chypre Rose Pastel Smooth", price: 60.00, oldPrice: 66.00, img: "chypre-rose.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
             { id: 7, name: "Mule Chypre Vert Menthe Doux", price: 60.00, oldPrice: 66.00, img: "chypre-vert-menthe.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
             { id: 8, name: "Mule Chypre Jaune Citron Foncé", price: 60.00, oldPrice: 66.00, img: "chypre-jaune.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
@@ -598,8 +638,6 @@
             { id: 13, name: "Mule Chypre Bleu Turquoise Lagon", price: 60.00, oldPrice: 66.00, img: "chypre-turquoise.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
             { id: 14, name: "Mule Chypre Rouge Carmin Lumineux", price: 60.00, oldPrice: 66.00, img: "chypre-rouge.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
             { id: 15, name: "Mule Chypre Bleu Marine Profond", price: 60.00, oldPrice: 66.00, img: "chypre-bleu-marine.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            
-            // 16 À 25 : GAMME LUXE & MATIÈRES FEMME
             { id: 16, name: "Mule Chypre Strass Onyx Édition Nuit", price: 75.00, oldPrice: 83.50, img: "chypre-strass-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
             { id: 17, name: "Mule Chypre Strass Diamant Cristal", price: 75.00, oldPrice: 83.50, img: "chypre-strass-argent.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
             { id: 18, name: "Mule Chypre Strass Ambre & Or", price: 75.00, oldPrice: 83.50, img: "chypre-strass-or.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
@@ -610,8 +648,6 @@
             { id: 23, name: "Mule Toile Monogramme Multi", price: 75.00, oldPrice: 83.50, img: "chypre-monogramme.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
             { id: 24, name: "Mule Édition Mouton Miel", price: 75.00, oldPrice: 83.50, img: "chypre-mouton-miel.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
             { id: 25, name: "Mule Mouton Retourné Noir Rose", price: 75.00, oldPrice: 83.50, img: "chypre-mouton-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            
-            // 26 À 37 : TALONS, COMPENSÉES & MULES ORAN FEMME
             { id: 26, name: "Sandale à Talon Haut Cuir Noir Ébène", price: 75.00, oldPrice: 83.50, img: "mule-talon-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40] },
             { id: 27, name: "Sandale à Talon Haut Daim Beige Sable", price: 75.00, oldPrice: 83.50, img: "mule-talon-beige.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40] },
             { id: 28, name: "Sandale à Talon Haut Blanc Crème Satin", price: 75.00, oldPrice: 83.50, img: "mule-talon-blanc.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40] },
@@ -624,8 +660,6 @@
             { id: 35, name: "Mule Plate Oran Cuir Box Tan Mythique", price: 60.00, oldPrice: 66.00, img: "oran-tan.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
             { id: 36, name: "Mule Plate Oran All Black Noir Intense", price: 60.00, oldPrice: 66.00, img: "oran-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
             { id: 37, name: "Mule Plate Oran Blanc Optique Pur", price: 60.00, oldPrice: 66.00, img: "oran-blanc.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            
-            // 38 À 47 : LA COLLECTION HOMME COMPLETE
             { id: 38, name: "Mule Chypre Homme Bleu Marine Sport", price: 60.00, oldPrice: 66.00, img: "chypre-homme-bleu.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
             { id: 39, name: "Mule Chypre Homme Cuir Togo Chocolat", price: 60.00, oldPrice: 66.00, img: "chypre-homme-chocolat.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
             { id: 40, name: "Mule Chypre Homme Blanc Fauve Riviera", price: 60.00, oldPrice: 66.00, img: "chypre-homme-blanc.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
@@ -636,8 +670,6 @@
             { id: 45, name: "Mule Chypre Homme Camel Gold Héritage", price: 60.00, oldPrice: 66.00, img: "chypre-homme-camel.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
             { id: 46, name: "Mule Homme Crossover Noir Sport", price: 75.00, oldPrice: 83.50, img: "crossover-homme-noir.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
             { id: 47, name: "Mule Homme Crossover Marron Chic", price: 75.00, oldPrice: 83.50, img: "crossover-homme-marron.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
-            
-            // 48 À 54 : DÉCLINAISONS MIXTES DE COMPLÉMENT (HARMONISATION CATALOGUE)
             { id: 48, name: "Mule Sélection Mixte All-White Premium", price: 60.00, oldPrice: 66.00, img: "mixte-white.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41,42,43] },
             { id: 49, name: "Mule Sélection Mixte All-Black Premium", price: 60.00, oldPrice: 66.00, img: "mixte-black.jpg", cat: "homme", bestSeller: false, sizes: [39,40,41,42,43,44,45] },
             { id: 50, name: "Mule Chypre Suede Marron Écorce", price: 75.00, oldPrice: 83.50, img: "mixte-suede-marron.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
@@ -746,10 +778,10 @@
                         <img src="${item.img}">
                         <div style="flex:1; text-align:left;">
                             <h4 style="font-size:11px; text-transform:uppercase; font-weight:400;">${item.name}</h4>
-                            <p style="font-size:11px; color:#777; margin-top:2px;">Taille : ${item.selectedSize}</p>
-                            <p style="font-weight:400; font-size:12px; margin-top:4px;">${item.price.toFixed(2)} €</p>
+                            <p style="font-size:11px; color:var(--text-muted); margin-top:2px;">Taille : ${item.selectedSize}</p>
+                            <p style="font-weight:500; font-size:12px; margin-top:4px; color:var(--accent-gold);">${item.price.toFixed(2)} €</p>
                         </div>
-                        <span style="cursor:pointer; font-size:18px;" onclick="cart.splice(${index},1); updateCartUI();">&times;</span>
+                        <span style="cursor:pointer; font-size:18px; color:var(--text-muted);" onclick="cart.splice(${index},1); updateCartUI();">&times;</span>
                     </div>
                 `;
             });
@@ -761,7 +793,6 @@
             window.location.href = "https://buy.stripe.com/votre_lien_unique_ici";
         }
 
-        // TEXTES INSTITUTIONNELS COMPLETÉS
         function openLegal(type) {
             const title = document.getElementById('legal-modal-title');
             const body = document.getElementById('legal-modal-body');
@@ -785,8 +816,8 @@
                 body.innerHTML = `
                     <p style='margin-bottom:15px;'>Nos conseillers de la Maison sont à votre entière disposition pour vous guider dans vos acquisitions.</p>
                     <h5>Par Courrier Électronique (Prioritaire)</h5>
-                    <p style='font-size:15px; color:var(--accent-color); font-weight:400; margin-top:5px;'>hluxury34000@gmail.com</p>
-                    <p style='margin-top:15px; font-size:11px; color:#777;'>Délai moyen de réponse : Moins de 12 heures.</p>
+                    <p style='font-size:15px; color:var(--accent-gold); font-weight:400; margin-top:5px;'>hluxury34000@gmail.com</p>
+                    <p style='margin-top:15px; font-size:11px; color:var(--text-muted);'>Délai moyen de réponse : Moins de 12 heures.</p>
                 `;
             } else if(type === 'livraison') {
                 title.innerText = "Expéditions & Retours d'Exceptions";
