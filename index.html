@@ -700,11 +700,7 @@
             <nav>
                 <ul>
                     <li><a href="#" class="active-btn" id="nav-home" onclick="showHome()">Accueil</a></li>
-                    <li><a href="#" id="nav-oran" onclick="filterCollection('oran')">Collection Oran</a></li>
-                    <li><a href="#" id="nav-chypre" onclick="filterCollection('chypre')">Collection Chypre</a></li>
-                    <li><a href="#" id="nav-empire" onclick="filterCollection('empire')">Collection Empire</a></li>
-                    <li><a href="#" id="nav-oasis" onclick="filterCollection('oasis')">Collection Oasis</a></li>
-                    <li><a href="#" id="nav-sneakers" onclick="filterCollection('sneakers')">Chaussures</a></li>
+                    <li><a href="#" id="nav-catalogue" onclick="showAllCatalogue()">Catalogue</a></li>
                 </ul>
             </nav>
         </div>
@@ -742,9 +738,9 @@
         <img id="hero-main-img" src="" alt="Bannière Principale H Luxury" class="hero-bg-img">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h2>Collection Été</h2>
+            <h2>Collection Éte</h2>
             <p>Lignes pures et matières d'exception.</p>
-            <button class="btn-shop-now" onclick="filterCollection('oran')">Découvrir les Souliers</button>
+            <button class="btn-shop-now" onclick="showAllCatalogue()">Découvrir les Souliers</button>
         </div>
     </div>
 
@@ -1036,6 +1032,20 @@
             document.getElementById('nav-home').classList.add('active-btn');
         }
 
+        function showAllCatalogue() {
+            currentCategory = 'all';
+            document.getElementById('hero-section').style.display = 'none';
+            document.getElementById('catalogues-section').style.display = 'none';
+            document.getElementById('filter-wrapper').style.display = 'flex'; 
+            document.getElementById('price-filter').value = 'all'; 
+            
+            document.getElementById('page-dynamic-title').innerText = "Catalogue Complet";
+            
+            displayProducts(products);
+            document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active-btn'));
+            document.getElementById('nav-catalogue').classList.add('active-btn');
+        }
+
         function filterCollection(collName) {
             currentCategory = collName;
             document.getElementById('hero-section').style.display = 'none';
@@ -1055,12 +1065,12 @@
             
             displayProducts(products.filter(p => p.collection === collName));
             document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active-btn'));
-            document.getElementById(`nav-${collName}`).classList.add('active-btn');
+            document.getElementById('nav-catalogue').classList.add('active-btn');
         }
 
         function applyPriceFilter() {
             const criteria = document.getElementById('price-filter').value;
-            let filtered = products.filter(p => p.collection === currentCategory);
+            let filtered = currentCategory === 'all' ? products : products.filter(p => p.collection === currentCategory);
 
             if(criteria === 'low') {
                 filtered = filtered.filter(p => p.price < 70);
@@ -1322,7 +1332,7 @@
     { auteur: "Enzo D.", texte: "Livré en 48h, produit impeccable, rien à redire." },
     { auteur: "Léna J.", texte: "Parfait pour offrir ou pour soi, super qualité." },
     { auteur: "Mathieu T.", texte: "Simple et efficace, remplit parfaitement son rôle." },
-    { auteur: "Charlotte R.", texte: "Très bonne communication avec le marchand, rassurant." },
+    { auteur: "Charlotte R.", texte: "Très bonne communication avec le marchand, assurance." },
     { auteur: "Simon B.", texte: "Je l'ai recommandé à mon entourage direct." },
     { auteur: "Manal K.", texte: "Très agréable surprise, le produit est parfait." },
     { auteur: "Loïc G.", texte: "Une valeur sûre, livraison et suivi impeccables." },
