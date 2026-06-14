@@ -339,7 +339,7 @@
             max-width: 1340px;
             margin: 20px auto 0 auto;
             padding: 0 2%;
-            display: none; 
+            display: none; /* Visible uniquement hors accueil */
             justify-content: flex-end;
             gap: 10px;
         }
@@ -700,7 +700,11 @@
             <nav>
                 <ul>
                     <li><a href="#" class="active-btn" id="nav-home" onclick="showHome()">Accueil</a></li>
-                    <li><a href="#" id="nav-catalogue" onclick="showAllCatalogue()">Catalogue</a></li>
+                    <li><a href="#" id="nav-oran" onclick="filterCollection('oran')">Collection Oran</a></li>
+                    <li><a href="#" id="nav-chypre" onclick="filterCollection('chypre')">Collection Chypre</a></li>
+                    <li><a href="#" id="nav-empire" onclick="filterCollection('empire')">Collection Empire</a></li>
+                    <li><a href="#" id="nav-oasis" onclick="filterCollection('oasis')">Collection Oasis</a></li>
+                    <li><a href="#" id="nav-sneakers" onclick="filterCollection('sneakers')">Chaussures</a></li>
                 </ul>
             </nav>
         </div>
@@ -738,9 +742,9 @@
         <img id="hero-main-img" src="" alt="Bannière Principale H Luxury" class="hero-bg-img">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h2>Collection Éte</h2>
+            <h2>Collection Été</h2>
             <p>Lignes pures et matières d'exception.</p>
-            <button class="btn-shop-now" onclick="showAllCatalogue()">Découvrir les Souliers</button>
+            <button class="btn-shop-now" onclick="filterCollection('oran')">Découvrir les Souliers</button>
         </div>
     </div>
 
@@ -864,36 +868,6 @@
         </div>
     </div>
 
-    <div id="review-toast" style="
-      position: fixed;
-      bottom: 20px;
-      left: -400px;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-      display: flex;
-      align-items: center;
-      padding: 15px;
-      font-family: 'Segoe UI', Roboto, sans-serif;
-      z-index: 9999;
-      transition: left 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      width: 320px;
-      border-left: 4px solid #28a745;
-      box-sizing: border-box;
-    ">
-      <div style="margin-right: 12px;">
-        <div style="background: #28a745; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px;">✓</div>
-      </div>
-      <div style="display: flex; flex-direction: column;">
-        <p style="font-size: 13px; color: #333; margin: 0 0 4px 0; font-weight: bold;">
-          <span id="review-author">Prénom</span> — <span style="color: #ffc107;">★★★★★</span>
-        </p>
-        <p id="review-text" style="font-size: 12px; color: #555; margin: 0; font-style: italic; line-height: 1.4;">
-          "Super produit !"
-        </p>
-      </div>
-    </div>
-
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -926,8 +900,8 @@
     <script>
         const BANNER_CONFIG = {
             imageHero: "banniere.jpg",
-            imageCatalogueFemme: "https://cloud.lepanierfrancais.fr/index.php/s/Y6qMWe4Lp2Snt46/download/oran-catalogue.jpg", 
-            imageCatalogueHomme: "https://cloud.lepanierfrancais.fr/index.php/s/wQ8c6Bex56gXN2a/download/bouncing-catalogue.jpg"  
+            imageCatalogueFemme: "LIEN_IMAGE_FEMME", 
+            imageCatalogueHomme: "LIEN_IMAGE_HOMME"  
         };
 
         const products = [
@@ -1062,20 +1036,6 @@
             document.getElementById('nav-home').classList.add('active-btn');
         }
 
-        function showAllCatalogue() {
-            currentCategory = 'all';
-            document.getElementById('hero-section').style.display = 'none';
-            document.getElementById('catalogues-section').style.display = 'none';
-            document.getElementById('filter-wrapper').style.display = 'flex'; 
-            document.getElementById('price-filter').value = 'all'; 
-            
-            document.getElementById('page-dynamic-title').innerText = "Catalogue Complet";
-            
-            displayProducts(products);
-            document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active-btn'));
-            document.getElementById('nav-catalogue').classList.add('active-btn');
-        }
-
         function filterCollection(collName) {
             currentCategory = collName;
             document.getElementById('hero-section').style.display = 'none';
@@ -1095,12 +1055,12 @@
             
             displayProducts(products.filter(p => p.collection === collName));
             document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active-btn'));
-            document.getElementById('nav-catalogue').classList.add('active-btn');
+            document.getElementById(`nav-${collName}`).classList.add('active-btn');
         }
 
         function applyPriceFilter() {
             const criteria = document.getElementById('price-filter').value;
-            let filtered = currentCategory === 'all' ? products : products.filter(p => p.collection === currentCategory);
+            let filtered = products.filter(p => p.collection === currentCategory);
 
             if(criteria === 'low') {
                 filtered = filtered.filter(p => p.price < 70);
@@ -1226,12 +1186,12 @@
             `,
             mentions: `
                 <h5>1. Édition du Site</h5>
-                <p>Le présent site accessible à l'adresse hluxury.com est édité par la Maison H LUXURY E-Commerce Inc., immatriculée au Registre du Commerce et des Sommets (RCS) de Montpellier.</p>
+                <p>Le présent site accessible à l'adresse hluxury.com est édité par la Maison H LUXURY E-Commerce Inc., immatriculée au Registre du Commerce et des Sociétés (RCS) de Montpellier.</p>
                 <p><b>Direction de la publication :</b> Direction H LUXURY Studio.</p>
                 <h5>2. Hébergement</h5>
                 <p>Le site est hébergé de manière sécurisée sur des infrastructures conformes aux normes européennes d'intégrité numérique.</p>
                 <h5>3. Propriété Intellectuelle</h5>
-                <p>L'intégralité du contenu présent (textes, logos, photographies, structures logicielles) constitutes une œuvre de l'esprit protégée par le Code de la propriété intellectuelle. Toute reproduction ou distribution sans accord préalable est strictement interdite.</p>
+                <p>L'intégralité du contenu présent (textes, logos, photographies, structures logicielles) constitue une œuvre de l'esprit protégée par le Code de la propriété intellectuelle. Toute reproduction ou distribution sans accord préalable est strictement interdite.</p>
             `,
             cgv: `
                 <h5>Objet des Conditions</h5>
@@ -1277,103 +1237,137 @@
         function toggleLegalModal(show) { document.getElementById('legal-modal').classList.toggle('active', show); }
         function closeLegalModalOnBackdrop(e) { if(e.target.id === 'legal-modal') toggleLegalModal(false); }
 
-        /* Module de notifications d'avis clients en direct */
-        (function() {
-          const listeAvisPrets = [
-            { auteur: "Sarah M.", texte: "Livraison rapide et produit conforme, je recommande sans hésiter !" },
-            { auteur: "Thomas B.", texte: "Le service client est super réactif, et la qualité est vraiment au rendez-vous." },
-            { auteur: "Amandine L.", texte: "Franchement génial, j'en ai repris un deuxième pour offrir à un proche." },
-            { auteur: "Nicolas V.", texte: "Excellent rapport qualité/prix. Rien à redire, c'est parfait." },
-            { auteur: "Julie D.", texte: "Commande reçue en avance. Très bien emballé et conforme à la description." },
-            { auteur: "Kevin R.", texte: "Site très sérieux. J'avais une question et ils m'ont répondu en moins d'une heure." },
-            { auteur: "Émilie P.", texte: "Une super découverte, je passerai à nouveau commande très bientôt !" },
-            { auteur: "Maxime G.", texte: "Parfait, correspond exactement à ce que j'attendais. Je recommande." },
-            { auteur: "Laura T.", texte: "Très satisfaite de mon achat. Simple, efficace et de bonne qualité." },
-            { auteur: "Antoine F.", texte: "Expérience d'achat au top de A à Z. Vous pouvez y aller les yeux fermés." },
-            { auteur: "Manon S.", texte: "Rien à redire, traitement de commande hyper rapide." },
-            { auteur: "Guillaume L.", texte: "Conforme aux photos du site, la qualité est superbe." },
-            { auteur: "Chloé B.", texte: "Très bonne surprise au déballage, je suis ravie !" },
-            { auteur: "Alexandre D.", texte: "Un sans-faute. Je commanderai à nouveau sans hésiter." },
-            { auteur: "Camille M.", texte: "Service client au top, super agréable et efficace." },
-            { auteur: "Lucas G.", texte: "Produit robuste et finitions impeccables. 5 étoiles." },
-            { auteur: "Léa R.", texte: "Très contente, article conforme et arrivé bien protégé." },
-            { auteur: "Julien P.", texte: "Excellent suivi de livraison et produit parfait." },
-            { auteur: "Mathilde V.", texte: "Pratique, esthétique et de qualité. Entièrement satisfaite." },
-            { auteur: "Hugo C.", texte: "Achat validé ! C'est exactement ce qu'il me fallait." },
-            { auteur: "Emma F.", texte: "Je l'utilise tous les jours, c'est devenu un indispensable." },
-            { auteur: "Arthur N.", texte: "Rapport qualité-prix imbattable sur le marché actuellement." },
-            { auteur: "Océane G.", texte: "Une livraison rapide et soignée. Merci beaucoup !" },
-            { auteur: "Clément J.", texte: "Très pro, du passage de la commande à la réception." },
-            { auteur: "Inès K.", texte: "Je recommande ce site, le produit est conforme à mes attentes." },
-            { auteur: "Paul E.", texte: "Franchement bluffé par la qualité par rapport au prix." },
-            { auteur: "Clara H.", texte: "Une équipe à l'écoute et un produit vraiment top." },
-            { auteur: "Valentin M.", texte: "Délais respectés, emballage soigné, produit nickel." },
-            { auteur: "Jeanne W.", texte: "Très simple d'utilisation, correspond à la description." },
-            { auteur: "Louis T.", texte: "Une très bonne expérience globale, je recommande." },
-            { auteur: "Agathe P.", texte: "Très satisfaite de mon choix, aucun regret sur cet achat." },
-            { auteur: "Quentin R.", texte: "Le top du top. Expédition rapide et emballage solide." },
-            { auteur: "Marion D.", texte: "J'ai eu un coup de cœur pour ce modèle, pas déçue !" },
-            { auteur: "Romain L.", texte: "Fonctionne parfaitement, conforme en tous points." },
-            { auteur: "Alice S.", texte: "Superbe expérience, livraison très rapide." },
-            { auteur: "Florian B.", texte: "Qualité supérieure à ce que j'imaginais, bravo !" },
-            { auteur: "Lucie V.", texte: "Commande reçue ce matin, déjà adopté et testé !" },
-            { auteur: "Bastien F.", texte: "Efficace, rapide et conforme. Je valide à 100%." },
-            { auteur: "Noémie C.", texte: "Ravi de mon achat, je recommande ce vendeur." },
-            { auteur: "Théo G.", texte: "Un choix que je ne regrette pas, super utile au quotidien." },
-            { auteur: "Anaïs M.", texte: "Un grand merci au support pour leur réactivité." },
-            { auteur: "Maxence N.", texte: "Tout est parfait, de la commande à l'utilisation." },
-            { auteur: "Justine P.", texte: "Design sympa et produit de très bonne facture." },
-            { auteur: "Enzo D.", texte: "Livré en 48h, produit impeccable, rien à redire." },
-            { auteur: "Léna J.", texte: "Parfait pour offrir ou pour soi, super qualité." },
-            { auteur: "Mathieu T.", texte: "Simple et efficace, remplit parfaitement son rôle." },
-            { auteur: "Charlotte R.", texte: "Très bonne communication avec le marchand, assurance." },
-            { auteur: "Simon B.", texte: "Je l'ai recommandé à mon entourage direct." },
-            { auteur: "Manal K.", texte: "Très agréable surprise, le produit est parfait." },
-            { auteur: "Loïc G.", texte: "Une valeur sûre, livraison et suivi impeccables." },
-            { auteur: "Eva S.", texte: "Exactement comme décrit. Très satisfaite." },
-            { auteur: "Corentin L.", texte: "Un achat intelligent, robuste et durable." },
-            { auteur: "Margaux D.", texte: "Rapport qualité-prix excellent, je recommande." },
-            { auteur: "Nathan P.", texte: "Facile à prendre en main, correspond à mes attentes." },
-            { auteur: "Zoe C.", texte: "Acheté suite aux recommandations, pas déçue !" },
-            { auteur: "Axel M.", texte: "Service impeccable et réactif, produit conforme." },
-            { auteur: "Lola F.", texte: "Reçu bien emballé, la qualité semble excellente." },
-            { auteur: "Baptiste V.", texte: "Pratique et conforme à ce qui est annoncé." },
-            { auteur: "Jade H.", texte: "Je repasserai commande sans aucune hésitation." },
-            { auteur: "Robin T.", texte: "Tout est conforme, la livraison a été rapide." },
-            { auteur: "Élisa B.", texte: "Parfait pour mon utilisation quotidienne. Je recommande." },
-            { auteur: "Thibault S.", texte: "Une très bonne boutique avec de bons produits." },
-            { auteur: "Morgane R.", texte: "Colis arrivé dans les temps et très bien protégé." },
-            { auteur: "Adrien C.", texte: "Très bon produit, conforme à la description du site." },
-            { auteur: "Lou M.", texte: "Une commande fluide et rapide, merci beaucoup !" },
-            { auteur: "Gabriel F.", texte: "Très satisfait de la qualité globale, je valide." }
-          ];
-
-          function afficherAvis() {
-            const toast = document.getElementById('review-toast');
-            const elemAuteur = document.getElementById('review-author');
-            const elemTexte = document.getElementById('review-text');
-
-            if (!toast || !elemAuteur || !elemTexte) return;
-
-            const avisAleatoire = listeAvisPrets[Math.floor(Math.random() * listeAvisPrets.length)];
-
-            elemAuteur.textContent = avisAleatoire.auteur;
-            elemTexte.textContent = `"${avisAleatoire.texte}"`;
-
-            toast.style.left = '20px';
-
-            setTimeout(() => {
-              toast.style.left = '-400px';
-            }, 8000);
-          }
-
-          window.addEventListener('load', () => {
+        window.onload = () => { 
             initBanners(); 
             showHome(); 
-            setTimeout(afficherAvis, 8000);
-            setInterval(afficherAvis, 300000); 
-          });
-        })();
+        };
     </script>
+
+<div id="review-toast" style="
+  position: fixed;
+  bottom: 20px;
+  left: -400px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  z-index: 9999;
+  transition: left 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: 320px;
+  border-left: 4px solid #28a745;
+  box-sizing: border-box;
+">
+  <div style="margin-right: 12px;">
+    <div style="background: #28a745; color: white; border-radius: 50%; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px;">✓</div>
+  </div>
+  <div style="display: flex; flex-direction: column;">
+    <p style="font-size: 13px; color: #333; margin: 0 0 4px 0; font-weight: bold;">
+      <span id="review-author">Prénom</span> — <span style="color: #ffc107;">★★★★★</span>
+    </p>
+    <p id="review-text" style="font-size: 12px; color: #555; margin: 0; font-style: italic; line-height: 1.4;">
+      "Super produit !"
+    </p>
+  </div>
+</div>
+
+<script>
+(function() {
+  const listeAvisPrets = [
+    { auteur: "Sarah M.", texte: "Livraison rapide et produit conforme, je recommande sans hésiter !" },
+    { auteur: "Thomas B.", texte: "Le service client est super réactif, et la qualité est vraiment au rendez-vous." },
+    { auteur: "Amandine L.", texte: "Franchement génial, j'en ai repris un deuxième pour offrir à un proche." },
+    { auteur: "Nicolas V.", texte: "Excellent rapport qualité/prix. Rien à redire, c'est parfait." },
+    { auteur: "Julie D.", texte: "Commande reçue en avance. Très bien emballé et conforme à la description." },
+    { auteur: "Kevin R.", texte: "Site très sérieux. J'avais une question et ils m'ont répondu en moins d'une heure." },
+    { auteur: "Émilie P.", texte: "Une super découverte, je passerai à nouveau commande très bientôt !" },
+    { auteur: "Maxime G.", texte: "Parfait, correspond exactement à ce que j'attendais. Je recommande." },
+    { auteur: "Laura T.", texte: "Très satisfaite de mon achat. Simple, efficace et de bonne qualité." },
+    { auteur: "Antoine F.", texte: "Expérience d'achat au top de A à Z. Vous pouvez y aller les yeux fermés." },
+    { auteur: "Manon S.", texte: "Rien à redire, traitement de commande hyper rapide." },
+    { auteur: "Guillaume L.", texte: "Conforme aux photos du site, la qualité est superbe." },
+    { auteur: "Chloé B.", texte: "Très bonne surprise au déballage, je suis ravie !" },
+    { auteur: "Alexandre D.", texte: "Un sans-faute. Je commanderai à nouveau sans hésiter." },
+    { auteur: "Camille M.", texte: "Service client au top, super agréable et efficace." },
+    { auteur: "Lucas G.", texte: "Produit robuste et finitions impeccables. 5 étoiles." },
+    { auteur: "Léa R.", texte: "Très contente, article conforme et arrivé bien protégé." },
+    { auteur: "Julien P.", texte: "Excellent suivi de livraison et produit parfait." },
+    { auteur: "Mathilde V.", texte: "Pratique, esthétique et de qualité. Entièrement satisfaite." },
+    { auteur: "Hugo C.", texte: "Achat validé ! C'est exactement ce qu'il me fallait." },
+    { auteur: "Emma F.", texte: "Je l'utilise tous les jours, c'est devenu un indispensable." },
+    { auteur: "Arthur N.", texte: "Rapport qualité-prix imbattable sur le marché actuellement." },
+    { auteur: "Océane G.", texte: "Une livraison rapide et soignée. Merci beaucoup !" },
+    { auteur: "Clément J.", texte: "Très pro, du passage de la commande à la réception." },
+    { auteur: "Inès K.", texte: "Je recommande ce site, le produit est conforme à mes attentes." },
+    { auteur: "Paul E.", texte: "Franchement bluffé par la qualité par rapport au prix." },
+    { auteur: "Clara H.", texte: "Une équipe à l'écoute et un produit vraiment top." },
+    { auteur: "Valentin M.", texte: "Délais respectés, emballage soigné, produit nickel." },
+    { auteur: "Jeanne W.", texte: "Très simple d'utilisation, correspond à la description." },
+    { auteur: "Louis T.", texte: "Une très bonne expérience globale, je recommande." },
+    { auteur: "Agathe P.", texte: "Très satisfaite de mon choix, aucun regret sur cet achat." },
+    { auteur: "Quentin R.", texte: "Le top du top. Expédition rapide et emballage solide." },
+    { auteur: "Marion D.", texte: "J'ai eu un coup de cœur pour ce modèle, pas déçue !" },
+    { auteur: "Romain L.", texte: "Fonctionne parfaitement, conforme en tous points." },
+    { auteur: "Alice S.", texte: "Superbe expérience, livraison très rapide." },
+    { auteur: "Florian B.", texte: "Qualité supérieure à ce que j'imaginais, bravo !" },
+    { auteur: "Lucie V.", texte: "Commande reçue ce matin, déjà adopté et testé !" },
+    { auteur: "Bastien F.", texte: "Efficace, rapide et conforme. Je valide à 100%." },
+    { auteur: "Noémie C.", texte: "Ravi de mon achat, je recommande ce vendeur." },
+    { auteur: "Théo G.", texte: "Un choix que je ne regrette pas, super utile au quotidien." },
+    { auteur: "Anaïs M.", texte: "Un grand merci au support pour leur réactivité." },
+    { auteur: "Maxence N.", texte: "Tout est parfait, de la commande à l'utilisation." },
+    { auteur: "Justine P.", texte: "Design sympa et produit de très bonne facture." },
+    { auteur: "Enzo D.", texte: "Livré en 48h, produit impeccable, rien à redire." },
+    { auteur: "Léna J.", texte: "Parfait pour offrir ou pour soi, super qualité." },
+    { auteur: "Mathieu T.", texte: "Simple et efficace, remplit parfaitement son rôle." },
+    { auteur: "Charlotte R.", texte: "Très bonne communication avec le marchand, rassurant." },
+    { auteur: "Simon B.", texte: "Je l'ai recommandé à mon entourage direct." },
+    { auteur: "Manal K.", texte: "Très agréable surprise, le produit est parfait." },
+    { auteur: "Loïc G.", texte: "Une valeur sûre, livraison et suivi impeccables." },
+    { auteur: "Eva S.", texte: "Exactement comme décrit. Très satisfaite." },
+    { auteur: "Corentin L.", texte: "Un achat intelligent, robuste et durable." },
+    { auteur: "Margaux D.", texte: "Rapport qualité-prix excellent, je recommande." },
+    { auteur: "Nathan P.", texte: "Facile à prendre en main, correspond à mes attentes." },
+    { auteur: "Zoe C.", texte: "Acheté suite aux recommandations, pas déçue !" },
+    { auteur: "Axel M.", texte: "Service impeccable et réactif, produit conforme." },
+    { auteur: "Lola F.", texte: "Reçu bien emballé, la qualité semble excellente." },
+    { auteur: "Baptiste V.", texte: "Pratique et conforme à ce qui est annoncé." },
+    { auteur: "Jade H.", texte: "Je repasserai commande sans aucune hésitation." },
+    { auteur: "Robin T.", texte: "Tout est conforme, la livraison a été rapide." },
+    { auteur: "Élisa B.", texte: "Parfait pour mon utilisation quotidienne. Je recommande." },
+    { auteur: "Thibault S.", texte: "Une très bonne boutique avec de bons produits." },
+    { auteur: "Morgane R.", texte: "Colis arrivé dans les temps et très bien protégé." },
+    { auteur: "Adrien C.", texte: "Très bon produit, conforme à la description du site." },
+    { auteur: "Lou M.", texte: "Une commande fluide et rapide, merci beaucoup !" },
+    { auteur: "Gabriel F.", texte: "Très satisfait de la qualité globale, je valide." }
+  ];
+
+  function afficherAvis() {
+    const toast = document.getElementById('review-toast');
+    const elemAuteur = document.getElementById('review-author');
+    const elemTexte = document.getElementById('review-text');
+
+    if (!toast || !elemAuteur || !elemTexte) return;
+
+    const avisAleatoire = listeAvisPrets[Math.floor(Math.random() * listeAvisPrets.length)];
+
+    elemAuteur.textContent = avisAleatoire.auteur;
+    elemTexte.textContent = `"${avisAleatoire.texte}"`;
+
+    toast.style.left = '20px';
+
+    setTimeout(() => {
+      toast.style.left = '-400px';
+    }, 8000);
+  }
+
+  window.addEventListener('load', () => {
+    setTimeout(afficherAvis, 8000);
+    setInterval(afficherAvis, 300000); 
+  });
+})();
+</script>
 </body>
 </html>
