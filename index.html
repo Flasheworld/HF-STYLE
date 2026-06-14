@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H LUXURY — Maison de Couture</title>
+    <title>H LUXURY — Souliers & Maroquinerie de Luxe</title>
+    <!-- Favicon (Le petit logo dans l'onglet) -->
+    <link rel="icon" type="image/png" href="logo-onglet.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -29,23 +31,25 @@
             overflow-x: hidden;
         }
 
+        /* BANDEAU PROMO */
         .top-bar {
             background-color: var(--promo-color);
             color: white;
             text-align: center;
             padding: 10px 0;
-            font-size: 12px;
+            font-size: 11px;
             text-transform: uppercase;
             font-weight: 600;
             letter-spacing: 2px;
         }
 
+        /* HEADER AVEC BARRE DE RECHERCHE */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 25px 5%;
-            background: rgba(252, 252, 252, 0.95);
+            padding: 20px 5%;
+            background: rgba(252, 252, 252, 0.98);
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
@@ -53,9 +57,9 @@
         }
 
         .logo h1 {
-            font-weight: 400;
-            font-size: 24px;
-            letter-spacing: 6px;
+            font-weight: 500;
+            font-size: 22px;
+            letter-spacing: 7px;
             text-transform: uppercase;
             cursor: pointer;
         }
@@ -63,25 +67,46 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 35px;
+            gap: 30px;
         }
 
         nav ul li a {
             text-decoration: none;
             color: var(--text-color);
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
             font-weight: 500;
-            transition: opacity 0.3s;
+            transition: color 0.3s;
         }
 
         nav ul li a:hover, nav ul li a.active {
             color: var(--accent-color);
         }
 
+        /* BARRE DE RECHERCHE PRO */
+        .search-container {
+            position: relative;
+            width: 200px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 8px 30px 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            font-size: 12px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .search-container input:focus {
+            width: 240px;
+            border-color: var(--text-color);
+        }
+
         .header-icons {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             align-items: center;
         }
 
@@ -106,52 +131,129 @@
             font-weight: 600;
         }
 
-        .hero {
+        /* GRANDE BANNIÈRE D'ACCUEIL */
+        .hero-banner {
+            width: 100%;
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('banniere-accueil.jpg') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
             text-align: center;
-            padding: 60px 20px;
-            background: #ffffff;
-            border-bottom: 1px solid var(--border-color);
+            padding: 0 20px;
         }
 
-        .hero h2 {
+        .hero-banner h2 {
+            font-size: 42px;
             font-weight: 300;
-            font-size: 32px;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 5px;
             margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
-        .hero p {
-            font-size: 14px;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
+        .hero-banner p {
+            font-size: 16px;
             font-weight: 300;
-            line-height: 1.6;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .btn-shop-now {
+            background: white;
+            color: var(--text-color);
+            padding: 14px 35px;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-shop-now:hover {
+            background: var(--text-color);
+            color: white;
+        }
+
+        /* SECTION TITLES */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 30px 0;
+            text-transform: uppercase;
+            font-weight: 400;
+            font-size: 22px;
+            letter-spacing: 3px;
         }
 
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 5%;
+            padding: 0 5% 60px 5%;
         }
 
+        /* DEUX COLLECTIONS CÔTE À CÔTE */
+        .collections-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .collection-card {
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .collection-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .collection-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .collection-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 40px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.6));
+            color: white;
+        }
+
+        .collection-overlay h3 {
+            font-size: 24px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        /* GRILLE DE PRODUITS */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 35px;
+            gap: 30px;
         }
 
         .product-card {
             background: white;
             border: 1px solid var(--border-color);
-            transition: all 0.4s ease;
             position: relative;
+            transition: transform 0.4s;
         }
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
         .badge-promo {
@@ -160,10 +262,9 @@
             left: 15px;
             background: var(--promo-color);
             color: white;
-            padding: 5px 10px;
+            padding: 4px 8px;
             font-size: 11px;
             font-weight: 600;
-            text-transform: uppercase;
             z-index: 10;
         }
 
@@ -183,11 +284,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .product-card:hover .product-img-container img {
-            transform: scale(1.05);
         }
 
         .product-info {
@@ -195,240 +291,78 @@
             text-align: center;
         }
 
-        .product-brand {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: #888;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-        }
-
         .product-title {
             font-size: 13px;
+            text-transform: uppercase;
             font-weight: 500;
             margin-bottom: 8px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            height: 40px;
+            height: 34px;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .product-price-box {
-            margin-bottom: 15px;
         }
 
         .old-price {
             text-decoration: line-through;
             color: #999;
-            font-size: 13px;
+            font-size: 12px;
             margin-right: 8px;
         }
 
         .current-price {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--promo-color);
         }
 
-        .btn-view {
-            display: inline-block;
-            background: transparent;
-            color: var(--text-color);
-            border: 1px solid var(--text-color);
-            padding: 12px 30px;
-            font-size: 11px;
-            text-transform: uppercase;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .btn-view:hover {
-            background: var(--text-color);
-            color: white;
-        }
-
+        /* MODALE & PANIER (Inchangés mais épurés) */
         .modal {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.5);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s;
         }
-
-        .modal.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-        .modal-content {
-            background: white;
-            width: 90%;
-            max-width: 800px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            position: relative;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 10;
-        }
-
-        .modal-left img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .modal-right {
-            padding: 40px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .modal-title {
-            font-size: 18px;
-            font-weight: 500;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .modal-price-box {
-            margin-bottom: 20px;
-        }
-
-        .selector-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            font-weight: 600;
-            margin-bottom: 8px;
-            display: block;
-        }
-
-        select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            background: white;
-            font-size: 14px;
-            margin-bottom: 20px;
-            outline: none;
-        }
-
+        .modal.active { opacity: 1; pointer-events: auto; }
+        .modal-content { background: white; width: 90%; max-width: 800px; display: grid; grid-template-columns: 1fr 1fr; position: relative; }
+        .modal-close { position: absolute; top: 15px; right: 15px; font-size: 24px; cursor: pointer; z-index: 10; }
+        .modal-left img { width: 100%; height: 100%; object-fit: cover; }
+        .modal-right { padding: 40px; display: flex; flex-direction: column; justify-content: center; }
+        select { width: 100%; padding: 12px; border: 1px solid var(--border-color); background: white; margin-bottom: 20px; outline: none; }
+        
         .cart-sidebar {
-            position: fixed;
-            top: 0;
-            right: -400px;
-            width: 400px;
-            height: 100%;
-            background: white;
-            box-shadow: -5px 0 15px rgba(0,0,0,0.05);
-            z-index: 1100;
-            transition: right 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            padding: 40px 30px;
+            position: fixed; top: 0; right: -400px; width: 400px; height: 100%;
+            background: white; box-shadow: -5px 0 15px rgba(0,0,0,0.05); z-index: 1100;
+            transition: right 0.4s ease; display: flex; flex-direction: column; padding: 40px 30px;
         }
+        .cart-sidebar.active { right: 0; }
+        .cart-items { flex: 1; overflow-y: auto; }
+        .cart-item { display: flex; gap: 15px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f9f9f9; }
+        .cart-item img { width: 60px; height: 60px; object-fit: cover; }
+        .btn-checkout { width: 100%; background: var(--text-color); color: white; border: none; padding: 15px; text-transform: uppercase; font-size: 12px; font-weight: 600; cursor: pointer; }
 
-        .cart-sidebar.active {
-            right: 0;
-        }
-
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-        }
-
-        .cart-items {
-            flex: 1;
-            overflow-y: auto;
-        }
-
-        .cart-item {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #f9f9f9;
-        }
-
-        .cart-item img {
-            width: 70px;
-            height: 70px;
-            object-fit: cover;
-        }
-
-        .cart-item-details h4 {
-            font-size: 12px;
-            font-weight: 500;
-            text-transform: uppercase;
-        }
-
-        .cart-footer {
-            border-top: 1px solid var(--border-color);
-            padding-top: 20px;
-        }
-
-        .btn-checkout {
-            width: 100%;
-            background: var(--text-color);
-            color: white;
-            border: none;
-            padding: 15px;
-            text-transform: uppercase;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        footer {
-            background: #ffffff;
-            border-top: 1px solid var(--border-color);
-            padding: 50px 5% 30px 5%;
-            margin-top: 60px;
-            font-size: 12px;
-            color: #666;
-            text-align: center;
-        }
+        footer { background: white; border-top: 1px solid var(--border-color); padding: 40px 5%; text-align: center; font-size: 12px; color: #666; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">Offre Exceptionnelle : -10% immédiats sur toute la collection aujourd'hui !</div>
+    <div class="top-bar">Offre Exclusive : -10% immédiats calculés au panier aujourd'hui !</div>
 
     <header>
         <div class="logo">
-            <h1 onclick="filterCategory('all')">H Luxury</h1>
+            <h1 onclick="showHome()">H Luxury</h1>
         </div>
         <nav>
             <ul>
-                <li><a href="#" id="nav-all" class="active" onclick="filterCategory('all')">Voir Tout</a></li>
-                <li><a href="#" id="nav-femme" onclick="filterCategory('femme')">Collection Femme</a></li>
-                <li><a href="#" id="nav-homme" onclick="filterCategory('homme')">Collection Homme</a></li>
+                <li><a href="#" id="nav-home" class="active" onclick="showHome()">Accueil</a></li>
+                <li><a href="#" id="nav-femme" onclick="filterCategory('femme')">Femme</a></li>
+                <li><a href="#" id="nav-homme" onclick="filterCategory('homme')">Homme</a></li>
             </ul>
         </nav>
         <div class="header-icons">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Rechercher un modèle..." onkeyup="handleSearch()">
+            </div>
             <div class="cart-icon-wrapper" onclick="toggleCart(true)">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
                 <div class="cart-count" id="cart-count">0</div>
@@ -436,42 +370,70 @@
         </div>
     </header>
 
-    <section class="hero">
-        <h2>Collection Complète Souliers Privés</h2>
-        <p>Découvrez l'intégralité du catalogue constructeur. Plus de 50 déclinaisons de matières, coloris et finitions d'exception.</p>
-    </section>
+    <!-- BANNIÈRE D'ACCUEIL PRINCIPALE -->
+    <div id="hero-section" class="hero-banner">
+        <h2>L'Élégane Estivale</h2>
+        <p>Découvrez notre savoir-faire à travers nos collections exclusives de souliers.</p>
+        <button class="btn-shop-now" onclick="filterCategory('femme')">Découvrir la collection</button>
+    </div>
 
     <main class="container">
+        
+        <!-- SECTION DEUX COLLECTIONS (Visible uniquement sur l'accueil) -->
+        <div id="collections-section">
+            <h2 class="section-title">Nos Collections</h2>
+            <div class="collections-grid">
+                <div class="collection-card" onclick="filterCategory('femme')">
+                    <img src="collection-femme.jpg" alt="Collection Femme">
+                    <div class="collection-overlay">
+                        <h3>Ligne Femme</h3>
+                        <p>Découvrir les modèles</p>
+                    </div>
+                </div>
+                <div class="collection-card" onclick="filterCategory('homme')">
+                    <img src="collection-col-homme.jpg" alt="Collection Homme">
+                    <div class="collection-overlay">
+                        <h3>Ligne Homme</h3>
+                        <p>Découvrir les modèles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- S'ADAPTE AUTOMATIQUEMENT (Meilleures ventes ou filtres collections) -->
+        <h2 class="section-title" id="page-dynamic-title">Nos Meilleures Ventes</h2>
         <div class="products-grid" id="products-container"></div>
     </main>
 
+    <!-- MODALE -->
     <div class="modal" id="product-modal" onclick="closeModalOnBackdrop(event)">
         <div class="modal-content">
             <div class="modal-close" onclick="toggleModal(false)">&times;</div>
             <div class="modal-left">
-                <img id="modal-img" src="" alt="">
+                <img id="modal-img" src="">
             </div>
             <div class="modal-right">
-                <div class="product-brand">Maison H</div>
                 <h3 class="modal-title" id="modal-title"></h3>
-                <div class="modal-price-box" id="modal-price-box"></div>
-                
+                <div style="margin-bottom: 20px;">
+                    <span class="old-price" id="modal-old-price" style="font-size:16px;"></span>
+                    <span class="current-price" id="modal-current-price" style="font-size:20px;"></span>
+                </div>
                 <label class="selector-label">Pointure disponible</label>
                 <select id="modal-size"></select>
-
                 <button class="btn-checkout" onclick="addToCartFromModal()">Ajouter au panier</button>
             </div>
         </div>
     </div>
 
+    <!-- PANIER -->
     <div class="cart-sidebar" id="cart-sidebar">
-        <div class="cart-header">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; border-bottom:1px solid var(--border-color); padding-bottom:15px;">
             <h3>Votre Panier</h3>
-            <span style="cursor:pointer; font-size: 24px;" onclick="toggleCart(false)">&times;</span>
+            <span style="cursor:pointer; font-size:24px;" onclick="toggleCart(false)">&times;</span>
         </div>
         <div class="cart-items" id="cart-items-container"></div>
-        <div class="cart-footer">
-            <div class="cart-total" style="display:flex; justify-content:space-between; margin-bottom:20px; font-weight:600;">
+        <div style="border-top:1px solid var(--border-color); padding-top:20px;">
+            <div style="display:flex; justify-content:space-between; margin-bottom:20px; font-weight:600;">
                 <span>Total</span>
                 <span id="cart-total-amount">0.00 €</span>
             </div>
@@ -480,75 +442,21 @@
     </div>
 
     <footer>
-        <p>Pour toute question relative à votre commande : <strong>hluxurypro@gmail.com</strong></p>
-        <p style="margin-top: 15px; font-size: 11px; color: #999;">&copy; 2026 H LUXURY — Expédition sécurisée 48h.</p>
+        <p>Besoin d'aide ? Contactez notre équipe : <strong>hluxurypro@gmail.com</strong></p>
+        <p style="margin-top:15px; font-size:11px; color:#999;">&copy; 2026 H LUXURY — Tous droits réservés.</p>
     </footer>
 
     <script>
         const products = [
-            // ==================== COULEURS CLASSIQUES / BASIQUES (60 €) ====================
-            { id: 1, name: "Mule Chypre Cuir Togo Marron", price: 60.00, oldPrice: 66.00, img: "chypre-marron.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_1" },
-            { id: 2, name: "Mule Chypre Blanc Pur Nappa", price: 60.00, oldPrice: 66.00, img: "chypre-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_2" },
-            { id: 3, name: "Mule Chypre Rose Pastel Smooth", price: 60.00, oldPrice: 66.00, img: "chypre-rose.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_3" },
-            { id: 4, name: "Mule Chypre Vert Menthe Doux", price: 60.00, oldPrice: 66.00, img: "chypre-vert-menthe.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_4" },
-            { id: 5, name: "Mule Chypre Jaune Citron Foncé", price: 60.00, oldPrice: 66.00, img: "chypre-jaune.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_5" },
-            { id: 6, name: "Mule Chypre Orange Signature", price: 60.00, oldPrice: 66.00, img: "chypre-orange.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_6" },
-            { id: 7, name: "Mule Chypre Beige Taupe Classique", price: 60.00, oldPrice: 66.00, img: "chypre-beige.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_7" },
-            { id: 8, name: "Mule Chypre Gris Perle Urbain", price: 60.00, oldPrice: 66.00, img: "chypre-gris.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_8" },
-            { id: 9, name: "Mule Chypre Bordeaux Profond Vintage", price: 60.00, oldPrice: 66.00, img: "chypre-bordeaux.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_9" },
-            { id: 10, name: "Mule Chypre Bleu Turquoise Lagon", price: 60.00, oldPrice: 66.00, img: "chypre-turquoise.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_10" },
-            { id: 11, name: "Mule Chypre Rouge Carmin Lumineux", price: 60.00, oldPrice: 66.00, img: "chypre-rouge.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_11" },
-            { id: 12, name: "Mule Chypre Bleu Marine Profond", price: 60.00, oldPrice: 66.00, img: "chypre-bleu-marine.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_12" },
+            // MEILLEURES VENTES (S'affichent sur l'accueil)
+            { id: 1, name: "Mule Chypre Cuir Marron Epsom", price: 60.00, oldPrice: 66.00, img: "top-marron.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
+            { id: 2, name: "Mule Chypre Blanc Pur Nappa", price: 60.00, oldPrice: 66.00, img: "top-blanc.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
+            { id: 3, name: "Mule Chypre Suede Vert Émeraude", price: 75.00, oldPrice: 83.50, img: "top-emeraude.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
+            { id: 4, name: "Mule Chypre Homme Noir Mat", price: 75.00, oldPrice: 83.50, img: "top-noir.jpg", cat: "homme", bestSeller: true, sizes: [40,41,42,43,44,45] },
+            { id: 5, name: "Mule Chypre Homme Vert Kaki", price: 75.00, oldPrice: 83.50, img: "top-kaki.jpg", cat: "homme", bestSeller: true, sizes: [40,41,42,43,44,45] },
 
-            // ==================== PREMIUM / MATIÈRES RECHERCHÉES & STRASS (75 €) ====================
-            { id: 13, name: "Mule Chypre Suede Vert Émeraude", price: 75.00, oldPrice: 83.50, img: "chypre-vert-emeraude.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_13" },
-            { id: 14, name: "Mule Chypre Noir Mat Édition Cuir", price: 75.00, oldPrice: 83.50, img: "chypre-noir-mat.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_14" },
-            { id: 15, name: "Mule Chypre Strass Onyx Édition Nuit", price: 75.00, oldPrice: 83.50, img: "chypre-strass-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_15" },
-            { id: 16, name: "Mule Chypre Strass Diamant Cristal", price: 75.00, oldPrice: 83.50, img: "chypre-strass-argent.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_16" },
-            { id: 17, name: "Mule Chypre Strass Ambre & Or", price: 75.00, oldPrice: 83.50, img: "chypre-strass-or.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_17" },
-            { id: 18, name: "Mule Chypre Strass Saphir Bleu Rose", price: 75.00, oldPrice: 83.50, img: "chypre-strass-rose.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_18" },
-            { id: 19, name: "Mule Chypre Toile Denim Jean délavé", price: 75.00, oldPrice: 83.50, img: "chypre-jean-denim.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_19" },
-            { id: 20, name: "Mule Chypre Satin de Soie Fuchsia", price: 75.00, oldPrice: 83.50, img: "chypre-satin-fuchsia.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_20" },
-            { id: 21, name: "Mule Chypre Toile Canevas & Broderies Or", price: 75.00, oldPrice: 83.50, img: "chypre-brode-or.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_21" },
-            { id: 22, name: "Mule Chypre Toile Monogramme Multi", price: 75.00, oldPrice: 83.50, img: "chypre-monogramme.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_22" },
-            { id: 23, name: "Mule Chypre Édition Mouton Retourné Cosy", price: 75.00, oldPrice: 83.50, img: "chypre-mouton-miel.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_23" },
-            { id: 24, name: "Mule Chypre Mouton Retourné Noir Rose", price: 75.00, oldPrice: 83.50, img: "chypre-mouton-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_24" },
-            
-            // ==================== MULES À TALONS & COMPENSÉES (75 €) ====================
-            { id: 25, name: "Sandale à Talon Haut Cuir Noir Ébène", price: 75.00, oldPrice: 83.50, img: "mule-talon-noir.jpg", cat: "femme", sizes: [36,37,38,39,40], stripeUrl: "https://buy.stripe.com/test_25" },
-            { id: 26, name: "Sandale à Talon Haut Daim Beige Sable", price: 75.00, oldPrice: 83.50, img: "mule-talon-beige.jpg", cat: "femme", sizes: [36,37,38,39,40], stripeUrl: "https://buy.stripe.com/test_26" },
-            { id: 27, name: "Sandale à Talon Haut Blanc Crème Satin", price: 75.00, oldPrice: 83.50, img: "mule-talon-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40], stripeUrl: "https://buy.stripe.com/test_27" },
-            { id: 28, name: "Sandale à Talon Haut Rose Fuchsia Party", price: 75.00, oldPrice: 83.50, img: "mule-talon-rose.jpg", cat: "femme", sizes: [36,37,38,39,40], stripeUrl: "https://buy.stripe.com/test_28" },
-            { id: 29, name: "Sandale Compensée Premium Marron Cuir", price: 75.00, oldPrice: 83.50, img: "sandale-compensee-marron.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_29" },
-            { id: 30, name: "Sandale Compensée Premium Blanc Coton", price: 75.00, oldPrice: 83.50, img: "sandale-compensee-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_30" },
-            { id: 31, name: "Sandale Compensée Premium Noir Profond", price: 75.00, oldPrice: 83.50, img: "sandale-compensee-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_31" },
-            { id: 32, name: "Sandale fine à Double Boucle Argentée", price: 75.00, oldPrice: 83.50, img: "sandale-bride-argent.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_32" },
-            { id: 33, name: "Sandale fine à Double Boucle Noire Or", price: 75.00, oldPrice: 83.50, img: "sandale-bride-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_33" },
-            { id: 34, name: "Mule Plate Oran Cuir Box Tan Mythique", price: 60.00, oldPrice: 66.00, img: "oran-tan.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_34" },
-            { id: 35, name: "Mule Plate Oran All Black Noir Intense", price: 60.00, oldPrice: 66.00, img: "oran-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_35" },
-            { id: 36, name: "Mule Plate Oran Blanc Optique Pur", price: 60.00, oldPrice: 66.00, img: "oran-blanc.jpg", cat: "femme", sizes: [36,37,38,39,40,41], stripeUrl: "https://buy.stripe.com/test_36" },
-
-            // ==================== COLLECTION HOMME (60 € & 75 €) ====================
-            { id: 37, name: "Mule Chypre Homme Noir Mat Epsom", price: 75.00, oldPrice: 83.50, img: "chypre-homme-noir.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_37" },
-            { id: 38, name: "Mule Chypre Homme Bleu Marine Sport", price: 60.00, oldPrice: 66.00, img: "chypre-homme-bleu.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_38" },
-            { id: 39, name: "Mule Chypre Homme Vert Kaki Militaire", price: 75.00, oldPrice: 83.50, img: "chypre-homme-kaki.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_39" },
-            { id: 40, name: "Mule Chypre Homme Cuir Togo Chocolat", price: 60.00, oldPrice: 66.00, img: "chypre-homme-chocolat.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_40" },
-            { id: 41, name: "Mule Chypre Homme Blanc Fauve Riviera", price: 60.00, oldPrice: 66.00, img: "chypre-homme-blanc.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_41" },
-            { id: 42, name: "Mule Chypre Homme Gris Taupe Suede", price: 75.00, oldPrice: 83.50, img: "chypre-homme-gris.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_42" },
-            { id: 43, name: "Mule Chypre Homme Orange Fluo Sunset", price: 60.00, oldPrice: 66.00, img: "chypre-homme-orange.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_43" },
-            { id: 44, name: "Mule Chypre Homme Rouge Arizona Suede", price: 75.00, oldPrice: 83.50, img: "chypre-homme-rouge.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_44" },
-            { id: 45, name: "Mule Chypre Homme Jaune Moutarde Togo", price: 60.00, oldPrice: 66.00, img: "chypre-homme-jaune.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_45" },
-            { id: 46, name: "Mule Chypre Homme Camel Gold Héritage", price: 60.00, oldPrice: 66.00, img: "chypre-homme-camel.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_46" },
-            { id: 47, name: "Mule Sandale Homme Crossover Noir Sport", price: 75.00, oldPrice: 83.50, img: "crossover-homme-noir.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_47" },
-            { id: 48, name: "Mule Sandale Homme Crossover Marron Chic", price: 75.00, oldPrice: 83.50, img: "crossover-homme-marron.jpg", cat: "homme", sizes: [40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_48" },
-
-            // ==================== DOUBLONS STRATÉGIQUES POUR LES FILLES (75 €) ====================
-            { id: 49, name: "Mule Chypre Mixte Premium All Black", price: 75.00, oldPrice: 83.50, img: "chypre-homme-noir.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_37" },
-            { id: 50, name: "Mule Chypre Mixte Deep Blue Marine", price: 60.00, oldPrice: 66.00, img: "chypre-homme-bleu.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_38" },
-            { id: 51, name: "Mule Chypre Mixte Vert Kaki baroudeur", price: 75.00, oldPrice: 83.50, img: "chypre-homme-kaki.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_39" },
-            { id: 52, name: "Mule Chypre Mixte Suede Gris Souris", price: 75.00, oldPrice: 83.50, img: "chypre-homme-gris.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_42" },
-            { id: 53, name: "Mule Chypre Mixte Orange Pop Édition", price: 60.00, oldPrice: 66.00, img: "chypre-homme-orange.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_43" },
-            { id: 54, name: "Mule Chypre Mixte Camel Gold Héritage", price: 60.00, oldPrice: 66.00, img: "chypre-homme-camel.jpg", cat: "femme", sizes: [36,37,38,39,40,41,42,43,44,45], stripeUrl: "https://buy.stripe.com/test_46" }
+            // RESTE DU CATALOGUE FEMME
+            { id: 6, name: "Mule Chypre Rose Pastel Smooth", price: 60.00, oldPrice: 66.00, img: "top-rose.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] }
         ];
 
         let cart = [];
@@ -557,7 +465,6 @@
         function displayProducts(items) {
             const container = document.getElementById('products-container');
             container.innerHTML = '';
-            
             items.forEach(p => {
                 container.innerHTML += `
                     <div class="product-card">
@@ -566,27 +473,53 @@
                             <img src="${p.img}" alt="${p.name}">
                         </div>
                         <div class="product-info">
-                            <div class="product-brand">Maison H</div>
                             <h3 class="product-title">${p.name}</h3>
-                            <div class="product-price-box">
+                            <div>
                                 <span class="old-price">${p.oldPrice.toFixed(2)} €</span>
                                 <span class="current-price">${p.price.toFixed(2)} €</span>
                             </div>
-                            <button class="btn-view" onclick="openProductModal(${p.id})">Sélectionner</button>
                         </div>
                     </div>
                 `;
             });
         }
 
-        function filterCategory(cat) {
-            document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active'));
-            if(cat === 'all') document.getElementById('nav-all').classList.add('active');
-            else if(cat === 'femme') document.getElementById('nav-femme').classList.add('active');
-            else if(cat === 'homme') document.getElementById('nav-homme').classList.add('active');
+        function showHome() {
+            document.getElementById('hero-section').style.display = 'flex';
+            document.getElementById('collections-section').style.display = 'block';
+            document.getElementById('page-dynamic-title').innerText = "Nos Meilleures Ventes";
+            
+            // On filtre pour ne mettre QUE les meilleures ventes sur l'accueil
+            const bestSellers = products.filter(p => p.bestSeller === true);
+            displayProducts(bestSellers);
 
-            const filtered = cat === 'all' ? products : products.filter(p => p.cat === cat);
+            document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active'));
+            document.getElementById('nav-home').classList.add('active');
+        }
+
+        function filterCategory(cat) {
+            document.getElementById('hero-section').style.display = 'none';
+            document.getElementById('collections-section').style.display = 'none';
+            document.getElementById('page-dynamic-title').innerText = cat === 'femme' ? "Collection Femme" : "Collection Homme";
+
+            const filtered = products.filter(p => p.cat === cat);
             displayProducts(filtered);
+
+            document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active'));
+            document.getElementById(`nav-${cat}`).classList.add('active');
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            if(query.length > 0) {
+                document.getElementById('hero-section').style.display = 'none';
+                document.getElementById('collections-section').style.display = 'none';
+                document.getElementById('page-dynamic-title').innerText = "Résultats de recherche";
+                const searched = products.filter(p => p.name.toLowerCase().includes(query));
+                displayProducts(searched);
+            } else {
+                showHome();
+            }
         }
 
         function openProductModal(id) {
@@ -594,25 +527,20 @@
             currentProductId = id;
             document.getElementById('modal-img').src = p.img;
             document.getElementById('modal-title').innerText = p.name;
-            
-            document.getElementById('modal-price-box').innerHTML = `
-                <span class="old-price" style="font-size:15px;">${p.oldPrice.toFixed(2)} €</span>
-                <span class="current-price" style="font-size:20px;">${p.price.toFixed(2)} €</span>
-            `;
+            document.getElementById('modal-old-price').innerText = `${p.oldPrice.toFixed(2)} €`;
+            document.getElementById('modal-current-price').innerText = `${p.price.toFixed(2)} €`;
 
             const selectSize = document.getElementById('modal-size');
             selectSize.innerHTML = '';
             p.sizes.forEach(size => {
                 selectSize.innerHTML += `<option value="${size}">Taille ${size}</option>`;
             });
-
             toggleModal(true);
         }
 
         function toggleModal(show) {
             const m = document.getElementById('product-modal');
-            if(show) m.classList.add('active');
-            else m.classList.remove('active');
+            m.classList.toggle('active', show);
         }
 
         function closeModalOnBackdrop(e) {
@@ -620,15 +548,12 @@
         }
 
         function toggleCart(show) {
-            const s = document.getElementById('cart-sidebar');
-            if(show) s.classList.add('active');
-            else s.classList.remove('active');
+            document.getElementById('cart-sidebar').classList.toggle('active', show);
         }
 
         function addToCartFromModal() {
             const p = products.find(prod => prod.id === currentProductId);
             const size = document.getElementById('modal-size').value;
-            
             cart.push({ ...p, selectedSize: size });
             updateCartUI();
             toggleModal(false);
@@ -639,42 +564,30 @@
             document.getElementById('cart-count').innerText = cart.length;
             const container = document.getElementById('cart-items-container');
             container.innerHTML = '';
-            
             let total = 0;
             cart.forEach((item, index) => {
                 total += item.price;
                 container.innerHTML += `
                     <div class="cart-item">
                         <img src="${item.img}">
-                        <div class="cart-item-details">
-                            <h4>${item.name}</h4>
-                            <p>Taille : ${item.selectedSize}</p>
-                            <p style="color:var(--promo-color); font-weight:600;">${item.price.toFixed(2)} €</p>
-                            <span style="color:#cc0000; font-size:11px; cursor:pointer;" onclick="removeFromCart(${index})">Supprimer</span>
+                        <div style="flex:1;">
+                            <h4 style="font-size:12px; text-transform:uppercase;">${item.name}</h4>
+                            <p style="font-size:11px; color:#666; margin-top:2px;">Taille : ${item.selectedSize}</p>
+                            <p style="color:var(--promo-color); font-weight:600; font-size:13px; margin-top:4px;">${item.price.toFixed(2)} €</p>
                         </div>
+                        <span style="color:#cc0000; font-size:12px; cursor:pointer;" onclick="cart.splice(${index},1); updateCartUI();">&times;</span>
                     </div>
                 `;
             });
-            
             document.getElementById('cart-total-amount').innerText = `${total.toFixed(2)} €`;
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
         function processCheckout() {
-            if(cart.length === 0) {
-                alert("Votre panier est vide.");
-                return;
-            }
-            window.location.href = cart[0].stripeUrl;
+            if(cart.length === 0) return alert("Votre panier est vide.");
+            window.location.href = "https://buy.stripe.com/votre_lien_ici";
         }
 
-        window.onload = () => {
-            displayProducts(products);
-        };
+        window.onload = () => { showHome(); };
     </script>
 </body>
 </html>
