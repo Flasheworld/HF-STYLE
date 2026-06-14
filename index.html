@@ -260,99 +260,78 @@
             color: #ffffff;
         }
 
-        /* Section Grille des Collections Épurée */
+        /* Section Double Catalogues */
         .catalogues-section {
             max-width: 1340px;
-            margin: 50px auto 20px auto;
+            margin: 45px auto 15px auto;
             padding: 0 2%;
         }
 
-        .collections-title {
-            text-align: center;
-            font-family: 'Cinzel', serif;
-            font-size: 24px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin-bottom: 35px;
-            font-weight: 400;
-        }
-
-        .collections-grid {
+        .catalogues-grid {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 20px;
-        }
-
-        @media (max-width: 1024px) {
-            .collections-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
         }
 
         @media (max-width: 768px) {
-            .collections-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .collections-grid {
+            .catalogues-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        .collection-card {
-            background: #ffffff;
-            border-radius: 6px;
+        .catalogue-banner-card {
+            position: relative;
+            background-color: #f5f5f5;
+            aspect-ratio: 16 / 9;
+            border-radius: 12px;
             overflow: hidden;
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-decoration: none;
-            color: #000000;
             cursor: pointer;
-            border: 1px solid var(--border-light);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .collection-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-        }
-
-        .collection-img-wrapper {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            background: #fbfbfb;
-        }
-
-        .collection-img-wrapper img {
-            width: 100%;
-            height: 100%;
+        .catalogue-banner-img {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .collection-card:hover .collection-img-wrapper img {
+        .catalogue-banner-card:hover .catalogue-banner-img {
             transform: scale(1.04);
         }
 
-        .collection-info {
-            padding: 15px 10px;
-            text-align: center;
+        .catalogue-banner-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 2;
         }
 
-        .collection-name {
-            font-size: 13px;
+        .catalogue-banner-text {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: #ffffff;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+        }
+
+        .catalogue-banner-text h2 {
+            font-size: 28px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 4px;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
         }
 
-        .collection-tag {
-            font-size: 11px;
-            color: var(--text-muted);
+        .catalogue-banner-text span {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 4px;
         }
 
         /* Zone Filtres de prix dynamique */
@@ -769,66 +748,24 @@
         </div>
     </div>
 
-    <!-- Section Grille des 5 Collections Dédiées -->
     <section class="catalogues-section" id="catalogues-section">
-        <h2 class="collections-title">Découvrir nos Collections</h2>
-        <div class="collections-grid">
-            
-            <!-- Collection Oran -->
-            <div class="collection-card" onclick="filterCollection('oran')">
-                <div class="collection-img-wrapper">
-                    <img src="COLLECTION ORAN.png" alt="COLLECTION ORAN.png">
-                </div>
-                <div class="collection-info">
-                    <h3 class="collection-name">Collection Oran</h3>
-                    <span class="collection-tag">Les Iconiques Plates</span>
+        <div class="catalogues-grid">
+            <div class="catalogue-banner-card" onclick="filterCollection('oran')">
+                <img id="catalogue-img-femme" src="" alt="Collection Oran" class="catalogue-banner-img">
+                <div class="catalogue-banner-overlay"></div>
+                <div class="catalogue-banner-text">
+                    <h2>Gamme Oran</h2>
+                    <span>Voir l'iconique</span>
                 </div>
             </div>
-
-            <!-- Collection Chypre -->
-            <div class="collection-card" onclick="filterCollection('chypre')">
-                <div class="collection-img-wrapper">
-                    <img src="COLLECTION CHYPRE.png" alt="COLLECTION CHYPRE.png">
-                </div>
-                <div class="collection-info">
-                    <h3 class="collection-name">Collection Chypre</h3>
-                    <span class="collection-tag">Sandales Sport</span>
+            <div class="catalogue-banner-card" onclick="filterCollection('sneakers')">
+                <img id="catalogue-img-homme" src="" alt="Collection Sneakers" class="catalogue-banner-img">
+                <div class="catalogue-banner-overlay"></div>
+                <div class="catalogue-banner-text">
+                    <h2>Gamme Sneakers</h2>
+                    <span>Parcourir l'asphalte</span>
                 </div>
             </div>
-
-            <!-- Collection Empire -->
-            <div class="collection-card" onclick="filterCollection('empire')">
-                <div class="collection-img-wrapper">
-                    <img src="COLLECTION EMPIRE.png" alt="COLLECTION EMPIRE.png">
-                </div>
-                <div class="collection-info">
-                    <h3 class="collection-name">Collection Empire</h3>
-                    <span class="collection-tag">Mules à Boucle</span>
-                </div>
-            </div>
-
-            <!-- Collection Oasis -->
-            <div class="collection-card" onclick="filterCollection('oasis')">
-                <div class="collection-img-wrapper">
-                    <img src="COLLECTION OASIS.png" alt="COLLECTION OASIS.png">
-                </div>
-                <div class="collection-info">
-                    <h3 class="collection-name">Collection Oasis</h3>
-                    <span class="collection-tag">Sandales à Talon</span>
-                </div>
-            </div>
-
-            <!-- Collection Sneakers -->
-            <div class="collection-card" onclick="filterCollection('sneakers')">
-                <div class="collection-img-wrapper">
-                    <img src="SNEAKERS BOUCING.png" alt="SNEAKERS BOUCING.png">
-                </div>
-                <div class="collection-info">
-                    <h3 class="collection-name">Collection Sneakers</h3>
-                    <span class="collection-tag">Baskets Sport-Chic</span>
-                </div>
-            </div>
-
         </div>
     </section>
 
@@ -962,7 +899,9 @@
 
     <script>
         const BANNER_CONFIG = {
-            imageHero: "banniere.jpg"
+            imageHero: "banniere.jpg",
+            imageCatalogueFemme: "https://cloud.lepanierfrancais.fr/index.php/s/Y6qMWe4Lp2Snt46/download/oran-catalogue.jpg", 
+            imageCatalogueHomme: "https://cloud.lepanierfrancais.fr/index.php/s/wQ8c6Bex56gXN2a/download/bouncing-catalogue.jpg"  
         };
 
         const products = [
@@ -1048,6 +987,8 @@
 
         function initBanners() {
             document.getElementById('hero-main-img').src = BANNER_CONFIG.imageHero;
+            document.getElementById('catalogue-img-femme').src = BANNER_CONFIG.imageCatalogueFemme;
+            document.getElementById('catalogue-img-homme').src = BANNER_CONFIG.imageCatalogueHomme;
         }
 
         function displayProducts(items) {
@@ -1114,9 +1055,7 @@
             
             displayProducts(products.filter(p => p.collection === collName));
             document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active-btn'));
-            
-            const navEl = document.getElementById(`nav-${collName}`);
-            if(navEl) navEl.classList.add('active-btn');
+            document.getElementById(`nav-${collName}`).classList.add('active-btn');
         }
 
         function applyPriceFilter() {
@@ -1252,7 +1191,7 @@
                 <h5>2. Hébergement</h5>
                 <p>Le site est hébergé de manière sécurisée sur des infrastructures conformes aux normes européennes d'intégrité numérique.</p>
                 <h5>3. Propriété Intellectuelle</h5>
-                <p>L'intégralité du contenu présent (textes, logos, photographies, structures logicielles) constitue une œuvre de l'esprit protégée par le Code de la propriété intellectuelle. Toute reproduction ou distribution sans accord préalable est strictement interdite.</p>
+                <p>L'intégralité du contenu présent (textes, logos, photographies, structures logicielles) constitutes une œuvre de l'esprit protégée par le Code de la propriété intellectuelle. Toute reproduction ou distribution sans accord préalable est strictement interdite.</p>
             `,
             cgv: `
                 <h5>Objet des Conditions</h5>
@@ -1393,7 +1332,7 @@
     { auteur: "Nathan P.", texte: "Facile à prendre en main, correspond à mes attentes." },
     { auteur: "Zoe C.", texte: "Acheté suite aux recommandations, pas déçue !" },
     { auteur: "Axel M.", texte: "Service impeccable et réactif, produit conforme." },
-    { auteur: "Lola F.", texte: "Reçu bien emballé, la qualité seems excellente." },
+    { auteur: "Lola F.", texte: "Reçu bien emballé, la qualité semble excellente." },
     { auteur: "Baptiste V.", texte: "Pratique et conforme à ce qui est annoncé." },
     { auteur: "Jade H.", texte: "Je repasserai commande sans aucune hésitation." },
     { auteur: "Robin T.", texte: "Tout est conforme, la livraison a été rapide." },
