@@ -3,634 +3,715 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H LUXURY | Boutique Officielle</title>
-    
-    <link class="revert" rel="icon" type="image/png" href="favicon.png">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link class="revert" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>H LUXURY — Maison de Couture</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght=400;500;600;700;900&display=swap');
-        body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
-        .product-card { transition: all 0.3s ease; }
-        .product-card img { transition: transform 0.5s ease; }
-        .product-card:hover img { transform: scale(1.05); }
-        .collection-card { overflow: hidden; position: relative; cursor: pointer; }
-        .collection-card img { transition: transform 0.8s ease; }
-        .collection-card:hover img { transform: scale(1.1); }
+        :root {
+            --bg-color: #fcfcfc;
+            --text-color: #111111;
+            --accent-color: #e65a1b; /* Clin d'œil discret à la couleur iconique des boîtes */
+            --gray-light: #f5f5f7;
+            --border-color: #e5e5e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* BANDEAU SUPÉRIEUR */
+        .top-bar {
+            background-color: var(--text-color);
+            color: white;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 11px;
+            text-transform: uppercase;
+            font-weight: 500;
+            letter-spacing: 2px;
+        }
+
+        /* HEADER LUXE */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 5%;
+            background: rgba(252, 252, 252, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo h1 {
+            font-weight: 400;
+            font-size: 24px;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-size: 13px;
+            text-transform: uppercase;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--accent-color);
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .cart-icon-wrapper {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--text-color);
+            color: white;
+            font-size: 10px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        /* HERO BANNER ÉPURÉ */
+        .hero {
+            text-align: center;
+            padding: 80px 20px 60px 20px;
+            background: #ffffff;
+        }
+
+        .hero h2 {
+            font-weight: 300;
+            font-size: 36px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 14px;
+            color: #666;
+            max-width: 60px0px;
+            margin: 0 auto;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+
+        /* BOUTIQUE GRID */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 5%;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background: white;
+            border: 1px solid transparent;
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img-container {
+            width: 100%;
+            padding-bottom: 100%; /* Ratio 1:1 Carré parfait */
+            position: relative;
+            background: var(--gray-light);
+            overflow: hidden;
+        }
+
+        .product-img-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .product-card:hover .product-img-container img {
+            transform: scale(1.04);
+        }
+
+        .product-info {
+            padding: 20px 5px;
+            text-align: center;
+        }
+
+        .product-brand {
+            font-size: 11px;
+            text-transform: uppercase;
+            color: #888;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+        }
+
+        .product-title {
+            font-size: 15px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .product-price {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 15px;
+        }
+
+        .btn-view {
+            display: inline-block;
+            background: transparent;
+            color: var(--text-color);
+            border: 1px solid var(--text-color);
+            padding: 12px 30px;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-view:hover {
+            background: var(--text-color);
+            color: white;
+        }
+
+        /* MODALE PRODUIT */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 850px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            background: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-left img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .modal-right {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .modal-title {
+            font-size: 22px;
+            font-weight: 400;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .modal-price {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 25px;
+            color: var(--text-color);
+        }
+
+        .selector-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 8px;
+            display: block;
+            color: #555;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            background: white;
+            font-size: 14px;
+            margin-bottom: 25px;
+            outline: none;
+        }
+
+        /* PANIER COULISSANT */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.05);
+            z-index: 1100;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 40px 30px;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .cart-header h3 {
+            font-weight: 400;
+            text-transform: uppercase;
+            font-size: 18px;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f9f9f9;
+        }
+
+        .cart-item img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            background: var(--gray-light);
+        }
+
+        .cart-item-details h4 {
+            font-size: 13px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+
+        .cart-item-details p {
+            font-size: 12px;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        .cart-footer {
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background: var(--text-color);
+            color: white;
+            border: none;
+            padding: 15px;
+            text-transform: uppercase;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .btn-checkout:hover {
+            opacity: 0.9;
+        }
+
+        /* FOOTER E-COMMERCE */
+        footer {
+            background: #ffffff;
+            border-top: 1px solid var(--border-color);
+            padding: 60px 5% 30px 5%;
+            margin-top: 80px;
+            font-size: 12px;
+            color: #666;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto 40px auto;
+        }
+
+        .footer-col h4 {
+            color: var(--text-color);
+            text-transform: uppercase;
+            font-weight: 500;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        .footer-col p {
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 30px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .modal-content {
+                grid-template-columns: 1fr;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+            .modal-right {
+                padding: 25px;
+            }
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+        }
     </style>
 </head>
-<body class="bg-white text-gray-900 relative min-h-screen">
+<body>
 
-    <!-- HEADER & PROMO -->
-    <header class="sticky top-0 z-40 bg-white shadow-sm">
-        <div class="bg-black text-white text-xs text-center py-2.5 font-medium tracking-wide uppercase">
-            ⚡ VENTE FLASH : -10% SUR TOUTE LA BOUTIQUE AVEC LE CODE <span class="text-amber-400 font-bold">LUXURY10</span> ⚡
-        </div>
-        
-        <div class="bg-gray-100 border-b border-gray-200 px-6 py-1.5 text-center text-[11px] font-medium text-gray-700 flex items-center justify-center space-x-2">
-            <span id="shipping-promo-text">Plus que <span class="font-bold text-black" id="shipping-needed">10,01€</span> pour débloquer la <strong>Livraison Gratuite</strong></span>
-            <div class="w-24 bg-gray-300 h-2 rounded-full overflow-hidden inline-block">
-                <div id="shipping-bar" class="bg-emerald-500 h-full w-[85%] rounded-full transition-all duration-500"></div>
-            </div>
-        </div>
+    <div class="top-bar">Livraison offerte sur toutes les commandes d'été</div>
 
-        <nav class="flex justify-between items-center px-6 md:px-12 py-4 relative">
-            <div class="flex items-center space-x-4">
-                <span onclick="showHomePage()" class="text-2xl font-black tracking-[0.2em] text-gray-950 uppercase cursor-pointer">H Luxury</span>
-            </div>
-            
-            <div class="flex space-x-6 md:space-x-10 font-semibold text-xs md:text-sm text-gray-800 uppercase tracking-wide">
-                <button onclick="filterCategory('chaussures')" class="hover:text-amber-600 transition uppercase">Chaussures</button>
-                <button onclick="filterCategory('vetements')" class="hover:text-amber-600 transition uppercase">Vêtements</button>
-                <button onclick="filterCategory('accessoires')" class="hover:text-amber-600 transition uppercase">Accessoires</button>
-            </div>
-            
-            <div class="flex items-center space-x-5 text-gray-900 text-xl">
-                <div class="relative flex items-center">
-                    <input type="text" id="searchInput" oninput="searchProducts()" placeholder="Rechercher..." class="hidden bg-gray-100 text-xs rounded-full pl-4 pr-8 py-1.5 focus:outline-none w-36 md:w-56 border border-gray-200 transition-all">
-                    <i class="fa-solid fa-magnifying-glass cursor-pointer hover:text-amber-600 text-lg" onclick="toggleSearchBox()"></i>
-                </div>
-                <i class="fa-solid fa-user cursor-pointer hover:text-amber-600 text-lg" onclick="openLoginModal()" id="user-icon"></i>
-                <div class="relative cursor-pointer hover:text-amber-600" onclick="toggleCartSidebar()">
-                    <i class="fa-solid fa-bag-shopping text-lg"></i>
-                    <span id="cart-count-badge" class="absolute -top-2 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
-                </div>
-            </div>
+    <header>
+        <div class="logo">
+            <h1 onclick="filterCategory('all')">H Luxury</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" id="nav-all" class="active" onclick="filterCategory('all')">Collection</a></li>
+                <li><a href="#" id="nav-femme" onclick="filterCategory('femme')">Femme</a></li>
+                <li><a href="#" id="nav-homme" onclick="filterCategory('homme')">Homme (Bientôt)</a></li>
+            </ul>
         </nav>
+        <div class="header-icons">
+            <div class="cart-icon-wrapper" onclick="toggleCart(true)">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <div class="cart-count" id="cart-count">0</div>
+            </div>
+        </div>
     </header>
 
-    <!-- BANNIÈRE PRINCIPALE -->
-    <div id="home-hero">
-        <section class="relative bg-gray-200 h-[40vh] md:h-[60vh] flex items-center justify-center overflow-hidden">
-            <img src="banniere-accueil.jpg" alt="H Luxury Banner" class="absolute inset-0 w-full h-full object-cover object-center">
-            <div class="absolute inset-0 bg-black/15"></div>
-            <div class="relative text-center text-white px-6 z-10">
-                <div class="bg-white/95 text-black inline-block px-12 py-8 rounded-2xl shadow-2xl backdrop-blur-sm border border-white/20">
-                    <p class="text-5xl md:text-6xl font-black tracking-tighter text-gray-950">-10%</p>
-                    <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mt-1">Sur votre première commande</p>
-                    <p class="bg-black text-white font-bold text-lg md:text-xl mt-4 px-6 py-2 rounded-xl uppercase tracking-widest shadow-md">LUXURY10</p>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- BLOCS COLLECTIONS IMAGE -->
-    <div id="home-collections">
-        <section class="py-12 px-4 md:px-12 max-w-[1600px] mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                <div onclick="filterCategory('chaussures')" class="collection-card rounded-2xl h-[25vh] md:h-[40vh] bg-neutral-800 flex items-end p-8 text-white font-bold">
-                    <img src="collection-chaussures.jpg" alt="CHAUSSURES" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8 w-full h-full">
-                        <span class="text-xl tracking-wider underline underline-offset-4">CHAUSSURES</span>
-                    </div>
-                </div>
-                <div onclick="filterCategory('vetements')" class="collection-card rounded-2xl h-[25vh] md:h-[40vh] bg-neutral-700 flex items-end p-8 text-white font-bold">
-                    <img src="collection-vetements.jpg" alt="VÊTEMENTS" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8 w-full h-full">
-                        <span class="text-xl tracking-wider underline underline-offset-4">VÊTEMENTS</span>
-                    </div>
-                </div>
-                <div onclick="filterCategory('accessoires')" class="collection-card rounded-2xl h-[25vh] md:h-[40vh] bg-neutral-600 flex items-end p-8 text-white font-bold">
-                    <img src="collection-accessoires.jpg" alt="ACCESSOIRES" class="absolute inset-0 w-full h-full object-cover">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end p-8 w-full h-full">
-                        <span class="text-xl tracking-wider underline underline-offset-4">ACCESSOIRES</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- CATALOGUE PRODUIT -->
-    <section id="catalogue-section" class="py-16 px-4 md:px-12 bg-gray-50 border-t border-gray-100">
-        <div class="max-w-[1600px] mx-auto">
-            <div class="text-center mb-12">
-                <p class="text-gray-400 text-xs font-bold uppercase tracking-widest">SÉLECTION EXCLUSIVE</p>
-                <h2 id="catalogue-title" class="text-3xl md:text-4xl font-black text-gray-950 uppercase tracking-tighter inline-block border-b-4 border-black pb-1">Tous Nos Produits</h2>
-                <div id="back-home-box" class="hidden mt-6">
-                    <button onclick="showHomePage()" class="text-xs bg-black text-white px-5 py-2 rounded-full uppercase tracking-wider font-bold hover:bg-amber-600 transition">← Retour à l'accueil</button>
-                </div>
-            </div>
-
-            <!-- GRILLE DU CATALOGUE -->
-            <div id="products-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 gap-y-10"></div>
-        </div>
+    <section class="hero">
+        <h2>Maison H Luxury</h2>
+        <p>Découvrez notre sélection exclusive de sandales et mules d'été façonnées dans les cuirs les plus nobles. L'alliance parfaite entre élégance intemporelle et confort absolu.</p>
     </section>
 
-    <!-- SECTION DES AVIS CLIENTS -->
-    <section id="home-reviews" class="py-16 px-6 md:px-12 bg-white text-center border-t border-gray-100">
-        <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl md:text-3xl font-black text-gray-950 uppercase tracking-tight mb-2">Laissons nos clients parler pour nous</h2>
-            <div id="review-stars" class="flex items-center justify-center space-x-1 text-amber-500 text-xl mb-1"></div>
-            <p id="review-summary-text" class="text-xs text-gray-500 font-medium mb-8">sur 101 avis <span class="text-emerald-500">✓</span></p>
+    <main class="container">
+        <div class="products-grid" id="products-container">
+            <!-- Injecté par JavaScript -->
+        </div>
+    </main>
 
-            <div class="relative bg-gray-50 p-8 md:p-10 rounded-2xl border border-gray-100 max-w-2xl mx-auto shadow-sm min-h-[220px] flex flex-col justify-between">
-                <div>
-                    <div id="current-review-stars" class="flex justify-center space-x-1 text-amber-500 text-sm mb-3"></div>
-                    <p id="review-comment" class="text-gray-800 font-medium italic text-sm md:text-base leading-relaxed"></p>
-                </div>
+    <!-- MODALE PRODUIT -->
+    <div class="modal" id="product-modal" onclick="closeModalOnBackdrop(event)">
+        <div class="modal-content">
+            <div class="modal-close" onclick="toggleModal(false)">&times;</div>
+            <div class="modal-left">
+                <img id="modal-img" src="" alt="">
+            </div>
+            <div class="modal-right">
+                <div class="product-brand">Maison H</div>
+                <h3 class="modal-title" id="modal-title"></h3>
+                <div class="modal-price" id="modal-price"></div>
                 
-                <div class="mt-6 flex flex-col items-center">
-                    <p id="review-author" class="text-gray-950 font-bold text-xs uppercase tracking-wider"></p>
-                    <img id="review-prod-thumb" src="" alt="Avis produit" class="w-12 h-12 bg-white border border-gray-200 rounded-lg p-1 mt-3 object-contain mix-blend-multiply">
-                </div>
+                <label class="selector-label">Sélectionner la pointure</label>
+                <select id="modal-size">
+                    <option value="36">36</option>
+                    <option value="37">37</option>
+                    <option value="38">38</option>
+                    <option value="39">39</option>
+                    <option value="40">40</option>
+                    <option value="41">41</option>
+                </select>
 
-                <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between px-2 pointer-events-none">
-                    <button onclick="prevReview()" class="w-8 h-8 rounded-full bg-white shadow flex items-center justify-center text-gray-800 hover:bg-black hover:text-white transition pointer-events-auto"><i class="fa-solid fa-chevron-left text-xs"></i></button>
-                    <button onclick="nextReview()" class="w-8 h-8 rounded-full bg-white shadow flex items-center justify-center text-gray-800 hover:bg-black hover:text-white transition pointer-events-auto"><i class="fa-solid fa-chevron-right text-xs"></i></button>
-                </div>
+                <button class="btn-checkout" onclick="addToCartFromModal()">Ajouter au panier</button>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- FOOTER -->
-    <footer class="bg-[#0b0b0b] text-white pt-16 pb-12 px-6 md:px-16 border-t border-gray-900">
-        <div class="max-w-[1600px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 text-left mb-16">
-            <div>
-                <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Menu Pied de Page</h4>
-                <ul class="space-y-3.5 text-sm font-medium text-gray-300">
-                    <li><button onclick="toggleSearchBox()" class="hover:text-amber-500 transition">Recherche</button></li>
-                    <li><button onclick="openLegalModal('mentions')" class="hover:text-amber-500 transition">Mentions Légales</button></li>
-                    <li><button onclick="openLegalModal('cgv')" class="hover:text-amber-500 transition">Conditions Générales de Vente (CGV)</button></li>
-                </ul>
+    <!-- PANIER COULISSANT -->
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Votre Panier</h3>
+            <span style="cursor:pointer; font-size: 24px;" onclick="toggleCart(false)">&times;</span>
+        </div>
+        <div class="cart-items" id="cart-items-container">
+            <!-- Contenu du panier -->
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cart-total-amount">0.00 €</span>
             </div>
-            <div>
-                <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Menu Principal</h4>
-                <ul class="space-y-3.5 text-sm font-medium text-gray-300">
-                    <li><button onclick="showHomePage()" class="hover:text-amber-500 transition">Accueil</button></li>
-                    <li><button onclick="filterCategory('chaussures')" class="hover:text-amber-500 transition">Chaussures</button></li>
-                    <li><button onclick="filterCategory('vetements')" class="hover:text-amber-500 transition">Vêtements</button></li>
-                    <li><button onclick="filterCategory('accessoires')" class="hover:text-amber-500 transition">Accessoires</button></li>
-                </ul>
+            <button class="btn-checkout" onclick="processCheckout()">Procéder au paiement Stripe</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>H LUXURY</h4>
+                <p>Votre destination exclusive pour les pièces de maroquinerie et souliers d'exception de la saison.</p>
             </div>
-            <div>
-                <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Inscrivez-vous</h4>
-                <p class="text-sm text-gray-300 font-medium mb-5 leading-relaxed">Abonnez-vous pour recevoir des offres spéciales, des cadeaux gratuits et des offres uniques.</p>
-                <div class="relative max-w-md border border-gray-700 rounded bg-transparent p-1 flex items-center">
-                    <span class="px-3 text-gray-400"><i class="fa-regular fa-envelope"></i></span>
-                    <input type="email" placeholder="Inscrivez-vous à notre infolettre" class="bg-transparent text-xs text-white focus:outline-none w-full py-2">
-                    <button onclick="alert('Merci pour votre inscription !')" class="bg-white text-black font-bold text-[10px] px-4 py-2 uppercase tracking-wider rounded hover:bg-gray-200 transition">OK</button>
-                </div>
+            <div class="footer-col">
+                <h4>Service Client</h4>
+                <p>Pour toute question relative à vos commandes, tailles ou livraisons, contactez notre support à : <strong>hluxurypro@gmail.com</strong></p>
+            </div>
+            <div class="footer-col">
+                <h4>Livraisons & Retours</h4>
+                <p>Expédition sécurisée avec suivi en 48/72h. Retours simplifiés sous 14 jours.</p>
             </div>
         </div>
-        <div class="max-w-[1600px] mx-auto text-center border-t border-neutral-900 pt-8 text-gray-600 text-[11px] font-medium tracking-wide">
-            © 2026 H LUXURY. Tous droits réservés.
+        <div class="footer-bottom">
+            &copy; 2026 H LUXURY — Tous droits réservés.
         </div>
     </footer>
 
-    <!-- SIDEBAR PANIER -->
-    <div id="cartSidebar" class="fixed inset-y-0 right-0 w-full max-w-md bg-white shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col hidden">
-        <div class="p-5 border-b border-gray-100 flex justify-between items-center bg-gray-50">
-            <h3 class="font-black text-lg uppercase tracking-tight text-gray-900"><i class="fa-solid fa-bag-shopping mr-2"></i>Mon Panier</h3>
-            <button onclick="toggleCartSidebar()" class="text-gray-400 hover:text-black text-xl"><i class="fa-solid fa-xmark"></i></button>
-        </div>
-        <div id="cart-items-list" class="flex-1 overflow-y-auto p-5 space-y-4"></div>
-        <div class="p-5 border-t border-gray-100 bg-gray-50 space-y-4">
-            <div class="flex justify-between items-center text-sm font-bold text-gray-900">
-                <span>SOUS-TOTAL:</span>
-                <span id="cart-total-price">0,00€</span>
-            </div>
-            <p id="cart-multi-notice" class="text-[11px] text-amber-600 font-semibold hidden bg-amber-50 p-2.5 rounded-lg border border-amber-100">
-                ⚠️ Redirection vers le paiement du 1er article. Revenez valider les suivants ensuite !
-            </p>
-            <button id="checkout-main-btn" onclick="processCheckout()" class="w-full bg-black text-white text-center font-bold text-xs py-4 uppercase tracking-widest hover:bg-neutral-900 transition block">
-                Passer la commande / Payer
-            </button>
-        </div>
-    </div>
-    <div id="cartOverlay" class="fixed inset-0 bg-black/40 z-40 hidden opacity-0 transition-opacity duration-300" onclick="toggleCartSidebar()"></div>
-
-    <!-- MODALE PRODUIT -->
-    <div id="productModal" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
-        <div class="bg-white w-full max-w-4xl rounded-xl overflow-hidden grid grid-cols-1 md:grid-cols-2 relative shadow-2xl transform scale-95 transition-transform duration-300">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition z-10 text-xl"><i class="fa-solid fa-xmark"></i></button>
-            <div class="bg-[#fcfcfc] flex items-center justify-center p-8 min-h-[300px]">
-                <img id="modalProductImg" src="" alt="Produit sélectionné" class="w-full h-full object-contain mix-blend-multiply max-h-[350px]">
-            </div>
-            <div class="p-8 flex flex-col justify-center">
-                <h2 id="modalProductName" class="text-2xl font-black text-gray-900 tracking-tight">Nom du produit</h2>
-                <p id="modalProductPrice" class="text-base text-gray-950 font-bold mt-2">0,00€</p>
-                <hr class="my-5 border-gray-100">
-                <div class="mb-5">
-                    <label id="sizeLabelTitle" class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2.5">POINTURE</label>
-                    <div id="sizeContainer" class="flex flex-wrap gap-2"></div>
-                </div>
-                <div class="mb-5">
-                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-2.5">QUALITÉ</label>
-                    <div class="flex gap-2">
-                        <button class="border-2 border-black bg-white text-black text-xs font-bold px-4 py-2">Premium</button>
-                    </div>
-                </div>
-                <div class="flex items-center space-x-2 mb-6 text-xs text-emerald-600 font-bold">
-                    <span class="w-2 h-2 rounded-full bg-emerald-500 block animate-ping"></span>
-                    <span>Modèle disponible en Stock</span>
-                </div>
-                <div class="flex flex-col space-y-2">
-                    <button onclick="addSelectedToCart()" class="w-full border-2 border-black bg-white text-black text-center text-xs font-bold py-3 uppercase tracking-wider hover:bg-gray-50 transition">Ajouter au panier</button>
-                    <a id="modalBuyBtn" href="#" target="_blank" class="w-full bg-black text-white text-center text-xs font-bold py-3.5 uppercase tracking-wider hover:bg-neutral-900 transition block">Acheter directement</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODALE LOGIN -->
-    <div id="loginModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
-        <div class="bg-white w-full max-w-sm rounded-2xl p-6 relative text-center shadow-2xl transform scale-95 transition-transform duration-300">
-            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-gray-400 hover:text-black transition"><i class="fa-solid fa-xmark"></i></button>
-            <h3 class="text-xl font-black text-gray-900 uppercase tracking-tight mt-2 mb-1">Espace Client</h3>
-            <p class="text-xs text-gray-400 font-medium mb-6">Suivez vos commandes et vos livraisons</p>
-            <button onclick="simulateGoogleLogin()" class="w-full border border-gray-300 bg-white hover:bg-gray-50 text-gray-700 font-medium text-xs py-3 px-4 rounded-xl flex items-center justify-center space-x-3 transition shadow-sm mb-4">
-                <svg class="w-4 h-4" viewBox="0 0 24 24">
-                    <path fill="#EA4335" d="M12 5.04c1.65 0 3.13.57 4.3 1.69l3.21-3.21C17.55 1.7 15 1 12 1 7.37 1 3.4 3.67 1.48 7.57l3.77 2.92C6.14 7.04 8.84 5.04 12 5.04z"/>
-                    <path fill="#4285F4" d="M23.45 12.27c0-.82-.07-1.61-.21-2.38H12v4.51h6.42c-.28 1.47-1.11 2.72-2.36 3.56l3.67 2.85c2.14-1.98 3.38-4.89 3.38-8.54z"/>
-                    <path fill="#FBBC05" d="M5.25 14.65c-.25-.73-.39-1.51-.39-2.33s.14-1.6.39-2.33L1.48 7.57C.54 9.47 0 11.62 0 12s.54 2.53 1.48 4.43l3.77-2.92z"/>
-                    <path fill="#34A562" d="M12 23c3.24 0 5.97-1.08 7.96-2.92l-3.67-2.85c-1.02.68-2.33 1.09-3.92 1.09-3.16 0-5.86-2-6.75-4.91L1.48 16.33C3.4 20.33 7.37 23 12 23z"/>
-                </svg>
-                <span>Se connecter avec Google</span>
-            </button>
-            <div class="text-[10px] text-gray-400 font-medium">Connexion sécurisée via Google Accounts.</div>
-        </div>
-    </div>
-
-    <!-- MODALE JURIDIQUE (MENTIONS LÉGALES & CGV) -->
-    <div id="legalModal" class="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
-        <div class="bg-white w-full max-w-2xl rounded-2xl p-8 relative shadow-2xl transform scale-95 transition-transform duration-300 flex flex-col max-h-[85vh]">
-            <button onclick="closeLegalModal()" class="absolute top-5 right-5 text-gray-400 hover:text-black transition text-xl"><i class="fa-solid fa-xmark"></i></button>
-            <h3 id="legalModalTitle" class="text-xl font-black text-gray-900 uppercase tracking-tight mb-4 border-b-2 border-black pb-2">Titre Juridique</h3>
-            <div id="legalModalContent" class="overflow-y-auto text-xs text-gray-600 font-medium space-y-4 pr-2 text-left leading-relaxed"></div>
-        </div>
-    </div>
-
-    <!-- JAVASCRIPT -->
     <script>
-        const productsData = {
-            // CHAUSSURES
-            pradaAmericasCup: { name: "Prada America's Cup - Black Leather", price: 169.99, img: "americas-cup-noir.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_5kQ6oH1mg3Zr2aR6or" },
-            b22Black: { name: "B22 Sneaker - Full Black", price: 179.99, img: "b22-noir.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_5kQ6oH1mg3Zr2aR6or" },
-            b30NoirBlanc: { name: "B30 Sneaker - Noir / Blanc", price: 189.99, img: "b30-noir-blanc.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_b30_example" },
-            lanvinCurb: { name: "Lanvin Curb - Blanc / Rouge", price: 189.99, img: "curb-blanc-rouge.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_curb_example" },
-            noctaHotStep: { name: "Nocta Hot Step 2 - Orange/Black", price: 154.99, img: "hot-step-2.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_hotstep" },
-            skateNoir: { name: "Skate Sneaker - Noir", price: 139.99, img: "skate-noir.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_skate" },
-            tnNoir: { name: "TN Requin Air - Full Black", price: 149.99, img: "tn-noir.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_00g14n3uo2Vn02J7sv" },
-            cRunner: { name: "C-Runner Technical", price: 179.99, img: "c-runner.jpg", category: "chaussures", sizes: [40, 41, 42, 43, 44, 45], stripeUrl: "https://buy.stripe.com/test_crunner" },
-            claquettesCarreaux: { name: "Claquettes Motif Carreaux", price: 69.99, img: "claquettes-carreaux.jpg", category: "chaussures", sizes: [39, 40, 41, 42, 43, 44], stripeUrl: "https://buy.stripe.com/test_5kQcN51mgbrT" },
-
-            // VÊTEMENTS
-            tshirtEcriture: { name: "T-shirt Premium - Écriture", price: 44.99, img: "tshirt-écriture.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_aFa7sLc0UeE59Dj0hX" },
-            tshirtCrane: { name: "T-shirt Oversize Motif Crâne", price: 44.99, img: "tshirt-crane.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_crane" },
-            cargoGris: { name: "Pantalon Cargo Technique - Gris", price: 59.99, img: "cargo-gris.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_cargo" },
-            vesteZippee: { name: "Veste Zippée Luxury - Black", price: 74.99, img: "veste-zippee.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_veste" },
-            ensembleBleu: { name: "Ensemble Sportswear - Bleu Tech", price: 109.99, img: "ensemble-bleu.jpg", category: "vetements", sizes: ["S", "M", "L", "XL"], stripeUrl: "https://buy.stripe.com/test_ens_bleu" },
-
-            // ACCESSOIRES
-            braceletChaine: { name: "Bracelet Chaîne Métal", price: 44.99, img: "bracelet-chaine.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_bracelet_example" },
-            braceletCuirTresse: { name: "Bracelet Cuir Tressé Black", price: 39.99, img: "bracelet-cuir-tresse.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_tresse" },
-            braceletLvNoir: { name: "Bracelet LV - Noir Ébène", price: 49.99, img: "bracelet-lv-noir.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_lv_noir" },
-            braceletLvV: { name: "Bracelet LV Signature V", price: 49.99, img: "bracelet-lv-v.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_lv_v" },
-            bonnetDamier: { name: "Bonnet Motif Damier Luxury", price: 29.99, img: "bonnet-damier.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_damier" },
-            bonnetNoir: { name: "Bonnet Classique Noir", price: 24.99, img: "bonnet-noir.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_bonnet_noir" },
-            casquetteClassique: { name: "Casquette Classique Black", price: 29.99, img: "casquette-classique.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_casq_cl" },
-            casquetteDubai: { name: "Casquette Édition Dubai", price: 34.99, img: "casquette-dubai.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_dubai" },
-            textMonoBrillant: { name: "Casquette Monogramme Brillant", price: 39.99, img: "casquette-monogramme-brillant.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_brillant" },
-            casquettePlaque: { name: "Casquette Signature Plaque Metal", price: 34.99, img: "casquette-plaque.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_plaque" },
-            casquetteRose: { name: "Casquette Soft Rose", price: 29.99, img: "casquette-rose.jpg", category: "accessoires", sizes: ["Taille Unique"], stripeUrl: "https://buy.stripe.com/test_rose" }
-        };
-
-        const reviewsData = [
-            { author: "Anonyme", comment: "Qualité exceptionnelle, finitions au top, rien à dire.", rating: 5, img: "b22-noir.jpg" },
-            { author: "Mahinur Sir", comment: "Livraison rapide, l'article correspond parfaitement !", rating: 5, img: "curb-blanc-rouge.jpg" },
-            { author: "Amaya Madrid", comment: "Modèle de super bonne qualité. Je recommande fort.", rating: 5, img: "americas-cup-noir.jpg" }
+        // Catalogue 100% basé sur tes photos réelles
+        const products = [
+            { id: 1, name: "Sandale Double Bride Cuir Marron", price: 110.00, img: "marron.jpg", cat: "femme", stripeUrl: "https://buy.stripe.com/test_1" },
+            { id: 2, name: "Sandale Double Bride Blanc Pur", price: 110.00, img: "blanc.jpg", cat: "femme", stripeUrl: "https://buy.stripe.com/test_2" },
+            { id: 3, name: "Sandale Double Bride Rose Pastel", price: 110.00, img: "rose.jpg", cat: "femme", stripeUrl: "https://buy.stripe.com/test_3" },
+            { id: 4, name: "Sandale Double Bride Vert Émeraude", price: 110.00, img: "vert.jpg", cat: "femme", stripeUrl: "https://buy.stripe.com/test_4" },
+            { id: 5, name: "Sandale Double Bride Vert Menthe Clair", price: 110.00, img: "vert clair.jpg", cat: "femme", stripeUrl: "https://buy.stripe.com/test_5" },
+            { id: 6, name: "Sélection Complète Premium — Édition d'été", price: 110.00, img: "tout.jpg", cat: "femme", stripeUrl: "https://buy.stripe.com/test_6" }
         ];
 
         let cart = [];
-        let currentReviewIndex = 0;
-        let activeModalProductId = null;
-        let selectedSize = null;
+        let currentProductId = null;
+        let currentCategory = 'all';
 
-        window.onload = function() {
-            showHomePage();
-            renderGlobalStars();
-            updateReview();
-        };
-
-        function renderProductsGrid(keys) {
-            const grid = document.getElementById('products-grid');
-            grid.innerHTML = "";
-            if(keys.length === 0) {
-                grid.innerHTML = `<div class="col-span-full text-center py-12 text-gray-400 text-xs font-medium">Aucun produit trouvé.</div>`;
-                return;
-            }
-            keys.forEach(key => {
-                const prod = productsData[key];
-                grid.innerHTML += `
-                    <div class="product-card bg-white p-3 md:p-4 rounded-2xl shadow-sm border border-gray-100 flex flex-col justify-between">
-                        <div>
-                            <div class="bg-[#f6f6f6] rounded-xl h-48 md:h-64 w-full overflow-hidden flex items-center justify-center relative border border-gray-50">
-                                <img src="${prod.img}" alt="${prod.name}" class="w-full h-full object-contain mix-blend-multiply">
-                            </div>
-                            <div class="mt-4 px-1">
-                                <h3 class="text-xs font-medium text-gray-800 truncate uppercase tracking-tight">${prod.name}</h3>
-                                <p class="text-[11px] text-gray-400 font-bold mt-1">${prod.price.toFixed(2)}€</p>
-                            </div>
-                        </div>
-                        <div class="mt-3">
-                            <button onclick="openModal('${key}')" class="w-full bg-black text-white text-center text-[11px] font-bold py-2.5 rounded-xl hover:bg-neutral-800 transition uppercase tracking-wider">Acheter</button>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function toggleSearchBox() {
-            const input = document.getElementById('searchInput');
-            input.classList.toggle('hidden');
-            if(!input.classList.contains('hidden')) input.focus();
-        }
-
-        function searchProducts() {
-            const term = document.getElementById('searchInput').value.toLowerCase().trim();
-            const matchingKeys = Object.keys(productsData).filter(key => {
-                return productsData[key].name.toLowerCase().includes(term);
-            });
-            renderProductsGrid(matchingKeys);
-        }
-
-        function filterCategory(category) {
-            document.getElementById('home-hero').classList.add('hidden');
-            document.getElementById('home-collections').classList.add('hidden');
-            document.getElementById('back-home-box').classList.remove('hidden');
+        // Afficher les produits
+        function displayProducts(items) {
+            const container = document.getElementById('products-container');
+            container.innerHTML = '';
             
-            const titleElement = document.getElementById('catalogue-title');
-            if (category === 'chaussures') titleElement.innerText = "Nos Chaussures Premium";
-            else if (category === 'vetements') titleElement.innerText = "Nos Vêtements Premium";
-            else if (category === 'accessoires') titleElement.innerText = "Nos Accessoires Premium";
-
-            const filtered = Object.keys(productsData).filter(key => productsData[key].category === category);
-            renderProductsGrid(filtered);
-            window.scrollTo({ top: document.getElementById('catalogue-section').offsetTop - 100, behavior: 'smooth' });
-        }
-
-        function showHomePage() {
-            document.getElementById('home-hero').classList.remove('hidden');
-            document.getElementById('home-collections').classList.remove('hidden');
-            document.getElementById('back-home-box').classList.add('hidden');
-            document.getElementById('catalogue-title').innerText = "Tous Nos Produits";
-            renderProductsGrid(Object.keys(productsData));
-        }
-
-        function toggleCartSidebar() {
-            const sidebar = document.getElementById('cartSidebar');
-            const overlay = document.getElementById('cartOverlay');
-            
-            if(sidebar.classList.contains('hidden')) {
-                sidebar.classList.remove('hidden');
-                overlay.classList.remove('hidden');
-                setTimeout(() => {
-                    sidebar.classList.remove('translate-x-full');
-                    overlay.classList.remove('opacity-0');
-                }, 10);
-            } else {
-                sidebar.classList.add('translate-x-full');
-                overlay.classList.add('opacity-0');
-                setTimeout(() => {
-                    sidebar.classList.add('hidden');
-                    overlay.classList.add('hidden');
-                }, 300);
-            }
-            renderCartItems();
-        }
-
-        function openModal(productId) {
-            activeModalProductId = productId;
-            const product = productsData[productId];
-            document.getElementById('modalProductName').innerText = product.name;
-            document.getElementById('modalProductPrice').innerText = product.price.toFixed(2) + "€";
-            document.getElementById('modalProductImg').src = product.img;
-            document.getElementById('modalBuyBtn').href = product.stripeUrl;
-            
-            let label = "TAILLE";
-            if(product.category === 'chaussures') label = "POINTURE";
-            if(product.category === 'accessoires') label = "OPTION";
-            document.getElementById('sizeLabelTitle').innerText = label;
-
-            const sizeContainer = document.getElementById('sizeContainer');
-            sizeContainer.innerHTML = "";
-            selectedSize = product.sizes[0];
-
-            product.sizes.forEach((size, i) => {
-                const btn = document.createElement('button');
-                btn.innerText = size;
-                btn.className = i === 0 ? "border-2 border-black text-black font-bold text-xs px-3.5 py-1.5" : "border border-gray-200 text-gray-500 font-medium text-xs px-3.5 py-1.5 hover:border-black transition";
-                btn.onclick = function() {
-                    Array.from(sizeContainer.children).forEach(b => b.className = "border border-gray-200 text-gray-500 font-medium text-xs px-3.5 py-1.5 hover:border-black transition");
-                    btn.className = "border-2 border-black text-black font-bold text-xs px-3.5 py-1.5";
-                    selectedSize = size;
-                };
-                sizeContainer.appendChild(btn);
-            });
-
-            const modal = document.getElementById('productModal');
-            modal.classList.remove('hidden');
-            setTimeout(() => { modal.classList.remove('opacity-0'); modal.firstElementChild.classList.remove('scale-95'); }, 10);
-        }
-
-        function closeModal() {
-            const modal = document.getElementById('productModal');
-            modal.classList.add('opacity-0');
-            modal.firstElementChild.classList.add('scale-95');
-            setTimeout(() => modal.classList.add('hidden'), 300);
-        }
-
-        function addSelectedToCart() {
-            const product = productsData[activeModalProductId];
-            const existingItem = cart.find(item => item.id === activeModalProductId && item.size === selectedSize);
-
-            if(existingItem) {
-                existingItem.qty++;
-            } else {
-                cart.push({ id: activeModalProductId, name: product.name, price: product.price, img: product.img, size: selectedSize, qty: 1, stripeUrl: product.stripeUrl });
-            }
-            closeModal();
-            updateCartGlobalStats();
-            toggleCartSidebar();
-        }
-
-        function changeQty(index, amount) {
-            cart[index].qty += amount;
-            if(cart[index].qty <= 0) cart.splice(index, 1);
-            updateCartGlobalStats();
-            renderCartItems();
-        }
-
-        function updateCartGlobalStats() {
-            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-            
-            document.getElementById('cart-count-badge').innerText = totalQty;
-            document.getElementById('cart-total-price').innerText = totalPrice.toFixed(2) + "€";
-
-            const limit = 150;
-            const needed = limit - totalPrice;
-            if(needed > 0) {
-                document.getElementById('shipping-promo-text').innerHTML = `Plus que <span class="font-bold text-black">${needed.toFixed(2)}€</span> pour la <strong>Livraison Gratuite</strong>`;
-                document.getElementById('shipping-bar').style.width = `${Math.min(100, (totalPrice/limit)*100)}%`;
-            } else {
-                document.getElementById('shipping-promo-text').innerHTML = `<span class="text-emerald-600 font-bold">Livraison Gratuite débloquée ! 🚚</span>`;
-                document.getElementById('shipping-bar').style.width = `100%`;
-            }
-
-            const btn = document.getElementById('checkout-main-btn');
-            const notice = document.getElementById('cart-multi-notice');
-            if(cart.length > 1) {
-                notice.classList.remove('hidden');
-                btn.innerText = `Payer l'article 1 : ${cart[0].name}`;
-            } else if(cart.length === 1) {
-                notice.classList.add('hidden');
-                btn.innerText = "Passer la commande / Payer";
-            } else {
-                notice.classList.add('hidden');
-                btn.innerText = "Panier Vide";
-            }
-        }
-
-        function renderCartItems() {
-            const container = document.getElementById('cart-items-list');
-            if(cart.length === 0) {
-                container.innerHTML = `<p class="text-gray-400 text-center text-xs font-medium py-12">Votre panier est vide.</p>`;
-                return;
-            }
-            container.innerHTML = "";
-            cart.forEach((item, index) => {
+            items.forEach(p => {
                 container.innerHTML += `
-                    <div class="flex items-center justify-between border-b border-gray-100 pb-3 ${index === 0 && cart.length > 1 ? 'bg-amber-50/50 p-1.5 rounded-xl border border-amber-200' : ''}">
-                        <div class="flex items-center space-x-3">
-                            <div class="w-12 h-12 bg-[#f6f6f6] border rounded-lg flex items-center justify-center p-1">
-                                <img src="${item.img}" alt="${item.name}" class="w-full h-full object-contain mix-blend-multiply">
-                            </div>
-                            <div>
-                                <h4 class="text-xs font-bold text-gray-900 max-w-[180px] truncate uppercase">${item.name}</h4>
-                                <p class="text-[10px] text-gray-400 font-medium">Taille: ${item.size}</p>
-                                <p class="text-xs font-bold text-neutral-900 mt-0.5">${(item.price * item.qty).toFixed(2)}€</p>
-                            </div>
+                    <div class="product-card">
+                        <div class="product-img-container" onclick="openProductModal(${p.id})">
+                            <img src="${p.img}" alt="${p.name}">
                         </div>
-                        <div class="flex items-center space-x-2 border rounded-lg p-1 bg-gray-50">
-                            <button onclick="changeQty(${index}, -1)" class="w-5 h-5 text-xs text-gray-500 font-bold">-</button>
-                            <span class="text-xs font-bold px-1">${item.qty}</span>
-                            <button onclick="changeQty(${index}, 1)" class="w-5 h-5 text-xs text-gray-500 font-bold">+</button>
+                        <div class="product-info">
+                            <div class="product-brand">Maison H</div>
+                            <h3 class="product-title">${p.name}</h3>
+                            <div class="product-price">${p.price.toFixed(2)} €</div>
+                            <button class="btn-view" onclick="openProductModal(${p.id})">Découvrir le modèle</button>
                         </div>
                     </div>
                 `;
             });
         }
 
+        // Filtres par catégorie
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active'));
+            
+            if(cat === 'homme') {
+                alert("La collection Homme arrive très bientôt avec votre sélection de modèles ! Restez connectés.");
+                document.getElementById('nav-all').classList.add('active');
+                displayProducts(products);
+                return;
+            }
+            
+            document.getElementById(`nav-${cat}`).classList.add('active');
+            const filtered = cat === 'all' ? products : products.filter(p => p.cat === cat);
+            displayProducts(filtered);
+        }
+
+        // Modale Gestion
+        function openProductModal(id) {
+            const p = products.find(prod => prod.id === id);
+            currentProductId = id;
+            document.getElementById('modal-img').src = p.img;
+            document.getElementById('modal-title').innerText = p.name;
+            document.getElementById('modal-price').innerText = `${p.price.toFixed(2)} €`;
+            toggleModal(true);
+        }
+
+        function toggleModal(show) {
+            const m = document.getElementById('product-modal');
+            if(show) m.classList.add('active');
+            else m.classList.remove('active');
+        }
+
+        function closeModalOnBackdrop(e) {
+            if(e.target.id === 'product-modal') toggleModal(false);
+        }
+
+        // Gestion du Panier
+        function toggleCart(show) {
+            const s = document.getElementById('cart-sidebar');
+            if(show) s.classList.add('active');
+            else s.classList.remove('active');
+        }
+
+        function addToCartFromModal() {
+            const p = products.find(prod => prod.id === currentProductId);
+            const size = document.getElementById('modal-size').value;
+            
+            cart.push({ ...p, selectedSize: size });
+            updateCartUI();
+            toggleModal(false);
+            toggleCart(true);
+        }
+
+        function updateCartUI() {
+            document.getElementById('cart-count').innerText = cart.length;
+            const container = document.getElementById('cart-items-container');
+            container.innerHTML = '';
+            
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.img}" alt="${item.name}">
+                        <div class="cart-item-details">
+                            <h4>${item.name}</h4>
+                            <p>Pointure : ${item.selectedSize}</p>
+                            <p>${item.price.toFixed(2)} €</p>
+                            <span style="color:#cc0000; font-size:11px; cursor:pointer;" onclick="removeFromCart(${index})">Retirer</span>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('cart-total-amount').innerText = `${total.toFixed(2)} €`;
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        // Paiement
         function processCheckout() {
-            if(cart.length === 0) return;
-            const itemToPay = cart[0];
-            window.open(itemToPay.stripeUrl, '_blank');
-            cart.shift(); 
-            updateCartGlobalStats();
-            renderCartItems();
-        }
-
-        function renderGlobalStars() {
-            const container = document.getElementById('review-stars');
-            container.innerHTML = "";
-            for(let i=0; i<5; i++) container.innerHTML += `<i class="fa-solid fa-star"></i>`;
-        }
-
-        function updateReview() {
-            const rev = reviewsData[currentReviewIndex];
-            document.getElementById('review-comment').innerText = `"${rev.comment}"`;
-            document.getElementById('review-author').innerText = rev.author;
-            document.getElementById('review-prod-thumb').src = rev.img;
-            
-            const starBox = document.getElementById('current-review-stars');
-            starBox.innerHTML = "";
-            for(let i=0; i<5; i++) {
-                starBox.innerHTML += i < rev.rating ? `<i class="fa-solid fa-star"></i>` : `<i class="fa-regular fa-star text-gray-300"></i>`;
+            if(cart.length === 0) {
+                alert("Votre panier est actuellement vide.");
+                return;
             }
+            // Redirection vers le lien Stripe du premier produit du panier
+            alert("Redirection sécurisée vers la plateforme de paiement Stripe...");
+            window.location.href = cart[0].stripeUrl;
         }
 
-        function nextReview() {
-            currentReviewIndex = (currentReviewIndex + 1) % reviewsData.length;
-            updateReview();
-        }
-
-        function prevReview() {
-            currentReviewIndex = (currentReviewIndex - 1 + reviewsData.length) % reviewsData.length;
-            updateReview();
-        }
-
-        function openLoginModal() {
-            const modal = document.getElementById('loginModal');
-            modal.classList.remove('hidden');
-            setTimeout(() => { modal.classList.remove('opacity-0'); modal.firstElementChild.classList.remove('scale-95'); }, 10);
-        }
-
-        function closeLoginModal() {
-            const modal = document.getElementById('loginModal');
-            modal.classList.add('opacity-0');
-            modal.firstElementChild.classList.add('scale-95');
-            setTimeout(() => modal.classList.add('hidden'), 300);
-        }
-
-        function simulateGoogleLogin() {
-            closeLoginModal();
-            document.getElementById('user-icon').className = "fa-solid fa-circle-user text-emerald-600 text-lg cursor-pointer";
-            alert("Connexion réussie avec Google !");
-        }
-
-        // --- GESTION DYNAMIQUE DES TEXTES JURIDIQUES ---
-        function openLegalModal(type) {
-            const title = document.getElementById('legalModalTitle');
-            const content = document.getElementById('legalModalContent');
-            
-            if (type === 'mentions') {
-                title.innerText = "Mentions Légales";
-                content.innerHTML = `
-                    <p class="font-bold text-gray-900 text-sm">1. Édition du site</p>
-                    <p>En vertu de l'article 6 de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique, il est précisé aux utilisateurs du site internet <strong>H LUXURY</strong> l'identité des différents intervenants dans le cadre de sa réalisation et de son suivi :</p>
-                    <p><strong>Propriétaire du site :</strong> H LUXURY - Contact : hluxury34000@gmail.com - Adresse : Montpellier 34000, France.</p>
-                    <p><strong>Statut de l'entreprise :</strong> Micro-entreprise / Entrepreneur individuel (EI).</p>
-                    
-                    <p class="font-bold text-gray-900 text-sm mt-4">2. Hébergement</p>
-                    <p>Le Site est hébergé par la société <strong>Vercel Inc.</strong>, situé au 340 S Lemon Ave #4133 Walnut, CA 91789, États-Unis. Site internet : https://vercel.com.</p>
-                    
-                    <p class="font-bold text-gray-900 text-sm mt-4">3. Propriété intellectuelle et contrefaçons</p>
-                    <p>H LUXURY est propriétaire des droits de propriété intellectuelle ou détient les droits d'usage sur tous les éléments accessibles sur le site internet, notamment les textes, images, graphismes, logos, vidéos, architecture, icônes et sons.</p>
-                    <p>Toute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de H LUXURY.</p>
-                    
-                    <p class="font-bold text-gray-900 text-sm mt-4">4. Limitations de responsabilité</p>
-                    <p>H LUXURY ne pourra être tenu pour responsable des dommages directs et indirects causés au matériel de l'utilisateur, lors de l'accès au site internet.</p>
-                `;
-            } else if (type === 'cgv') {
-                title.innerText = "Conditions Générales de Vente (CGV)";
-                content.innerHTML = `
-                    <p class="font-bold text-gray-900 text-sm">1. Objet</p>
-                    <p>Les présentes conditions générales de vente visent à définir les relations contractuelles entre <strong>H LUXURY</strong> et l'acheteur, ainsi que les conditions applicables à tout achat effectué par le biais du site marchand.</p>
-                    <p>L’acquisition d’un produit à travers le présent site implique une acceptation sans réserve par l’acheteur des présentes conditions de vente.</p>
-                    
-                    <p class="font-bold text-gray-900 text-sm mt-4">2. Produits</p>
-                    <p>Les produits proposés sont ceux qui figurent sur le site H LUXURY dans la limite des stocks disponibles. Chaque produit est accompagné d’un descriptif. Les photographies sont les plus fidèles possibles mais n’engagent pas le Vendeur.</p>
-                    
-                    <p class="font-bold text-gray-900 text-sm mt-4">3. Tarifs et Paiement</p>
-                    <p>Les prix figurant sur le site sont indiqués en Euros (€) toutes taxes comprises (TTC). H LUXURY se réserve le droit de modifier ses prix à tout moment. Les paiements s'effectuent de manière sécurisée via la plateforme de paiement sécurisée <strong>Stripe</strong>.</p>
-                    
-                    <p class="font-bold text-gray-900 text-sm mt-4">4. Livraison et Rétractation</p>
-                    <p>Les livraisons sont faites à l’adresse indiquée sur le bon de commande (Montpellier 34000). Les acheteurs bénéficient d’un délai de rétractation de 14 jours à compter de la livraison de leur commande pour faire retour du produit au vendeur pour échange ou remboursement sans pénalité.</p>
-                `;
-            }
-            
-            const modal = document.getElementById('legalModal');
-            modal.classList.remove('hidden');
-            setTimeout(() => { modal.classList.remove('opacity-0'); modal.firstElementChild.classList.remove('scale-95'); }, 10);
-        }
-
-        function closeLegalModal() {
-            const modal = document.getElementById('legalModal');
-            modal.classList.add('opacity-0');
-            modal.firstElementChild.classList.add('scale-95');
-            setTimeout(() => modal.classList.add('hidden'), 300);
-        }
+        // Initialisation
+        window.onload = () => {
+            displayProducts(products);
+        };
     </script>
 </body>
 </html>
