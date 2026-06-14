@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H LUXURY — Haute Maroquinerie & Souliers</title>
     
+    <!-- Favicon : Style Épuré Identitaire -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-family=%22serif%22 font-size=%2280%22 fill=%22%23000000%22 font-weight=%22bold%22>H</text></svg>">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
@@ -256,7 +257,7 @@
             background-color: #222222;
         }
 
-        /* Section Double Catalogues (Placée juste sous la bannière Hero) */
+        /* Section Double Catalogues */
         .catalogues-section {
             max-width: 1340px;
             margin: 45px auto 15px auto;
@@ -520,6 +521,7 @@
 </head>
 <body>
 
+    <!-- Top Banner Seuil Livraison -->
     <div class="top-bar">La livraison d'exception est offerte à partir de 100€ d'achat</div>
 
     <header>
@@ -552,6 +554,7 @@
         </div>
     </header>
 
+    <!-- Bandeau Défilant Code Promo -->
     <div class="marquee-container">
         <div class="marquee-content">
             <span>🔥 OFFRE EXCEPTIONNELLE DE SAISON</span>
@@ -562,9 +565,10 @@
         </div>
     </div>
 
+    <!-- Bannière Vidéo Principale (Hero) -->
     <div id="hero-section" class="hero-banner">
         <video autoplay loop muted playsinline webkit-playsinline id="hero-video-file">
-            <source src="banniere.mp4" type="video/mp4">
+            <source id="hero-video-source" src="" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -574,18 +578,21 @@
         </div>
     </div>
 
+    <!-- Double Bloc Catalogue Placé Juste en Bas de la Bannière Hero -->
     <section class="catalogues-section" id="catalogues-section">
         <div class="catalogues-grid">
+            <!-- Catalogue Femme -->
             <div class="catalogue-banner-card" onclick="filterCategory('femme')">
-                <img src="LIEN_IMAGE_FEMME" alt="Catalogue Femme" class="catalogue-banner-img">
+                <img id="catalogue-img-femme" src="" alt="Catalogue Femme" class="catalogue-banner-img">
                 <div class="catalogue-banner-overlay"></div>
                 <div class="catalogue-banner-text">
                     <h2>Catalogue Femme</h2>
                     <span>Découvrir la collection</span>
                 </div>
             </div>
+            <!-- Catalogue Homme -->
             <div class="catalogue-banner-card" onclick="filterCategory('homme')">
-                <img src="LIEN_IMAGE_HOMME" alt="Catalogue Homme" class="catalogue-banner-img">
+                <img id="catalogue-img-homme" src="" alt="Catalogue Homme" class="catalogue-banner-img">
                 <div class="catalogue-banner-overlay"></div>
                 <div class="catalogue-banner-text">
                     <h2>Catalogue Homme</h2>
@@ -595,11 +602,13 @@
         </div>
     </section>
 
+    <!-- Conteneur de Grille Dynamique -->
     <main class="container">
         <h2 class="section-title" id="page-dynamic-title">Les Créations Phares</h2>
         <div class="products-grid" id="products-container"></div>
     </main>
 
+    <!-- Modale Documents Légaux & Support -->
     <div class="modal" id="legal-modal" onclick="closeLegalModalOnBackdrop(event)">
         <div class="modal-content" style="max-width:680px; display:block;">
             <div class="modal-close" onclick="toggleLegalModal(false)">&times;</div>
@@ -608,6 +617,7 @@
         </div>
     </div>
 
+    <!-- Modale Fiche Produit Express -->
     <div class="modal" id="product-modal" onclick="closeModalOnBackdrop(event)">
         <div class="modal-content">
             <div class="modal-close" onclick="toggleModal(false)">&times;</div>
@@ -627,6 +637,7 @@
         </div>
     </div>
 
+    <!-- Panier Coulissant Latéral -->
     <div class="cart-sidebar" id="cart-sidebar">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; border-bottom:1px solid #eee; padding-bottom:16px;">
             <h3 style="font-size:16px; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Mon Panier</h3>
@@ -642,6 +653,7 @@
         </div>
     </div>
 
+    <!-- Pied de Page Complet -->
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -675,8 +687,16 @@
         </div>
     </footer>
 
+    <!-- Script JavaScript Applicatif -->
     <script>
-        // BASE DE DONNÉES COMPLÈTE - TOUS LES 65 ARTICLES AVEC LEURS VARIABLES PROPRES
+        // CONFIGURATION DES BANNIÈRES (Modifie tes liens ici simplement !)
+        const BANNER_CONFIG = {
+            videoHero: "banniere.mp4",         // Mets le nom de ta vidéo ou son lien URL
+            imageCatalogueFemme: "LIEN_IMAGE_FEMME", // Mets le lien de l'image catalogue Femme
+            imageCatalogueHomme: "LIEN_IMAGE_HOMME"  // Mets le lien de l'image catalogue Homme
+        };
+
+        // BASE DE DONNÉES COMPLÈTE - TOUS LES 65 ARTICLES
         const products = [
             // SÉRIE DE PHOTOS 1
             { id: 1, name: "Sandales Oran - Tow", price: 64.90, oldPrice: 120.00, img: "oran-tow.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
@@ -767,6 +787,14 @@
         let cart = [];
         let currentProductId = null;
 
+        // Fonction d'injection des bannières configurées
+        function initBanners() {
+            document.getElementById('hero-video-source').src = BANNER_CONFIG.videoHero;
+            document.getElementById('hero-video-file').load(); // Force le rechargement de la vidéo
+            document.getElementById('catalogue-img-femme').src = BANNER_CONFIG.imageCatalogueFemme;
+            document.getElementById('catalogue-img-homme').src = BANNER_CONFIG.imageCatalogueHomme;
+        }
+
         // Rendu Dynamique des Articles du Catalogue
         function displayProducts(items) {
             const container = document.getElementById('products-container');
@@ -829,7 +857,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Moteur de Recherche Instantané Alphanumérique
+        // Moteur de Recherche Instantané
         function handleSearch() {
             const query = document.getElementById('search-input').value.toLowerCase().trim();
             if(query.length > 0) {
@@ -864,7 +892,7 @@
         function closeModalOnBackdrop(e) { if(e.target.id === 'product-modal') toggleModal(false); }
         function toggleCart(show) { document.getElementById('cart-sidebar').classList.toggle('active', show); }
 
-        // Ajout d'un Article dans la File du Panier
+        // Ajout d'un Article dans le Panier
         function addToCartFromModal() {
             const p = products.find(prod => prod.id === currentProductId);
             const size = document.getElementById('modal-size').value;
@@ -874,7 +902,7 @@
             toggleCart(true);
         }
 
-        // Rafraîchissement Visuel de l'Espace Panier
+        // Rafraîchissement Visuel du Panier
         function updateCartUI() {
             document.getElementById('cart-count').innerText = cart.length;
             const container = document.getElementById('cart-items-container');
@@ -898,17 +926,16 @@
             document.getElementById('cart-total-amount').innerText = `${total.toFixed(2)} €`;
         }
 
-        // Redirection Finale Stripe de Caisse Unique Privée
+        // Redirection Finale Stripe
         function processCheckout() {
             if(cart.length === 0) {
                 alert("Votre panier d'achat est vide.");
                 return;
             }
-            // Lien permanent vers votre terminal de paiement Stripe sécurisé
             window.location.href = "https://buy.stripe.com/votre_lien_unique_ici";
         }
 
-        // Injection des Textes Légaux Obligatoires Complétes dans la Modale Dédiée
+        // Textes Légaux Obligatoires
         function openLegal(type) {
             const title = document.getElementById('legal-modal-title');
             const body = document.getElementById('legal-modal-body');
@@ -917,56 +944,37 @@
                 title.innerText = "Mentions Légales";
                 body.innerHTML = `
                     <h5>Éditeur de la Plateforme</h5>
-                    <p>La plateforme e-commerce H LUXURY est éditée par la Maison H LUXURY E-Commerce Inc., société enregistrée au registre du commerce. Siège social international : Place de la Comédie, 34000 Montpellier, France.</p>
-                    <h5>Hébergement du Site</h5>
-                    <p>Ce site web est hébergé de manière sécurisée, isolée et décentralisée. Tous les protocoles de cryptage des flux applicatifs sont strictement conformes aux normes de sécurité industrielles majeures.</p>
+                    <p>La plateforme e-commerce H LUXURY est éditée par la Maison H LUXURY E-Commerce Inc. Siège social : Place de la Comédie, 34000 Montpellier, France.</p>
                     <h5>Propriété Intellectuelle</h5>
-                    <p>L’ensemble des visuels de maroquinerie, agencements photographiques, arborescences de code et marques présents sur ce site sont et restent la propriété exclusive de la marque H LUXURY. Toute reproduction même partielle est interdite.</p>
+                    <p>L’ensemble des visuels, agencements photographiques et marques présents sur ce site sont la propriété exclusive de H LUXURY.</p>
                 `;
             } else if(type === 'cgv') {
                 title.innerText = "Conditions Générales de Vente";
                 body.innerHTML = `
-                    <h5>1. Portée et Objet des CGV</h5>
-                    <p>Les présentes Conditions Générales de Vente régissent de plein droit toutes les transactions passées entre l'acheteur final et la boutique en ligne H LUXURY.</p>
-                    <h5>2. Prix & Devises</h5>
-                    <p>Les prix indiqués dans le catalogue sont exprimés en Euros (€) toutes taxes comprises. La Maison se réserve le droit de modifier ses tarifs à tout moment, mais les produits seront facturés sur la base des grilles en vigueur au moment de la validation finale.</p>
-                    <h5>3. Modalités de Paiement</h5>
-                    <p>Le règlement complet des articles s'effectue uniquement en ligne via la passerelle hautement sécurisée Stripe (cryptage SSL 256 bits). Aucune donnée bancaire n'est stockée sur nos serveurs.</p>
-                    <h5>4. Sécurisation des Commandes</h5>
-                    <p>En cas d'anomalie détectée sur une transaction, la direction se réserve le droit de suspendre l'expédition pour vérification d'identité.</p>
+                    <h5>1. Portée et Objet</h5>
+                    <p>Les présentes CGV régissent toutes les transactions passées sur la boutique en ligne H LUXURY.</p>
+                    <h5>2. Prix</h5>
+                    <p>Les prix sont indiqués en Euros (€) TTC.</p>
                 `;
             } else if(type === 'contact') {
-                title.innerText = "Maison H Luxury — Service Clientèle & Commandes";
+                title.innerText = "Maison H Luxury — Service Clientèle";
                 body.innerHTML = `
-                    <h5>Par Voie Électronique (Support Prioritaire)</h5>
-                    <p>Pour toute question sur un modèle, suivi de colis, ou modification de pointure avant expédition, veuillez écrire à notre secrétariat officiel :</p>
-                    <p style='font-size:16px; color:#000; font-weight:700; margin-top:8px; letter-spacing:0.5px;'>hluxury34000@gmail.com</p>
-                    <p style='margin-top:12px; font-size:12px; color:#777;'>Notre équipe s'engage à vous répondre avec précision sous un délai inférieur à 12 heures, 7j/7.</p>
+                    <h5>Support Électronique</h5>
+                    <p>Pour toute question sur une commande :</p>
+                    <p style='font-size:16px; color:#000; font-weight:700; margin-top:8px;'>hluxury34000@gmail.com</p>
                 `;
             } else if(type === 'livraison') {
-                title.innerText = "Expéditions Réglées & Retours Privés";
+                title.innerText = "Expéditions & Retours";
                 body.innerHTML = `
-                    <h5>Délais et Suivi de Livraison</h5>
-                    <p>Toutes nos pièces d'exceptions sont préparées et remises sous pli scellé discret avec un numéro de suivi envoyé par courriel. Le délai de livraison moyen en France et en Europe est estimé entre 2 et 4 jours ouvrés.</p>
-                    <h5>Frais de Port</h5>
-                    <p>La livraison standard sécurisée à domicile ou en point relais est entièrement offerte à partir de 100€ d'achat.</p>
-                    <h5>Droit de Rétractation & Retours</h5>
-                    <p>Conformément aux législations de la consommation, vous bénéficiez d'un délai de 14 jours calendaires à dater de la réception de votre boîte pour demander un échange de pointure ou un remboursement complet. Les articles doivent impérativement être retournés neufs, non portés, dans leur boîte d'origine intacte.</p>
+                    <h5>Délais</h5>
+                    <p>Le délai de livraison moyen en Europe est estimé entre 2 et 4 jours ouvrés. Offerte dès 100€ d'achat.</p>
                 `;
             } else if(type === 'privacy') {
-                title.innerText = "Politique de Protection des Données";
-                body.innerHTML = `
-                    <h5>Collecte des informations personnelles</h5>
-                    <p>Les données nominatives récoltées au moment du passage en caisse (nom, adresse de livraison, email) sont uniquement utilisées pour assurer la bonne expédition de votre commande.</p>
-                    <h5>Non-Transmission à des Tiers</h5>
-                    <p>La Maison H LUXURY s'engage formellement à ne jamais revendre, louer ou céder vos informations à des entreprises tierces ou des régies publicitaires.</p>
-                `;
+                title.innerText = "Protection des Données";
+                body.innerHTML = `<p>Les données récoltées sont uniquement utilisées pour assurer la bonne expédition de votre commande.</p>`;
             } else if(type === 'cookies') {
-                title.innerText = "Utilisation des Cookies applicatifs";
-                body.innerHTML = `
-                    <p>Ce site utilise exclusivement des traceurs techniques dits "de session". Ils permettent simplement de mémoriser les articles que vous placez dans votre panier d'achat lorsque vous changez de page.</p>
-                    <p>Aucun cookie de traçage publicitaire intrusif n'est injecté sur votre ordinateur ou votre smartphone.</p>
-                `;
+                title.innerText = "Utilisation des Cookies";
+                body.innerHTML = `<p>Ce site utilise exclusivement des traceurs de session fonctionnels pour le panier.</p>`;
             }
             toggleLegalModal(true);
         }
@@ -974,8 +982,11 @@
         function toggleLegalModal(show) { document.getElementById('legal-modal').classList.toggle('active', show); }
         function closeLegalModalOnBackdrop(e) { if(e.target.id === 'legal-modal') toggleLegalModal(false); }
 
-        // Amorçage automatique de l'interface
-        window.onload = () => { showHome(); };
+        // Amorçage automatique au chargement
+        window.onload = () => { 
+            initBanners(); // Charge tes variables de bannières
+            showHome(); 
+        };
     </script>
 </body>
 </html>
