@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>H LUXURY — Haute Maroquinerie & Souliers</title>
     
-    <!-- LOGO H STYLISÉ DIRECTEMENT EN ONGLET -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-family=%22serif%22 font-size=%2280%22 fill=%22%23c5a059%22 font-weight=%22bold%22>H</text></svg>">
-    
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --bg-site: #ffffff;
             --text-dark: #000000;
             --text-muted: #777777;
-            --accent-gold: #c5a059;   /* Ton Or chaud conservé */
-            --price-red: #d93838;     /* Rouge promo exact de Capture d’écran 2026-06-14 195015.jpg */
-            --star-color: #ffb4b4;    /* Étoiles douces de Capture d’écran 2026-06-14 195015.jpg */
+            --accent-gold: #c5a059;   
+            --price-red: #d93838;     
+            --star-color: #ffb4b4;    
             --border-light: #eeeeee;
         }
 
@@ -34,7 +33,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 1. Petite barre d'annonce du haut */
         .top-bar {
             background-color: #000000;
             color: #ffffff;
@@ -44,7 +42,6 @@
             font-weight: 400;
         }
 
-        /* 2. Header Style Capture d’écran 2026-06-14 195042.jpg avec ton identité */
         header {
             display: grid;
             grid-template-columns: 1fr auto 1fr;
@@ -60,15 +57,6 @@
         .header-left {
             display: flex;
             align-items: center;
-            gap: 20px;
-        }
-
-        .lang-select {
-            border: 1px solid #ccc;
-            padding: 4px 8px;
-            font-size: 12px;
-            background: transparent;
-            cursor: pointer;
         }
 
         nav ul {
@@ -92,7 +80,6 @@
             border-radius: 4px;
         }
 
-        /* Ton Logo H LUXURY Centré */
         .logo-container {
             display: flex;
             align-items: center;
@@ -158,7 +145,6 @@
             justify-content: center;
         }
 
-        /* 3. Bandeau Défilant Animé Noir (Marquee) de Capture d’écran 2026-06-14 195042.jpg */
         .marquee-container {
             background: #000000;
             color: #ffffff;
@@ -186,7 +172,6 @@
             100% { transform: translate3d(-50%, 0, 0); }
         }
 
-        /* 4. Grand Hero Banner Dynamique de Capture d’écran 2026-06-14 195042.jpg */
         .hero-banner {
             position: relative;
             width: 100%;
@@ -235,7 +220,6 @@
             margin-bottom: 25px;
         }
 
-        /* Bouton Rose d'Achat */
         .btn-shop-now {
             background-color: #e8b4b8;
             color: #ffffff;
@@ -255,7 +239,6 @@
             background-color: #dfa3a7;
         }
 
-        /* 5. Section Catalogue et Grille de Capture d’écran 2026-06-14 195015.jpg */
         .container {
             max-width: 1300px;
             margin: 0 auto;
@@ -273,7 +256,7 @@
 
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4 Colonnes strictes */
+            grid-template-columns: repeat(4, 1fr);
             gap: 30px 20px;
         }
 
@@ -286,7 +269,7 @@
 
         .product-img-container {
             width: 100%;
-            border-radius: 12px; /* Arrondi doux exact */
+            border-radius: 12px;
             background-color: #f2f2f2;
             overflow: hidden;
             position: relative;
@@ -309,7 +292,6 @@
             padding: 15px 5px 5px 5px;
         }
 
-        /* Étoiles roses/rouges de notation */
         .stars-container {
             display: flex;
             align-items: center;
@@ -355,7 +337,6 @@
             font-weight: 400;
         }
 
-        /* 6. Fenêtres Modales */
         .modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -372,7 +353,6 @@
         select { width: 100%; padding: 10px; border: 1px solid #ddd; background: #fff; margin-bottom: 20px; font-size: 13px; border-radius: 4px; }
         .btn-add-cart { width: 100%; background: #000; color: #fff; border: none; padding: 14px; text-transform: uppercase; font-size: 12px; font-weight: 600; cursor: pointer; border-radius: 4px; }
 
-        /* 7. Panier Latéral */
         .cart-sidebar {
             position: fixed; top: 0; right: -380px; width: 380px; height: 100%;
             background: #ffffff; box-shadow: -5px 0 25px rgba(0,0,0,0.1); z-index: 1100;
@@ -383,7 +363,6 @@
         .cart-item { display: flex; gap: 15px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid #eee; }
         .cart-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; }
 
-        /* 8. Footer Institutionnel */
         footer {
             background: #fafafa;
             border-top: 1px solid var(--border-light);
@@ -423,9 +402,6 @@
 
     <header>
         <div class="header-left">
-            <select class="lang-select">
-                <option>FR v</option>
-            </select>
             <nav>
                 <ul>
                     <li><a href="#" class="active-btn" id="nav-home" onclick="showHome()">Accueil</a></li>
@@ -435,7 +411,6 @@
             </nav>
         </div>
         
-        <!-- Ton Logo H LUXURY Restauré au centre -->
         <div class="logo-container" onclick="showHome()">
             <div class="logo-icon">H</div>
             <div class="logo-text">Luxury</div>
@@ -455,7 +430,6 @@
         </div>
     </header>
 
-    <!-- Bandeau défilant de la Capture d’écran 2026-06-14 195042.jpg -->
     <div class="marquee-container">
         <div class="marquee-content">
             <span>🔥 SUPER PROMO !!</span>
@@ -469,7 +443,6 @@
         </div>
     </div>
 
-    <!-- Bannière Vidéo Forcée Animée -->
     <div id="hero-section" class="hero-banner">
         <video autoplay loop muted playsinline webkit-playsinline id="hero-video-file">
             <source src="banniere.mp4" type="video/mp4">
@@ -487,7 +460,6 @@
         <div class="products-grid" id="products-container"></div>
     </main>
 
-    <!-- POP-UP COMMUNE POUR LES TEXTES LÉGAUX -->
     <div class="modal" id="legal-modal" onclick="closeLegalModalOnBackdrop(event)">
         <div class="modal-content" style="max-width:600px; display:block;">
             <div class="modal-close" onclick="toggleLegalModal(false)">&times;</div>
@@ -496,7 +468,6 @@
         </div>
     </div>
 
-    <!-- MODALE PRODUIT -->
     <div class="modal" id="product-modal" onclick="closeModalOnBackdrop(event)">
         <div class="modal-content">
             <div class="modal-close" onclick="toggleModal(false)">&times;</div>
@@ -516,7 +487,6 @@
         </div>
     </div>
 
-    <!-- PANIER -->
     <div class="cart-sidebar" id="cart-sidebar">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px; border-bottom:1px solid #eee; padding-bottom:15px;">
             <h3 style="font-size:15px; font-weight:600;">Mon Panier</h3>
@@ -566,68 +536,97 @@
     </footer>
 
     <script>
-        // LE CATALOGUE INTEGRAL DES 54 PRODUITS CONSERVÉ COMPLÈTEMENT
+        // BASE DE DONNÉES DU NOUVEAU CATALOGUE (42 ARTICLES) AVEC LES REEDUCTIONS EXACTES DE TES PHOTOS
         const products = [
-            { id: 1, name: "Mule Chypre Cuir Togo Marron", price: 60.00, oldPrice: 66.00, img: "top-marron.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
-            { id: 2, name: "Mule Chypre Blanc Pur Nappa", price: 60.00, oldPrice: 66.00, img: "top-blanc.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
-            { id: 3, name: "Mule Chypre Suede Vert Émeraude", price: 75.00, oldPrice: 83.50, img: "top-emeraude.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
-            { id: 4, name: "Mule Chypre Homme Noir Mat", price: 75.00, oldPrice: 83.50, img: "top-noir.jpg", cat: "homme", bestSeller: true, sizes: [40,41,42,43,44,45] },
-            { id: 5, name: "Mule Chypre Homme Vert Kaki", price: 75.00, oldPrice: 83.50, img: "top-kaki.jpg", cat: "homme", bestSeller: true, sizes: [40,41,42,43,44,45] },
-            { id: 6, name: "Mule Chypre Rose Pastel Smooth", price: 60.00, oldPrice: 66.00, img: "chypre-rose.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 7, name: "Mule Chypre Vert Menthe Doux", price: 60.00, oldPrice: 66.00, img: "chypre-vert-menthe.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 8, name: "Mule Chypre Jaune Citron Foncé", price: 60.00, oldPrice: 66.00, img: "chypre-jaune.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 9, name: "Mule Chypre Orange Signature", price: 60.00, oldPrice: 66.00, img: "chypre-orange.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 10, name: "Mule Chypre Beige Taupe Classique", price: 60.00, oldPrice: 66.00, img: "chypre-beige.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 11, name: "Mule Chypre Gris Perle Urbain", price: 60.00, oldPrice: 66.00, img: "chypre-gris.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 12, name: "Mule Chypre Bordeaux Profond Vintage", price: 60.00, oldPrice: 66.00, img: "chypre-bordeaux.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 13, name: "Mule Chypre Bleu Turquoise Lagon", price: 60.00, oldPrice: 66.00, img: "chypre-turquoise.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 14, name: "Mule Chypre Rouge Carmin Lumineux", price: 60.00, oldPrice: 66.00, img: "chypre-rouge.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 15, name: "Mule Chypre Bleu Marine Profond", price: 60.00, oldPrice: 66.00, img: "chypre-bleu-marine.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 16, name: "Mule Chypre Strass Onyx Édition Nuit", price: 75.00, oldPrice: 83.50, img: "chypre-strass-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 17, name: "Mule Chypre Strass Diamant Cristal", price: 75.00, oldPrice: 83.50, img: "chypre-strass-argent.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 18, name: "Mule Chypre Strass Ambre & Or", price: 75.00, oldPrice: 83.50, img: "chypre-strass-or.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 19, name: "Mule Chypre Strass Saphir Bleu Rose", price: 75.00, oldPrice: 83.50, img: "chypre-strass-rose.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 20, name: "Mule Toile Denim Jean délavé", price: 75.00, oldPrice: 83.50, img: "chypre-jean-denim.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 21, name: "Mule Satin de Soie Fuchsia", price: 75.00, oldPrice: 83.50, img: "chypre-satin-fuchsia.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 22, name: "Mule Toile Canevas & Broderies Or", price: 75.00, oldPrice: 83.50, img: "chypre-brode-or.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 23, name: "Mule Toile Monogramme Multi", price: 75.00, oldPrice: 83.50, img: "chypre-monogramme.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 24, name: "Mule Édition Mouton Miel", price: 75.00, oldPrice: 83.50, img: "chypre-mouton-miel.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 25, name: "Mule Mouton Retourné Noir Rose", price: 75.00, oldPrice: 83.50, img: "chypre-mouton-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 26, name: "Sandale à Talon Haut Cuir Noir Ébène", price: 75.00, oldPrice: 83.50, img: "mule-talon-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40] },
-            { id: 27, name: "Sandale à Talon Haut Daim Beige Sable", price: 75.00, oldPrice: 83.50, img: "mule-talon-beige.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40] },
-            { id: 28, name: "Sandale à Talon Haut Blanc Crème Satin", price: 75.00, oldPrice: 83.50, img: "mule-talon-blanc.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40] },
-            { id: 29, name: "Sandale à Talon Haut Rose Fuchsia Party", price: 75.00, oldPrice: 83.50, img: "mule-talon-rose.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40] },
-            { id: 30, name: "Sandale Compensée Premium Marron Cuir", price: 75.00, oldPrice: 83.50, img: "sandale-compensee-marron.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 31, name: "Sandale Compensée Premium Blanc Coton", price: 75.00, oldPrice: 83.50, img: "sandale-compensee-blanc.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 32, name: "Sandale Compensée Premium Noir Profond", price: 75.00, oldPrice: 83.50, img: "sandale-compensee-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 33, name: "Sandale fine à Double Boucle Argentée", price: 75.00, oldPrice: 83.50, img: "sandale-bride-argent.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 34, name: "Sandale fine à Double Boucle Noire Or", price: 75.00, oldPrice: 83.50, img: "sandale-bride-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 35, name: "Mule Plate Oran Cuir Box Tan Mythique", price: 60.00, oldPrice: 66.00, img: "oran-tan.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 36, name: "Mule Plate Oran All Black Noir Intense", price: 60.00, oldPrice: 66.00, img: "oran-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 37, name: "Mule Plate Oran Blanc Optique Pur", price: 60.00, oldPrice: 66.00, img: "oran-blanc.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 38, name: "Mule Chypre Homme Bleu Marine Sport", price: 60.00, oldPrice: 66.00, img: "chypre-homme-bleu.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
-            { id: 39, name: "Mule Chypre Homme Cuir Togo Chocolat", price: 60.00, oldPrice: 66.00, img: "chypre-homme-chocolat.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
-            { id: 40, name: "Mule Chypre Homme Blanc Fauve Riviera", price: 60.00, oldPrice: 66.00, img: "chypre-homme-blanc.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
-            { id: 41, name: "Mule Chypre Homme Gris Taupe Suede", price: 75.00, oldPrice: 83.50, img: "chypre-homme-gris.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
-            { id: 42, name: "Mule Chypre Homme Orange Fluo Sunset", price: 60.00, oldPrice: 66.00, img: "chypre-homme-orange.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
-            { id: 43, name: "Mule Chypre Homme Rouge Arizona Suede", price: 75.00, oldPrice: 83.50, img: "chypre-homme-rouge.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
-            { id: 44, name: "Mule Chypre Homme Jaune Moutarde Togo", price: 60.00, oldPrice: 66.00, img: "chypre-homme-jaune.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
-            { id: 45, name: "Mule Chypre Homme Camel Gold Héritage", price: 60.00, oldPrice: 66.00, img: "chypre-homme-camel.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
-            { id: 46, name: "Mule Homme Crossover Noir Sport", price: 75.00, oldPrice: 83.50, img: "crossover-homme-noir.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
-            { id: 47, name: "Mule Homme Crossover Marron Chic", price: 75.00, oldPrice: 83.50, img: "crossover-homme-marron.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
-            { id: 48, name: "Mule Sélection Mixte All-White Premium", price: 60.00, oldPrice: 66.00, img: "mixte-white.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41,42,43] },
-            { id: 49, name: "Mule Sélection Mixte All-Black Premium", price: 60.00, oldPrice: 66.00, img: "mixte-black.jpg", cat: "homme", bestSeller: false, sizes: [39,40,41,42,43,44,45] },
-            { id: 50, name: "Mule Chypre Suede Marron Écorce", price: 75.00, oldPrice: 83.50, img: "mixte-suede-marron.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 51, name: "Mule Chypre Suede Crème Riviera", price: 75.00, oldPrice: 83.50, img: "mixte-suede-creme.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 52, name: "Mule Sélection Oran Cuir Gold Éclat", price: 60.00, oldPrice: 66.00, img: "mixte-oran-gold.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
-            { id: 53, name: "Mule Grand Style Croco-Print Édition", price: 75.00, oldPrice: 83.50, img: "mixte-croco.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
-            { id: 54, name: "Mule Grand Style Python-Glow Édition", price: 75.00, oldPrice: 83.50, img: "mixte-python.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] }
+            // PHOTO 1
+            { id: 1, name: "Sandales Oran - Tow", price: 64.90, oldPrice: 120.00, img: "oran-tow.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
+            { id: 2, name: "Sandales Oran - Vert Jade", price: 64.90, oldPrice: 120.00, img: "oran-vert-jade.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
+            { id: 3, name: "Sandales Oran - Vert Oyat", price: 64.90, oldPrice: 120.00, img: "oran-vert-oyat.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
+            { id: 4, name: "Sandales Oran - violet foncé", price: 99.90, oldPrice: 0, img: "oran-violet-fonce.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
+            { id: 5, name: "Sandales Oran Blanc", price: 64.90, oldPrice: 120.00, img: "oran-blanc.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
+            { id: 6, name: "Sandales Oran Noir", price: 64.90, oldPrice: 120.00, img: "oran-noir.jpg", cat: "femme", bestSeller: true, sizes: [36,37,38,39,40,41] },
+            { id: 7, name: "Sneakers Bouncing All Black", price: 129.90, oldPrice: 0, img: "bouncing-all-black.jpg", cat: "homme", bestSeller: true, sizes: [40,41,42,43,44,45] },
+            { id: 8, name: "Sneakers Bouncing Blanc", price: 129.90, oldPrice: 0, img: "bouncing-blanc.jpg", cat: "homme", bestSeller: true, sizes: [40,41,42,43,44,45] },
+            
+            // PHOTO 2
+            { id: 9, name: "Sandales Oran - Noir V2", price: 64.90, oldPrice: 120.00, img: "oran-noir-v2.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 10, name: "Sandales Oran - Or", price: 64.90, oldPrice: 120.00, img: "oran-or.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 11, name: "Sandales Oran - Orange (Mouton)", price: 99.90, oldPrice: 0, img: "oran-orange-mouton.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 12, name: "Sandales Oran - Orange (Moumoute)", price: 99.90, oldPrice: 0, img: "oran-orange-moumoute.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 13, name: "Sandales Oran - Pétale de rose", price: 64.90, oldPrice: 120.00, img: "oran-pétale-rose.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 14, name: "Sandales Oran - Porcelaine rose (Clous)", price: 64.90, oldPrice: 150.00, img: "oran-porcelaine-rose-clous.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 15, name: "Sandales Oran - Porcelaine rose", price: 64.90, oldPrice: 120.00, img: "oran-porcelaine-rose.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 16, name: "Sandales Oran - Purple Majorette", price: 64.90, oldPrice: 120.00, img: "oran-purple-majorette.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            
+            // PHOTO 3
+            { id: 17, name: "Sandales Oran - Gris antarctique", price: 64.90, oldPrice: 120.00, img: "oran-gris-antarctique.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 18, name: "Sandales Oran - Ivy Green", price: 64.90, oldPrice: 120.00, img: "oran-ivy-green.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 19, name: "Sandales Oran - Jaune bouton d'or", price: 64.90, oldPrice: 120.00, img: "oran-jaune-bouton-dor.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 20, name: "Sandales Oran - Jaune Citron", price: 64.90, oldPrice: 120.00, img: "oran-jaune-citron.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 21, name: "Sandales Oran - Jaune impérial", price: 64.90, oldPrice: 120.00, img: "oran-jaune-imperial.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 22, name: "Sandales Oran - Jaune Topaze", price: 64.90, oldPrice: 140.00, img: "oran-jaune-topaze.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 23, name: "Sandales Oran - Laiton jaune", price: 64.90, oldPrice: 120.00, img: "oran-laiton-jaune.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 24, name: "Sandales Oran - Naturel", price: 64.90, oldPrice: 120.00, img: "oran-naturel.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            
+            // PHOTO 4
+            { id: 25, name: "Sandales Oran - Beige (Moumoute)", price: 99.90, oldPrice: 0, img: "oran-beige-moumoute.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 26, name: "Sandales Oran - Bleu brut", price: 64.90, oldPrice: 145.00, img: "oran-bleu-brut.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 27, name: "Sandales Oran - Bleu clair", price: 64.90, oldPrice: 145.00, img: "oran-bleu-clair.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 28, name: "Sandales Oran - Bleu du Nord", price: 64.90, oldPrice: 120.00, img: "oran-bleu-nord.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 29, name: "Sandales Oran - Bleu océan", price: 99.90, oldPrice: 0, img: "oran-bleu-ocean.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 30, name: "Sandales Oran - Bleu Thalassa", price: 64.90, oldPrice: 120.00, img: "oran-bleu-thalassa.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 31, name: "Sandales Oran - Blue Cameo", price: 64.90, oldPrice: 120.00, img: "oran-blue-cameo.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 32, name: "Sandales Oran - Epsom Bleu", price: 64.90, oldPrice: 120.00, img: "oran-epsom-bleu.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            
+            // PHOTO 5
+            { id: 33, name: "Sandales Oasis - Blanc", price: 79.90, oldPrice: 120.00, img: "oasis-blanc.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 34, name: "Sandales Oran - Brick", price: 64.90, oldPrice: 120.00, img: "oran-brick.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 35, name: "Sandales Oran - Vert Menthe", price: 64.90, oldPrice: 120.00, img: "oran-vert-pauvre.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 36, name: "Sandales Oran - Argent", price: 64.90, oldPrice: 120.00, img: "oran-argent.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            
+            // PHOTO 6
+            { id: 37, name: "Sandales Empire - Blanc", price: 79.90, oldPrice: 150.00, img: "empire-blanc.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 38, name: "Sandales Empire - Noir", price: 79.90, oldPrice: 150.00, img: "empire-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 39, name: "Sandales Empire - Noir Porcelaine", price: 79.90, oldPrice: 150.00, img: "empire-noir-porcelaine.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 40, name: "Sandales Oasis - Bleu", price: 79.90, oldPrice: 120.00, img: "oasis-bleu.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 41, name: "Sandales Oasis - Gold", price: 79.90, oldPrice: 120.00, img: "oasis-gold.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 42, name: "Sandales Oasis - Noir", price: 79.90, oldPrice: 120.00, img: "oasis-noir.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 43, name: "Sandales Oasis - Red", price: 79.90, oldPrice: 120.00, img: "oasis-red.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 44, name: "Sandales Oasis - Rose Magenta", price: 79.90, oldPrice: 120.00, img: "oasis-rose-magenta.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            
+            // PHOTO 7
+            { id: 45, name: "Sandales Chypre - Orange", price: 70.00, oldPrice: 140.00, img: "chypre-orange.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 46, name: "Sandales Chypre - Pru Noir", price: 70.00, oldPrice: 140.00, img: "chypre-pru-noir.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            { id: 47, name: "Sandales Chypre - Rose Chapas", price: 74.90, oldPrice: 120.00, img: "chypre-rose-chapas.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 48, name: "Sandales Chypre - Vert", price: 70.00, oldPrice: 140.00, img: "chypre-vert.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 49, name: "Sandales Chypre Blanc", price: 70.00, oldPrice: 140.00, img: "chypre-blanc.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 50, name: "Sandales Chypre Marron muscavado", price: 99.90, oldPrice: 140.00, img: "chypre-marron-muscavado.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 51, name: "Sandales Chypre Natural", price: 70.00, oldPrice: 140.00, img: "chypre-natural.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 52, name: "Sandales Chypre Noir", price: 70.00, oldPrice: 140.00, img: "chypre-noir.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            
+            // PHOTO 8
+            { id: 53, name: "Sandales Chypre - Bleu Ciel", price: 70.00, oldPrice: 140.00, img: "chypre-bleu-ciel.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 54, name: "Sandales Chypre - Gris", price: 70.00, oldPrice: 140.00, img: "chypre-gris.jpg", cat: "homme", bestSeller: false, sizes: [40,41,42,43,44,45] },
+            
+            // PHOTO 9
+            { id: 55, name: "Claquettes Vert de mer", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-de-mer.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 56, name: "Claquettes Vert viride", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-viride.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 57, name: "Hermès Bouncing Écru", price: 129.90, oldPrice: 0, img: "bouncing-ecru.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            
+            // PHOTO 10
+            { id: 58, name: "Claquettes Beige Natura", price: 64.90, oldPrice: 120.00, img: "claquettes-beige-natura.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 59, name: "Claquettes Beige perlino", price: 64.90, oldPrice: 120.00, img: "claquettes-beige-perlino.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 60, name: "Claquettes Orange capucine", price: 64.90, oldPrice: 145.00, img: "claquettes-orange-capucine.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 61, name: "Claquettes Rose Cancan", price: 64.90, oldPrice: 145.00, img: "claquettes-rose-cancan.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 62, name: "Claquettes Rose de Venise", price: 64.90, oldPrice: 120.00, img: "claquettes-rose-de-venise.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 63, name: "Claquettes Rose porcelaine", price: 64.90, oldPrice: 120.00, img: "claquettes-rose-porcelaine.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 64, name: "Claquettes Vert Bouteille", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-bouteille.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] },
+            { id: 65, name: "Claquettes Vert d'eau", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-deau.jpg", cat: "femme", bestSeller: false, sizes: [36,37,38,39,40,41] }
         ];
 
         let cart = [];
         let currentProductId = null;
 
-        // Structure d'affichage conforme à Capture d’écran 2026-06-14 195015.jpg
         function displayProducts(items) {
             const container = document.getElementById('products-container');
             container.innerHTML = '';
@@ -639,7 +638,7 @@
                 container.innerHTML += `
                     <div class="product-card">
                         <div class="product-img-container" onclick="openProductModal(${p.id})">
-                            <img src="${p.img}" alt="${p.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23f7f7f7%22/></svg>'">
+                            <img src="${p.img}" alt="${p.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23f7f7f7%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22sans-serif%22 font-size=%2210%22 fill=%22%23ccc%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>H LUXURY IMAGE</text></svg>'">
                         </div>
                         <div class="product-info">
                             <div class="stars-container">
@@ -659,8 +658,7 @@
         function showHome() {
             document.getElementById('hero-section').style.display = 'flex';
             document.getElementById('page-dynamic-title').innerText = "Les Modèles Phares";
-            const bestSellers = products.filter(p => p.bestSeller === true);
-            displayProducts(bestSellers);
+            displayProducts(products);
             document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active-btn'));
             document.getElementById('nav-home').classList.add('active-btn');
         }
@@ -749,7 +747,7 @@
             if(type === 'mentions') {
                 title.innerText = "Mentions Légales";
                 body.innerHTML = `
-                    <h5>Éditeur de la Plateforme</h5><p>Maison H LUXURY E-Commerce Inc. Siège social : Avenue des Champs-Élysées, 75008 Paris.</p>
+                    <h5>Éditeur de la Plateforme</h5><p>Maison H LUXURY E-Commerce Inc. Siège social : Place de la Comédie, 34000 Montpellier, France.</p>
                     <h5>Propriété Intellectuelle</h5><p>L’ensemble des visuels, concepts textuels et arborescences de la marque H LUXURY sont protégés par le droit d'auteur mondial.</p>
                 `;
             } else if(type === 'cgv') {
