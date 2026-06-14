@@ -191,7 +191,7 @@
         .hero-banner {
             position: relative;
             width: 100%;
-            height: 60vh;
+            height: 65vh;
             overflow: hidden;
             background: #f0f0f0;
             display: flex;
@@ -211,7 +211,7 @@
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.25);
             z-index: 2;
         }
 
@@ -220,41 +220,44 @@
             z-index: 3;
             text-align: center;
             color: #ffffff;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
             padding: 0 20px;
         }
 
         .hero-content h2 {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 14px;
+            font-family: 'Cinzel', serif;
+            font-size: 46px;
+            font-weight: 400;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .hero-content p {
+            font-size: 15px;
+            font-weight: 300;
+            margin-bottom: 35px;
             text-transform: uppercase;
             letter-spacing: 3px;
         }
 
-        .hero-content p {
-            font-size: 18px;
-            font-weight: 400;
-            margin-bottom: 35px;
-            letter-spacing: 1px;
-        }
-
         .btn-shop-now {
-            background-color: #000000;
-            color: #ffffff;
-            padding: 16px 50px;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 16px 45px;
             text-transform: uppercase;
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             letter-spacing: 2px;
             border: none;
-            border-radius: 4px;
+            border-radius: 2px;
             cursor: pointer;
-            transition: background-color 0.2s ease;
+            transition: all 0.3s ease;
         }
 
         .btn-shop-now:hover {
-            background-color: #222222;
+            background-color: #000000;
+            color: #ffffff;
         }
 
         /* Section Double Catalogues */
@@ -340,9 +343,9 @@
 
         .section-title {
             text-align: center;
-            font-size: 24px;
+            font-size: 22px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             margin-bottom: 45px;
             font-weight: 600;
         }
@@ -594,14 +597,14 @@
         </div>
     </div>
 
-    <!-- Hero Bannière -->
+    <!-- Hero Bannière Style Haute Couture -->
     <div id="hero-section" class="hero-banner">
         <img id="hero-main-img" src="" alt="Bannière Principale H Luxury" class="hero-bg-img">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h2>L'Élégance Estivale</h2>
-            <p>Découvrez nos icônes de maroquinerie et souliers pour l'été.</p>
-            <button class="btn-shop-now" onclick="filterCategory('femme')">VOIR TOUS LES MODÈLES</button>
+            <h2>Collection Été</h2>
+            <p>Lignes pures et matières d'exception.</p>
+            <button class="btn-shop-now" onclick="filterCategory('femme')">Découvrir les Souliers</button>
         </div>
     </div>
 
@@ -629,7 +632,7 @@
 
     <!-- Conteneur Catalogue -->
     <main class="container">
-        <h2 class="section-title" id="page-dynamic-title">Les Créations Phares</h2>
+        <h2 class="section-title" id="page-dynamic-title">Les Pièces Iconiques</h2>
         <div class="products-grid" id="products-container"></div>
     </main>
 
@@ -738,7 +741,7 @@
             imageCatalogueHomme: "LIEN_IMAGE_HOMME"  
         };
 
-        // BASE DE DONNÉES COMPLÈTE (64 ARTICLES - "Brick Luxe" Supprimé)
+        // BASE DE DONNÉES COMPLÈTE (64 ARTICLES)
         const products = [
             { id: 1, name: "Sandales Oran - Tow", price: 64.90, oldPrice: 120.00, img: "oran-tow.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
             { id: 2, name: "Sandales Oran - Vert Jade", price: 64.90, oldPrice: 120.00, img: "oran-vert-jade.jpg", cat: "femme", sizes: [36,37,38,39,40,41] },
@@ -806,6 +809,9 @@
             { id: 64, name: "Mules Claquettes - Vert d'Eau", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-deau.jpg", cat: "femme", sizes: [36,37,38,39,40,41] }
         ];
 
+        // CONFIGURATION DES 4 MEILLEURES VENTES POUR L'ACCUEIL
+        const BEST_SELLERS_IDS = [5, 6, 7, 51]; // Blanc Pur, Noir Ébène, Bouncing All Black, Chypre Noir Mat
+
         let cart = [];
         let currentProductId = null;
 
@@ -869,15 +875,21 @@
             });
         }
 
+        // AFFICHE UNIQUEMENT LES 4 MEILLEURES VENTES SUR L'ACCUEIL
         function showHome() {
             document.getElementById('hero-section').style.display = 'flex';
             document.getElementById('catalogues-section').style.display = 'block';
-            document.getElementById('page-dynamic-title').innerText = "Les Créations Phares";
-            displayProducts(products);
+            document.getElementById('page-dynamic-title').innerText = "Les Pièces Iconiques — Meilleures Ventes";
+            
+            // Filtrer pour ne garder que les 4 IDs sélectionnés
+            const bestSellers = products.filter(p => BEST_SELLERS_IDS.includes(p.id));
+            displayProducts(bestSellers);
+            
             document.querySelectorAll('nav ul li a').forEach(el => el.classList.remove('active-btn'));
             document.getElementById('nav-home').classList.add('active-btn');
         }
 
+        // AFFICHE TOUS LES PRODUITS QUAND ON FILTRE PAR CATÉGORIE
         function filterCategory(cat) {
             document.getElementById('hero-section').style.display = 'none';
             document.getElementById('catalogues-section').style.display = 'none';
