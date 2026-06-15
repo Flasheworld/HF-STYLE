@@ -41,12 +41,13 @@
             font-size: 11px;
             font-weight: 400;
             letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
-        /* En-tête Principal */
+        /* En-tête Principal adaptable mobile */
         header {
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
+            display: flex;
+            justify-content: space-between;
             align-items: center;
             padding: 15px 4%;
             background: #ffffff;
@@ -61,28 +62,39 @@
             align-items: center;
         }
 
-        nav ul {
+        /* Menu Mobile Latéral / Responsive */
+        .nav-menu {
             display: flex;
             list-style: none;
-            gap: 8px;
-            flex-wrap: wrap;
+            gap: 5px;
         }
 
-        nav ul li a {
+        .nav-menu li a {
             text-decoration: none;
             color: var(--text-dark);
             font-size: 11px;
             font-weight: 500;
-            padding: 6px 10px;
+            padding: 8px 10px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
             transition: all 0.2s ease;
+            white-space: nowrap;
         }
 
-        nav ul li a.active-btn {
+        .nav-menu li a.active-btn {
             background: #000000;
             color: #ffffff;
             border-radius: 4px;
+        }
+
+        /* Menu burger pour petits écrans */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 22px;
+            margin-right: 15px;
         }
 
         .logo-container {
@@ -118,6 +130,10 @@
             gap: 15px;
         }
 
+        .search-box {
+            position: relative;
+        }
+
         .search-box input {
             padding: 8px 12px;
             border: 1px solid #dddddd;
@@ -125,7 +141,7 @@
             font-size: 12px;
             outline: none;
             width: 140px;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
         }
 
         .search-box input:focus {
@@ -142,17 +158,18 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 4px;
         }
 
         .cart-count {
             position: absolute;
-            top: -6px;
-            right: -8px;
+            top: -4px;
+            right: -6px;
             background: #000000;
             color: #fff;
-            font-size: 10px;
-            width: 18px;
-            height: 18px;
+            font-size: 9px;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -188,11 +205,12 @@
             100% { transform: translate3d(-50%, 0, 0); }
         }
 
-        /* Hero Bannière */
+        /* Hero Bannière Image Principale */
         .hero-banner {
             position: relative;
             width: 100%;
             height: 50vh;
+            min-height: 350px;
             overflow: hidden;
             background: #f0f0f0;
             display: flex;
@@ -212,7 +230,7 @@
         .hero-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.25);
+            background: rgba(0, 0, 0, 0.3);
             z-index: 2;
         }
 
@@ -221,7 +239,7 @@
             z-index: 3;
             text-align: center;
             color: #ffffff;
-            text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 10px rgba(0,0,0,0.4);
             padding: 0 20px;
         }
 
@@ -231,7 +249,7 @@
             font-weight: 400;
             margin-bottom: 10px;
             text-transform: uppercase;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
         }
 
         .hero-content p {
@@ -249,21 +267,22 @@
             text-transform: uppercase;
             font-size: 11px;
             font-weight: 600;
-            letter-spacing: 1.5px;
+            letter-spacing: 2px;
             border: none;
             border-radius: 2px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
+
         .btn-shop-now:hover {
             background-color: #000000;
             color: #ffffff;
         }
 
-        /* Catalogues Doubles */
+        /* Section Double Catalogues */
         .catalogues-section {
             max-width: 1340px;
-            margin: 30px auto 15px auto;
+            margin: 30px auto 10px auto;
             padding: 0 4%;
         }
 
@@ -283,22 +302,24 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
+            cursor: pointer;
         }
 
         .catalogue-banner-img {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.5s ease;
         }
+
         .catalogue-banner-card:hover .catalogue-banner-img {
-            transform: scale(1.04);
+            transform: scale(1.03);
         }
 
         .catalogue-banner-overlay {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.25);
             z-index: 2;
         }
 
@@ -321,9 +342,11 @@
             font-size: 11px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 2px;
         }
 
-        /* Filtres */
+        /* Zone Filtres */
         .filter-wrapper {
             max-width: 1340px;
             margin: 20px auto 0 auto;
@@ -336,12 +359,17 @@
             padding: 10px 16px;
             font-size: 11px;
             text-transform: uppercase;
+            letter-spacing: 1px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            outline: none;
+            cursor: pointer;
             background: #fff;
+            width: 100%;
+            max-width: 200px;
         }
 
-        /* Grille des Produits */
+        /* Grille Principale des Produits */
         .container {
             max-width: 1340px;
             margin: 0 auto;
@@ -353,18 +381,19 @@
             font-size: 18px;
             text-transform: uppercase;
             letter-spacing: 3px;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
             font-weight: 600;
         }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 30px 15px;
+            gap: 25px 15px;
         }
 
         .product-card {
             background: #ffffff;
+            text-align: left;
             display: flex;
             flex-direction: column;
         }
@@ -383,10 +412,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.4s ease;
         }
+
         .product-card:hover .product-img-container img {
-            transform: scale(1.03);
+            transform: scale(1.02);
         }
 
         .product-info {
@@ -395,6 +425,7 @@
 
         .stars-container {
             display: flex;
+            align-items: center;
             gap: 2px;
             margin-bottom: 6px;
         }
@@ -409,10 +440,10 @@
             font-weight: 500;
             color: #222222;
             margin-bottom: 6px;
+            cursor: pointer;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            cursor: pointer;
         }
 
         .product-price-box {
@@ -431,70 +462,82 @@
             font-weight: 400;
         }
 
-        /* Toast Notification */
+        /* Toast Notification Succès Panier */
         .toast-notification {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
+            bottom: 20px;
+            left: 50%;
+            transform: translate(-50%, 50px);
             background: #000000;
             color: #ffffff;
-            padding: 16px 30px;
-            font-size: 13px;
+            padding: 14px 24px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 1px;
             border-radius: 4px;
             z-index: 2000;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             opacity: 0;
-            transform: translateY(20px);
             transition: all 0.3s ease;
             pointer-events: none;
+            width: 90%;
+            max-width: 350px;
+            text-align: center;
         }
         .toast-notification.show {
             opacity: 1;
-            transform: translateY(0);
+            transform: translate(-50%, 0);
         }
 
-        /* Modales */
+        /* Fenêtres Modales */
         .modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.5);
             display: flex; align-items: center; justify-content: center;
             z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+            padding: 10px;
         }
         .modal.active { opacity: 1; pointer-events: auto; }
-
+        
         .modal-content { 
             background: #fff; 
-            width: 92%; 
-            max-width: 840px; 
+            width: 100%; 
+            max-width: 780px; 
             display: grid; 
             grid-template-columns: 1.1fr 0.9fr; 
             position: relative; 
-            padding: 25px; 
+            padding: 20px; 
             border-radius: 8px; 
+            color: #000; 
             gap: 20px;
+            max-height: 95vh;
+            overflow-y: auto;
         }
-
-        .modal-close { position: absolute; top: 12px; right: 18px; font-size: 26px; cursor: pointer; color: #aaa; z-index: 10; }
+        
+        .modal-close { position: absolute; top: 10px; right: 15px; font-size: 26px; cursor: pointer; color: #aaa; z-index: 10; transition: color 0.2s; }
         .modal-close:hover { color: #000; }
-        .modal-left { display: flex; align-items: center; justify-content: center; background: #fbfbfb; border-radius: 6px; }
-        .modal-left img { width: 100%; height: auto; max-height: 380px; object-fit: contain; }
-        .modal-right { display: flex; flex-direction: column; }
-
-        select, .input-field { width: 100%; padding: 11px; border: 1px solid #ddd; background: #fff; margin-bottom: 12px; font-size: 13px; border-radius: 4px; }
-
+        .modal-left { display: flex; align-items: center; justify-content: center; background: #fbfbfb; border-radius: 6px; padding: 5px; }
+        .modal-left img { width: 100%; height: auto; max-height: 320px; object-fit: contain; border-radius: 6px; }
+        .modal-right { padding: 5px; display: flex; flex-direction: column; justify-content: flex-start; }
+        
+        select, .input-field { width: 100%; padding: 10px; border: 1px solid #ddd; background: #fff; margin-bottom: 12px; font-size: 13px; border-radius: 4px; outline: none; }
+        select:focus, .input-field:focus { border-color: #000; }
+        
         .promo-badge {
             background-color: #e62c44;
             color: white;
             font-size: 10px;
             font-weight: 700;
-            padding: 2px 6px;
+            padding: 3px 6px;
             border-radius: 3px;
             text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 5px;
         }
-
+        
         .live-cart-badge {
             background-color: #f3a3b9;
             color: #ffffff;
@@ -503,824 +546,959 @@
             padding: 8px 12px;
             border-radius: 20px;
             margin-bottom: 15px;
+            display: inline-block;
+            width: 100%;
             text-align: center;
         }
-
+        
         .quantity-selector {
             display: inline-flex;
             border: 1px solid #ddd;
             border-radius: 4px;
             margin-bottom: 15px;
-            width: 110px;
+            background: #fff;
+            width: 100px;
             justify-content: space-between;
             align-items: center;
         }
+        
+        .quantity-selector button {
+            background: none;
+            border: none;
+            width: 30px;
+            height: 32px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        
+        .quantity-selector span {
+            font-size: 13px;
+            font-weight: 500;
+        }
 
-        .quantity-selector button { background: none; border: none; width: 30px; height: 35px; cursor: pointer; font-size: 14px; }
-        .btn-add-cart { width: 100%; background: #000; color: #fff; border: none; padding: 14px; text-transform: uppercase; font-size: 12px; font-weight: 700; cursor: pointer; border-radius: 4px; }
+        .btn-add-cart { 
+            width: 100%; 
+            background: #000; 
+            color: #fff; 
+            border: none; 
+            padding: 14px; 
+            text-transform: uppercase; 
+            font-size: 12px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            border-radius: 4px; 
+            letter-spacing: 1px; 
+            transition: background 0.2s;
+            margin-bottom: 10px;
+        }
+        .btn-add-cart:hover { background: #222; }
+        
+        /* Bouton Spécifique PayPal Sécurisé */
+        .btn-paypal {
+            width: 100%;
+            background: #ffc439;
+            color: #011b5f;
+            border: none;
+            padding: 14px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: background 0.2s;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+        .btn-paypal:hover { background: #f2ba36; }
+        
+        .payment-icons-box {
+            display: flex;
+            gap: 4px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+        
+        .payment-logo-badge {
+            font-size: 9px;
+            font-weight: bold;
+            padding: 3px 6px;
+            border-radius: 3px;
+            background: #f4f4f4;
+            color: #444;
+            border: 1px solid #e2e2e2;
+            text-transform: uppercase;
+        }
+        
+        .trust-footer-mention {
+            font-size: 10px;
+            color: #666;
+            text-align: center;
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+        }
 
-        .payment-icons-box { display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; margin: 10px 0; }
-        .payment-logo-badge { font-size: 9px; padding: 3px 6px; border-radius: 3px; background: #f4f4f4; border: 1px solid #e2e2e2; }
-        .trust-footer-mention { font-size: 10px; color: #666; text-align: center; }
-
-        /* Panier Latéral */
+        /* Panier Latéral Coulissant */
         .cart-sidebar {
-            position: fixed; top: 0; right: -420px; width: 400px; height: 100%;
-            background: #ffffff; box-shadow: -5px 0 30px rgba(0,0,0,0.15); z-index: 1100;
-            transition: right 0.3s ease; display: flex; flex-direction: column; padding: 30px 20px;
+            position: fixed; top: 0; right: -100%; width: 380px; height: 100%;
+            background: #ffffff; box-shadow: -5px 0 25px rgba(0,0,0,0.15); z-index: 1100;
+            transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; padding: 25px 20px;
         }
         .cart-sidebar.active { right: 0; }
-        .cart-items { flex: 1; overflow-y: auto; }
-        .cart-item { display: flex; gap: 15px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; align-items: center; }
-        .cart-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; }
+        .cart-items { flex: 1; overflow-y: auto; margin-bottom: 20px; padding-right: 5px; }
+        .cart-item { display: flex; gap: 12px; margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #eee; align-items: center; }
+        .cart-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; background: #f9f9f9; }
 
-        /* Cookies */
-        .cookie-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 9999; display: flex; align-items: center; justify-content: center; }
-        .cookie-box { background: #fff; padding: 30px; max-width: 450px; width: 90%; border-radius: 8px; text-align: center; }
+        /* Modale Cookies Bloquante */
+        .cookie-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); z-index: 9999;
+            display: flex; align-items: center; justify-content: center;
+            padding: 15px;
+        }
+        .cookie-box {
+            background: #fff; padding: 30px 20px; max-width: 460px; width: 100%;
+            border-radius: 8px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .cookie-box h3 { font-family: 'Cinzel', serif; font-size: 18px; margin-bottom: 12px; }
+        .cookie-box p { font-size: 12px; color: #555; line-height: 1.5; margin-bottom: 20px; }
         .cookie-buttons { display: flex; gap: 10px; }
-        .btn-cookie-accept { flex: 1; background: #000; color: #fff; border: none; padding: 12px; font-size: 11px; cursor: pointer; border-radius: 4px; }
-        .btn-cookie-refuse { flex: 1; background: #fff; color: #000; border: 1px solid #000; padding: 12px; font-size: 11px; cursor: pointer; border-radius: 4px; }
+        .btn-cookie-accept { flex: 1; background: #000; color: #fff; border: none; padding: 12px; font-weight: 600; text-transform: uppercase; font-size: 11px; cursor: pointer; border-radius: 4px; }
+        .btn-cookie-refuse { flex: 1; background: #fff; color: #000; border: 1px solid #000; padding: 12px; font-weight: 600; text-transform: uppercase; font-size: 11px; cursor: pointer; border-radius: 4px; }
 
-        /* Footer */
-        footer { background: #fafafa; border-top: 1px solid var(--border-light); padding: 50px 4% 30px 4%; font-size: 12px; }
-        .footer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1240px; margin: 0 auto; }
-        .footer-col h4 { color: #000; font-weight: 600; text-transform: uppercase; font-size: 11px; margin-bottom: 15px; }
+        /* Pied de page */
+        footer {
+            background: #fafafa;
+            border-top: 1px solid var(--border-light);
+            padding: 50px 4% 30px 4%;
+            font-size: 12px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1240px;
+            margin: 0 auto 40px auto;
+        }
+
+        .footer-col h4 {
+            color: #000;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 11px;
+            margin-bottom: 18px;
+            letter-spacing: 1px;
+        }
+
         .footer-col ul { list-style: none; }
         .footer-col ul li { margin-bottom: 10px; }
-        .footer-col ul li a { color: var(--text-muted); text-decoration: none; }
+        .footer-col ul li a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+        .footer-col ul li a:hover { color: #000; }
 
-        .legal-box { max-height: 400px; overflow-y: auto; font-size: 12px; color: #333; }
+        .legal-box { max-height: 350px; overflow-y: auto; font-size: 12px; line-height: 1.6; color: #333; padding-right: 8px; }
+        .legal-box h5 { margin: 18px 0 6px 0; color: #000; text-transform: uppercase; font-size: 11px; letter-spacing: 1px; border-bottom: 1px solid #eee; padding-bottom: 4px; }
+        .legal-box p { margin-bottom: 10px; }
 
-        /* RESPONSIVE MOBILE */
+        /* RESPONSIVE DESIGN - CONFIGURATION SMARTPHONES (Écrans inférieurs à 768px) */
         @media (max-width: 768px) {
             header {
-                grid-template-columns: 1fr;
+                padding: 10px 4%;
+            }
+            .menu-toggle {
+                display: block; /* Affiche le bouton menu sur téléphone */
+            }
+            .header-left nav {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 75%;
+                height: calc(100vh - 60px);
+                background: #ffffff;
+                box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+                transition: left 0.3s ease;
+                z-index: 99;
+                padding: 20px;
+            }
+            .header-left nav.mobile-active {
+                left: 0;
+            }
+            .nav-menu {
+                flex-direction: column;
                 gap: 15px;
-                padding: 15px 2%;
-                text-align: center;
             }
-
-            .header-left {
-                order: 2;
-                justify-content: center;
-                width: 100%;
+            .nav-menu li a {
+                display: block;
+                font-size: 13px;
+                padding: 10px;
             }
-
-            nav ul {
-                justify-content: center;
-                gap: 4px;
-            }
-
-            nav ul li a {
-                font-size: 10px;
-                padding: 6px 8px;
-            }
-
-            .logo-container {
-                order: 1;
-                justify-content: center;
-                width: 100%;
-            }
-            
             .logo-text {
-                font-size: 20px;
+                font-size: 15px;
+                letter-spacing: 2px;
             }
-
-            .header-right {
-                order: 3;
-                justify-content: center;
-                width: 100%;
-                gap: 20px;
-            }
-
             .search-box input {
-                width: 160px;
+                width: 100px;
             }
-
+            .search-box input:focus {
+                width: 120px;
+            }
             .hero-banner {
                 height: 35vh;
             }
-
             .hero-content h2 {
                 font-size: 24px;
             }
-
             .catalogues-grid {
                 grid-template-columns: 1fr;
                 gap: 15px;
             }
-
             .products-grid {
-                grid-template-columns: repeat(2, 1fr) !important;
-                gap: 20px 10px;
+                grid-template-columns: repeat(2, 1fr); /* 2 produits par ligne sur mobile */
+                gap: 15px 10px;
             }
-            
-            .product-title {
-                font-size: 11px;
-            }
-
             .modal-content {
                 grid-template-columns: 1fr;
-                max-height: 85vh;
-                overflow-y: auto;
-                padding: 15px;
-                width: 95%;
             }
-            
-            .modal-left img {
-                max-height: 220px;
-            }
-
             .cart-sidebar {
-                width: 100% !important;
-                right: -100%;
+                width: 100%;
             }
-            
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 25px;
-                text-align: center;
             }
+        }
+
+        @media (max-width: 480px) {
+            .logo-container { gap: 5px; }
+            .logo-icon { font-size: 18px; padding: 2px 6px; }
+            .logo-text { display: none; } /* Cache le texte du logo sur très petits écrans */
+            .search-box { display: none; } /* Cache la barre de recherche sur micro-écran pour gagner de l'espace */
         }
     </style>
 </head>
 <body>
 
-    <div class="toast-notification" id="toast-notif">Article ajouté au panier d'achat</div>
+    <div class="toast-notification" id="toast-notif">[cite: 3] Article ajouté au panier d'achat</div>
 
-    <div class="cookie-overlay" id="cookie-popup">
-        <div class="cookie-box">
-            <h3>Respect de la vie privée</h3>
-            <p>Notre site de Haute Maroquinerie requiert l'acceptation des cookies de session pour gérer votre panier d'achat et sécuriser votre connexion.</p>
-            <div class="cookie-buttons">
-                <button class="btn-cookie-accept" onclick="acceptCookies()">ACCEPTER (Entrer)</button>
-                <button class="btn-cookie-refuse" onclick="refuseCookies()">REFUSER (Sortir)</button>
+    <div class="cookie-overlay" id="cookie-popup">[cite: 3]
+        <div class="cookie-box">[cite: 3]
+            <h3>Respect de la vie privée</h3>[cite: 3]
+            <p>Notre site de Haute Maroquinerie requiert l'acceptation des cookies de session pour gérer votre panier d'achat et sécuriser votre connexion.</p>[cite: 3]
+            <div class="cookie-buttons">[cite: 3]
+                <button class="btn-cookie-accept" onclick="acceptCookies()">ACCEPTER (Entrer)</button>[cite: 3]
+                <button class="btn-cookie-refuse" onclick="refuseCookies()">REFUSER (Sortir)</button>[cite: 3]
             </div>
         </div>
     </div>
 
-    <div class="top-bar">La livraison d'exception est offerte à partir de 100€ d'achat</div>
+    <div class="top-bar">[cite: 3] La livraison d'exception est offerte à partir de 100€ d'achat</div>
 
     <header>
         <div class="header-left">
-            <nav>
-                <ul>
-                    <li><a href="#" class="active-btn" id="nav-home" onclick="showHome()">Accueil</a></li>
-                    <li><a href="#" id="nav-oran" onclick="filterCollection('oran')">Collection Oran</a></li>
-                    <li><a href="#" id="nav-chypre" onclick="filterCollection('chypre')">Collection Chypre</a></li>
-                    <li><a href="#" id="nav-empire" onclick="filterCollection('empire')">Collection Empire</a></li>
-                    <li><a href="#" id="nav-oasis" onclick="filterCollection('oasis')">Collection Oasis</a></li>
-                    <li><a href="#" id="nav-sneakers" onclick="filterCollection('sneakers')">Chaussures</a></li>
+            <!-- Bouton Menu Burger Mobile -->
+            <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Menu">☰</button>
+            <nav id="main-nav">
+                <ul class="nav-menu">
+                    <li><a href="#" class="active-btn" id="nav-home" onclick="showHome(); toggleMobileMenu(false);">Accueil</a></li>[cite: 3]
+                    <li><a href="#" id="nav-oran" onclick="filterCollection('oran'); toggleMobileMenu(false);">Collection Oran</a></li>[cite: 3]
+                    <li><a href="#" id="nav-chypre" onclick="filterCollection('chypre'); toggleMobileMenu(false);">Collection Chypre</a></li>[cite: 3]
+                    <li><a href="#" id="nav-empire" onclick="filterCollection('empire'); toggleMobileMenu(false);">Collection Empire</a></li>[cite: 3]
+                    <li><a href="#" id="nav-oasis" onclick="filterCollection('oasis'); toggleMobileMenu(false);">Collection Oasis</a></li>[cite: 3]
+                    <li><a href="#" id="nav-sneakers" onclick="filterCollection('sneakers'); toggleMobileMenu(false);">Chaussures</a></li>[cite: 3]
                 </ul>
             </nav>
         </div>
         
-        <div class="logo-container" onclick="showHome()">
-            <div class="logo-icon">H</div>
-            <div class="logo-text">Luxury</div>
+        <div class="logo-container" onclick="showHome()">[cite: 3]
+            <div class="logo-icon">H</div>[cite: 3]
+            <div class="logo-text">Luxury</div>[cite: 3]
         </div>
         
-        <div class="header-right">
-            <div class="search-box">
-                <input type="text" id="search-input" placeholder="Rechercher un modèle..." onkeyup="handleSearch()">
+        <div class="header-right">[cite: 3]
+            <div class="search-box">[cite: 3]
+                <input type="text" id="search-input" placeholder="Rechercher..." onkeyup="handleSearch()">[cite: 3]
             </div>
-            <button class="icon-btn" onclick="toggleAuthModal(true)">
-                <svg width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <button class="icon-btn" onclick="toggleAuthModal(true)">[cite: 3]
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
             </button>
-            <button class="icon-btn" onclick="toggleCart(true)">
-                <svg width="19" height="19" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                <div class="cart-count" id="cart-count">0</div>
+            <button class="icon-btn" onclick="toggleCart(true)">[cite: 3]
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4H6z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                <div class="cart-count" id="cart-count">0</div>[cite: 3]
             </button>
         </div>
     </header>
 
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <span>🔥 OFFRE EXCEPTIONNELLE DE SAISON</span>
-            <span>✨ -10% DE RÉDUCTION SUR TOUT LE SITE AVEC LE CODE : <b>hluxury10</b></span>
-            <span>TOUTES NOS SANDALES ET SNEAKERS À PARTIR DE 64,90€</span>
-            <span>⚡ OFFRE LIMITÉE DANS LA LIMITE DES STOCKS DISPONIBLES</span>
-            <span>📦 LIVRAISON SÉCURISÉE OFFERTE DÈS 100€ D'ACHAT</span>
+    <div class="marquee-container">[cite: 3]
+        <div class="marquee-content">[cite: 3]
+            <span>🔥 OFFRE EXCEPTIONNELLE DE SAISON</span>[cite: 3]
+            <span>✨ -10% DE RÉDUCTION SUR TOUT LE SITE AVEC LE CODE : <b>hluxury10</b></span>[cite: 3]
+            <span>TOUTES NOS SANDALES ET SNEAKERS À PARTIR DE 64,90€</span>[cite: 3]
+            <span>⚡ OFFRE LIMITÉE DANS LA LIMITE DES STOCKS DISPONIBLES</span>[cite: 3]
+            <span>📦 LIVRAISON SÉCURISÉE OFFERTE DÈS 100€ D'ACHAT</span>[cite: 3]
         </div>
     </div>
 
-    <div id="hero-section" class="hero-banner">
-        <img id="hero-main-img" src="" alt="Bannière Principale H Luxury" class="hero-bg-img">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h2>Collection Été</h2>
-            <p>Lignes pures et matières d'exception.</p>
-            <button class="btn-shop-now" onclick="filterCollection('oran')">Découvrir les Souliers</button>
+    <div id="hero-section" class="hero-banner">[cite: 3]
+        <img id="hero-main-img" src="" alt="Bannière Principale H Luxury" class="hero-bg-img">[cite: 3]
+        <div class="hero-overlay"></div>[cite: 3]
+        <div class="hero-content">[cite: 3]
+            <h2>Collection Été</h2>[cite: 3]
+            <p>Lignes pures et matières d'exception.</p>[cite: 3]
+            <button class="btn-shop-now" onclick="filterCollection('oran')">Découvrir les Souliers</button>[cite: 3]
         </div>
     </div>
 
-    <section class="catalogues-section" id="catalogues-section">
-        <div class="catalogues-grid">
-            <div class="catalogue-banner-card" onclick="filterCollection('oran')">
-                <img id="catalogue-img-femme" src="" alt="Collection Oran" class="catalogue-banner-img">
-                <div class="catalogue-banner-overlay"></div>
-                <div class="catalogue-banner-text">
-                    <h2>Gamme Oran</h2>
-                    <span>Voir l'iconique</span>
+    <section class="catalogues-section" id="catalogues-section">[cite: 3]
+        <div class="catalogues-grid">[cite: 3]
+            <div class="catalogue-banner-card" onclick="filterCollection('oran')">[cite: 3]
+                <img id="catalogue-img-femme" src="" alt="Collection Oran" class="catalogue-banner-img">[cite: 3]
+                <div class="catalogue-banner-overlay"></div>[cite: 3]
+                <div class="catalogue-banner-text">[cite: 3]
+                    <h2>Gamme Oran</h2>[cite: 3]
+                    <span>Voir l'iconique</span>[cite: 3]
                 </div>
             </div>
-            <div class="catalogue-banner-card" onclick="filterCollection('sneakers')">
-                <img id="catalogue-img-homme" src="" alt="Collection Sneakers" class="catalogue-banner-img">
-                <div class="catalogue-banner-overlay"></div>
-                <div class="catalogue-banner-text">
-                    <h2>Gamme Sneakers</h2>
-                    <span>Parcourir l'asphalte</span>
+            <div class="catalogue-banner-card" onclick="filterCollection('sneakers')">[cite: 3]
+                <img id="catalogue-img-homme" src="" alt="Collection Sneakers" class="catalogue-banner-img">[cite: 3]
+                <div class="catalogue-banner-overlay"></div>[cite: 3]
+                <div class="catalogue-banner-text">[cite: 3]
+                    <h2>Gamme Sneakers</h2>[cite: 3]
+                    <span>Parcourir l'asphalte</span>[cite: 3]
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="filter-wrapper" id="filter-wrapper">
-        <select class="filter-select" id="price-filter" onchange="applyPriceFilter()">
-            <option value="all">Tous les prix</option>
-            <option value="low">Moins de 70.00 €</option>
-            <option value="high">70.00 € et plus</option>
+    <div class="filter-wrapper" id="filter-wrapper">[cite: 3]
+        <select class="filter-select" id="price-filter" onchange="applyPriceFilter()">[cite: 3]
+            <option value="all">Tous les prix</option>[cite: 3]
+            <option value="low">Moins de 70.00 €</option>[cite: 3]
+            <option value="high">70.00 € et plus</option>[cite: 3]
         </select>
     </div>
 
-    <main class="container">
-        <h2 class="section-title" id="page-dynamic-title">Les Meilleures Ventes</h2>
-        <div class="products-grid" id="products-container"></div>
+    <main class="container">[cite: 3]
+        <h2 class="section-title" id="page-dynamic-title">Les Pièces Iconiques</h2>[cite: 3]
+        <div class="products-grid" id="products-container"></div>[cite: 3]
     </main>
 
-    <!-- Modale Connexion -->
-    <div class="modal" id="auth-modal" onclick="closeAuthModalOnBackdrop(event)">
-        <div class="modal-content" style="max-width: 400px; display: block;">
-            <div class="modal-close" onclick="toggleAuthModal(false)">&times;</div>
-            <h3 style="font-family:'Cinzel', serif; font-size:18px; margin-bottom:20px; text-align:center;">Se connecter</h3>
-            <form onsubmit="handleLogin(event)">
-                <label style="font-size:11px; font-weight:600; text-transform:uppercase; display:block; margin-bottom:6px;">Adresse Email</label>
-                <input type="email" class="input-field" required placeholder="exemple@gmail.com">
+    <div class="modal" id="auth-modal" onclick="closeAuthModalOnBackdrop(event)">[cite: 3]
+        <div class="modal-content" style="max-width: 400px; display: block;">[cite: 3]
+            <div class="modal-close" onclick="toggleAuthModal(false)">&times;</div>[cite: 3]
+            <h3 style="font-family:'Cinzel', serif; font-size:18px; margin-bottom:20px; text-align:center;">Se connecter</h3>[cite: 3]
+            <form onsubmit="handleLogin(event)">[cite: 3]
+                <label style="font-size:11px; font-weight:600; text-transform:uppercase; display:block; margin-bottom:6px;">Adresse Email</label>[cite: 3]
+                <input type="email" class="input-field" required placeholder="exemple@gmail.com">[cite: 3]
                 
-                <label style="font-size:11px; font-weight:600; text-transform:uppercase; display:block; margin-bottom:6px;">Mot de passe</label>
-                <input type="password" class="input-field" required placeholder="••••••••">
+                <label style="font-size:11px; font-weight:600; text-transform:uppercase; display:block; margin-bottom:6px;">Mot de passe</label>[cite: 3]
+                <input type="password" class="input-field" required placeholder="••••••••">[cite: 3]
                 
-                <button type="submit" class="btn-add-cart">Se connecter</button>
+                <button type="submit" class="btn-add-cart">Se connecter</button>[cite: 3]
             </form>
         </div>
     </div>
 
-    <!-- Modale Mentions Légales -->
-    <div class="modal" id="legal-modal" onclick="closeLegalModalOnBackdrop(event)">
-        <div class="modal-content" style="max-width:680px; display:block;">
-            <div class="modal-close" onclick="toggleLegalModal(false)">&times;</div>
-            <h3 id="legal-modal-title" style="text-transform:uppercase; font-weight:600; margin-bottom:20px; font-size:16px; color:#000; letter-spacing:1px; font-family:'Cinzel', serif;"></h3>
-            <div class="legal-box" id="legal-modal-body"></div>
+    <div class="modal" id="legal-modal" onclick="closeLegalModalOnBackdrop(event)">[cite: 3]
+        <div class="modal-content" style="max-width:680px; display:block;">[cite: 3]
+            <div class="modal-close" onclick="toggleLegalModal(false)">&times;</div>[cite: 3]
+            <h3 id="legal-modal-title" style="text-transform:uppercase; font-weight:600; margin-bottom:20px; font-size:16px; color:#000; letter-spacing:1px; font-family:'Cinzel', serif;"></h3>[cite: 3]
+            <div class="legal-box" id="legal-modal-body"></div>[cite: 3]
         </div>
     </div>
 
-    <!-- Modale Produit -->
-    <div class="modal" id="product-modal" onclick="closeModalOnBackdrop(event)">
-        <div class="modal-content">
-            <div class="modal-close" onclick="toggleModal(false)">&times;</div>
-            <div class="modal-left">
-                <img id="modal-img" src="">
+    <div class="modal" id="product-modal" onclick="closeModalOnBackdrop(event)">[cite: 3]
+        <div class="modal-content">[cite: 3]
+            <div class="modal-close" onclick="toggleModal(false)">&times;</div>[cite: 3]
+            <div class="modal-left">[cite: 3]
+                <img id="modal-img" src="">[cite: 3]
             </div>
-            <div class="modal-right">
-                <h3 id="modal-title" style="font-size:22px; font-weight:500; margin-bottom:12px; color:#111;"></h3>
+            <div class="modal-right">[cite: 3]
+                <h3 id="modal-title" style="font-size:20px; font-weight:500; margin-bottom:12px; color:#111;"></h3>[cite: 3]
                 
-                <div style="margin-bottom:15px; display:flex; align-items:center; flex-wrap:wrap;">
-                    <span class="current-price" id="modal-current-price" style="font-size:18px; font-weight:600; color:var(--price-red);"></span>
-                    <span class="old-price" id="modal-old-price" style="font-size:15px; margin-right:5px;"></span>
-                    <div id="modal-promo-badge" class="promo-badge"></div>
+                <div style="margin-bottom:15px; display:flex; align-items:center; flex-wrap:wrap;">[cite: 3]
+                    <span class="current-price" id="modal-current-price" style="font-size:18px; font-weight:600; color:var(--price-red);"></span>[cite: 3]
+                    <span class="old-price" id="modal-old-price" style="font-size:14px; margin-right:5px;"></span>[cite: 3]
+                    <div id="modal-promo-badge" class="promo-badge"></div>[cite: 3]
                 </div>
                 
-                <div class="live-cart-badge">
+                <div class="live-cart-badge">[cite: 3]
                     🔥 15 ajouts au panier récents
                 </div>
                 
-                <label style="font-size:12px; text-transform:capitalize; color:#222; margin-bottom:6px; display:block; font-weight:500;">Taille</label>
-                <select id="modal-size" style="margin-bottom:15px;"></select>
+                <label style="font-size:12px; text-transform:capitalize; color:#222; margin-bottom:6px; display:block; font-weight:500;">Taille</label>[cite: 3]
+                <select id="modal-size" style="margin-bottom:15px;"></select>[cite: 3]
 
-                <label style="font-size:12px; text-transform:capitalize; color:#222; margin-bottom:6px; display:block; font-weight:500;">Quantité</label>
-                <div class="quantity-selector">
-                    <button type="button" onclick="changeQuantity(-1)">-</button>
-                    <span id="product-qty">1</span>
-                    <button type="button" onclick="changeQuantity(1)">+</button>
+                <label style="font-size:12px; text-transform:capitalize; color:#222; margin-bottom:6px; display:block; font-weight:500;">Quantité</label>[cite: 3]
+                <div class="quantity-selector">[cite: 3]
+                    <button type="button" onclick="changeQuantity(-1)">-</button>[cite: 3]
+                    <span id="product-qty">1</span>[cite: 3]
+                    <button type="button" onclick="changeQuantity(1)">+</button>[cite: 3]
                 </div>
                 
-                <button class="btn-add-cart" onclick="addToCartFromModal()">AJOUTER AU PANIER</button>
+                <button class="btn-add-cart" onclick="addToCartFromModal()">AJOUTER AU PANIER</button>[cite: 3]
                 
-                <div style="text-align:center; font-size:11px; text-decoration:underline; color:#666; cursor:pointer; margin-bottom:10px;">Plus de moyens de paiement</div>
+                <div style="text-align:center; font-size:11px; text-decoration:underline; color:#666; cursor:pointer; margin-bottom:10px;">Plus de moyens de paiement</div>[cite: 3]
                 
-                <div class="payment-icons-box">
-                    <div class="payment-logo-badge">Apple Pay</div>
-                    <div class="payment-logo-badge">CB</div>
-                    <div class="payment-logo-badge">Mastercard</div>
-                    <div class="payment-logo-badge">Visa</div>
+                <div class="payment-icons-box">[cite: 3]
+                    <div class="payment-logo-badge">Apple Pay</div>[cite: 3]
+                    <div class="payment-logo-badge">CB</div>[cite: 3]
+                    <div class="payment-logo-badge">Mastercard</div>[cite: 3]
+                    <div class="payment-logo-badge">Visa</div>[cite: 3]
+                    <div class="payment-logo-badge" style="background:#00457c; color:#fff;">PayPal</div>
                 </div>
                 
-                <div class="trust-footer-mention">
+                <div class="trust-footer-mention">[cite: 3]
                     <span style="font-size:12px;">🔒</span> Paiement 100% sécurisé • Qualité d'exception
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Panier Latéral -->
-    <div class="cart-sidebar" id="cart-sidebar">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; border-bottom:1px solid #eee; padding-bottom:16px;">
-            <h3 style="font-size:16px; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Mon Panier</h3>
-            <span style="cursor:pointer; font-size:28px; color:#aaa;" onclick="toggleCart(false)">&times;</span>
+    <div class="cart-sidebar" id="cart-sidebar">[cite: 3]
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px; border-bottom:1px solid #eee; padding-bottom:16px;">[cite: 3]
+            <h3 style="font-size:15px; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Mon Panier</h3>[cite: 3]
+            <span style="cursor:pointer; font-size:26px; color:#aaa;" onclick="toggleCart(false)">&times;</span>[cite: 3]
         </div>
-        <div class="cart-items" id="cart-items-container"></div>
-        <div style="border-top:1px solid #eee; padding-top:25px;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:24px; font-size:16px; font-weight:600;">
-                <span>Total Estimé :</span>
-                <span id="cart-total-amount" style="color:var(--price-red);">0.00 €</span>
+        <div class="cart-items" id="cart-items-container"></div>[cite: 3]
+        <div style="border-top:1px solid #eee; padding-top:20px;">[cite: 3]
+            <div style="display:flex; justify-content:space-between; margin-bottom:15px; font-size:15px; font-weight:600;">[cite: 3]
+                <span>Total Estimé :</span>[cite: 3]
+                <span id="cart-total-amount" style="color:var(--price-red);">0.00 €</span>[cite: 3]
             </div>
-            <button class="btn-add-cart" style="padding:18px;" onclick="processCheckout()">Passer à la caisse sécurisée</button>
+            
+            <!-- Bouton PayPal Intégré pour la caisse -->
+            <button class="btn-paypal" onclick="processCheckout()">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24" style="margin-right:2px;"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944 3.736a1.022 1.022 0 0 1 1.01-.861h7.822c2.446 0 4.333.522 5.514 1.523 1.127.954 1.631 2.373 1.455 4.103-.341 3.355-2.35 5.626-5.592 6.347-1.396.31-2.996.414-4.526.414H8.812a.417.417 0 0 0-.41.483l-.97 6.136a.414.414 0 0 1-.356.398z"/></svg>
+                Payer par PayPal Sécurisé
+            </button>
+            
+            <div class="payment-icons-box" style="margin-top:12px;">
+                <div class="payment-logo-badge">🔒 Connexion SSL Chiffrée</div>
+            </div>
         </div>
     </div>
 
-    <footer>
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Service Client</h4>
+    <footer>[cite: 3]
+        <div class="footer-grid">[cite: 3]
+            <div class="footer-col">[cite: 3]
+                <h4>Service Client</h4>[cite: 3]
                 <ul>
-                    <li><a href="#" onclick="openLegal('contact')">Nous Contacter</a></li>
-                    <li><a href="#" onclick="openLegal('livraison')">Livraison & Retours d'Exception</a></li>
+                    <li><a href="#" onclick="openLegal('contact')">Nous Contacter</a></li>[cite: 3]
+                    <li><a href="#" onclick="openLegal('livraison')">Livraison & Retours d'Exception</a></li>[cite: 3]
                 </ul>
             </div>
-            <div class="footer-col">
-                <h4>La Maison</h4>
+            <div class="footer-col">[cite: 3]
+                <h4>La Maison</h4>[cite: 3]
                 <ul>
-                    <li><a href="#" onclick="openLegal('mentions')">Mentions Légales</a></li>
-                    <li><a href="#" onclick="openLegal('cgv')">Conditions Générales de Vente</a></li>
+                    <li><a href="#" onclick="openLegal('mentions')">Mentions Légales</a></li>[cite: 3]
+                    <li><a href="#" onclick="openLegal('cgv')">Conditions Générales de Vente</a></li>[cite: 3]
                 </ul>
             </div>
-            <div class="footer-col">
-                <h4>Confidentialité</h4>
+            <div class="footer-col">[cite: 3]
+                <h4>Confidentialité</h4>[cite: 3]
                 <ul>
-                    <li><a href="#" onclick="openLegal('privacy')">Protection des Données</a></li>
-                    <li><a href="#" onclick="openLegal('cookies')">Cookies & Préférences</a></li>
+                    <li><a href="#" onclick="openLegal('privacy')">Protection des Données</a></li>[cite: 3]
+                    <li><a href="#" onclick="openLegal('cookies')">Cookies & Préférences</a></li>[cite: 3]
                 </ul>
             </div>
         </div>
-        <div style="border-top:1px solid var(--border-light); padding-top:25px; text-align:center; font-size:12px; color:#999;">
-            <p>&copy; 2026 H LUXURY — Maison de Haute Création Paris-Montpellier. Tous droits réservés.</p>
+        <div style="border-top:1px solid var(--border-light); padding-top:22px; text-align:center; font-size:11px; color:#999;">[cite: 3]
+            <p>&copy; 2026 H LUXURY — Maison de Haute Création Paris-Montpellier. Tous droits réservés.</p>[cite: 3]
         </div>
     </footer>
 
     <script>
         const BANNER_CONFIG = {
-            imageHero: "banniere.jpg",
-            imageCatalogueFemme: "LIEN_IMAGE_FEMME", 
-            imageCatalogueHomme: "LIEN_IMAGE_HOMME"  
+            imageHero: "banniere.jpg",[cite: 3]
+            imageCatalogueFemme: "LIEN_IMAGE_FEMME",[cite: 3]
+            imageCatalogueHomme: "LIEN_IMAGE_HOMME" [cite: 3]
         };
 
-        // BASE DE DONNÉES COMPLÈTE - 64 ARTICLES
         const products = [
-            // --- COLLECTION ORAN (1 à 25) ---
-            { id: 1, name: "Sandales Oran - Tow", price: 64.90, oldPrice: 120.00, img: "oran-tow.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: true },
-            { id: 2, name: "Sandales Oran - Vert Jade", price: 64.90, oldPrice: 120.00, img: "oran-vert-jade.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 3, name: "Sandales Oran - Vert Oyat", price: 64.90, oldPrice: 120.00, img: "oran-vert-oyat.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 4, name: "Sandales Oran - Violet Foncé", price: 99.90, oldPrice: 0, img: "oran-violet-fonce.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 5, name: "Sandales Oran - Blanc Pur", price: 64.90, oldPrice: 120.00, img: "oran-blanc.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: true },
-            { id: 6, name: "Sandales Oran - Noir Ébène", price: 64.90, oldPrice: 120.00, img: "oran-noir.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: true },
-            { id: 9, name: "Sandales Oran - Noir V2", price: 64.90, oldPrice: 120.00, img: "oran-noir-v2.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 10, name: "Sandales Oran - Teinte Or", price: 64.90, oldPrice: 120.00, img: "oran-or.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: true },
-            { id: 11, name: "Sandales Oran - Orange Mouton", price: 99.90, oldPrice: 0, img: "oran-orange-mouton.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 12, name: "Sandales Oran - Orange Moumoute", price: 99.90, oldPrice: 0, img: "oran-orange-moumoute.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 13, name: "Sandales Oran - Pétale de Rose", price: 64.90, oldPrice: 120.00, img: "oran-pétale-rose.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 14, name: "Sandales Oran - Porcelaine Rose Clous", price: 64.90, oldPrice: 150.00, img: "oran-porcelaine-rose-clous.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 15, name: "Sandales Oran - Porcelaine Rose Mat", price: 64.90, oldPrice: 120.00, img: "oran-porcelaine-rose.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 16, name: "Sandales Oran - Purple Majorette", price: 64.90, oldPrice: 120.00, img: "oran-purple-majorette.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 17, name: "Sandales Oran - Gris Antarctique", price: 64.90, oldPrice: 120.00, img: "oran-gris-antarctique.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 18, name: "Sandales Oran - Ivy Green", price: 64.90, oldPrice: 120.00, img: "oran-ivy-green.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 19, name: "Sandales Oran - Jaune Bouton d'or", price: 64.90, oldPrice: 120.00, img: "oran-jaune-bouton-dor.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 20, name: "Sandales Oran - Jaune Citron", price: 64.90, oldPrice: 120.00, img: "oran-jaune-citron.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 21, name: "Sandales Oran - Jaune Impérial", price: 64.90, oldPrice: 120.00, img: "oran-jaune-imperial.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 22, name: "Sandales Oran - Jaune Topaze", price: 64.90, oldPrice: 140.00, img: "oran-jaune-topaze.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 23, name: "Sandales Oran - Rouge H", price: 64.90, oldPrice: 120.00, img: "oran-rouge-h.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 24, name: "Sandales Oran - Bleu Azur", price: 64.90, oldPrice: 120.00, img: "oran-bleu-azur.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 25, name: "Sandales Oran - Fuchsia Éclat", price: 64.90, oldPrice: 120.00, img: "oran-fuchsia.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
-
-            // --- COLLECTION CHYPRE (26 à 38) ---
-            { id: 26, name: "Sandales Chypre - Noir Mat", price: 69.90, oldPrice: 130.00, img: "chypre-noir.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: true },
-            { id: 27, name: "Sandales Chypre - Blanc Épuré", price: 69.90, oldPrice: 130.00, img: "chypre-blanc.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 28, name: "Sandales Chypre - Gold Saphir", price: 69.90, oldPrice: 130.00, img: "chypre-gold.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 29, name: "Sandales Chypre - Kaki Armée", price: 69.90, oldPrice: 130.00, img: "chypre-kaki.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 30, name: "Sandales Chypre - Taupe Velours", price: 69.90, oldPrice: 130.00, img: "chypre-taupe.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 31, name: "Sandales Chypre - Rose Nuage", price: 69.90, oldPrice: 130.00, img: "chypre-rose.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 32, name: "Sandales Chypre - Caramel Sauvage", price: 69.90, oldPrice: 130.00, img: "chypre-caramel.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 33, name: "Sandales Chypre - Bleu Marine", price: 69.90, oldPrice: 130.00, img: "chypre-bleu.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 34, name: "Sandales Chypre - Moutarde Dorée", price: 69.90, oldPrice: 130.00, img: "chypre-moutarde.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 35, name: "Sandales Chypre - Bordeaux Intense", price: 69.90, oldPrice: 130.00, img: "chypre-bordeaux.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 36, name: "Sandales Chypre - Menthe Givrée", price: 69.90, oldPrice: 130.00, img: "chypre-menthe.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 37, name: "Sandales Chypre - Anthracite", price: 69.90, oldPrice: 130.00, img: "chypre-anthracite.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 38, name: "Sandales Chypre - Crème Lin", price: 69.90, oldPrice: 130.00, img: "chypre-creme.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
-
-            // --- COLLECTION EMPIRE (39 à 48) ---
-            { id: 39, name: "Mules Empire - Gold Classique", price: 74.90, oldPrice: 140.00, img: "empire-gold.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 40, name: "Mules Empire - Noir Royal", price: 74.90, oldPrice: 140.00, img: "empire-noir.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 41, name: "Mules Empire - Blanc Ivoire", price: 74.90, oldPrice: 140.00, img: "empire-blanc.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 42, name: "Mules Empire - Cognac Vintage", price: 74.90, oldPrice: 140.00, img: "empire-cognac.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 43, name: "Mules Empire - Vert Émeraude", price: 74.90, oldPrice: 140.00, img: "empire-vert.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 44, name: "Mules Empire - Rouge Opéra", price: 74.90, oldPrice: 140.00, img: "empire-rouge.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 45, name: "Mules Empire - Bleu Nuit", price: 74.90, oldPrice: 140.00, img: "empire-bleu.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 46, name: "Mules Empire - Rose Poudré", price: 74.90, oldPrice: 140.00, img: "empire-rose.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 47, name: "Mules Empire - Chocolat", price: 74.90, oldPrice: 140.00, img: "empire-chocolat.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 48, name: "Mules Empire - Terracotta", price: 74.90, oldPrice: 140.00, img: "empire-terracotta.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
-
-            // --- COLLECTION OASIS (49 à 56) ---
-            { id: 49, name: "Sandales Oasis - Cuir Gold", price: 79.90, oldPrice: 160.00, img: "oasis-gold.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 50, name: "Sandales Oasis - Noir Satin", price: 79.90, oldPrice: 160.00, img: "oasis-noir.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 51, name: "Sandales Oasis - Blanc Neige", price: 79.90, oldPrice: 160.00, img: "oasis-blanc.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 52, name: "Sandales Oasis - Rouge Corail", price: 79.90, oldPrice: 160.00, img: "oasis-rouge.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 53, name: "Sandales Oasis - Vert Amande", price: 79.90, oldPrice: 160.00, img: "oasis-vert.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 54, name: "Sandales Oasis - Turquoise", price: 79.90, oldPrice: 160.00, img: "oasis-turquoise.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 55, name: "Sandales Oasis - Prune Mystique", price: 79.90, oldPrice: 160.00, img: "oasis-prune.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 56, name: "Sandales Oasis - Argent Scintillant", price: 79.90, oldPrice: 160.00, img: "oasis-argent.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
-
-            // --- COLLECTION CHAUSSURES / SNEAKERS (57 à 64) ---
-            { id: 7, name: "Sneakers Bouncing - All Black", price: 129.90, oldPrice: 0, img: "bouncing-all-black.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: true },
-            { id: 8, name: "Sneakers Bouncing - Blanc Signé", price: 129.90, oldPrice: 0, img: "bouncing-blanc.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: true },
-            { id: 57, name: "Sneakers Bouncing - Orange H", price: 129.90, oldPrice: 0, img: "bouncing-orange.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: false },
-            { id: 58, name: "Sneakers Bouncing - Kaki Urbain", price: 129.90, oldPrice: 0, img: "bouncing-kaki.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: false },
-            { id: 59, name: "Sneakers Bouncing - Gris Ciment", price: 129.90, oldPrice: 0, img: "bouncing-gris.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: false },
-            { id: 60, name: "Sneakers Bouncing - Bleu Sport", price: 129.90, oldPrice: 0, img: "bouncing-bleu.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: false },
-            { id: 61, name: "Sneakers Bouncing - Multi Pastel", price: 139.90, oldPrice: 0, img: "bouncing-pastel.jpg", collection: "sneakers", sizes: [36,37,38,39,40,41], bestSeller: false },
-            { id: 62, name: "Sneakers Bouncing - Bordeaux Luxe", price: 129.90, oldPrice: 0, img: "bouncing-bordeaux.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: false }
+            { id: 1, name: "Sandales Oran - Tow", price: 64.90, oldPrice: 120.00, img: "oran-tow.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Tow"] },[cite: 3]
+            { id: 2, name: "Sandales Oran - Vert Jade", price: 64.90, oldPrice: 120.00, img: "oran-vert-jade.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Vert Jade"] },[cite: 3]
+            { id: 3, name: "Sandales Oran - Vert Oyat", price: 64.90, oldPrice: 120.00, img: "oran-vert-oyat.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Vert Oyat"] },[cite: 3]
+            { id: 4, name: "Sandales Oran - Violet Foncé", price: 99.90, oldPrice: 0, img: "oran-violet-fonce.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Violet Foncé"] },[cite: 3]
+            { id: 5, name: "Sandales Oran - Blanc Pur", price: 64.90, oldPrice: 120.00, img: "oran-blanc.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Blanc Pur"] },[cite: 3]
+            { id: 6, name: "Sandales Oran - Noir Ébène", price: 64.90, oldPrice: 120.00, img: "oran-noir.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Noir Ébène"] },[cite: 3]
+            { id: 7, name: "Sneakers Bouncing - All Black", price: 129.90, oldPrice: 0, img: "bouncing-all-black.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], colors: ["All Black"] },[cite: 3]
+            { id: 8, name: "Sneakers Bouncing - Blanc Signé", price: 129.90, oldPrice: 0, img: "bouncing-blanc.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], colors: ["Blanc Signé"] },[cite: 3]
+            { id: 9, name: "Sandales Oran - Noir V2", price: 64.90, oldPrice: 120.00, img: "oran-noir-v2.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Noir V2"] },[cite: 3]
+            { id: 10, name: "Sandales Oran - Teinte Or", price: 64.90, oldPrice: 120.00, img: "oran-or.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Teinte Or"] },[cite: 3]
+            { id: 11, name: "Sandales Oran - Orange Mouton", price: 99.90, oldPrice: 0, img: "oran-orange-mouton.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Orange Mouton"] },[cite: 3]
+            { id: 12, name: "Sandales Oran - Orange Moumoute", price: 99.90, oldPrice: 0, img: "oran-orange-moumoute.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Orange Moumoute"] },[cite: 3]
+            { id: 13, name: "Sandales Oran - Pétale de Rose", price: 64.90, oldPrice: 120.00, img: "oran-pétale-rose.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Pétale de Rose"] },[cite: 3]
+            { id: 14, name: "Sandales Oran - Porcelaine Rose Clous", price: 64.90, oldPrice: 150.00, img: "oran-porcelaine-rose-clous.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Porcelaine Rose Clous"] },[cite: 3]
+            { id: 15, name: "Sandales Oran - Porcelaine Rose Mat", price: 64.90, oldPrice: 120.00, img: "oran-porcelaine-rose.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Porcelaine Rose Mat"] },[cite: 3]
+            { id: 16, name: "Sandales Oran - Purple Majorette", price: 64.90, oldPrice: 120.00, img: "oran-purple-majorette.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Purple Majorette"] },[cite: 3]
+            { id: 17, name: "Sandales Oran - Gris Antarctique", price: 64.90, oldPrice: 120.00, img: "oran-gris-antarctique.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Gris Antarctique"] },[cite: 3]
+            { id: 18, name: "Sandales Oran - Ivy Green", price: 64.90, oldPrice: 120.00, img: "oran-ivy-green.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Ivy Green"] },[cite: 3]
+            { id: 19, name: "Sandales Oran - Jaune Bouton d'or", price: 64.90, oldPrice: 120.00, img: "oran-jaune-bouton-dor.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Jaune Bouton d'or"] },[cite: 3]
+            { id: 20, name: "Sandales Oran - Jaune Citron", price: 64.90, oldPrice: 120.00, img: "oran-jaune-citron.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Jaune Citron"] },[cite: 3]
+            { id: 21, name: "Sandales Oran - Jaune Impérial", price: 64.90, oldPrice: 120.00, img: "oran-jaune-imperial.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Jaune Impérial"] },[cite: 3]
+            { id: 22, name: "Sandales Oran - Jaune Topaze", price: 64.90, oldPrice: 140.00, img: "oran-jaune-topaze.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Jaune Topaze"] },[cite: 3]
+            { id: 23, name: "Sandales Oran - Laiton Jaune", price: 64.90, oldPrice: 120.00, img: "oran-laiton-jaune.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Laiton Jaune"] },[cite: 3]
+            { id: 24, name: "Sandales Oran - Naturel", price: 64.90, oldPrice: 120.00, img: "oran-naturel.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Naturel"] },[cite: 3]
+            { id: 25, name: "Sandales Oran - Beige Moumoute", price: 99.90, oldPrice: 0, img: "oran-beige-moumoute.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Beige Moumoute"] },[cite: 3]
+            { id: 26, name: "Sandales Oran - Bleu Brut", price: 64.90, oldPrice: 145.00, img: "oran-bleu-brut.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Bleu Brut"] },[cite: 3]
+            { id: 27, name: "Sandales Oran - Bleu Clair", price: 64.90, oldPrice: 145.00, img: "oran-bleu-clair.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Bleu Clair"] },[cite: 3]
+            { id: 28, name: "Sandales Oran - Bleu du Nord", price: 64.90, oldPrice: 120.00, img: "oran-bleu-nord.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Bleu du Nord"] },[cite: 3]
+            { id: 29, name: "Sandales Oran - Bleu Océan", price: 99.90, oldPrice: 0, img: "oran-bleu-ocean.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Bleu Océan"] },[cite: 3]
+            { id: 30, name: "Sandales Oran - Bleu Thalassa", price: 64.90, oldPrice: 120.00, img: "oran-bleu-thalassa.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Bleu Thalassa"] },[cite: 3]
+            { id: 31, name: "Sandales Oran - Blue Cameo", price: 64.90, oldPrice: 120.00, img: "oran-blue-cameo.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Blue Cameo"] },[cite: 3]
+            { id: 32, name: "Sandales Oran - Epsom Bleu", price: 64.90, oldPrice: 120.00, img: "oran-epsom-bleu.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Epsom Bleu"] },[cite: 3]
+            { id: 33, name: "Sandales Oasis - Blanc Éclat", price: 79.90, oldPrice: 120.00, img: "oasis-blanc.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], colors: ["Blanc Éclat"] },[cite: 3]
+            { id: 34, name: "Sandales Oran - Vert Menthe", price: 64.90, oldPrice: 120.00, img: "oran-vert-pauvre.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Vert Menthe"] },[cite: 3]
+            { id: 35, name: "Sandales Oran - Argent Chromé", price: 64.90, oldPrice: 120.00, img: "oran-argent.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Argent Chromé"] },[cite: 3]
+            { id: 36, name: "Sandales Empire - Blanc Signature", price: 79.90, oldPrice: 150.00, img: "empire-blanc.jpg", collection: "empire", sizes: [35,36,37,38,39,40,41], colors: ["Blanc Signature"] },[cite: 3]
+            { id: 37, name: "Sandales Empire - Noir Signature", price: 79.90, oldPrice: 150.00, img: "empire-noir.jpg", collection: "empire", sizes: [36,37,38,39,40,41], colors: ["Noir Signature"] },[cite: 3]
+            { id: 38, name: "Sandales Empire - Noir Porcelaine", price: 79.90, oldPrice: 150.00, img: "empire-noir-porcelaine.jpg", collection: "empire", sizes: [36,37,38,39,40,41], colors: ["Noir Porcelaine"] },[cite: 3]
+            { id: 39, name: "Sandales Oasis - Bleu Intense", price: 79.90, oldPrice: 120.00, img: "oasis-bleu.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], colors: ["Bleu Intense"] },[cite: 3]
+            { id: 40, name: "Sandales Oasis - Gold Classique", price: 79.90, oldPrice: 120.00, img: "oasis-gold.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], colors: ["Gold Classique"] },[cite: 3]
+            { id: 41, name: "Sandales Oasis - Noir Satin", price: 79.90, oldPrice: 120.00, img: "oasis-noir.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], colors: ["Noir Satin"] },[cite: 3]
+            { id: 42, name: "Sandales Oasis - Red Passion", price: 79.90, oldPrice: 120.00, img: "oasis-red.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], colors: ["Red Passion"] },[cite: 3]
+            { id: 43, name: "Sandales Oasis - Rose Magenta", price: 79.90, oldPrice: 120.00, img: "oasis-rose-magenta.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], colors: ["Rose Magenta"] },[cite: 3]
+            { id: 44, name: "Sandales Chypre - Orange H", price: 70.00, oldPrice: 140.00, img: "chypre-orange.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], colors: ["Orange H"] },[cite: 3]
+            { id: 45, name: "Sandales Chypre - Pru Noir", price: 70.00, oldPrice: 140.00, img: "chypre-pru-noir.jpg", collection: "chypre", sizes: [40,41,42,43,44,45], colors: ["Pru Noir"] },[cite: 3]
+            { id: 46, name: "Sandales Chypre - Rose Chapas", price: 74.90, oldPrice: 120.00, img: "chypre-rose-chapas.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], colors: ["Rose Chapas"] },[cite: 3]
+            { id: 47, name: "Sandales Chypre - Vert Forêt", price: 70.00, oldPrice: 140.00, img: "chypre-vert.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], colors: ["Vert Forêt"] },[cite: 3]
+            { id: 48, name: "Sandales Chypre - Blanc Craie", price: 70.00, oldPrice: 140.00, img: "chypre-blanc.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], colors: ["Blanc Craie"] },[cite: 3]
+            { id: 49, name: "Sandales Chypre - Marron Muscavado", price: 99.90, oldPrice: 140.00, img: "chypre-marron-muscavado.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], colors: ["Marron Muscavado"] },[cite: 3]
+            { id: 50, name: "Sandales Chypre - Natural Leather", price: 70.00, oldPrice: 140.00, img: "chypre-natural.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], colors: ["Natural Leather"] },[cite: 3]
+            { id: 51, name: "Sandales Chypre - Noir Mat", price: 70.00, oldPrice: 140.00, img: "chypre-noir.jpg", collection: "chypre", sizes: [40,41,42,43,44,45], colors: ["Noir Mat"] },[cite: 3]
+            { id: 52, name: "Sandales Chypre - Bleu Ciel", price: 70.00, oldPrice: 140.00, img: "chypre-bleu-ciel.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], colors: ["Bleu Ciel"] },[cite: 3]
+            { id: 53, name: "Sandales Chypre - Gris Anthracite", price: 70.00, oldPrice: 140.00, img: "chypre-gris.jpg", collection: "chypre", sizes: [40,41,42,43,44,45], colors: ["Gris Anthracite"] },[cite: 3]
+            { id: 54, name: "Mules Claquettes - Vert de Mer", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-de-mer.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Vert de Mer"] },[cite: 3]
+            { id: 55, name: "Mules Claquettes - Vert Viride", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-viride.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Vert Viride"] },[cite: 3]
+            { id: 56, name: "Sneakers Bouncing - Écru", price: 129.90, oldPrice: 0, img: "bouncing-ecru.jpg", collection: "sneakers", sizes: [36,37,38,39,40,41], colors: ["Écru"] },[cite: 3]
+            { id: 57, name: "Mules Claquettes - Beige Natura", price: 64.90, oldPrice: 120.00, img: "claquettes-beige-natura.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Beige Natura"] },[cite: 3]
+            { id: 58, name: "Mules Claquettes - Beige Perlino", price: 64.90, oldPrice: 120.00, img: "claquettes-beige-perlino.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Beige Perlino"] },[cite: 3]
+            { id: 59, name: "Mules Claquettes - Orange Capucine", price: 64.90, oldPrice: 145.00, img: "claquettes-orange-capucine.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Orange Capucine"] },[cite: 3]
+            { id: 60, name: "Mules Claquettes - Rose Cancan", price: 64.90, oldPrice: 145.00, img: "claquettes-rose-cancan.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Rose Cancan"] },[cite: 3]
+            { id: 61, name: "Mules Claquettes - Rose de Venise", price: 64.90, oldPrice: 120.00, img: "claquettes-rose-de-venise.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Rose de Venise"] },[cite: 3]
+            { id: 62, name: "Mules Claquettes - Rose Porcelaine", price: 64.90, oldPrice: 120.00, img: "claquettes-rose-porcelaine.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Rose Porcelaine"] },[cite: 3]
+            { id: 63, name: "Mules Claquettes - Vert Bouteille", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-bouteille.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Vert Bouteille"] },[cite: 3]
+            { id: 64, name: "Mules Claquettes - Vert d'Eau", price: 64.90, oldPrice: 120.00, img: "claquettes-vert-deau.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Vert d'Eau"] }[cite: 3]
         ];
 
-        let cart = [];
-        let currentSelectedProduct = null;
-        let currentActiveCollection = "all";
+        const BEST_SELLERS_IDS = [5, 6, 7, 51];[cite: 3]
 
-        window.onload = function() {
-            document.getElementById('hero-main-img').src = BANNER_CONFIG.imageHero;
-            document.getElementById('catalogue-img-femme').src = BANNER_CONFIG.imageCatalogueFemme;
-            document.getElementById('catalogue-img-homme').src = BANNER_CONFIG.imageCatalogueHomme;
-            
-            showHome(); // Initialise l'affichage sur les meilleures ventes de l'accueil
-            setInterval(afficherAvis, 12000);
-        };
+        let cart = [];[cite: 3]
+        let currentProductId = null;[cite: 3]
+        let currentCategory = 'home';[cite: 3]
+        let currentQuantity = 1;[cite: 3]
 
-        function acceptCookies() {
-            document.getElementById('cookie-popup').style.display = 'none';
+        function acceptCookies() { document.getElementById('cookie-popup').style.display = 'none'; }[cite: 3]
+        function refuseCookies() { window.location.href = "https://www.google.com"; }[cite: 3]
+
+        function toggleAuthModal(show) { document.getElementById('auth-modal').classList.toggle('active', show); }[cite: 3]
+        function closeAuthModalOnBackdrop(e) { if(e.target.id === 'auth-modal') toggleAuthModal(false); }[cite: 3]
+        function handleLogin(e) { e.preventDefault(); alert("Connexion réussie ! Bienvenue dans votre espace H Luxury."); toggleAuthModal(false); }[cite: 3]
+
+        // Gestion de l'affichage du menu mobile
+        function toggleMobileMenu(forcedState) {
+            const nav = document.getElementById('main-nav');
+            if (forcedState !== undefined) {
+                if (forcedState) nav.classList.add('mobile-active');
+                else nav.classList.remove('mobile-active');
+            } else {
+                nav.classList.toggle('mobile-active');
+            }
         }
 
-        function refuseCookies() {
-            window.location.href = "https://www.google.fr";
+        function initBanners() {
+            document.getElementById('hero-main-img').src = BANNER_CONFIG.imageHero;[cite: 3]
+            document.getElementById('catalogue-img-femme').src = BANNER_CONFIG.imageCatalogueFemme;[cite: 3]
+            document.getElementById('catalogue-img-homme').src = BANNER_CONFIG.imageCatalogueHomme;[cite: 3]
         }
 
-        function renderProducts(productsList) {
-            const container = document.getElementById('products-container');
-            container.innerHTML = "";
+        function displayProducts(items) {
+            const container = document.getElementById('products-container');[cite: 3]
+            container.innerHTML = '';[cite: 3]
             
-            if(productsList.length === 0) {
-                container.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:#777; padding: 40px 0;">Aucun modèle ne correspond à votre recherche.</p>`;
+            if(items.length === 0) {
+                container.innerHTML = `<div style="grid-column: 1/-1; text-align:center; padding: 50px; color:#888;">Aucun produit ne correspond à ces critères.</div>`;[cite: 3]
                 return;
             }
 
-            productsList.forEach(p => {
-                const card = document.createElement('div');
-                card.className = "product-card";
-                
-                let priceHTML = `<span class="current-price">${p.price.toFixed(2)} €</span>`;
-                if(p.oldPrice > 0) {
-                    priceHTML += `<span class="old-price">${p.oldPrice.toFixed(2)} €</span>`;
-                }
+            items.forEach(p => {
+                let priceHTML = p.oldPrice > 0[cite: 3]
+                    ? `<span class="current-price">${p.price.toFixed(2)} €</span><span class="old-price">${p.oldPrice.toFixed(2)} €</span>`[cite: 3]
+                    : `<span class="current-price" style="color:#000;">${p.price.toFixed(2)} €</span>`;[cite: 3]
 
-                card.innerHTML = `
-                    <div class="product-img-container" onclick="openProductModal(${p.id})">
-                        <img src="${p.img}" alt="${p.name}">
-                    </div>
-                    <div class="product-info">
-                        <div class="stars-container">
-                            <span class="star-icon">★</span><span class="star-icon">★</span><span class="star-icon">★</span><span class="star-icon">★</span><span class="star-icon">★</span>
+                container.innerHTML += `
+                    <div class="product-card">
+                        <div class="product-img-container" onclick="openProductModal(${p.id})">
+                            <img src="${p.img}" alt="${p.name}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23f8f8f8%22/><text x=%2250%25%22 y=%2250%25%22 font-family=%22sans-serif%22 font-size=%2211%22 fill=%22%23ccc%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22>Photo</text></svg>'">
                         </div>
-                        <div class="product-title" onclick="openProductModal(${p.id})">${p.name}</div>
-                        <div class="product-price-box">
-                            ${priceHTML}
+                        <div class="product-info">
+                            <div class="stars-container">
+                                <span class="star-icon">★</span><span class="star-icon">★</span><span class="star-icon">★</span><span class="star-icon">★</span><span class="star-icon">★</span>
+                            </div>
+                            <h3 class="product-title" onclick="openProductModal(${p.id})">${p.name}</h3>
+                            <div class="product-price-box">${priceHTML}</div>
                         </div>
                     </div>
                 `;
-                container.appendChild(card);
             });
         }
 
-        // NAVIGATION COMPLÈTE SUR LES COLLECTIONS (Affiche TOUS les articles de la collection cliquée)
-        function filterCollection(collectionName) {
-            currentActiveCollection = collectionName;
+        function showHome() {
+            currentCategory = 'home';[cite: 3]
+            document.getElementById('hero-section').style.display = 'flex';[cite: 3]
+            document.getElementById('catalogues-section').style.display = 'block';[cite: 3]
+            document.getElementById('filter-wrapper').style.display = 'none';[cite: 3]
+            document.getElementById('page-dynamic-title').innerText = "Les Pièces Iconiques — Meilleures Ventes";[cite: 3]
             
-            const links = document.querySelectorAll('nav ul li a');
-            links.forEach(l => l.classList.remove('active-btn'));
+            const bestSellers = products.filter(p => BEST_SELLERS_IDS.includes(p.id));[cite: 3]
+            displayProducts(bestSellers);[cite: 3]
             
-            const activeId = 'nav-' + collectionName;
-            const activeLink = document.getElementById(activeId);
-            if(activeLink) activeLink.classList.add('active-btn');
-            
-            document.getElementById('price-filter').value = "all";
-
-            if(collectionName === 'all') {
-                showHome();
-                return;
-            }
-
-            document.getElementById('hero-section').style.display = "none";
-            document.getElementById('catalogues-section').style.display = "none";
-            document.getElementById('filter-wrapper').style.display = "flex";
-
-            const titleElem = document.getElementById('page-dynamic-title');
-            if(collectionName === 'oran') titleElem.textContent = "Gamme Iconique Oran";
-            else if(collectionName === 'chypre') titleElem.textContent = "Gamme d'Exception Chypre";
-            else if(collectionName === 'empire') titleElem.textContent = "Gamme Impériale Empire";
-            else if(collectionName === 'oasis') titleElem.textContent = "Gamme Élégante Oasis";
-            else if(collectionName === 'sneakers') titleElem.textContent = "Souliers Urbains & Sneakers";
-
-            // Affiche l'intégralité des articles de cette collection
-            const filtered = products.filter(p => p.collection === collectionName);
-            renderProducts(filtered);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.querySelectorAll('.nav-menu li a').forEach(el => el.classList.remove('active-btn'));
+            document.getElementById('nav-home').classList.add('active-btn');[cite: 3]
         }
 
-        // ACCUEIL : FILTRE ET AFFICHE UNIQUEMENT LES MEILLEURES VENTEST
-        function showHome() {
-            currentActiveCollection = "all";
-            const links = document.querySelectorAll('nav ul li a');
-            links.forEach(l => l.classList.remove('active-btn'));
-            document.getElementById('nav-home').classList.add('active-btn');
-
-            document.getElementById('hero-section').style.display = "flex";
-            document.getElementById('catalogues-section').style.display = "block";
-            document.getElementById('filter-wrapper').style.display = "none";
-            document.getElementById('page-dynamic-title').textContent = "Les Meilleures Ventes";
+        function filterCollection(collName) {
+            currentCategory = collName;[cite: 3]
+            document.getElementById('hero-section').style.display = 'none';[cite: 3]
+            document.getElementById('catalogues-section').style.display = 'none';[cite: 3]
+            document.getElementById('filter-wrapper').style.display = 'flex';[cite: 3]
+            document.getElementById('price-filter').value = 'all';[cite: 3]
             
-            // On extrait uniquement les best sellers pour la home page
-            const homeBestSellers = products.filter(p => p.bestSeller === true);
-            renderProducts(homeBestSellers);
+            const titleMapping = {
+                oran: "L'univers de la Sandale Oran",[cite: 3]
+                chypre: "L'univers de la Sandale Chypre",[cite: 3]
+                empire: "L'univers de la Sandale Empire",[cite: 3]
+                oasis: "L'univers de la Sandale Oasis",[cite: 3]
+                sneakers: "Gamme Complète Souliers & Sneakers"[cite: 3]
+            };
+            
+            document.getElementById('page-dynamic-title').innerText = titleMapping[collName] || "Notre Sélection";[cite: 3]
+            
+            displayProducts(products.filter(p => p.collection === collName));[cite: 3]
+            document.querySelectorAll('.nav-menu li a').forEach(el => el.classList.remove('active-btn'));
+            document.getElementById(`nav-${collName}`).classList.add('active-btn');[cite: 3]
         }
 
         function applyPriceFilter() {
-            const filterVal = document.getElementById('price-filter').value;
-            let baseList = products;
-            
-            if(currentActiveCollection !== 'all') {
-                baseList = products.filter(p => p.collection === currentActiveCollection);
-            } else {
-                baseList = products.filter(p => p.bestSeller === true);
-            }
+            const criteria = document.getElementById('price-filter').value;[cite: 3]
+            let filtered = products.filter(p => p.collection === currentCategory);[cite: 3]
 
-            if(filterVal === 'low') {
-                baseList = baseList.filter(p => p.price < 70);
-            } else if(filterVal === 'high') {
-                baseList = baseList.filter(p => p.price >= 70);
+            if(criteria === 'low') {
+                filtered = filtered.filter(p => p.price < 70);[cite: 3]
+            } else if(criteria === 'high') {
+                filtered = filtered.filter(p => p.price >= 70);[cite: 3]
             }
-
-            renderProducts(baseList);
+            displayProducts(filtered);[cite: 3]
         }
 
         function handleSearch() {
-            const val = document.getElementById('search-input').value.toLowerCase().trim();
-            
-            if(val === "") {
-                if(currentActiveCollection === "all") showHome();
-                else filterCollection(currentActiveCollection);
-                return;
+            const query = document.getElementById('search-input').value.toLowerCase().trim();[cite: 3]
+            if(query.length > 0) {
+                document.getElementById('hero-section').style.display = 'none';[cite: 3]
+                document.getElementById('catalogues-section').style.display = 'none';[cite: 3]
+                document.getElementById('filter-wrapper').style.display = 'none';[cite: 3]
+                displayProducts(products.filter(p => p.name.toLowerCase().includes(query)));[cite: 3]
+            } else {
+                showHome();[cite: 3]
             }
-
-            document.getElementById('hero-section').style.display = "none";
-            document.getElementById('catalogues-section').style.display = "none";
-            document.getElementById('filter-wrapper').style.display = "none";
-            document.getElementById('page-dynamic-title').textContent = `Résultats pour "${val}"`;
-
-            let baseList = products; // Recherche globale sur les 64 articles si tapé depuis l'accueil
-            if(currentActiveCollection !== "all") {
-                baseList = products.filter(p => p.collection === currentActiveCollection);
-            }
-
-            const searched = baseList.filter(p => p.name.toLowerCase().includes(val));
-            renderProducts(searched);
         }
 
         function openProductModal(id) {
-            const p = products.find(prod => prod.id === id);
-            if(!p) return;
+            const p = products.find(prod => prod.id === id);[cite: 3]
+            currentProductId = id;[cite: 3]
+            currentQuantity = 1;[cite: 3]
+            document.getElementById('product-qty').innerText = currentQuantity;[cite: 3]
             
-            currentSelectedProduct = p;
-            document.getElementById('modal-img').src = p.img;
-            document.getElementById('modal-title').textContent = p.name;
-            document.getElementById('modal-current-price').textContent = `${p.price.toFixed(2)} €`;
+            document.getElementById('modal-img').src = p.img;[cite: 3]
+            document.getElementById('modal-title').innerText = p.name;[cite: 3]
+            document.getElementById('modal-current-price').innerText = `${p.price.toFixed(2)} €`;[cite: 3]
             
-            const oldPriceElem = document.getElementById('modal-old-price');
-            const badgeElem = document.getElementById('modal-promo-badge');
-            
-            if(p.oldPrice > 0) {
-                oldPriceElem.textContent = `${p.oldPrice.toFixed(2)} €`;
-                oldPriceElem.style.display = "inline";
-                badgeElem.textContent = "PROMO ÉTÉ";
-                badgeElem.style.display = "inline-flex";
+            const badgeElement = document.getElementById('modal-promo-badge');[cite: 3]
+            if (p.oldPrice > 0) {
+                document.getElementById('modal-old-price').style.display = 'inline';[cite: 3]
+                document.getElementById('modal-old-price').innerText = `${p.oldPrice.toFixed(2)} €`;[cite: 3]
+                
+                const percentSaved = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);[cite: 3]
+                badgeElement.style.display = 'inline-flex';[cite: 3]
+                badgeElement.innerHTML = `🏷️ Économisez ${percentSaved}%`;[cite: 3]
             } else {
-                oldPriceElem.style.display = "none";
-                badgeElem.style.display = "none";
+                document.getElementById('modal-old-price').style.display = 'none';[cite: 3]
+                badgeElement.style.display = 'none';[cite: 3]
             }
-
-            const sizeSelect = document.getElementById('modal-size');
-            sizeSelect.innerHTML = "";
-            p.sizes.forEach(s => {
-                const opt = document.createElement('option');
-                opt.value = s;
-                opt.textContent = `Taille EU ${s}`;
-                sizeSelect.appendChild(opt);
+            
+            const selectSize = document.getElementById('modal-size');[cite: 3]
+            selectSize.innerHTML = '';[cite: 3]
+            p.sizes.forEach(size => {
+                selectSize.innerHTML += `<option value="${size}">${size}</option>`;[cite: 3]
             });
 
-            document.getElementById('product-qty').textContent = "1";
-            toggleModal(true);
-        }
-
-        function toggleModal(show) {
-            const m = document.getElementById('product-modal');
-            if(show) m.classList.add('active');
-            else m.classList.remove('active');
-        }
-
-        function closeModalOnBackdrop(e) {
-            if(e.target.id === "product-modal") toggleModal(false);
+            toggleModal(true);[cite: 3]
         }
 
         function changeQuantity(amount) {
-            const qtyElem = document.getElementById('product-qty');
-            let current = parseInt(qtyElem.textContent);
-            current += amount;
-            if(current < 1) current = 1;
-            qtyElem.textContent = current;
+            currentQuantity += amount;[cite: 3]
+            if(currentQuantity < 1) currentQuantity = 1;[cite: 3]
+            document.getElementById('product-qty').innerText = currentQuantity;[cite: 3]
         }
+
+        function toggleModal(show) { document.getElementById('product-modal').classList.toggle('active', show); }[cite: 3]
+        function closeModalOnBackdrop(e) { if(e.target.id === 'product-modal') toggleModal(false); }[cite: 3]
+        function toggleCart(show) { document.getElementById('cart-sidebar').classList.toggle('active', show); }[cite: 3]
 
         function addToCartFromModal() {
-            if(!currentSelectedProduct) return;
+            const p = products.find(prod => prod.id === currentProductId);[cite: 3]
+            const size = document.getElementById('modal-size').value;[cite: 3]
             
-            const size = document.getElementById('modal-size').value;
-            const qty = parseInt(document.getElementById('product-qty').textContent);
-            
-            const existingIndex = cart.findIndex(item => item.product.id === currentSelectedProduct.id && item.size === size);
-            
-            if(existingIndex > -1) {
-                cart[existingIndex].quantity += qty;
-            } else {
-                cart.push({ product: currentSelectedProduct, size: size, quantity: qty });
+            for(let i = 0; i < currentQuantity; i++) {
+                cart.push({ ...p, selectedSize: size, selectedColor: p.colors[0] });[cite: 3]
             }
-
-            toggleModal(false);
-            updateCartUI();
             
-            const toast = document.getElementById('toast-notif');
-            toast.classList.add('show');
-            setTimeout(() => toast.classList.remove('show'), 3000);
+            updateCartUI();[cite: 3]
+            toggleModal(false);[cite: 3]
             
-            toggleCart(true);
-        }
-
-        function toggleCart(show) {
-            const sidebar = document.getElementById('cart-sidebar');
-            if(show) sidebar.classList.add('active');
-            else sidebar.classList.remove('active');
+            const toast = document.getElementById('toast-notif');[cite: 3]
+            toast.classList.add('show');[cite: 3]
+            setTimeout(() => toast.classList.remove('show'), 2800);[cite: 3]
         }
 
         function updateCartUI() {
-            const container = document.getElementById('cart-items-container');
-            container.innerHTML = "";
-            
-            let totalCount = 0;
-            let totalAmount = 0;
-
-            if(cart.length === 0) {
-                container.innerHTML = `<p style="text-align:center; padding:50px 0; color:#888;">Votre panier d'achat est actuellement vide.</p>`;
-            } else {
-                cart.forEach((item, index) => {
-                    totalCount += item.quantity;
-                    totalAmount += (item.product.price * item.quantity);
-
-                    const div = document.createElement('div');
-                    div.className = "cart-item";
-                    div.innerHTML = `
-                        <img src="${item.product.img}">
+            document.getElementById('cart-count').innerText = cart.length;[cite: 3]
+            const container = document.getElementById('cart-items-container');[cite: 3]
+            container.innerHTML = '';[cite: 3]
+            let total = 0;[cite: 3]
+            cart.forEach((item, index) => {
+                total += item.price;[cite: 3]
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <img src="${item.itemImg || item.img}">
                         <div style="flex:1;">
-                            <h4 style="font-size:12px; font-weight:600; margin-bottom:4px;">${item.product.name}</h4>
-                            <p style="font-size:11px; color:#666; margin-bottom:6px;">Taille: ${item.size} | Qté: ${item.quantity}</p>
-                            <span style="font-size:12px; font-weight:600; color:var(--price-red);">${(item.product.price * item.quantity).toFixed(2)} €</span>
+                            <h4 style="font-size:12px; font-weight:600;">${item.name}</h4>
+                            <p style="font-size:11px; color:#888; margin: 2px 0;">Taille: ${item.selectedSize}</p>
+                            <p style="font-weight:600; color:var(--price-red); font-size:13px;">${item.price.toFixed(2)} €</p>
                         </div>
-                        <span style="cursor:pointer; font-size:18px; color:#999;" onclick="removeFromCart(${index})">&times;</span>
-                    `;
-                    container.appendChild(div);
-                });
-            }
-
-            document.getElementById('cart-count').textContent = totalCount;
-            document.getElementById('cart-total-amount').textContent = `${totalAmount.toFixed(2)} €`;
+                        <span style="cursor:pointer; font-size:24px; color:#bbb;" onclick="cart.splice(${index},1); updateCartUI();">&times;</span>
+                    </div>
+                `;[cite: 3]
+            });
+            const formattedTotal = total.toFixed(2);[cite: 3]
+            document.getElementById('cart-total-amount').innerText = `${formattedTotal} €`;[cite: 3]
         }
 
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
+        // REDIRECTION ET CALCULS PAYPAL SÉCURISÉS DYNAMIQUES
         function processCheckout() {
-            if(cart.length === 0) {
-                alert("Votre panier est vide.");
-                return;
+            if(cart.length === 0) { 
+                alert("Votre panier d'achat est vide.");[cite: 3]
+                return; 
             }
-            alert("Redirection sécurisée vers la passerelle bancaire (PayPal)...");
+            
+            const rawAmount = document.getElementById('cart-total-amount').innerText;[cite: 3]
+            const totalPanier = rawAmount.replace(' €', '').trim();[cite: 3]
+
+            let detailsPointures = cart.map(item => `${item.name} (Taille: ${item.selectedSize})`).join(', ');[cite: 3]
+
+            alert("⚠️ REDIRECTION SÉCURISÉE PAYPAL : Sur la page suivante, vérifiez vos informations. N'oubliez pas de laisser la note client contenant vos tailles pour valider la fabrication de votre commande (" + totalPanier + " €).");[cite: 3]
+
+            const emailPayPal = "hluxury34000@gmail.com";[cite: 3]
+            const itemDescription = "Commande H LUXURY - " + detailsPointures;[cite: 3]
+
+            // API de redirection sécurisée Standard Webscr vers l'interface PayPal officielle
+            window.location.href = "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=" + encodeURIComponent(emailPayPal) + "&amount=" + encodeURIComponent(totalPanier) + "&currency_code=EUR&item_name=" + encodeURIComponent(itemDescription) + "&no_shipping=0&cn=" + encodeURIComponent("Ajouter une note pour la pointure ou livraison");[cite: 3]
         }
 
-        function toggleAuthModal(show) {
-            const m = document.getElementById('auth-modal');
-            if(show) m.classList.add('active');
-            else m.classList.remove('active');
-        }
-
-        function closeAuthModalOnBackdrop(e) {
-            if(e.target.id === "auth-modal") toggleAuthModal(false);
-        }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            alert("Connexion réussie à votre espace Client H Luxury.");
-            toggleAuthModal(false);
-        }
-
-        const legalTexts = {
-            contact: { title: "Nous Contacter", body: "##### Maison H Luxury Paris-Montpellier<br><br>Un conseiller d'exception est à votre écoute par email :<br><b>contact@hluxury.com</b><br><br>Notre atelier répond à toutes vos questions concernant vos commandes de souliers, vos livraisons personnalisées ou nos lancements exclusifs sous 24h ouvrées." },
-            livraison: { title: "Livraison & Retours", body: "##### Une Expérience de Livraison Privilégiée<br><br><b>• Livraison Offerte :</b> Dès 100€ d'achat, bénéficiez de la livraison sécurisée à domicile.<br><b>• Délais de traitement :</b> Nos colis d'exception sont préparés sous 24h à 48h.<br><b>• Retours Simplifiés :</b> Vous disposez d'un droit de rétractation de 14 jours à compter du jour de livraison de votre écrin de souliers pour demander un échange ou un remboursement complet." },
-            mentions: { title: "Mentions Légales", body: "##### Éditeur du site internet<br>Maison H Luxury S.A.S.<br>Capital social de 150 000 €<br>Siège social : Rue de la Haute Maroquinerie, 75001 Paris / Montpellier<br>RCS Paris B 849 201 394<br>Directeur de la publication : Service de la Communication Prestige<br><br>##### Hébergement du site<br>Maison de Technologie Cloud Intelligente Europe S.A." },
-            cgv: { title: "Conditions Générales de Vente", body: "##### 1. Objet & Commandes<br>Les présentes Conditions Générales de Vente régissent l'ensemble des transactions passées sur la boutique H Luxury. Toute commande validée implique l'adhésion entière de l'acheteur.<br><br>##### 2. Prix & Disponibilité<br>Nos prix de prestige sont indiqués en Euros TTC. Les prix barrés représentent le tarif conseillé en boutique traditionnelle lors du lancement initial de la collection.<br><br>##### 3. Sécurisation des transactions<br>Le paiement est intégralement chiffré par le protocole SSL (Secure Socket Layer) via nos partenaires bancaires et de caisse." },
-            privacy: { title: "Protection des Données", body: "##### Votre Confidentialité est Sacrée<br><br>Conformément au RGPD européen, la Maison H Luxury s'engage à ne jamais céder ou vendre vos coordonnées personnelles à des tiers à des fins publicitaires.<br><br>Vos données de connexion et d'adresse sont exclusivement exploitées par nos services logistiques et internes pour vous garantir un service de livraison irréprochable et vous faire part de nos ventes privées éphémères." },
-            cookies: { title: "Gestion des Cookies", body: "##### À quoi servent nos cookies ?<br><br><b>• Cookies Techniques :</b> Essentiels pour retenir les articles de vos collections préférées dans votre panier lors de votre parcours sur le site internet.<br><b>• Cookies de Sécurité :</b> Permettent de valider votre connexion à votre compte client en ligne.<br><br>Vous pouvez désactiver les cookies à tout moment via les réglages avancés de votre navigateur web mobile ou ordinateur." }
+        const LEGAL_TEXTS = {
+            contact: `
+                <h5>Service Relations Clients</h5>
+                <p>Notre atelier est à votre entière disposition pour répondre à toutes vos exigences relatives à nos créations, à un suivi de commande ou à une demande de sur-mesure.</p>
+                <p><b>Adresse Électronique dédiée :</b> hluxury34000@gmail.com</p>
+                <p><b>Disponibilité :</b> Du lundi au samedi, de 9h00 à 19h00 (Heure de Paris).</p>
+                <p>Notre équipe s'engage à vous apporter une réponse personnalisée sous un délai maximal de 24 heures.</p>
+            `,[cite: 3]
+            livraison: `
+                <h5>Expédition d'Exception</h5>
+                <p>Chaque pièce de la Maison H LUXURY est soigneusement enveloppée dans son écrin protecteur et expédiée via un transporteur sécurisé avec suivi et remise contre signature obligatoire.</p>
+                <h5>Délais et Tarifs</h5>
+                <p>• <b>Livraison Standard Sécurisée :</b> Offerte dès 100,00 € d'achat (sinon participation forfaitaire de 4,90 €). Expédiée sous 3 à 5 jours ouvrés.</p>
+                <p>• <b>Livraison Express Assurée :</b> 12,00 €. Expédiée sous 24 à 48 heures ouvrées.</p>
+                <h5>Retours simplifiés</h5>
+                <p>Conformément aux exigences de la haute couture, vous disposez d'un droit de rétraction de 14 jours à compter de la réception de votre colis. L'article doit être retourné complet, non porté et dans son emballage d'origine non altéré.</p>
+            `,[cite: 3]
+            mentions: `
+                <h5>1. Édition du Site</h5>
+                <p>Le présent site accessible à l'adresse hluxury.com est édité par la Maison H LUXURY E-Commerce Inc., immatriculée au Registre du Commerce et des Sociétés (RCS) de Montpellier.</p>
+                <p><b>Direction de la publication :</b> Direction H LUXURY Studio.</p>
+                <h5>2. Hébergement</h5>
+                <p>Le site est hébergé de manière sécurisée sur des infrastructures conformes aux normes européennes d'intégrité numérique.</p>
+                <h5>3. Propriété Intellectuelle</h5>
+                <p>L'intégralité du contenu présent (textes, logos, photographies, structures logicielles) constitue une œuvre de l'esprit protégée par le Code de la propriété intellectuelle. Toute reproduction ou distribution sans accord préalable est strictement interdite.</p>
+            `,[cite: 3]
+            cgv: `
+                <h5>Objet des Conditions</h5>
+                <p>Les présentes Conditions Générales de Vente régissent de plein droit toutes les transactions commerciales conclues entre l'acheteur et la Maison H LUXURY sur notre boutique en ligne.</p>
+                <h5>Commandes et Tarification</h5>
+                <p>Les prix affichés s'entendent en Euros (€) toutes taxes comprises (TTC). H LUXURY se réserve le droit de modifier ses tarifs à tout moment, mais les produits seront facturés sur la base du tarif en vigueur lors de la validation finale de la commande.</p>
+                <h5>Modalités de Règlement</h5>
+                <p>Le paiement est exigible immédiatement au moment de la commande. Les règlements s'effectuent via des passerelles bancaires hautement sécurisées et chiffrées (SSL/TLS).</p>
+            `,[cite: 3]
+            privacy: `
+                <h5>Collecte des Données Personnelles</h5>
+                <p>La Maison H LUXURY s'engage à ce que la collecte et le traitement de vos données soient conformes au Règlement Général sur la Protection des Données (RGPD).</p>
+                <h5>Utilisation de vos données</h5>
+                <p>Vos informations (Email, Adresse de livraison, Historique) sont uniquement exploitées dans le but d'assurer la gestion de vos commandes, l'expédition de vos colis et l'envoi d'offres exclusives si vous le souhaitez.</p>
+                <h5>Vos Droits</h5>
+                <p>Vous disposez d'un droit permanent d'accès, de rectification, de portabilité et de suppression de l'ensemble de vos données nominatives sur simple demande à notre service client.</p>
+            `,[cite: 3]
+            cookies: `
+                <h5>Gestion des Cookies</h5>
+                <p>Notre plateforme utilise exclusivement des traceurs techniques d'infrastructure d'intérêt public dits "strictement nécessaires". Ils permettent d'enregistrer l'état de votre panier, de mémoriser vos choix de tailles et d'assurer le maintien sécurisé de votre session de navigation.</p>
+                <p>Aucun cookie publicitaire tiers n'est implanté à votre insu. Vous pouvez configurer ou bloquer ces cookies à tout moment via les réglages de votre navigateur web.</p>
+            `[cite: 3]
         };
 
-        function openLegal(key) {
-            const data = legalTexts[key];
-            if(!data) return;
-            document.getElementById('legal-modal-title').innerHTML = data.title;
-            document.getElementById('legal-modal-body').innerHTML = data.body;
-            toggleLegalModal(true);
+        function openLegal(type) {
+            const title = document.getElementById('legal-modal-title');[cite: 3]
+            const body = document.getElementById('legal-modal-body');[cite: 3]
+            
+            const titlesMapping = {
+                contact: "Nous Contacter",[cite: 3]
+                livraison: "Livraison & Retours d'Exception",[cite: 3]
+                mentions: "Mentions Légales",[cite: 3]
+                cgv: "Conditions Générales de Vente",[cite: 3]
+                privacy: "Protection des Données (RGPD)",[cite: 3]
+                cookies: "Gestion des Cookies"[cite: 3]
+            };
+
+            title.innerText = titlesMapping[type] || "Information";[cite: 3]
+            body.innerHTML = LEGAL_TEXTS[type] || "<p>Document en cours de mise à jour.</p>";[cite: 3]
+            toggleLegalModal(true);[cite: 3]
         }
 
-        function toggleLegalModal(show) {
-            const m = document.getElementById('legal-modal');
-            if(show) m.classList.add('active');
-            else m.classList.remove('active');
-        }
+        function toggleLegalModal(show) { document.getElementById('legal-modal').classList.toggle('active', show); }[cite: 3]
+        function closeLegalModalOnBackdrop(e) { if(e.target.id === 'legal-modal') toggleLegalModal(false); }[cite: 3]
 
-        function closeLegalModalOnBackdrop(e) {
-            if(e.target.id === "legal-modal") toggleLegalModal(false);
-        }
+        window.onload = () => { 
+            initBanners();[cite: 3]
+            showHome();[cite: 3]
+        };
+    </script>
 
-        const listeAvisPrets = [
-            { auteur: "Sarah L.", texte: "Les sandales Oran sont sublimes, la pointure est parfaite !" },
-            { auteur: "Julien M.", texte: "Sneakers Bouncing reçues ce matin. Qualité incroyable." },
-            { auteur: "Emma V.", texte: "Le service client est ultra réactif, je suis ravie de mon achat." },
-            { auteur: "Thomas B.", texte: "Rien à redire, emballage soigné et livraison rapide." },
-            { auteur: "Léa D.", texte: "Le code promo hluxury10 a parfaitement fonctionné, super prix." },
-            { auteur: "Manon P.", texte: "Magnifique couleur Vert Jade. Je recommande la boutique." },
-            { auteur: "Lucas G.", texte: "Les finitions sur la gamme Sneakers sont dingues, merci !" },
-            { auteur: "Chloé D.", texte: "Deuxième paire commandée ici et toujours aussi satisfaite." }
-        ];
+    <!-- Système Dynamique d'Avis Clients Reçus -->
+    <div id="review-toast" style="position: fixed; bottom: 20px; left: -400px; background: #ffffff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.15); display: flex; align-items: center; padding: 15px; font-family: sans-serif; z-index: 9999; transition: left 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275); width: 310px; border-left: 4px solid #28a745; box-sizing: border-box;">
+      <div style="margin-right: 12px;">
+        <div style="background: #28a745; color: white; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 11px;">✓</div>
+      </div>
+      <div style="display: flex; flex-direction: column;">
+        <p style="font-size: 12px; color: #333; margin: 0 0 3px 0; font-weight: bold;">
+          <span id="review-author">Prénom</span> — <span style="color: #ffc107;">★★★★★</span>
+        </p>
+        <p id="review-text" style="font-size: 11px; color: #555; margin: 0; font-style: italic; line-height: 1.4;">
+          "Super produit !"
+        </p>
+      </div>
+    </div>
 
-        function afficherAvis() {
-            const existingToast = document.getElementById('review-toast-float');
-            if(existingToast) existingToast.remove();
+    <script>
+    (function() {
+      const listeAvisPrets = [
+        { auteur: "Sarah M.", texte: "Livraison rapide et produit conforme, je recommande sans hésiter !" },[cite: 3]
+        { auteur: "Thomas B.", texte: "Le service client est super réactif, et la qualité est vraiment au rendez-vous." },[cite: 3]
+        { auteur: "Amandine L.", texte: "Franchement génial, j'en ai repris un deuxième pour offrir à un proche." },[cite: 3]
+        { auteur: "Nicolas V.", texte: "Excellent rapport qualité/prix. Rien à redire, c'est parfait." },[cite: 3]
+        { auteur: "Julie D.", texte: "Commande reçue en avance. Très bien emballé et conforme à la description." },[cite: 3]
+        { auteur: "Kevin R.", texte: "Site très sérieux. J'avais une question et ils m'ont répondu en moins d'une heure." },[cite: 3]
+        { auteur: "Émilie P.", texte: "Une super découverte, je passerai à nouveau commande très bientôt !" },[cite: 3]
+        { auteur: "Maxime G.", texte: "Parfait, correspond exactement à ce que j'attendais. Je recommande." },[cite: 3]
+        { auteur: "Laura T.", texte: "Très satisfaite de mon achat. Simple, efficace et de bonne qualité." },[cite: 3]
+        { auteur: "Antoine F.", texte: "Expérience d'achat au top de A à Z. Vous pouvez y aller les yeux fermés." },[cite: 3]
+        { auteur: "Manon S.", texte: "Rien à redire, traitement de commande hyper rapide." },[cite: 3]
+        { auteur: "Guillaume L.", texte: "Conforme aux photos du site, la qualité est superbe." },[cite: 3]
+        { auteur: "Chloé B.", texte: "Très bonne surprise au déballage, je suis ravie !" },[cite: 3]
+        { auteur: "Alexandre D.", texte: "Un sans-faute. Je commanderai à nouveau sans hésiter." },[cite: 3]
+        { auteur: "Camille M.", texte: "Service client au top, super agréable et efficace." },[cite: 3]
+        { auteur: "Lucas G.", texte: "Produit robuste et finitions impeccables. 5 étoiles." },[cite: 3]
+        { auteur: "Léa R.", texte: "Très contente, article conforme et arrivé bien protégé." },[cite: 3]
+        { auteur: "Julien P.", texte: "Excellent suivi de livraison et produit parfait." },[cite: 3]
+        { auteur: "Mathilde V.", texte: "Pratique, esthétique et de qualité. Entièrement satisfaite." },[cite: 3]
+        { auteur: "Hugo C.", texte: "Achat validé ! C'est exactement ce qu'il me fallait." },[cite: 3]
+        { auteur: "Emma F.", texte: "Je l'utilise tous les jours, c'est devenu un indispensable." },[cite: 3]
+        { auteur: "Arthur N.", texte: "Rapport qualité-prix imbattable sur le marché actuellement." },[cite: 3]
+        { auteur: "Océane G.", texte: "Une livraison rapide et soignée. Merci beaucoup !" },[cite: 3]
+        { auteur: "Clément J.", texte: "Très pro, du passage de la commande à la réception." },[cite: 3]
+        { auteur: "Inès K.", texte: "Je recommande ce site, le produit est conforme à mes attentes." },[cite: 3]
+        { auteur: "Paul E.", texte: "Franchement bluffé par la qualité par rapport au prix." },[cite: 3]
+        { auteur: "Clara H.", texte: "Une équipe à l'écoute et un produit vraiment top." },[cite: 3]
+        { auteur: "Valentin M.", texte: "Délais respectés, emballage soigné, produit nickel." },[cite: 3]
+        { auteur: "Jeanne W.", texte: "Très simple d'utilisation, correspond à la description." },[cite: 3]
+        { auteur: "Louis T.", texte: "Une très bonne expérience globale, je recommande." },[cite: 3]
+        { auteur: "Agathe P.", texte: "Très satisfaite de mon choix, aucun regret sur cet achat." },[cite: 3]
+        { auteur: "Quentin R.", texte: "Le top du top. Expédition rapide et emballage solide." },[cite: 3]
+        { auteur: "Marion D.", texte: "J'ai eu un coup de cœur pour ce modèle, pas déçue !" },[cite: 3]
+        { auteur: "Romain L.", texte: "Fonctionne parfaitement, conforme en tous points." },[cite: 3]
+        { auteur: "Alice S.", texte: "Superbe expérience, livraison très rapide." },[cite: 3]
+        { auteur: "Florian B.", texte: "Qualité supérieure à ce que j'imaginais, bravo !" },[cite: 3]
+        { auteur: "Lucie V.", texte: "Commande reçue ce matin, déjà adopté et testé !" },[cite: 3]
+        { auteur: "Bastien F.", texte: "Efficace, rapide et conforme. Je valide à 100%." },[cite: 3]
+        { auteur: "Noémie C.", texte: "Ravi de mon achat, je recommande ce vendeur." },[cite: 3]
+        { auteur: "Théo G.", texte: "Un choix que je ne regrette pas, super utile au quotidien." },[cite: 3]
+        { auteur: "Anaïs M.", texte: "Un grand merci au support pour leur réactivité." },[cite: 3]
+        { auteur: "Maxence N.", texte: "Tout est parfait, de la commande à l'utilisation." },[cite: 3]
+        { auteur: "Justine P.", texte: "Design sympa et produit de très bonne facture." },[cite: 3]
+        { auteur: "Enzo D.", texte: "Livré en 48h, produit impeccable, rien à redire." },[cite: 3]
+        { auteur: "Léna J.", texte: "Parfait pour offrir ou pour soi, super qualité." },[cite: 3]
+        { auteur: "Mathieu T.", texte: "Simple et efficace, remplit parfaitement son rôle." },[cite: 3]
+        { auteur: "Charlotte R.", texte: "Très bonne communication avec le marchand, rassurant." },[cite: 3]
+        { auteur: "Simon B.", texte: "Je l'ai recommandé à mon entourage direct." },[cite: 3]
+        { auteur: "Manal K.", texte: "Très agréable surprise, le produit est parfait." },[cite: 3]
+        { auteur: "Loïc G.", texte: "Une valeur sûre, livraison et suivi impeccables." },[cite: 3]
+        { auteur: "Eva S.", texte: "Exactement comme décrit. Très satisfaite." },[cite: 3]
+        { auteur: "Corentin L.", texte: "Un achat intelligent, robuste et durable." },[cite: 3]
+        { auteur: "Margaux D.", texte: "Rapport qualité-prix excellent, je recommande." },[cite: 3]
+        { auteur: "Nathan P.", texte: "Facile à prendre en main, correspond à mes attentes." },[cite: 3]
+        { auteur: "Zoe C.", texte: "Acheté suite aux recommandations, pas déçue !" },[cite: 3]
+        { auteur: "Axel M.", texte: "Service impeccable et réactif, produit conforme." },[cite: 3]
+        { auteur: "Lola F.", texte: "Reçu bien emballé, la qualité seems excellente." },[cite: 3]
+        { auteur: "Baptiste V.", texte: "Pratique et conforme à ce qui est annoncé." },[cite: 3]
+        { auteur: "Jade H.", texte: "Je repasserai commande sans aucune hésitation." },[cite: 3]
+        { auteur: "Robin T.", texte: "Tout est conforme, la livraison a été rapide." },[cite: 3]
+        { auteur: "Élisa B.", texte: "Parfait pour mon utilisation quotidienne. Je recommande." },[cite: 3]
+        { auteur: "Thibault S.", texte: "Une très bonne boutique avec de bons produits." },[cite: 3]
+        { auteur: "Morgane R.", texte: "Colis arrivé dans les temps et très bien protégé." },[cite: 3]
+        { auteur: "Adrien C.", texte: "Très bon produit, conforme à la description du site." },[cite: 3]
+        { auteur: "Lou M.", texte: "Une commande fluide et rapide, merci beaucoup !" },[cite: 3]
+        { auteur: "Gabriel F.", texte: "Très satisfait de la qualité globale, je valide." }[cite: 3]
+      ];
 
-            const toast = document.createElement('div');
-            toast.id = "review-toast-float";
-            toast.style.position = "fixed";
-            toast.style.bottom = "30px";
-            toast.style.right = "30px";
-            toast.style.background = "#ffffff";
-            toast.style.color = "#000000";
-            toast.style.padding = "15px 20px";
-            toast.style.borderRadius = "6px";
-            toast.style.boxShadow = "0 4px 15px rgba(0,0,0,0.15)";
-            toast.style.zIndex = "1900";
-            toast.style.fontSize = "12px";
-            toast.style.borderLeft = "3px solid #000";
-            toast.style.maxWidth = "280px";
-            toast.style.transition = "all 0.4s ease";
-            toast.style.opacity = "0";
-            toast.style.transform = "translateY(10px)";
+      function afficherAvis() {
+        const toast = document.getElementById('review-toast');
+        const elemAuteur = document.getElementById('review-author');
+        const elemTexte = document.getElementById('review-text');
 
-            const avisAleatoire = listeAvisPrets[Math.floor(Math.random() * listeAvisPrets.length)];
-            toast.innerHTML = `<b>${avisAleatoire.auteur}</b> : "${avisAleatoire.texte}"`;
+        if (!toast || !elemAuteur || !elemTexte) return;
 
-            document.body.appendChild(toast);
+        const avisAleatoire = listeAvisPrets[Math.floor(Math.random() * listeAvisPrets.length)];
 
-            setTimeout(() => {
-                toast.style.opacity = "1";
-                toast.style.transform = "translateY(0)";
-            }, 100);
+        elemAuteur.textContent = avisAleatoire.auteur;
+        elemTexte.textContent = `"${avisAleatoire.texte}"`;
 
-            setTimeout(() => {
-                toast.style.opacity = "0";
-                toast.style.transform = "translateY(10px)";
-                setTimeout(() => toast.remove(), 400);
-            }, 6000);
-        }
+        toast.style.left = '20px';
+
+        setTimeout(() => {
+          toast.style.left = '-400px';
+        }, 8000);
+      }
+
+      window.addEventListener('load', () => {
+        setTimeout(afficherAvis, 8000);
+        setInterval(afficherAvis, 300000); 
+      });
+    })();
     </script>
 </body>
 </html>
