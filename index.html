@@ -339,7 +339,7 @@
             max-width: 1340px;
             margin: 20px auto 0 auto;
             padding: 0 2%;
-            display: none; /* Visible uniquement hors accueil */
+            display: none; 
             justify-content: flex-end;
             gap: 10px;
         }
@@ -1159,12 +1159,32 @@
                     </div>
                 `;
             });
-            document.getElementById('cart-total-amount').innerText = `${total.toFixed(2)} €`;
+            const formattedTotal = total.toFixed(2);
+            document.getElementById('cart-total-amount').innerText = `${formattedTotal} €`;
         }
 
+        // REDIRECTION ET CALCULS PAYPAL OPTIMISÉS 
         function processCheckout() {
-            if(cart.length === 0 && currentProductId === null) { alert("Votre panier d'achat est vide."); return; }
-            window.location.href = "https://buy.stripe.com/votre_lien_unique_ici";
+            if(cart.length === 0) { 
+                alert("Votre panier d'achat est vide."); 
+                return; 
+            }
+            
+            // Extraction du montant total net
+            const rawAmount = document.getElementById('cart-total-amount').innerText;
+            const totalPanier = rawAmount.replace(' €', '').trim();
+
+            // Création de la liste des pointures pour le message client
+            let detailsPointures = cart.map(item => `${item.name} (Taille: ${item.selectedSize})`).join(', ');
+
+            // Message pour guider l'acheteur sur PayPal
+            alert("⚠️ IMPORTANT : Sur la page de paiement PayPal, pensez à vérifier que votre ADRESSE est correcte et n'oubliez pas de laisser le message pré-rempli contenant vos articles et pointures pour valider la fabrication de votre commande de " + totalPanier + " €.");
+
+            const emailPayPal = "hluxury34000@gmail.com"; 
+            const itemDescription = "Commande H LUXURY - " + detailsPointures;
+
+            // Redirection officielle PayPal Webscr avec récupération automatique de l'adresse de livraison et note client
+            window.location.href = "https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=" + encodeURIComponent(emailPayPal) + "&amount=" + encodeURIComponent(totalPanier) + "&currency_code=EUR&item_name=" + encodeURIComponent(itemDescription) + "&no_shipping=0&cn=" + encodeURIComponent("Ajouter une note pour la pointure ou livraison");
         }
 
         const LEGAL_TEXTS = {
@@ -1332,7 +1352,7 @@
     { auteur: "Nathan P.", texte: "Facile à prendre en main, correspond à mes attentes." },
     { auteur: "Zoe C.", texte: "Acheté suite aux recommandations, pas déçue !" },
     { auteur: "Axel M.", texte: "Service impeccable et réactif, produit conforme." },
-    { auteur: "Lola F.", texte: "Reçu bien emballé, la qualité semble excellente." },
+    { auteur: "Lola F.", texte: "Reçu bien emballé, la qualité seems excellente." },
     { auteur: "Baptiste V.", texte: "Pratique et conforme à ce qui est annoncé." },
     { auteur: "Jade H.", texte: "Je repasserai commande sans aucune hésitation." },
     { auteur: "Robin T.", texte: "Tout est conforme, la livraison a été rapide." },
