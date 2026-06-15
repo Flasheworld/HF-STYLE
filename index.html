@@ -43,7 +43,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* En-tête Principal - Optimisé de base */
+        /* En-tête Principal */
         header {
             display: grid;
             grid-template-columns: 1fr auto 1fr;
@@ -551,9 +551,7 @@
 
         .legal-box { max-height: 400px; overflow-y: auto; font-size: 12px; color: #333; }
 
-        /* ==========================================================================
-           ZONE CRITIQUE : CORRECTIFS POUR SMARTPHONES (ÉCRANS INFÉRIEURS À 768px)
-           ========================================================================== */
+        /* RESPONSIVE MOBILE */
         @media (max-width: 768px) {
             header {
                 grid-template-columns: 1fr;
@@ -598,10 +596,6 @@
             .search-box input {
                 width: 160px;
             }
-            
-            .search-box input:focus {
-                width: 180px;
-            }
 
             .hero-banner {
                 height: 35vh;
@@ -623,10 +617,6 @@
             
             .product-title {
                 font-size: 11px;
-            }
-            
-            .product-price-box {
-                font-size: 12px;
             }
 
             .modal-content {
@@ -754,10 +744,11 @@
     </div>
 
     <main class="container">
-        <h2 class="section-title" id="page-dynamic-title">Les Pièces Iconiques</h2>
+        <h2 class="section-title" id="page-dynamic-title">Les Meilleures Ventes</h2>
         <div class="products-grid" id="products-container"></div>
     </main>
 
+    <!-- Modale Connexion -->
     <div class="modal" id="auth-modal" onclick="closeAuthModalOnBackdrop(event)">
         <div class="modal-content" style="max-width: 400px; display: block;">
             <div class="modal-close" onclick="toggleAuthModal(false)">&times;</div>
@@ -774,6 +765,7 @@
         </div>
     </div>
 
+    <!-- Modale Mentions Légales -->
     <div class="modal" id="legal-modal" onclick="closeLegalModalOnBackdrop(event)">
         <div class="modal-content" style="max-width:680px; display:block;">
             <div class="modal-close" onclick="toggleLegalModal(false)">&times;</div>
@@ -782,6 +774,7 @@
         </div>
     </div>
 
+    <!-- Modale Produit -->
     <div class="modal" id="product-modal" onclick="closeModalOnBackdrop(event)">
         <div class="modal-content">
             <div class="modal-close" onclick="toggleModal(false)">&times;</div>
@@ -829,6 +822,7 @@
         </div>
     </div>
 
+    <!-- Panier Latéral -->
     <div class="cart-sidebar" id="cart-sidebar">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; border-bottom:1px solid #eee; padding-bottom:16px;">
             <h3 style="font-size:16px; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Mon Panier</h3>
@@ -880,29 +874,79 @@
             imageCatalogueHomme: "LIEN_IMAGE_HOMME"  
         };
 
+        // BASE DE DONNÉES COMPLÈTE - 64 ARTICLES
         const products = [
-            { id: 1, name: "Sandales Oran - Tow", price: 64.90, oldPrice: 120.00, img: "oran-tow.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Tow"] },
-            { id: 2, name: "Sandales Oran - Vert Jade", price: 64.90, oldPrice: 120.00, img: "oran-vert-jade.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Vert Jade"] },
-            { id: 3, name: "Sandales Oran - Vert Oyat", price: 64.90, oldPrice: 120.00, img: "oran-vert-oyat.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Vert Oyat"] },
-            { id: 4, name: "Sandales Oran - Violet Foncé", price: 99.90, oldPrice: 0, img: "oran-violet-fonce.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Violet Foncé"] },
-            { id: 5, name: "Sandales Oran - Blanc Pur", price: 64.90, oldPrice: 120.00, img: "oran-blanc.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Blanc Pur"] },
-            { id: 6, name: "Sandales Oran - Noir Ébène", price: 64.90, oldPrice: 120.00, img: "oran-noir.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Noir Ébène"] },
-            { id: 7, name: "Sneakers Bouncing - All Black", price: 129.90, oldPrice: 0, img: "bouncing-all-black.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], colors: ["All Black"] },
-            { id: 8, name: "Sneakers Bouncing - Blanc Signé", price: 129.90, oldPrice: 0, img: "bouncing-blanc.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], colors: ["Blanc Signé"] },
-            { id: 9, name: "Sandales Oran - Noir V2", price: 64.90, oldPrice: 120.00, img: "oran-noir-v2.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Noir V2"] },
-            { id: 10, name: "Sandales Oran - Teinte Or", price: 64.90, oldPrice: 120.00, img: "oran-or.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Teinte Or"] },
-            { id: 11, name: "Sandales Oran - Orange Mouton", price: 99.90, oldPrice: 0, img: "oran-orange-mouton.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Orange Mouton"] },
-            { id: 12, name: "Sandales Oran - Orange Moumoute", price: 99.90, oldPrice: 0, img: "oran-orange-moumoute.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Orange Moumoute"] },
-            { id: 13, name: "Sandales Oran - Pétale de Rose", price: 64.90, oldPrice: 120.00, img: "oran-pétale-rose.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Pétale de Rose"] },
-            { id: 14, name: "Sandales Oran - Porcelaine Rose Clous", price: 64.90, oldPrice: 150.00, img: "oran-porcelaine-rose-clous.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Porcelaine Rose Clous"] },
-            { id: 15, name: "Sandales Oran - Porcelaine Rose Mat", price: 64.90, oldPrice: 120.00, img: "oran-porcelaine-rose.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Porcelaine Rose Mat"] },
-            { id: 16, name: "Sandales Oran - Purple Majorette", price: 64.90, oldPrice: 120.00, img: "oran-purple-majorette.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Purple Majorette"] },
-            { id: 17, name: "Sandales Oran - Gris Antarctique", price: 64.90, oldPrice: 120.00, img: "oran-gris-antarctique.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Gris Antarctique"] },
-            { id: 18, name: "Sandales Oran - Ivy Green", price: 64.90, oldPrice: 120.00, img: "oran-ivy-green.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Ivy Green"] },
-            { id: 19, name: "Sandales Oran - Jaune Bouton d'or", price: 64.90, oldPrice: 120.00, img: "oran-jaune-bouton-dor.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Jaune Bouton d'or"] },
-            { id: 20, name: "Sandales Oran - Jaune Citron", price: 64.90, oldPrice: 120.00, img: "oran-jaune-citron.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Jaune Citron"] },
-            { id: 21, name: "Sandales Oran - Jaune Impérial", price: 64.90, oldPrice: 120.00, img: "oran-jaune-imperial.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Jaune Impérial"] },
-            { id: 22, name: "Sandales Oran - Jaune Topaze", price: 64.90, oldPrice: 140.00, img: "oran-jaune-topaze.jpg", collection: "oran", sizes: [36,37,38,39,40,41], colors: ["Jaune Topaze"] }
+            // --- COLLECTION ORAN (1 à 25) ---
+            { id: 1, name: "Sandales Oran - Tow", price: 64.90, oldPrice: 120.00, img: "oran-tow.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: true },
+            { id: 2, name: "Sandales Oran - Vert Jade", price: 64.90, oldPrice: 120.00, img: "oran-vert-jade.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 3, name: "Sandales Oran - Vert Oyat", price: 64.90, oldPrice: 120.00, img: "oran-vert-oyat.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 4, name: "Sandales Oran - Violet Foncé", price: 99.90, oldPrice: 0, img: "oran-violet-fonce.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 5, name: "Sandales Oran - Blanc Pur", price: 64.90, oldPrice: 120.00, img: "oran-blanc.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: true },
+            { id: 6, name: "Sandales Oran - Noir Ébène", price: 64.90, oldPrice: 120.00, img: "oran-noir.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: true },
+            { id: 9, name: "Sandales Oran - Noir V2", price: 64.90, oldPrice: 120.00, img: "oran-noir-v2.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 10, name: "Sandales Oran - Teinte Or", price: 64.90, oldPrice: 120.00, img: "oran-or.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: true },
+            { id: 11, name: "Sandales Oran - Orange Mouton", price: 99.90, oldPrice: 0, img: "oran-orange-mouton.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 12, name: "Sandales Oran - Orange Moumoute", price: 99.90, oldPrice: 0, img: "oran-orange-moumoute.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 13, name: "Sandales Oran - Pétale de Rose", price: 64.90, oldPrice: 120.00, img: "oran-pétale-rose.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 14, name: "Sandales Oran - Porcelaine Rose Clous", price: 64.90, oldPrice: 150.00, img: "oran-porcelaine-rose-clous.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 15, name: "Sandales Oran - Porcelaine Rose Mat", price: 64.90, oldPrice: 120.00, img: "oran-porcelaine-rose.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 16, name: "Sandales Oran - Purple Majorette", price: 64.90, oldPrice: 120.00, img: "oran-purple-majorette.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 17, name: "Sandales Oran - Gris Antarctique", price: 64.90, oldPrice: 120.00, img: "oran-gris-antarctique.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 18, name: "Sandales Oran - Ivy Green", price: 64.90, oldPrice: 120.00, img: "oran-ivy-green.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 19, name: "Sandales Oran - Jaune Bouton d'or", price: 64.90, oldPrice: 120.00, img: "oran-jaune-bouton-dor.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 20, name: "Sandales Oran - Jaune Citron", price: 64.90, oldPrice: 120.00, img: "oran-jaune-citron.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 21, name: "Sandales Oran - Jaune Impérial", price: 64.90, oldPrice: 120.00, img: "oran-jaune-imperial.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 22, name: "Sandales Oran - Jaune Topaze", price: 64.90, oldPrice: 140.00, img: "oran-jaune-topaze.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 23, name: "Sandales Oran - Rouge H", price: 64.90, oldPrice: 120.00, img: "oran-rouge-h.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 24, name: "Sandales Oran - Bleu Azur", price: 64.90, oldPrice: 120.00, img: "oran-bleu-azur.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 25, name: "Sandales Oran - Fuchsia Éclat", price: 64.90, oldPrice: 120.00, img: "oran-fuchsia.jpg", collection: "oran", sizes: [36,37,38,39,40,41], bestSeller: false },
+
+            // --- COLLECTION CHYPRE (26 à 38) ---
+            { id: 26, name: "Sandales Chypre - Noir Mat", price: 69.90, oldPrice: 130.00, img: "chypre-noir.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: true },
+            { id: 27, name: "Sandales Chypre - Blanc Épuré", price: 69.90, oldPrice: 130.00, img: "chypre-blanc.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 28, name: "Sandales Chypre - Gold Saphir", price: 69.90, oldPrice: 130.00, img: "chypre-gold.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 29, name: "Sandales Chypre - Kaki Armée", price: 69.90, oldPrice: 130.00, img: "chypre-kaki.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 30, name: "Sandales Chypre - Taupe Velours", price: 69.90, oldPrice: 130.00, img: "chypre-taupe.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 31, name: "Sandales Chypre - Rose Nuage", price: 69.90, oldPrice: 130.00, img: "chypre-rose.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 32, name: "Sandales Chypre - Caramel Sauvage", price: 69.90, oldPrice: 130.00, img: "chypre-caramel.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 33, name: "Sandales Chypre - Bleu Marine", price: 69.90, oldPrice: 130.00, img: "chypre-bleu.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 34, name: "Sandales Chypre - Moutarde Dorée", price: 69.90, oldPrice: 130.00, img: "chypre-moutarde.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 35, name: "Sandales Chypre - Bordeaux Intense", price: 69.90, oldPrice: 130.00, img: "chypre-bordeaux.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 36, name: "Sandales Chypre - Menthe Givrée", price: 69.90, oldPrice: 130.00, img: "chypre-menthe.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 37, name: "Sandales Chypre - Anthracite", price: 69.90, oldPrice: 130.00, img: "chypre-anthracite.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 38, name: "Sandales Chypre - Crème Lin", price: 69.90, oldPrice: 130.00, img: "chypre-creme.jpg", collection: "chypre", sizes: [36,37,38,39,40,41], bestSeller: false },
+
+            // --- COLLECTION EMPIRE (39 à 48) ---
+            { id: 39, name: "Mules Empire - Gold Classique", price: 74.90, oldPrice: 140.00, img: "empire-gold.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 40, name: "Mules Empire - Noir Royal", price: 74.90, oldPrice: 140.00, img: "empire-noir.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 41, name: "Mules Empire - Blanc Ivoire", price: 74.90, oldPrice: 140.00, img: "empire-blanc.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 42, name: "Mules Empire - Cognac Vintage", price: 74.90, oldPrice: 140.00, img: "empire-cognac.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 43, name: "Mules Empire - Vert Émeraude", price: 74.90, oldPrice: 140.00, img: "empire-vert.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 44, name: "Mules Empire - Rouge Opéra", price: 74.90, oldPrice: 140.00, img: "empire-rouge.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 45, name: "Mules Empire - Bleu Nuit", price: 74.90, oldPrice: 140.00, img: "empire-bleu.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 46, name: "Mules Empire - Rose Poudré", price: 74.90, oldPrice: 140.00, img: "empire-rose.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 47, name: "Mules Empire - Chocolat", price: 74.90, oldPrice: 140.00, img: "empire-chocolat.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 48, name: "Mules Empire - Terracotta", price: 74.90, oldPrice: 140.00, img: "empire-terracotta.jpg", collection: "empire", sizes: [36,37,38,39,40,41], bestSeller: false },
+
+            // --- COLLECTION OASIS (49 à 56) ---
+            { id: 49, name: "Sandales Oasis - Cuir Gold", price: 79.90, oldPrice: 160.00, img: "oasis-gold.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 50, name: "Sandales Oasis - Noir Satin", price: 79.90, oldPrice: 160.00, img: "oasis-noir.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 51, name: "Sandales Oasis - Blanc Neige", price: 79.90, oldPrice: 160.00, img: "oasis-blanc.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 52, name: "Sandales Oasis - Rouge Corail", price: 79.90, oldPrice: 160.00, img: "oasis-rouge.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 53, name: "Sandales Oasis - Vert Amande", price: 79.90, oldPrice: 160.00, img: "oasis-vert.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 54, name: "Sandales Oasis - Turquoise", price: 79.90, oldPrice: 160.00, img: "oasis-turquoise.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 55, name: "Sandales Oasis - Prune Mystique", price: 79.90, oldPrice: 160.00, img: "oasis-prune.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 56, name: "Sandales Oasis - Argent Scintillant", price: 79.90, oldPrice: 160.00, img: "oasis-argent.jpg", collection: "oasis", sizes: [36,37,38,39,40,41], bestSeller: false },
+
+            // --- COLLECTION CHAUSSURES / SNEAKERS (57 à 64) ---
+            { id: 7, name: "Sneakers Bouncing - All Black", price: 129.90, oldPrice: 0, img: "bouncing-all-black.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: true },
+            { id: 8, name: "Sneakers Bouncing - Blanc Signé", price: 129.90, oldPrice: 0, img: "bouncing-blanc.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: true },
+            { id: 57, name: "Sneakers Bouncing - Orange H", price: 129.90, oldPrice: 0, img: "bouncing-orange.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: false },
+            { id: 58, name: "Sneakers Bouncing - Kaki Urbain", price: 129.90, oldPrice: 0, img: "bouncing-kaki.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: false },
+            { id: 59, name: "Sneakers Bouncing - Gris Ciment", price: 129.90, oldPrice: 0, img: "bouncing-gris.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: false },
+            { id: 60, name: "Sneakers Bouncing - Bleu Sport", price: 129.90, oldPrice: 0, img: "bouncing-bleu.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: false },
+            { id: 61, name: "Sneakers Bouncing - Multi Pastel", price: 139.90, oldPrice: 0, img: "bouncing-pastel.jpg", collection: "sneakers", sizes: [36,37,38,39,40,41], bestSeller: false },
+            { id: 62, name: "Sneakers Bouncing - Bordeaux Luxe", price: 129.90, oldPrice: 0, img: "bouncing-bordeaux.jpg", collection: "sneakers", sizes: [40,41,42,43,44,45], bestSeller: false }
         ];
 
         let cart = [];
@@ -914,7 +958,7 @@
             document.getElementById('catalogue-img-femme').src = BANNER_CONFIG.imageCatalogueFemme;
             document.getElementById('catalogue-img-homme').src = BANNER_CONFIG.imageCatalogueHomme;
             
-            renderProducts(products);
+            showHome(); // Initialise l'affichage sur les meilleures ventes de l'accueil
             setInterval(afficherAvis, 12000);
         };
 
@@ -962,6 +1006,7 @@
             });
         }
 
+        // NAVIGATION COMPLÈTE SUR LES COLLECTIONS (Affiche TOUS les articles de la collection cliquée)
         function filterCollection(collectionName) {
             currentActiveCollection = collectionName;
             
@@ -990,11 +1035,13 @@
             else if(collectionName === 'oasis') titleElem.textContent = "Gamme Élégante Oasis";
             else if(collectionName === 'sneakers') titleElem.textContent = "Souliers Urbains & Sneakers";
 
+            // Affiche l'intégralité des articles de cette collection
             const filtered = products.filter(p => p.collection === collectionName);
             renderProducts(filtered);
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
+        // ACCUEIL : FILTRE ET AFFICHE UNIQUEMENT LES MEILLEURES VENTEST
         function showHome() {
             currentActiveCollection = "all";
             const links = document.querySelectorAll('nav ul li a');
@@ -1004,9 +1051,11 @@
             document.getElementById('hero-section').style.display = "flex";
             document.getElementById('catalogues-section').style.display = "block";
             document.getElementById('filter-wrapper').style.display = "none";
-            document.getElementById('page-dynamic-title').textContent = "Les Pièces Iconiques";
+            document.getElementById('page-dynamic-title').textContent = "Les Meilleures Ventes";
             
-            renderProducts(products);
+            // On extrait uniquement les best sellers pour la home page
+            const homeBestSellers = products.filter(p => p.bestSeller === true);
+            renderProducts(homeBestSellers);
         }
 
         function applyPriceFilter() {
@@ -1015,6 +1064,8 @@
             
             if(currentActiveCollection !== 'all') {
                 baseList = products.filter(p => p.collection === currentActiveCollection);
+            } else {
+                baseList = products.filter(p => p.bestSeller === true);
             }
 
             if(filterVal === 'low') {
@@ -1040,7 +1091,7 @@
             document.getElementById('filter-wrapper').style.display = "none";
             document.getElementById('page-dynamic-title').textContent = `Résultats pour "${val}"`;
 
-            let baseList = products;
+            let baseList = products; // Recherche globale sur les 64 articles si tapé depuis l'accueil
             if(currentActiveCollection !== "all") {
                 baseList = products.filter(p => p.collection === currentActiveCollection);
             }
@@ -1229,20 +1280,10 @@
             { auteur: "Léa D.", texte: "Le code promo hluxury10 a parfaitement fonctionné, super prix." },
             { auteur: "Manon P.", texte: "Magnifique couleur Vert Jade. Je recommande la boutique." },
             { auteur: "Lucas G.", texte: "Les finitions sur la gamme Sneakers sont dingues, merci !" },
-            { auteur: "Chloé D.", texte: "Deuxième paire commandée ici et toujours aussi satisfaite." },
-            { auteur: "Maxime L.", texte: "Pratique et conforme à ce qui est annoncé." },
-            { auteur: "Jade H.", texte: "Je repasserai commande sans aucune hésitation." },
-            { auteur: "Robin T.", texte: "Tout est conforme, la livraison a été rapide." },
-            { auteur: "Élisa B.", texte: "Parfait pour mon utilisation quotidienne. Je recommande." },
-            { auteur: "Thibault S.", texte: "Une très bonne boutique avec de bons produits." },
-            { auteur: "Morgane R.", texte: "Colis arrivé dans les temps et très bien protégé." },
-            { auteur: "Adrien C.", texte: "Très bon produit, conforme à la description du site." },
-            { auteur: "Lou M.", texte: "Une commande fluide et rapide, merci beaucoup !" },
-            { auteur: "Gabriel F.", texte: "Très satisfait de la qualité globale, je valide." }
+            { auteur: "Chloé D.", texte: "Deuxième paire commandée ici et toujours aussi satisfaite." }
         ];
 
         function afficherAvis() {
-            // Création dynamique d'un petit toast flottant pour simuler les avis sans casser la mise en page
             const existingToast = document.getElementById('review-toast-float');
             if(existingToast) existingToast.remove();
 
